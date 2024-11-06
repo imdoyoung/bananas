@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>Forms / Validation - NiceAdmin Bootstrap Template</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/xdm/v1/template/Lonely/assets/img/favicon.png" rel="icon">
+<link href="/xdm/v1/template/Lonely/assets/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="/xdm/v1/template/Lonely/assets/vendor/quill/quill.snow.css"
+	rel="stylesheet">
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/quill/quill.bubble.css"
+	rel="stylesheet">
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/remixicon/remixicon.css"
+	rel="stylesheet">
+<link
+	href="/xdm/v1/template/Lonely/assets/vendor/simple-datatables/style.css"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="/xdm/v1/template/Lonely/assets/css/style.css"
+	rel="stylesheet">
+
+<!-- =======================================================
+  * Template Name: NiceAdmin
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Updated: Apr 20 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+	<!-- ======= Header ======= -->
+      <div th:replace="~{/xdm/v1/infra/common/header :: header}"></div>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+      <div th:replace="~{/xdm/v1/infra/common/sidebar :: aside}"></div>
+    <!-- End Sidebar-->
+
+	<main id="main" class="main">
+
+		<div class="pagetitle">
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="index.html">Page 1</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Page 2</a></li>
+					<li class="breadcrumb-item active">Default</li>
+				</ol>
+			</nav>
+			<h1>Code</h1>
+		</div>
+		<!-- End Page Title -->
+
+		<section class="section">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">기본정보</h5>
+
+							<!-- Custom Styled Validation -->
+							<form name="form" id="form" method="post" action="/xdm/v1/infra/baCode/baCodeXdmInst" novalidate>
+								<div class="row mb-3">
+									<div class="col-md-3">
+										<label class="form-label">
+											코드 번호
+											<a style="color: red;">*</a>
+										</label> 
+										<input type="text" class="form-control" name="ifcdSeq"
+											placeholder="자동생성" disabled>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label">
+											코드 그룹 번호
+											<a style="color: red;">*</a>
+										</label> 
+										<select class="form-select" name="BA_codegroup_ifcgSeq" id="BA_codegroup_ifcgSeq"
+											style="padding: .375rem .75rem;" required>
+											<option value="">코드 그룹 번호</option>
+											<option th:each = "list:${listCodeGroup}"
+												th:value="${list.ifcgSeq}" th:text="${list.ifcgName}">
+											</option>
+										</select>
+										<div class="invalid-feedback">코드그룹번호를 선택해 주세요.</div>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-md-3">
+										<label class="form-label">
+											코드 이름
+											<a style="color: red;">*</a>
+											</label> 
+											<input type="text" class="form-control" name="ifcdName" id="ifcdName"
+												placeholder="코드 이름" required>
+											<div class="invalid-feedback" id="ifcdNameFeedback"> 코드이름을 입력해 주세요.</div>
+											<div class="invalid-feedback" id="ifcdNameRegExpFeedback"> 코드이름은 한글, 영대소문자, 숫자, 특수기호-_&만 입력해 주세요.</div>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label">
+											사용 여부
+											<a style="color: red;">*</a>
+										</label> 
+										<select class="form-select" name="ifcdUseNy" id="ifcdUseNy" required>
+											<option value="">사용 여부</option>
+											<option value="1">Y</option>
+											<option value="0">N</option>
+										</select>
+										<div class="invalid-feedback">사용여부를 선택해 주세요.</div>
+									</div>
+									<div class="col-md-3">
+										<label class="form-label">
+											순서
+											<a style="color: red;">*</a>
+										</label> 
+										<select class="form-select" name="ifcdOrder" id="ifcdOrder" required>
+											<option value="">순서</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+										</select>
+										<div class="invalid-feedback">순서를 선택해 주세요.</div>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<div class="col-md-6">
+										<label class="form-label">설명</label>
+										<textarea class="form-control" name="ifcdDesc"
+											 style="height: 100px">
+										</textarea>
+									</div>
+								</div>
+								<div class="row mb-3">
+<!-- 									<div class="col-md-3"> -->
+<!-- 										<label class="form-label"> -->
+<!-- 											등록날짜 -->
+<!-- 											<a style="color: red;">*</a> -->
+<!-- 										</label> -->
+<!-- 										<input type="datetime" class="form-control" name="ifcgRegist" placeholder="등록날짜"> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-md-3"> -->
+<!-- 									<label class="form-label"> -->
+<!-- 											수정날짜 -->
+<!-- 										</label> -->
+<!-- 										<input type="datetime" class="form-control" name="ifcgEdit" placeholder="수정날짜"> -->
+<!-- 									</div> -->
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-md-1">
+										<a href="/xdm/v1/infra/baCode/baCodeXdmList"> 
+											<button type="button" class="btn btn-outline-dark">
+												<i class="bi bi-list-ul"></i>
+											</button>
+										</a>
+									</div>
+									<div class="col-md-10"></div>
+									<div class="col-md-1" align="Right">
+										<button type="button" id="btnSubmit" class="btn btn-primary">
+											<i class="bi bi-server"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+							<!-- End Custom Styled Validation -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<div th:replace="~{/xdm/v1/infra/common/footer :: footer}"></div>
+	<!-- End Footer -->
+
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/apexcharts/apexcharts.min.js"></script>
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/chart.js/chart.umd.js"></script>
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/echarts/echarts.min.js"></script>
+	<script src="/xdm/v1/template/Lonely/assets/vendor/quill/quill.js"></script>
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/simple-datatables/simple-datatables.js"></script>
+	<script
+		src="/xdm/v1/template/Lonely/assets/vendor/tinymce/tinymce.min.js"></script>
+<!-- 	<script -->
+<!-- 		src="/xdm/v1/template/Lonely/assets/vendor/php-email-form/validate.js"></script> -->
+
+	<!-- Template Main JS File -->
+	<script src="/xdm/v1/template/Lonely/assets/js/main.js"></script>
+	
+	<script type="text/javascript">
+	
+		// validation
+		document.getElementById("btnSubmit").onclick = function(){
+			
+			
+			// BA_codegroup_ifcgSeq
+			var BA_codegroup_ifcgSeq = document.getElementById("BA_codegroup_ifcgSeq");
+			var BA_codegroup_ifcgSeqValue = document.getElementById("BA_codegroup_ifcgSeq").value.trim();
+			
+			if(BA_codegroup_ifcgSeqValue == "" || BA_codegroup_ifcgSeqValue == null){
+				BA_codegroup_ifcgSeq.classList.add('is-invalid');
+				BA_codegroup_ifcgSeq.focus();
+				return false;
+			} else {
+				// by pass
+				BA_codegroup_ifcgSeq.classList.remove('is-invalid');
+				BA_codegroup_ifcgSeq.classList.add('is-valid');
+			}
+			
+			
+			// ifcdName
+			var ifcdName = document.getElementById("ifcdName");
+			var ifcdNameValue = document.getElementById("ifcdName").value.trim();
+			var ifcdNameRegExp = /^[ㄱ-ㅎ가-힣A-Za-z0-9\-_&]+$/;
+			var ifcdNameFeedback = document.getElementById("ifcdNameFeedback");
+		    var ifcdNameRegExpFeedback = document.getElementById("ifcdNameRegExpFeedback");
+			
+			// 기존의 validation 초기화
+			ifcdName.classList.remove('is-valid', 'is-invalid');
+			ifcdNameFeedback.style.display='none';
+			ifcdNameRegExpFeedback.style.display='none';
+
+			if(ifcdNameValue == "" || ifcdNameValue == null){
+				ifcdNameFeedback.style.display='block';
+				ifcdName.classList.add('is-invalid');
+				ifcdName.focus();
+				return false;
+			} else {
+				// by pass
+			}
+			if(!ifcdNameRegExp.test(ifcdNameValue)){
+				ifcdNameRegExpFeedback.style.display='block';
+				ifcdName.classList.add('is-invalid');
+				ifcdName.focus();
+				return false;
+			} else {
+				// by pass
+				ifcdName.classList.add('is-valid');
+			}
+			
+			// ifcdUseNy
+			var ifcdUseNy = document.getElementById("ifcdUseNy");
+			var ifcdUseNyValue = document.getElementById("ifcdUseNy").value.trim();
+			
+			if(ifcdUseNyValue == "" || ifcdUseNyValue == null){
+				ifcdUseNy.classList.add('is-invalid');
+				ifcdUseNy.focus();
+				return false;
+			} else {
+				// by pass
+				ifcdUseNy.classList.remove('is-invalid');
+				ifcdUseNy.classList.add('is-valid');
+			}
+			
+			// ifcdOrder
+			var ifcdOrder = document.getElementById("ifcdOrder");
+			var ifcdOrderValue = document.getElementById("ifcdOrder").value.trim();
+			
+			if(ifcdOrderValue == "" || ifcdOrderValue == null){
+				ifcdOrder.classList.add('is-invalid');
+				ifcdOrder.focus();
+				return false;
+			} else {
+				// by pass
+				ifcdOrder.classList.remove('is-invalid');
+				ifcdOrder.classList.add('is-valid');
+			}
+			
+			form.action="/xdm/v1/infra/baCode/baCodeXdmInst";
+			form.submit();
+		}
+	</script>
+
+</body>
+
+</html>
