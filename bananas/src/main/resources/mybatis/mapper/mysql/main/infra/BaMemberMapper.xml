@@ -3,6 +3,32 @@
 
 <mapper namespace="com.nongshim.infra.baMember.BaMemberDao">
 
-	  <resultMap type="com.nongshim.infra.baMember.BaMemberDto" id="resultMapObj"></resultMap>
+	<resultMap type="com.nongshim.infra.baMember.BaMemberDto" id="resultMapObj"></resultMap>
 
+	<!-- 관리자-로그인 -->
+	<select id="xdmSelectOneSignin" resultMap="resultMapObj">
+		SELECT
+			c.bameSeq,
+			c.bameId,
+			c.bamePw,
+			c.bameGrade
+		FROM
+			bananas.BA_member AS c
+		WHERE 1 = 1
+			AND c.bameId = #{bameId}
+	</select>
+	
+	<!-- 관리자-로그인 세션 유지 -->
+	<select id="xdmSelectOneID" resultMap="resultMapObj">
+		SELECT
+			c.bameSeq,
+			c.bameName,
+			c.bameId,
+			c.bameGrade
+		FROM
+			bananas.BA_member As c
+		WHERE 1 = 1
+			AND c.bameId = #{bameId}
+	</select>
+	
 </mapper>
