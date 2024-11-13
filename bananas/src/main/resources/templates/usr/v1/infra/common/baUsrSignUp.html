@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Rentkit - Directory & Listings Bootstrap 5 Template.">
+
+<!--   <link rel="apple-touch-icon" sizes="180x180" href="/usr/v1/template/booking_page/rentkit-html/assets/images/apple-touch-icon.png"> -->
+<!--   <link rel="icon" type="image/png" sizes="32x32" href="/usr/v1/template/booking_page/rentkit-html/assets/images/favicon-32x32.png"> -->
+<!--   <link rel="icon" type="image/png" sizes="16x16" href="/usr/v1/template/booking_page/rentkit-html/assets/images/favicon-16x16.png"> -->
+
+    <!-- Libs CSS -->
+    <link href="/usr/v1/template/NailForest/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
+    <link href="/usr/v1/template/NailForest/assets/libs/animate.css/animate.min.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/nouislider/dist/nouislider.min.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/uppy/dist/uppy.min.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/litepicker/dist/css/litepicker.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
+    <link href="/usr/v1/template/NailForest/assets/libs/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
+    <!-- petxon CSS -->
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/animate.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/magnific-popup.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/fontawesome-pro/css/all.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/dripicons.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/slick.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/meanmenu.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/swiper.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/default.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/style.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/responsive.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/animate.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/magnific-popup.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/fontawesome-pro/css/all.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/dripicons.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/slick.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/meanmenu.css">        
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/swiper.min.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/default.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/style.css">
+    <link rel="stylesheet" href="/usr/v1/template/petxon/css/responsive.css">
+  
+  	<link href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css" rel="stylesheet" >
+  
+  <style type="text/css">
+  	.col-md-12 {
+  		padding-bottom: 7px;
+  	}
+  	
+  	.btn {
+	    border-radius: 5px;
+	    color: #fff;
+	    font-size: 16px;
+	    letter-spacing: 0;
+	    line-height: 1;
+	    margin-bottom: 0;
+	    padding: 12px 3px;
+	    text-align: center;
+	    transition: all 0.3s ease 0s;
+	    vertical-align: middle;
+	    white-space: nowrap;
+	    position: relative;
+	    z-index: 1;
+	    background: #F69946;
+	    border: none;
+	    font-weight: 700;
+	    text-transform: capitalize;
+	    position: relative;
+	    font-size: 16px;
+	    overflow: hidden;
+	    border:1px solid #F69946;
+	}
+	
+	.btn img {
+	    position: absolute; 
+	    top: 0;
+	    right: 20%;
+	}
+	
+	.btn:hover {
+	    background: #564741;
+	    border: 1px solid #564741;
+	    color:#fff;
+	}
+	
+	.col-md-12 {
+  		padding-bottom: 7px;
+  	}
+	
+  </style>
+  
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/usr/v1/template/NailForest/assets/css/theme.min.css">
+  <title>Register Page</title>
+
+</head>
+
+<body>
+  <!-- content -->
+  <div class="min-vh-100 py-md-10 py-lg-0 " style="background: url(/usr/v1/template/petxon/img/bg/signin_bg.jpg)no-repeat center center fixed; -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+    <div class="container">
+      <div class="row d-flex align-items-center min-vh-100 justify-content-end">
+        <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12">
+          <!-- card -->
+          <div class="card border-1 shadow" style="margin-top: 15px; margin-bottom: 15px;">
+            <div class="card-body p-8">
+              <h3 class="mb-4">회원정보 입력</h3>
+              <!-- form -->
+              <form name="form" method="post" action="/xdm/v1/infra/customer/customerXdmInst" 
+              class="needs-validation" novalidate="novalidate">
+                <!-- 이름 -->
+                <div class="row">
+	                <div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="Name" class="form-label">이름</label>
+		                  <input type="text" class="form-control"
+		                  id="bameName" name="bameName"
+		                  placeholder="이름을 입력해주세요" required>
+		                  	<div class="invalid-feedback" id="bameNameFeedback">이름을 입력해 주세요.</div>
+							<div class="invalid-feedback" id="bameNameRegExpFeedback">한글, 영대소문자만 입력해 주세요.</div>
+		                </div>
+	                </div>
+                </div>
+                <!-- 성별 -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="gender" class="form-label">성별</label>
+		                  <select class="select2" id="bameGender" name="bameGender" required>
+		                  	<option value="">선택하세요</option>
+		                    <option value="1">남성</option>
+		                    <option value="2">여성</option>
+		                  </select>
+		                  <div class="invalid-feedback">성별을 선택해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- 생년월일 -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+                  			<label for="birthdate" class="form-label">생년월일</label>
+                  			<input type="text" class="form-control"
+                  			id="bameBirth" name="bameBirth"
+                  			placeholder="YYYYMMDD" autocomplete="off" required>
+                  			<div class="invalid-feedback">생년월일을 입력해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- 휴대폰번호 -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+                  			<label for="Tel" class="form-label">휴대폰번호</label>
+                  			<input type="tel" class="form-control"
+                  			id="bameTel" name="bameTel"
+                  			placeholder="휴대폰 번호 입력" required>
+                  			<div class="invalid-feedback" id="bameTelFeedback">휴대폰번호를 입력해 주세요.</div>
+							<div class="invalid-feedback" id="bameTelRegExpFeedback">형식대로 입력해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- email -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="bameEmail" class="form-label">이메일 주소</label>
+		                  <input type="bameEmail" class="form-control"
+		                  id="bameEmail" name="bameEmail"
+		                  placeholder="이메일 주소" required>
+		                  <div class="invalid-feedback" id="bameEmailFeedback">이메일을 입력해 주세요.</div>
+						  <div class="invalid-feedback" id="bameEmailRegExpFeedback">이메일 형식대로 입력해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- ID -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="bameId" class="form-label">아이디</label>
+		                  <input type="bameId" class="form-control"
+		                  id="bameId" name="bameId"
+		                  placeholder="아이디" required>
+		                  <div class="invalid-feedback" id="bameIdFeedback">아이디를 입력해 주세요.</div>
+					      <div class="invalid-feedback" id="bameIdRegExpFeedback">한글, 영대소문자만 입력해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- password -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="password" class="form-label">비밀번호</label>
+		                  <input type="password" class="form-control"
+		                  id="bamePw" name="bamePw"
+		                  placeholder="비밀번호 입력" required>
+		                  <div class="invalid-feedback" id="bamePwFeedback">비밀번호를 입력해 주세요.</div>
+						  <div class="invalid-feedback" id="bamePwRegExpFeedback">최소 8자리 이상/ 영문 대소문자, 숫자 각각 1개 이상 입력해 주세요.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- confirm password -->
+                <div class="row">
+                	<div class="col-md-12">
+		                <div class="col-md-12">
+		                  <label for="confirm-password" class="form-label">비밀번호 확인</label>
+		                  <input type="bamePw" class="form-control"
+		                  id="RebamePw" placeholder="비밀번호 재입력" required>
+		                  <div class="invalid-feedback" id="RebamePwFeedback">비밀번호를 입력해 주세요.</div>
+						  <div class="invalid-feedback" id="RebamePwRegExpFeedback">비밀번호가 일치하지 않습니다.</div>
+	                	</div>
+	                </div>
+                </div>
+                <!-- 주소찾기 -->
+				<div class="d-flex align-items-center">
+					<div class="me-1">
+	                	<label for="bameZipCode" class="form-label">주소</label>
+	                  	<input type="text" class="form-control"
+	                  	id="bameZipCode" name="bameZipCode"
+	                  	placeholder="우편번호" style="margin-bottom: 7px">
+	                </div>
+	                <div class="ms-1">
+						<label>&nbsp;</label>
+						<input class="btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="height: 42px">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-12">
+						  <input type="text" class="form-control"
+						  id="bameAddr" name="bameAddr"
+						  placeholder="주소" style="margin-bottom: 7px">
+						  
+						  <input type="text" class="form-control"
+						  id="bameAddrDetail" name="bameAddrDetail"
+						  placeholder="상세주소" required>
+						  <div class="invalid-feedback">상세주소를 입력해 주세요.</div>
+						</div>
+					</div>
+                </div>
+                
+                <!-- text -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <input id="bameTosNy" name="bameTosNy" type="checkbox" ><label class="text-sm">
+                    	<strong class="text-dark">&nbsp;[필수] 이용약관 및 개인정보 수집에 동의</strong>
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <input id="bameMktNy" name="bameMktNy" type="checkbox" ><label class="text-sm">
+                    	<strong class="text-dark">&nbsp;[필수] 마케팅에 동의</strong>
+                    </label>
+                  </div>
+                </div>
+                  <!-- button -->
+                  <br>
+                  <div class="row">
+                  	<div class="col-md-12">
+	                  <button class="btn" id="btnSubmit" style="width: 337px; height: 42px">
+	                  	<img src="/usr/v1/template/petxon/img/icon/btn-pet-icon.png" alt="logo">
+	                  	회원가입
+	                  </button>
+                  	</div>
+                  </div>
+              </form>
+              <div class="mt-3">
+                <p class="mb-0">계정이 있으신가요? <span class="ml-3"><a href="0_signin.html">로그인</a></span></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- scripts -->
+  <!-- Libs JS -->
+  	<script src="/usr/v1/template/NailForest/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/jquery-raty-js/lib/jquery.raty.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/quill/dist/quill.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/uppy/dist/uppy.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/litepicker/dist/litepicker.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/prismjs/prism.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/leaflet/dist/leaflet.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/nouislider/dist/nouislider.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/wnumb/wNumb.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/simplebar/dist/simplebar.min.js"></script>
+    <script src="/usr/v1/template/NailForest/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+  <!-- Theme JS -->
+  <script src="/usr/v1/template/NailForest/assets/js/theme.min.js"></script>
+  
+  <!-- by developer -->
+  <script src="/xdm/v1/jquery/jquery-3.7.1.min.js"></script>
+  <script src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+	
+  <script type="text/javascript">
+	
+	window.addEventListener('load', function() {
+
+		$.datetimepicker.setLocale('ko'); //한국어 사용하겠다.
+		$("#birthDate").datetimepicker({
+			timepicker:false,
+			format: 'Y-m-d'
+		});
+	});
+	
+</script>
+  
+  <!-- address -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('customerZipCode').value = data.zonecode;
+                document.getElementById("customerAddress1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("customerAddress2").focus();
+            }
+        }).open();
+    }
+  </script>
+  
+  <script type="text/javascript">
+	// validation
+	document.getElementById("btnSubmit").onclick = function (){
+		
+		// bameName
+	    var bameName = document.getElementById("bameName");  					// 객체를 만들고
+	    var bameNameValue = document.getElementById("bameName").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bameNameRegExp = /^[ㄱ-ㅎ가-힣A-Za-z]+$/;
+	    var bameNameFeedback = document.getElementById("bameNameFeedback");
+	    var bameNameRegExpFeedback = document.getElementById("bameNameRegExpFeedback");
+		
+	    //기존의 validation 초기화
+	    bameName.classList.remove('is-valid', 'is-invalid');
+	    bameNameFeedback.style.display='none';
+	    bameNameRegExpFeedback.style.display='none';
+	    
+	    if(bameNameValue == "" || bameNameValue == null) { 
+	    	bameNameFeedback.style.display='block';			// 에러 메세지 표시
+	    	bameName.classList.add('is-invalid');			// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameName.focus(); // input창에 포커스 함
+ 			return false; // 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(!bameNameRegExp.test(bameNameValue)) {
+	    	bameNameRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bameName.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameName.focus();
+	    	return false;
+	    } else {
+	    	bameName.classList.add('is-valid');					// 유효성 검사 성공 처리 - 초록 테두리
+	    }
+	    
+	 	// bameGender
+	    var bameGender = document.getElementById("bameGender");
+	    var bameGenderValue = document.getElementById("bameGender").value.trim();
+	    
+	    if (bameGenderValue == "" || bameGenderValue == null) {
+	    	bameGender.classList.add('is-invalid');
+	    	bameGender.focus();
+				return false;
+		    } else {
+		    	bameGender.classList.remove('is-invalid');
+		    	bameGender.classList.add('is-valid');
+		    }
+	    
+		// bameBirth
+	    var bameBirth = document.getElementById("bameBirth");  					// 객체를 만들고
+	    var bameBirthValue = document.getElementById("bameBirth").value.trim();	// 객체의 값을 받는 객체 생성
+		
+	    if(bameBirthValue == "" || bameBirthValue == null) { 
+	    	bameBirth.classList.add('is-invalid');			// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameBirth.focus(); 								// input창에 포커스 함
+ 			return false; 									// 함수를 빠져나옴   
+	    } else {
+	    	bameBirth.classList.remove('is-invalid');
+	    	bameBirth.classList.add('is-valid');
+	    }
+	    
+		// bameTel
+	    var bameTel = document.getElementById("bameTel");  					// 객체를 만들고
+	    var bameTelValue = document.getElementById("bameTel").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bameTelRegExp = /^\d{3}\d{3,4}\d{4}$/;
+	    var bameTelFeedback = document.getElementById("bameTelFeedback");
+	    var bameTelRegExpFeedback = document.getElementById("bameTelRegExpFeedback");
+		
+	    //기존의 validation 초기화
+	    bameTel.classList.remove('is-valid', 'is-invalid');
+	    bameTelFeedback.style.display='none';
+	    bameTelRegExpFeedback.style.display='none';
+	    
+	    if(bameTelValue == "" || bameTelValue == null) { 
+	    	bameTelFeedback.style.display='block';			// 에러 메세지 표시
+	    	bameTel.classList.add('is-invalid');			// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameTel.focus(); // input창에 포커스 함
+ 			return false; // 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(!bameTelRegExp.test(bameTelValue)) {
+	    	bameTelRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bameTel.focus();
+	    	return false;
+	    } else {
+	    	bameTel.classList.add('is-valid');					// 유효성 검사 성공 처리 - 초록 테두리
+	    }
+	    
+		// bameEmail
+	    var bameEmail = document.getElementById("bameEmail");  					// 객체를 만들고
+	    var bameEmailValue = document.getElementById("bameEmail").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bameEmailRegExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	    var bameEmailFeedback = document.getElementById("bameEmailFeedback");
+	    var bameEmailRegExpFeedback = document.getElementById("bameEmailRegExpFeedback");
+		
+	    //기존의 validation 초기화
+	    bameEmail.classList.remove('is-valid', 'is-invalid');
+	    bameEmailFeedback.style.display='none';
+	    bameEmailRegExpFeedback.style.display='none';
+	    
+	    if(bameEmailValue == "" || bameEmailValue == null) { 
+	    	bameEmailFeedback.style.display='block';			// 에러 메세지 표시
+	    	bameEmail.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameEmail.focus(); // input창에 포커스 함
+ 			return false; // 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(!bameEmailRegExp.test(bameEmailValue)) {
+	    	bameEmailRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bameEmail.focus();
+	    	return false;
+	    } else {
+	    	bameEmail.classList.add('is-valid');				// 유효성 검사 성공 처리 - 초록 테두리
+	    }
+	    
+	 	// bameId
+	    var bameId = document.getElementById("bameId");  					// 객체를 만들고
+	    var bameIdValue = document.getElementById("bameId").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bameIdRegExp = /^[A-Za-z0-9]+$/;
+	    var bameIdFeedback = document.getElementById("bameIdFeedback");
+	    var bameIdRegExpFeedback = document.getElementById("bameIdRegExpFeedback");
+		
+	    //기존의 validation 초기화
+	    bameId.classList.remove('is-valid', 'is-invalid');
+	    bameIdFeedback.style.display='none';
+	    bameIdRegExpFeedback.style.display='none';
+	    
+	    if(bameIdValue == "" || bameIdValue == null) { 
+	    	bameIdFeedback.style.display='block';			// 에러 메세지 표시
+	    	bameId.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bameId.focus(); // input창에 포커스 함
+ 			return false; // 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(!bameIdRegExp.test(bameIdValue)) {
+	    	bameIdRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bameId.focus();
+	    	return false;
+	    } else {
+	    	bameId.classList.add('is-valid');				// 유효성 검사 성공 처리 - 초록 테두리
+	    }
+	    
+	 	// bamePw
+	    var bamePw = document.getElementById("bamePw");  					// 객체를 만들고
+	    var bamePwValue = document.getElementById("bamePw").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bamePwRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+	    var bamePwFeedback = document.getElementById("bamePwFeedback");
+	    var bamePwRegExpFeedback = document.getElementById("bamePwRegExpFeedback");
+		
+	    //기존의 validation 초기화
+	    bamePw.classList.remove('is-valid', 'is-invalid');
+	    bamePwFeedback.style.display='none';
+	    bamePwRegExpFeedback.style.display='none';
+	    
+	    if(bamePwValue == "" || bamePwValue == null) { 
+	    	bamePwFeedback.style.display='block';				// 에러 메세지 표시
+	    	bamePw.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
+	    	bamePw.focus(); 									// input창에 포커스 함
+ 			return false; 										// 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(!bamePwRegExp.test(bamePwValue)) {
+	    	bamePwRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bamePw.focus();
+	    	return false;
+	    } else {
+	    	bamePw.classList.add('is-valid');					// 유효성 검사 성공 처리 - 초록 테두리
+	    }
+	    
+	 	// bamePw Confirm
+	    var RebamePw = document.getElementById("RebamePw");  					// 객체를 만들고
+	    var RebamePwValue = document.getElementById("RebamePw").value.trim();	// 객체의 값을 받는 객체 생성
+	    var RebamePwFeedback = document.getElementById("RebamePwFeedback");
+	    var RebamePwRegExpFeedback = document.getElementById("RebamePwRegExpFeedback");
+	    
+	    //기존의 validation 초기화
+	    RebamePw.classList.remove('is-valid', 'is-invalid');
+	    RebamePwFeedback.style.display='none';
+	    RebamePwRegExpFeedback.style.display='none';
+	    
+	    if(RebamePwValue == "" || RebamePwValue == null) { 
+	    	RebamePwFeedback.style.display='block';				// 에러 메세지 표시
+	    	RebamePw.classList.add('is-invalid');					// 유효성 검사 실패 처리 - 빨간 테두리
+	    	RebamePw.focus(); 									// input창에 포커스 함
+ 			return false; 											// 함수를 빠져나옴   
+	    } else {
+// 	    	by pass
+	    }
+	    if(RebamePwValue != bamePwValue) {
+	    	RebamePwRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	RebamePw.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
+	    	RebamePw.focus(); 								    // input창에 포커스 함
+ 			return false; 										// 함수를 빠져나옴
+	    } else {
+	    	RebamePw.classList.add('is-valid');
+	    }
+	    
+	 	// bameAddrDetail
+	    var bameAddrDetail = document.getElementById("bameAddrDetail");
+        var bameAddrDetailValue = document.getElementById("bameAddrDetail").value.trim();
+        
+        if(bameAddrDetailValue == "" || bameAddrDetailValue == null){
+        	bameAddrDetail.classList.add('is-invalid');
+        	bameAddrDetail.focus();
+           return false;
+        } else {
+//            by pass
+           bameAddrDetail.classList.remove('is-invalid');
+           bameAddrDetail.classList.add('is-valid');
+        }
+	    
+	    form.action = "/v1/infra/customer/customerXdmInst";
+		form.submit();
+	}
+  
+  </script>
