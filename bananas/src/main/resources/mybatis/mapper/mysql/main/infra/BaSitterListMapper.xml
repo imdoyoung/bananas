@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nongshim.infra.baSitterList.BaUsrSitterListDao">
+
+<resultMap type="com.nongshim.infra.baSitterList.BaUsrSitterListDto" id="resultMapObj"></resultMap>
+   <select id="selectList" resultMap="resultMapObj">
+	   SELECT
+		  e.basiSeq,
+		  e.basiName,
+		  e.basiId,
+		  e.basiPw,
+		  e.basiGender,
+		  e.basiCareer,
+		  e.basiDesc,
+		  e.basiTel,
+		  e.basiZipCode,
+		  e.basiAddr,
+		  e.basiAddrDetail,
+		  e.basiEmail,
+		  e.basiRegDate,
+		  e.basiEditDate,
+		  e.basiTosNy,
+		  e.basiUseNy,
+		  e.basiDelNy
+		FROM
+			bananas.BA_SitterList e
+		  WHERE 1=1
+			ORDER BY  
+			e.basiSeq Asce
+   </select>
+   <insert id="sitterInsert">
+      INSERT INTO BA_SitterList(
+          basiName,
+		  basiGender,
+		  basiCareer,
+		  basiDesc,
+		  basiTel,
+		  basiZipCode,
+		  basiAddr,
+		  basiAddrDetail,
+		  basiEmail
+	  )VALUES(
+		#{basiName},
+		#{basiGender},
+		#{basiCareer},
+		#{basiDesc},
+		#{basiTel},
+		#{basiZipCode},
+		#{basiAddr},
+		#{basiAddrDetail},
+		#{basiEmail}
+			)
+   </insert>
+   
+   <select id="selectOne" resultMap="resultMapObj">
+	  SELECT
+	  	e.basiSeq,
+		  e.basiName,
+		  e.basiId,
+		  e.basiPw,
+		  e.basiGender,
+		  e.basiCareer,
+		  e.basiDesc,
+		  e.basiTel,
+		  e.basiZipCode,
+		  e.basiAddr,
+		  e.basiAddrDetail,
+		  e.basiEmail,
+		  e.basiRegDate,
+		  e.basiEditDate,
+		  e.basiTosNy,
+		  e.basiUseNy,
+		  e.basiDelNy
+	  FROM
+		bananas.BA_SitterList e
+	  WHERE 1=1
+			AND	e.basiSeq = #{basiSeq}
+	  </select>
+
+</mapper>
