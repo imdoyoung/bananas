@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/usr/v1/template/andTour/assets/css/vendors.css">
+  <link rel="stylesheet" href="/usr/v1/template/andTour/assets/css/main.css">
+  
+
+  <title>And tour</title>
+</head>
+
+<style>
+  .upload-box {
+    /* width: 150px;
+    height: 150px; */
+    border: 2px dashed #ccc;
+    color: #ccc;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .upload-box:hover {
+    border-color: #333;
+    color: #333;
+  }
+
+  #fileInput {
+    display: none;
+  }
+  
+  /* 캘린더 */
+  :root { 
+/*  	  --fc-border-color: #848484;  */
+ 	  --fc-daygrid-event-dot-width: 5px;
+ 	  --fc-button-bg-color: #2C3E50;
+	  --fc-button-border-color: #2C3E50;
+	  --fc-button-hover-bg-color: #1e2b37;
+	  --fc-button-hover-border-color: #1a252f;
+	
+	  --fc-event-bg-color: #3788d8; 
+	  --fc-event-border-color: #3788d8;
+	  --fc-event-text-color: #fff;
+  } 
+  
+
+</style>
+
+<body data-barba="wrapper">
+
+  <div class="preloader js-preloader">
+
+  </div>
+
+
+  <div class="header-margin"></div>
+  <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened">
+    <div data-anim="fade" class="header__container px-30 sm:px-20">
+      <div class="-left-side">
+        <a href="#!" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
+          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
+          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
+        </a>
+      </div>
+
+      <div class="row justify-between items-center pl-60 lg:pl-20">
+        <div class="col-auto">
+          <div class="d-flex items-center">
+            <button data-x-click="dashboard">
+              <i class="icon-menu-2 text-20"></i>
+            </button>
+
+            <div class="single-field relative d-flex items-center md:d-none ml-30">
+              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
+              <button class="absolute d-flex items-center h-full">
+                <i class="icon-search text-20 px-15 text-dark-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <div class="d-flex items-center">
+            <div class="row items-center x-gap-5 y-gap-20 pl-20 lg:d-none">
+              <div class="col-auto">
+                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
+                  <i class="icon-email-2 text-20"></i>
+                </button>
+              </div>
+
+              <div class="col-auto">
+                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
+                  <i class="icon-notification text-20"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="pl-15">
+              <img src="/usr/v1/template/andTour/assets/img/avatars/3.png" alt="/usr/v1/template/andTour/assets/image" class="size-50 rounded-22 object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
+    <div class="dashboard__sidebar bg-white scroll-bar-1">
+      <div class="sidebar -dashboard">
+        <div class="sidebar__item">
+          <div class="sidebar__button -is-active">
+            <a href="0_sitterDashboard.html" class="d-flex items-center text-20 lh-1 fw-500">
+              <!-- <i class="fas fa-border-all mr-15"></i> -->
+              <i class="fas fa-user-circle  mr-15"></i>
+              마이페이지(시터)
+            </a>
+          </div>
+        </div>
+        <div class="sidebar__item">
+          <div class="sidebar__button">
+            <a href="0_sitterReview.html" class="d-flex items-center text-20 lh-1 fw-500">
+              <i class="fas fa-calendar-check mr-15"></i>
+              나의 리뷰
+            </a>
+          </div>
+        </div>
+
+        <!-- <div class="sidebar__item ">
+          <div class="accordion -db-sidebar js-accordion">
+            <div class="accordion__item">
+              <div class="accordion__button">
+                <div class="sidebar__button col-12 d-flex items-center justify-between">
+                  <div class="d-flex items-center text-15 lh-1 fw-500">
+                    <i class="fas fa-building mr-15"></i>
+                    Manage Hotel
+                  </div>
+                  <div class="icon-chevron-sm-down text-7"></div>
+                </div>
+              </div>
+
+              <div class="accordion__content">
+                <ul class="list-disc pb-5 pl-40">
+
+                  <li>
+                    <a href="db-vendor-hotels.html" class="text-15">All hotels</a>
+                  </li>
+
+                  <li>
+                    <a href="db-vendor-add-hotel.html" class="text-15">Add hotel</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="sidebar__item ">
+          <div class="accordion -db-sidebar js-accordion">
+            <div class="accordion__item">
+              <div class="accordion__button">
+                <div class="sidebar__button col-12 d-flex items-center justify-between">
+                  <div class="d-flex items-center text-15 lh-1 fw-500">
+                    <i class="fas fa-flag  mr-15"></i>
+                    Manage tour
+                  </div>
+                  <div class="icon-chevron-sm-down text-7"></div>
+                </div>
+              </div>
+
+              <div class="accordion__content">
+                <ul class="list-disc pb-5 pl-40">
+
+                  <li>
+                    <a href="db-vendor-tour.html" class="text-15">All tour</a>
+                  </li>
+
+                  <li>
+                    <a href="db-vendor-add-tour.html" class="text-15">Add tour</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="sidebar__item ">
+          <div class="accordion -db-sidebar js-accordion">
+            <div class="accordion__item">
+              <div class="accordion__button">
+                <div class="sidebar__button col-12 d-flex items-center justify-between">
+                  <div class="d-flex items-center text-15 lh-1 fw-500">
+                    <i class="fas fa-bus-alt mr-15"></i>
+                    Manage bus
+                  </div>
+                  <div class="icon-chevron-sm-down text-7"></div>
+                </div>
+              </div>
+
+              <div class="accordion__content">
+                <ul class="list-disc pb-5 pl-40">
+
+                  <li>
+                    <a href="db-vendor-bus.html" class="text-15">All bus</a>
+                  </li>
+
+                  <li>
+                    <a href="db-vendor-add-bus.html" class="text-15">Add bus</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="sidebar__item">
+          <div class="sidebar__button">
+            <a href="0_sitterReservation.html" class="d-flex items-center text-20 lh-1 fw-500">
+              <!-- <i class="fas fa-cart-plus mr-15"></i> -->
+              <i class="fas fa-wallet mr-15"></i>
+              나의 예약
+            </a>
+          </div>
+        </div>
+
+        <!-- <div class="sidebar__item">
+          <div class="sidebar__button ">
+            <a href="db-notification.html" class="d-flex items-center text-15 lh-1 fw-500">
+              <i class="fas fa-wallet mr-15"></i>
+              Notification
+            </a>
+          </div>
+        </div> -->
+        <!-- <div class="sidebar__item">
+          <div class="sidebar__button ">
+            <a href="db-settings.html" class="d-flex items-center text-15 lh-1 fw-500">
+              <i class="fas fa-cog mr-15"></i>
+              Settings
+            </a>
+          </div>
+        </div> -->
+
+        <!-- <div class="sidebar__item">
+          <div class="sidebar__button ">
+            <a href="#" class="d-flex items-center text-15 lh-1 fw-500">
+              <i class="fas fa-sign-out-alt mr-15"></i>
+              Logout
+            </a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="dashboard__main">
+      <div class="dashboard__content">
+        <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
+          <div class="col-auto">
+            <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
+            <div class="text-15 text-light-1">박효빈 시터 님 환영합니다!</div>
+          </div>
+        </div>
+
+        <div class="row y-gap-30">
+
+          <!-- <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+            <div class="py-15 px-15 custom_border_left_blue custom_rounded bg-white custom_shadow">
+              <div class="row y-gap-20 justify-between items-center">
+                <div class="col-md-6">
+                  <div class="fw-500 lh-14">Total earnings</div>
+                  <div class="text-30 lh-16 fw-600 mt-5 text_blue">$12,800</div>
+                  <div class="text-15 lh-14 text-light-1 mt-5 text_green">(+2.35%) <span><i class="fas fa-arrow-up"></i></span></div>
+                </div>
+
+                <div class="col-md-6">
+                  <img src="/usr/v1/template/andTour/assets/img/dashboard/icons/arrow-1.png" alt="icon">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+            <div class="py-15 px-30 custom_border_left_oreng custom_rounded bg-white custom_shadow">
+              <div class="row y-gap-20 justify-between items-center">
+                <div class="col-md-6">
+                  <div class="fw-500 lh-14">Total expense</div>
+                  <div class="text-30 lh-16 fw-600 mt-5 text_oreng">$14,200</div>
+                  <div class="text-15 lh-14 text-light-1 mt-5 text_green">(+2.35%) <span><i class="fas fa-arrow-up"></i></span></div>
+                </div>
+
+                <div class="col-md-6">
+                  <img src="/usr/v1/template/andTour/assets/img/dashboard/icons/arrow-2.png" alt="icon">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-xl-3 col-md-6 col-sm-6 col-12">
+            <div class="py-15 px-30 custom_border_left_sky custom_rounded bg-white custom_shadow">
+              <div class="row y-gap-20 justify-between items-center">
+                <div class="col-md-6">
+                  <div class="fw-500 lh-14">Total bookings</div>
+                  <div class="text-30 lh-16 fw-600 mt-5 text_sky">$8,100</div>
+                  <div class="text-15 lh-14 text-light-1 mt-5 text_red">(+2.35%) <span><i class="fas fa-arrow-up"></i></span></div>
+                </div>
+
+                <div class="col-md-6">
+                  <img src="/usr/v1/template/andTour/assets/img/dashboard/icons/arrow-3.png" alt="icon">
+                </div>
+              </div>
+            </div>
+          </div> - -->
+
+          <div class="col-xl-6 col-md-6 col-sm-6 col-12">
+            <div class="py-15 px-30 custom_border_left_green custom_rounded bg-white custom_shadow">
+              <div class="row y-gap-20 justify-between items-center">
+                <div class="col-md-12 d-flex align-items-center">
+                  <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-30 lh-16 fw-600 text_orange">박효빈 시터 님</div>
+                      <div class="text-15 lh-14 text-light-1">sitter123</div>
+                      <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">sitter@gmail.com</div>
+                    </div>
+                    <a href="about.html" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-xl-6 col-md-6 col-sm-6 col-12">
+            <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
+              <div class="d-flex justify-between items-center heading_border">
+                <h2 class="text-18 lh-1 fw-500">
+                  <div>나의 리뷰 <span>(5)</span></div>
+                </h2>
+                <a href="about.html" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 전체보기</a>
+              </div>
+              <div class="overflow-scroll scroll-bar-1 pt-30">
+                <table class="table-2 col-12">
+                  <thead class="">
+                    <tr align="center">
+                      <th>No</th>
+                      <th>이용자</th>
+                      <th>서비스</th>
+                      <th>별점</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr align="center">
+                      <td>1</td>
+                      <td>임*님</td>
+                      <td>산책 돌봄 1시간</td>
+                      <td>5점</td>
+                    </tr>
+                    <tr align="center">
+                      <td>2</td>
+                      <td>임*님</td>
+                      <td>방문돌봄</td>
+                      <td>5점</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> -->
+
+
+          <div class="cruise_search_item">
+            <div class="row">
+              <div class="col-lg-5"> <!-- col-lg-3 -->
+                <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox">
+                  사진 첨부하기
+                  <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)">
+                </div>
+              </div>
+
+              <div class="col-lg-7"> <!-- col-lg-8 -->
+                <div class="cruise_item_inner_content">
+                  <div class="cruise_content_top_wrapper">
+                    <div class="cruise_content_top_left">
+                      <div class="contact-fields">
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="펫시터 이름" required>
+                        </div>
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="반려동물 이름" required>
+                        </div>
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="방문날짜" required>
+                        </div>
+                      </div>
+                      <div class="contact-fields">
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="돌봄시간" required>
+                        </div>
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="돌봄서비스" required>
+                        </div>
+                      </div>
+                      <div class="contact-fields">
+                        <div class="contact-field p-relative c-name mb-20">
+                          <input type="text" id="firstn" name="firstn" placeholder="To.00보호자님" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cruise_content_middel_wrapper">
+                    <div class="cruise_content_middel_left">
+                      <div class="form-input">
+                        <textarea required rows="7" cols="100"
+                          style="border-style:double;background:#fffbf8;"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="cruise_content_bottom_wrapper" id="noticeBtn">
+                    <div class="cruise_content_bottom_right">
+                      <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">알림장 등록</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+		
+		  <!-- 캘린더 -->
+          <div class="cruise_search_item" id="calendar" style="width:80%;"></div>
+
+          <div class="col-xl-6 col-md-6">
+            <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
+              <div class="d-flex justify-between items-center heading_border">
+                <h2 class="text-18 lh-1 fw-500">
+                  <div>나의 리뷰 <span>(5)</span></div>
+                </h2>
+                <a href="/usr/v1/infra/mypage/baSitterMyReview" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 상세보기</a>
+              </div>
+              <div class="overflow-scroll scroll-bar-1 pt-30">
+                <table class="table-2 col-12">
+                  <thead class="">
+                    <tr align="center">
+                      <th>No</th>
+                      <th>이용자</th>
+                      <th>서비스</th>
+                      <th>별점</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr align="center">
+                      <td>1</td>
+                      <td>임*영</td>
+                      <td>산책 돌봄 1시간</td>
+                      <td>5점</td>
+                    </tr>
+                    <tr align="center">
+                      <td>2</td>
+                      <td>#JK589V80</td>
+                      <td> Flight</td>
+                      <td>$754.00</td>
+                    </tr>
+                    <tr align="center">
+                      <td>3</td>
+                      <td>#JK589V80</td>
+                      <td>Tour</td>
+                      <td>$754.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-md-6">
+            <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
+              <div class="d-flex justify-between items-center heading_border">
+                <h2 class="text-18 lh-1 fw-500">
+                  <div>나의 예약 <span>(7)</span></div>
+                </h2>
+                <a href="/usr/v1/infra/mypage/baSitterMyBooking" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">나의예약 상세보기</a>
+              </div>
+              <div class="overflow-scroll scroll-bar-1 pt-30">
+                <table class="table-2 col-12">
+                  <thead class="">
+                    <tr align="center">
+                      <th>No</th>
+                      <th>이용 날짜</th>
+                      <th>서비스</th>
+                      <th>가격</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr align="center">
+                      <td>1</td>
+                      <td>2024.11.08</td>
+                      <td>산책 돌봄 1시간</td>
+                      <td>20,000</td>
+                    </tr>
+                    <tr align="center">
+                      <td>2</td>
+                      <td>#JK589V80</td>
+                      <td> Flight</td>
+                      <td>$754.00</td>
+                    </tr>
+                    <tr align="center">
+                      <td>3</td>
+                      <td>#JK589V80</td>
+                      <td>Tour</td>
+                      <td>$754.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="cruise_search_item">
+            <p>채팅관리(보류)</p>
+          </div>
+
+
+
+          <!-- <div class="col-xl-6 col-md-6 col-sm-6 col-12">
+            <div class="py-15 px-30 custom_border_left_green custom_rounded bg-white custom_shadow">
+                <div class="row y-gap-20 justify-between items-center">
+                    <div class="col-md-12 d-flex align-items-center">
+                        <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">  
+                        <div class="row">
+                          <div class="col-md-12"> 
+                            <div class="text-30 lh-16 fw-600 text_orange">꼬미</div>
+                            <div class="text-15 lh-14 text-light-1">2016.07.09 <span>(8살)</span></div>
+                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">3.8kg</div>
+                          </div>
+                          <a href="about.html" class="PetprofileBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
+                        </div>    
+                    </div>  
+                </div>     
+            </div>
+        </div>  -->
+
+
+        </div>
+
+
+        <div class="main-content">
+
+          <footer class="footer -dashboard mt-60">
+            <div class="footer__row row y-gap-10 items-center justify-between">
+              <div class="col-auto">
+                <div class="row y-gap-20 items-center">
+                  <!-- <div class="col-auto">
+                  <div class="text-14 lh-14 mr-30">Copyright © 2022 All Rights Reserved</div>
+                </div> -->
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
+    <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script>
+
+    <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
+    <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+    
+	<script src='/usr/v1/js/fullcalendar/dist/index.global.js'></script>
+	
+    <script>
+      // 사진 첨부
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        const imageBox = document.getElementById('imageBox');
+
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            // div 부분을 사진으로 바꾸기
+            imageBox.style.backgroundImage = 'url(' + e.target.result + ')';
+            imageBox.textContent = '';  // '사진 첨부' 텍스트 지우기
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+      
+      // 캘린더
+      document.addEventListener('DOMContentLoaded', function() {
+         var calendarEl = document.getElementById('calendar');
+         var calendar = new FullCalendar.Calendar(calendarEl, {
+         initialView: 'dayGridMonth'
+        });
+        calendar.render();
+      });
+
+
+    </script>
+
+</body>
+
+</html>
