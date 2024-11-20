@@ -13,7 +13,7 @@
 			c.bamePw,
 			c.bameGrade
 		FROM
-			bananas.BA_member AS c
+			bananas.ba_member AS c
 		WHERE 1 = 1
 			AND c.bameId = #{bameId}
 	</select>
@@ -26,7 +26,7 @@
 			c.bameId,
 			c.bameGrade
 		FROM
-			bananas.BA_member As c
+			bananas.ba_member As c
 		WHERE 1 = 1
 			AND c.bameId = #{bameId}
 	</select>

@@ -8,9 +8,9 @@
 
 	<sql id="selectCommon">
 		FROM
-			bananas.BA_code AS b
-			JOIN BA_codegroup AS a
-				ON a.ifcgSeq = b.BA_codegroup_ifcgSeq
+			bananas.ba_code AS b
+			JOIN ba_codegroup AS a
+				ON a.ifcgSeq = b.ba_codegroup_ifcgSeq
 		WHERE 1 = 1
 			<if test="shcdDelNy != null and !shcdDelNy.equals('')">AND ifcdDelNy = #{shcdDelNy}</if>
 			<if test="shcdUseNy != null and !shcdUseNy.equals('')">AND ifcdUseNy = #{shcdUseNy}</if>
@@ -43,7 +43,7 @@
 				b.ifcdDelNy,
 				b.ifcdRegist,
 				b.ifcdEdit,
-				b.BA_codegroup_ifcgSeq,
+				b.ba_codegroup_ifcgSeq,
 				a.ifcgName
 				<include refid="selectCommon"></include>
 			ORDER BY
@@ -57,7 +57,7 @@
 			a.ifcgSeq,
 			a.ifcgName
 		FROM
-			BA_codegroup a
+			ba_codegroup a
 		WHERE 1 = 1
 			AND a.ifcgDelNy = 0
 		ORDER BY
@@ -66,7 +66,7 @@
 
 	<!-- 데이터 입력(insert) -->
 	<insert id="insert">
-		INSERT INTO BA_code (
+		INSERT INTO ba_code (
 			ifcdName,
 			ifcdUseNy,
 			ifcdOrder,
@@ -74,7 +74,7 @@
 			ifcdDelNy,
 			ifcdRegist,
 			ifcdEdit,
-			BA_codegroup_ifcgSeq
+			ba_codegroup_ifcgSeq
 		) VALUES (
 			#{ifcdName},
 			#{ifcdUseNy},
@@ -83,7 +83,7 @@
 			0,
 			now(),
 			now(),
-			#{BA_codegroup_ifcgSeq}
+			#{ba_codegroup_ifcgSeq}
 		)
 		<selectKey resultType="String" keyProperty="ifcdSeq" order="AFTER">
 				SELECT last_insert_id()
@@ -101,16 +101,16 @@
 			b.ifcdDelNy,
 			b.ifcdRegist,
 			b.ifcdEdit,
-			b.BA_codegroup_ifcgSeq
+			b.ba_codegroup_ifcgSeq
 		FROM
-			bananas.BA_code b
+			bananas.ba_code b
 		WHERE 1 = 1
 			AND b.ifcdSeq = #{ifcdSeq}
 	</select>
 
 	<!-- 데이터 수정(update) -->
 	<update id="update">
-		UPDATE BA_code
+		UPDATE ba_code
 		SET
 			ifcdName = #{ifcdName},
 			ifcdUseNy = #{ifcdUseNy},
@@ -118,7 +118,7 @@
 			ifcdDesc = #{ifcdDesc},
 			ifcdDelNy = 0,
 			ifcdEdit = now(),
-			BA_codegroup_ifcgSeq = #{BA_codegroup_ifcgSeq}
+			ba_codegroup_ifcgSeq = #{ba_codegroup_ifcgSeq}
 		WHERE 1 = 1
 			AND ifcdSeq = #{ifcdSeq}
 
@@ -126,7 +126,7 @@
 
 	<!-- 삭제여부 수정(uelete) -->
 	<update id="uelete">
-		UPDATE bananas.BA_code
+		UPDATE bananas.ba_code
 		SET
 			ifcdDelNy = 1
 		WHERE 1 = 1
@@ -135,7 +135,7 @@
 	
 	<!-- 데이터 삭제(delete) -->
 	<delete id="delete">
-		DELETE FROM bananas.BA_code
+		DELETE FROM bananas.ba_code
 		WHERE 1 = 1
 			AND ifcdSeq = #{ifcdSeq}
 	</delete>
@@ -145,9 +145,9 @@
 		SELECT 
 			ifcdSeq,
 			ifcdName,
-			BA_codegroup_ifcgSeq
+			ba_codegroup_ifcgSeq
 		FROM
-			bananas.BA_code
+			bananas.ba_code
 		WHERE 1=1
 			AND ifcdDelNy = 0
 		    AND ifcdUseNy = 1
