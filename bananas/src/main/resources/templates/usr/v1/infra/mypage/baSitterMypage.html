@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <!-- Required meta tags -->
@@ -492,7 +492,7 @@
             <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
               <div class="d-flex justify-between items-center heading_border">
                 <h2 class="text-18 lh-1 fw-500">
-                  <div>나의 예약 <span>(7)</span></div>
+                  <div>나의 예약</div>
                 </h2>
                 <a href="/usr/v1/infra/mypage/baSitterMyBooking" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">나의예약 상세보기</a>
               </div>
@@ -501,31 +501,23 @@
                   <thead class="">
                     <tr align="center">
                       <th>No</th>
-                      <th>이용 날짜</th>
+                      <th>예약일</th>
                       <th>서비스</th>
-                      <th>가격</th>
+                      <th>강아지이름</th>
+<!--                       <th>보호자성함</th> -->
                     </tr>
                   </thead>
-                  <tbody>
+                  
+                  <tbody th:each="list, iterStat : ${sitterPageBookingLsit}" th:if="${iterStat.index < 3}">
                     <tr align="center">
-                      <td>1</td>
-                      <td>2024.11.08</td>
-                      <td>산책 돌봄 1시간</td>
-                      <td>20,000</td>
-                    </tr>
-                    <tr align="center">
-                      <td>2</td>
-                      <td>#JK589V80</td>
-                      <td> Flight</td>
-                      <td>$754.00</td>
-                    </tr>
-                    <tr align="center">
-                      <td>3</td>
-                      <td>#JK589V80</td>
-                      <td>Tour</td>
-                      <td>$754.00</td>
+                      <td></td>
+                      <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
+                      <td th:text="${list.baopName}">서비스</td>
+                      <td th:text="${list.bapeName}">강아지이름</td>
+<!--                       <td th:text="${list.bameName}">보호자성함</td> -->
                     </tr>
                   </tbody>
+                  
                 </table>
               </div>
             </div>

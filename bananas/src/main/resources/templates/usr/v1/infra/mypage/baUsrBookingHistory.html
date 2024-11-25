@@ -252,24 +252,24 @@
             <div class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 js-tabs-controls">
 
               <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">All booking    </button>
+                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">예약내역(리스트 개수)</button>
               </div>
 
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-2">Completed</button>
-              </div>
+<!--               <div class="col-auto"> -->
+<!--                 <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-2">Completed</button> -->
+<!--               </div> -->
 
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-3">Processing</button>
-              </div>
+<!--               <div class="col-auto"> -->
+<!--                 <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-3">Processing</button> -->
+<!--               </div> -->
 
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-4">Confirmed</button>
-              </div>
+<!--               <div class="col-auto"> -->
+<!--                 <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-4">Confirmed</button> -->
+<!--               </div> -->
 
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-5">Cancelled</button>
-              </div>
+<!--               <div class="col-auto"> -->
+<!--                 <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button " data-tab-target=".-tab-item-5">Cancelled</button> -->
+<!--               </div> -->
 
             </div>
 
@@ -281,34 +281,30 @@
                     <thead class="bg-light-2">
                       <tr>
                         <th>No</th>
-                        <th>펫시터</th>
-                        <th>예약 날짜</th>
+                        <th>예약일</th>
                         <th>예약 시간</th>
-                        <th>돌봄 서비스</th>
-                        <th>결제금액</th>
+                        <th>시터</th>
+                        <th>서비스</th>
+                        <th>결제 금액</th>
                       </tr>
                     </thead>
-                    <tbody>
-
+                    
+                    <tbody th:each="list : ${mypageBookingList}">
                       <tr>
-                        <td>1</td>
-                        <td>박효빈</td>
-                        <td>2024.11.09</td>
-                        <td>12:00 ~ 13:00</td>
-                        <td>산책</td>
-                        <td><a href="/usr/v1/infra/mypage/baUsrPaymentHistory" style="text-decoration: underline;">20,000</td>
+                        <td></td>
+                        <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
+                        <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약 시간</td>
+                        <td th:text="${list.basiName}">시터</td>
+                        <td th:text="${list.baopName}">서비스</td>
+                        <td>
+							<a th:href="@{/usr/v1/infra/mypage/baUsrPaymentHistory(baboopSeq=${list.baboopSeq})}"
+								th:text="${list.baboTotalPrice}" style="text-decoration: underline;">
+							</a>
+						</td>
+<!--                         <td th:text="${list.baboTotalPrice}"></td> -->
                       </tr>
-
-                      <tr>
-                        <td>2</td>
-                        <td>박효빈</td>
-                        <td>2024.11.08</td>
-                        <td>12:00 ~ 13:00</td>
-                        <td>산책</td>
-                        <td><a href="/usr/v1/infra/mypage/baUsrPaymentHistory" style="text-decoration: underline;">20,000</td>
-                      </tr>
-
                     </tbody>
+                    
                   </table>
                 </div>
               </div>
