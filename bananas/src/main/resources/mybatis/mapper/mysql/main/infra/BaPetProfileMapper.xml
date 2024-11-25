@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nongshim.infra.baPetprofile.BaPetprofileDao">
+
+<resultMap type="com.nongshim.infra.baPetprofile.BaPetprofileDto" id="resultMapObj"></resultMap>
+	<select id="PetSelectList" resultMap="resultMapObj">
+   		SELECT
+			bapeSeq,
+		    bapeName,
+		    bapeGender,
+		    bapeType,
+		    bapeAge,
+		    bapeWeight,
+		    bapeNtrNy,
+		    bapehospital,
+		    bapeDesc,
+		    bapeRegDate,
+		    bapeEditDate,
+		    bapeUseNy,
+		    bapeDelNy,
+		    BA_Member_bameSeq
+		FROM
+			ba_petprofile
+		ORDER BY
+			bapeSeq desc
+	</select>
+	
+	<select id="PetSelectOne" resultMap="resultMapObj">
+   		SELECT
+			d.bapeSeq,
+		    d.bapeName,
+		    d.bapeGender,
+		    d.bapeType,
+		    d.bapeAge,
+		    d.bapeWeight,
+		    d.bapeNtrNy,
+		    d.bapehospital,
+		    d.bapeDesc,
+		    d.bapeRegDate,
+		    d.bapeEditDate,
+		    d.bapeUseNy,
+		    d.bapeDelNy,
+		    d.BA_Member_bameSeq
+		FROM
+			ba_petprofile d
+		WHERE 1 = 1
+			AND d.bapeSeq = #{bapeSeq}
+	</select>
+	
+	<insert id="PetInsert">
+		INSERT INTO ba_petprofile (
+		    bapeName,
+		    bapeGender,
+		    bapeType,
+		    bapeAge,
+		    bapeWeight,
+		    bapeNtrNy,
+		    bapehospital,
+		    bapeDesc,
+		    bapeRegDate,
+		    bapeEditDate,
+		    bapeUseNy,
+		    bapeDelNy,
+		    BA_Member_bameSeq
+		) VALUES (
+			#{bapeName}
+		    #{bapeGender},
+		    #{bapeType},
+		    #{bapeAge},
+		    #{bapeWeight},
+		    #{bapeNtrNy},
+		    #{bapehospital},
+		    #{bapeDesc},
+		    now(),
+		    now(),
+		    #{bapeUseNy},
+		    #{bapeDelNy},
+		    #{BA_Member_bameSeq}
+		)
+	</insert>
+	
+	
+</mapper>

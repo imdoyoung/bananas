@@ -282,7 +282,7 @@
           </div>
         </div>
 
-
+	<form id="form" method="post" action="/usr/v1/infra/baPetprofile/baPetprofileUsrInst">
         <div class="py-30 px-30 rounded-4 bg-white shadow-3">
           <div class="tabs -underline-2 js-tabs">
             <div class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 js-tabs-controls">
@@ -322,7 +322,7 @@
                     <div class="col-12">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">이름</label>
-                        <input type="text" id="bapeName" name="bapeName" required>
+                        <input type="text" id="bapeName" name="bapeName" th:value="${Petitem?.bapeName}" required>
                       </div>
                     </div>
 
@@ -330,9 +330,9 @@
                       <div class="contact-field p-relative c-name mb-20">
                         <label>성별</label>
                         <select class="lh-1 text-16 text-light-1" id="bapeGender" name="bapeGender">
-                          <option value="">선택하세요</option>
-                          <option value="1">수컷</option>
-                          <option value="2">암컷</option>
+                          <option value="" th:selected="${Petitem?.bapeGender == null}">선택하세요</option>
+                          <option value="1" th:selected="${Petitem?.bapeGender == 1}">남성</option>
+                          <option value="2" th:selected="${Petitem?.bapeGender == 2}">여성</option>
                         </select>
                       </div>
                     </div>
@@ -340,21 +340,21 @@
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">품종</label>
-                        <input type="text" id="bapeType" name="bapeType" required>
+                        <input type="text" id="bapeType" name="bapeType" th:value="${Petitem?.bapeType}" required>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">나이</label>
-                        <input type="text" id="bapeAge" name="bapeAge" required>
+                        <input type="text" id="bapeAge" name="bapeAge" th:value="${Petitem?.bapeAge}" required>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">몸무게</label>
-                        <input type="text" id="bapeWeight" name="bapeWeight" required>
+                        <input type="text" id="bapeWeight" name="bapeWeight" th:value="${Petitem?.bapeWeight}" required>
                       </div>
                     </div>
 
@@ -362,9 +362,9 @@
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">중성화수술 여부</label>
                         <select id="bapeNtrNy" name="bapeNtrNy">
-                          <option value="">선택하세요</option>
-                          <option value="1">Y</option>
-                          <option value="0">N</option>
+                          <option value="" th:selected="${Petitem?.bapeNtrNy == null}">선택하세요</option>
+                          <option value="1" th:selected="${Petitem?.bapeNtrNy == 1}">Y</option>
+                          <option value="0" th:selected="${Petitem?.bapeNtrNy == 0}">N</option>
                         </select>
                       </div>
                     </div>
@@ -372,14 +372,14 @@
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">다니는 병원</label>
-                        <input type="text" id="bapehospital" name="bapehospital" required>
+                        <input type="text" id="bapehospital" name="bapehospital" th:value="${Petitem?.bapehospital}" required>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <div class="contact-field p-relative c-message mb-30">
                         <label class="lh-1 text-16 text-light-1">기타사항</label>
-                        <textarea required rows="5" name="bapeDesc" id="bapeDesc"></textarea>
+                        <textarea required rows="5" name="bapeDesc" id="bapeDesc" th:text="${Petitem?.bapeDesc}"></textarea>
                       </div>
                     </div>
 
@@ -387,11 +387,10 @@
                   </div>
 
                 <div class="d-inline-block pt-30">
-
-                  <a href="about.html" class="PetprofileBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">
+                  <a href="about.html" class="PetprofileBtn btn-brown">
+                  	<img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">
                     프로필 저장
                   </a>
-
                 </div>
               </div>
 
@@ -404,61 +403,47 @@
                         <label class="lh-1 text-16 text-light-1">Address Line 1</label>
                         <input type="text" required>
                       </div>
-
                     </div>
-
                     <div class="col-12">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">Address Line 2</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-md-6">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">City</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-md-6">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">State</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-md-6">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">Select Country</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-md-6">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">ZIP Code</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-12">
                       <div class="d-inline-block">
-
                         <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
                           Save Changes
                         </a>
-
                       </div>
                     </div>
                   </div>
@@ -474,35 +459,28 @@
                         <label class="lh-1 text-16 text-light-1">Current Password</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-12">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">New Password</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-12">
-
                       <div class="form-input ">
                         <label class="lh-1 text-16 text-light-1">New Password Again</label>
                         <input type="text" required>
                       </div>
-
                     </div>
 
                     <div class="col-12">
                       <div class="row x-gap-10 y-gap-10">
                         <div class="col-auto">
-
                           <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
                             Save Changes
                           </a>
-
                         </div>
 
                         <div class="col-auto">
@@ -516,7 +494,7 @@
             </div>
           </div>
         </div>
-
+      </form>
 
         <footer class="footer -dashboard mt-60">
           <div class="footer__row row y-gap-10 items-center justify-between">
