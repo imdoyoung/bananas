@@ -2,8 +2,25 @@
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <!-- ======= Head ======= -->
-<div th:replace="~{/usr/v1/infra/common/head :: head}"></div>
+<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
 <!-- Head end -->
+
+<style>
+.btn-primary:hover {
+    background-color: #564741; 
+}
+  
+.btn-primary:active {
+   	background-color: #564741;
+}
+
+.btn-primary:focus {
+	background-color: #564741;
+	border-color: #564741;
+}
+ 
+
+</style>
 
 <body>
 	<!--  Preloader  -->
@@ -117,12 +134,11 @@
 				<div class="row mt-4 justify-content-center">
 					<div class="col-md-6">
 						<!-- 버튼과 input의 동일 너비를 위해 col-md-6 사용 -->
-						<div class="d-grid gap-2">
-							<button class="btn btn-primary btn-lg" type="button">중간
-								장소 찾기</button>
-						</div>
+						<div class="d-grid gap-2">  
+							<button class="btn btn-primary btn-lg" type="button">중간 장소 찾기</button>
+						</div>  
 					</div>
-				</div>
+				</div> 
 			</div>
 		</section>
 		<!-- gallery-area-end -->
