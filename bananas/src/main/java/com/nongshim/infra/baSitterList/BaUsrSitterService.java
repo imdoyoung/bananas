@@ -23,5 +23,16 @@ public class BaUsrSitterService {
 	public BaUsrSitterDto selectOne(BaUsrSitterDto baUsrSitterDto) {
 		return baUsrSitterDao.selectOne(baUsrSitterDto);
 	}
+	
+	public List<BaUsrSitterDto>reSelectList(){
+	    return baUsrSitterDao.reSelectList();
+	}
+	public int reInsert(BaUsrSitterDto baUsrSitterDto) {
+		return baUsrSitterDao.sitterInsert(baUsrSitterDto);
+	}
+	
+	public List<BaUsrSitterDto>opSelectList(){
+	    return baUsrSitterDao.opSelectList();
+	}
 
 }

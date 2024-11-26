@@ -24,13 +24,13 @@
 		  e.basiUseNy,
 		  e.basiDelNy
 		FROM
-			bananas.ba_sitterList as e
+			bananas.ba_sitterlist e
 		  WHERE 1=1
 			ORDER BY  
-			e.basiSeq Asce
+			e.basiSeq Asc
    </select>
    <insert id="sitterInsert">
-      INSERT INTO ba_sitterList(
+      INSERT INTO ba_sitterlist(
           basiName,
 		  basiGender,
 		  basiCareer,
@@ -39,7 +39,8 @@
 		  basiZipCode,
 		  basiAddr,
 		  basiAddrDetail,
-		  basiEmail
+		  basiEmail,
+		  basiDelNy
 	  )VALUES(
 		#{basiName},
 		#{basiGender},
@@ -49,7 +50,8 @@
 		#{basiZipCode},
 		#{basiAddr},
 		#{basiAddrDetail},
-		#{basiEmail}
+		#{basiEmail},
+		0
 			)
    </insert>
    
@@ -73,9 +75,53 @@
 		  e.basiUseNy,
 		  e.basiDelNy
 	  FROM
-		bananas.ba_sitterList e
+		bananas.ba_sitterlist e
 	  WHERE 1=1
 			AND	e.basiSeq = #{basiSeq}
 	  </select>
-
+	  <select id="reSelectList" resultMap="resultMapObj">
+	    SELECT
+	       j.bareSeq, 
+	       j.bareType, 
+	       j.bareStar, 
+	       j.bareContents, 
+	       j.bareRegDate, 
+	       j.bareEditDate, 
+	       j.bareDelNy
+	   FROM
+			bananas.ba_review j	
+	   WHERE 1=1
+			ORDER BY  
+			j.bareSeq Asc    
+	  </select>
+      <insert id="reInsert">
+        INSERT INTO ba_review(
+		   bareType, 
+	       bareStar, 
+	       bareContents, 
+	       bareRegDate, 
+	       bareEditDate
+	    )VALUES(
+		  #{bareType},
+		  #{bareStar},
+		  #{bareContents},
+		  #{bareRegDate},
+		  #{bareEditDate})   
+      </insert>
+      <select id="opSelectList" resultMap="resultMapObj">
+	    SELECT
+	      g.baopSeq,
+	      g.baopType,
+	      g.baopName,
+	      g.baopPrice,
+	      g.baopUseNy, 
+	      g.baopDelNy
+	    FROM
+		  bananas.ba_option g
+	    WHERE 1=1
+		ORDER BY  
+		  g.baopSeq Asc
+	  </select> 
+      
+      
 </mapper>

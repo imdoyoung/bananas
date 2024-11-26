@@ -26,9 +26,7 @@
             #col-xl-8{
                 margin: 0 auto;
             }
-
             #select.underline {border:0;border-bottom:1 solid #FF0000;}
-           
         </style>-->
     </head>
     <body>
@@ -65,7 +63,6 @@
                                          </div>
                                       </div>
                                    </li>
-                                   
                                 </ul>
                              </div>
                         </div>
@@ -215,9 +212,7 @@
                                 <h2>
                                  Book your seat today
                                 </h2>
-                             
                             </div>
-                           
                         </div>
                     </div>-->
                <!-- <div class="container">                  
@@ -276,14 +271,11 @@
             <section class="contact-home-area pt-120 pb-120 p-relative fix" style="background-color: #F3F3F3;"> 
                 <div class="animations-01"><img src="/usr/v1/template/petxon/assets/img/bg/communication.png" alt="an-img-01"></div>
                 <div class="container">
-                    <div class="row" margin=" 0 auto;">                       
-                      
+                    <div class="row" margin=" 0 auto;">       
 					    <div class="col-lg-8 col-xl-8">
                             <div class="contact-bg02 contact-bg-gry">
                             <div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s">                             
-                                <h2>
-                                  시터 등록하기 
-                                </h2>  
+                                <h2>시터 등록하기</h2>  
                             </div>    
                              <p>시터님의 기본 정보를 등록하여 주세요!</p>
 						      <form action="/usr/v1/infra/baSitter/baUsrSitterInst" method="post" class="contact-form mt-30 wow fadeInUp animated" data-animation="fadeInUp" data-delay=".4s">
@@ -316,7 +308,6 @@
                                     <div class="col-lg-6">
                                         <div class="contact-field p-relative c-name mb-20">                                    
                                             <input type="text" id="basiZipCode" name="basiZipCode" placeholder="우편번호" required>
-
                                             <!--<input class="btn btn-brown mt-10" data-animation="fadeInLeft" data-delay=".4s" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" img src="img/icon/btn-pet-icon3.png" alt="logo" >-->
                                         </div>                               
                                     </div>
@@ -335,25 +326,17 @@
                                             <input type="text" id="basiAddrDetail" name="basiAddrDetail" placeholder="상세주소" required>
                                         </div>                               
                                     </div>
-									<div class="col-lg-6">
-                                        <div class="contact-field p-relative c-name mb-20">                                    
-                                            <input type="text" id="sample6_extraAddress" placeholder="상세주소" required>
-                                        </div>                               
-                                    </div>
                                     <div class="col-lg-6">
                                         <div class="contact-field p-relative c-name mb-20">  
-                                            <input
-                                            type="file"
-                                            name="files[]"
-                                            class="multi file-upload-input with-preview form-control form--control ps-3"
-                                            multiple
-                                            placeholder="사진"
-                                          />
+                                            <input type="file" name="files[]" class="multi file-upload-input with-preview form-control form--control ps-3" multiple placeholder="사진" />
                                         </div>                               
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="contact-field p-relative c-message mb-30">                                  
                                             <textarea id="basiDesc" name="basiDesc" cols="30" rows="10" placeholder="시터 한줄소개"></textarea>
+                                        </div>
+										<div class="contact-field p-relative c-message mb-30">                                  
+                                           <textarea id="basiCareer" name="basiCareer" cols="30" rows="10" placeholder="시터경력"></textarea>
                                         </div>
                                         <div class="slider-btn">                
                                             <button href="/usr/v1/infra/baSitter/baUsrSitterList" class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo">등록하기</button>	
@@ -366,7 +349,6 @@
                     </div>
                 </div>
             </section>
-            <!-- contact-area-end -->	
         </main>
         <!-- main-area-end -->
         <!-- footer -->
@@ -492,8 +474,8 @@
 		<!-- JS here -->
         <script>
             function sample6_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
+            new daum.Postcode({
+            oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
@@ -523,14 +505,10 @@
                 if(extraAddr !== ''){
                     extraAddr = ' (' + extraAddr + ')';
                 }
-                // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("sample6_extraAddress").value = extraAddr;
-            
+               // document.getElementById("sample6_extraAddress").value = extraAddr;
             } else {
-                document.getElementById("sample6_extraAddress").value = '';
+                //document.getElementById("sample6_extraAddress").value = '';
             }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('basiZipCode').value = data.zonecode;
             document.getElementById("basiAddr").value = addr;
             // 커서를 상세주소 필드로 이동한다.

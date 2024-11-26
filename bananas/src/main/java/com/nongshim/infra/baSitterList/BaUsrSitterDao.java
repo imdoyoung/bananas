@@ -13,5 +13,11 @@ public interface BaUsrSitterDao {
 	public int sitterInsert(BaUsrSitterDto baUsrSitterDto);
 	
 	public BaUsrSitterDto selectOne(BaUsrSitterDto baUsrSitterDto);
+	
+	public List<BaUsrSitterDto> reSelectList();
+	
+	public int reInsert(BaUsrSitterDto baUsrSitterDto);
+	
+	public List<BaUsrSitterDto> opSelectList();
 
 }
