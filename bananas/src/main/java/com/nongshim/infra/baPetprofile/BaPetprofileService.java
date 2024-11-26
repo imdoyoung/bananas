@@ -25,5 +25,10 @@ public class BaPetprofileService {
 	public int PetInsert(BaPetprofileDto baPetprofileDto) {
 		return baPetprofileDao.PetInsert(baPetprofileDto);
 	}
+	
+	// PetUpdate
+	public int PetUpdate(BaPetprofileDto baPetprofileDto) {
+		return baPetprofileDao.PetUpdate(baPetprofileDto);
+	}
 
 }

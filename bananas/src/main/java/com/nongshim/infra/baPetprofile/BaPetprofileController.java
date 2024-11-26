@@ -27,4 +27,10 @@ public class BaPetprofileController {
 		baPetprofileService.PetInsert(baPetprofileDto);
 		return "redirect:/usr/v1/infra/mypage/baUsrMypage";
 	}
+	
+	@RequestMapping(value="/usr/v1/infra/baPetprofile/baPetprofileUsrUpdt")
+	public String baPetprofileUsrUpdt(BaPetprofileDto baPetprofileDto) {
+		baPetprofileService.PetUpdate(baPetprofileDto);
+		return "redirect:/usr/v1/infra/mypage/baUsrMypage";
+	}
 }

@@ -16,4 +16,7 @@ public interface BaPetprofileDao {
 	// PetInsert
 	public int PetInsert(BaPetprofileDto baPetprofileDto);
 
+	// PetUpdate
+	public int PetUpdate(BaPetprofileDto baPetprofileDto);
+	
 }

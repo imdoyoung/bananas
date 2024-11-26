@@ -4,6 +4,116 @@
 <mapper namespace="com.nongshim.infra.baMember.BaMemberDao">
 
 	<resultMap type="com.nongshim.infra.baMember.BaMemberDto" id="resultMapObj"></resultMap>
+	
+	<select id="memberSelectList" resultMap="resultMapObj">
+		SELECT
+			c.bameSeq,
+		    c.bameName,
+		    c.bameId,
+		    c.bamePw,
+		    c.bameGender,
+		    c.bameBirth,
+		    c.bameEmail,
+		    c.bameTel,
+		    c.bameZipCode,
+		    c.bameAddr,
+		    c.bameAddrDetail,
+		    c.bameGrade,
+		    c.bameRegDate,
+		    c.bameEditDate,
+		    c.bameTosNy,
+		    c.bameMktNy,
+		    c.bameDelNy
+		FROM
+			ba_member c
+		ORDER BY
+			c.bameSeq desc
+	</select>
+	
+	<select id="memberSelectOne" resultMap="resultMapObj">
+		SELECT
+			c.bameSeq,
+		    c.bameName,
+		    c.bameId,
+		    c.bamePw,
+		    c.bameGender,
+		    c.bameBirth,
+		    c.bameEmail,
+		    c.bameTel,
+		    c.bameZipCode,
+		    c.bameAddr,
+		    c.bameAddrDetail,
+		    c.bameGrade,
+		    c.bameRegDate,
+		    c.bameEditDate,
+		    c.bameTosNy,
+		    c.bameMktNy,
+		    c.bameDelNy
+		FROM
+			ba_member c
+		WHERE 1 = 1
+			AND c.bameSeq = #{bameSeq}
+	</select>
+	
+	<insert id="memberInsert">
+		INSERT INTO ba_member(
+			bameName,
+		    bameId,
+		    bamePw,
+		    bameGender,
+		    bameBirth,
+		    bameEmail,
+		    bameTel,
+		    bameZipCode,
+		    bameAddr,
+		    bameAddrDetail,
+		    bameGrade,
+		    bameRegDate,
+		    bameEditDate,
+		    bameTosNy,
+		    bameMktNy,
+		    bameDelNy
+		) VALUES (
+			#{bameName},
+		    #{bameId},
+		    #{bamePw},
+		    #{bameGender},
+		    #{bameBirth},
+		    #{bameEmail},
+		    #{bameTel},
+		    #{bameZipCode},
+		    #{bameAddr},
+		    #{bameAddrDetail},
+		    #{bameGrade},
+		    now(),
+		    now(),
+		    #{bameTosNy},
+		    #{bameMktNy},
+		    #{bameDelNy}
+		)
+	</insert>
+	
+	<update id="memberUpdate">
+		UPDATE ba_member
+		SET
+			bameName = #{bameName},
+		    bameId = #{bameId},
+		    bamePw = #{bamePw},
+		    bameGender = #{bameGender},
+		    bameBirth = #{bameBirth},
+		    bameEmail = #{bameEmail},
+		    bameTel = #{bameTel},
+		    bameZipCode = #{bameZipCode},
+		    bameAddr = #{bameAddr},
+		    bameAddrDetail = #{bameAddrDetail},
+		    bameGrade = #{bameGrade},
+		    bameEditDate = now(),
+		    bameTosNy = #{bameTosNy},
+		    bameMktNy = #{bameMktNy},
+		    bameDelNy = #{bameDelNy}
+		WHERE 1 = 1
+			AND bameSeq = #{bameSeq}
+	</update>
 
 	<!-- 관리자-로그인 -->
 	<select id="xdmSelectOneSignin" resultMap="resultMapObj">

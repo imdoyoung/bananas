@@ -84,7 +84,8 @@ public class BaCommonController {
 	// 사용자 회원가입
 	// SIGNUP
 	@RequestMapping(value = "/usr/v1/infra/common/baUsrSignUp")
-	public String baUsrSignUp() {
+	public String baUsrSignUp(BaMemberDto baMemberDto) {
+		baMemberService.memberInsert(baMemberDto);
 		return "/usr/v1/infra/common/baUsrSignUp";
 	}
 	

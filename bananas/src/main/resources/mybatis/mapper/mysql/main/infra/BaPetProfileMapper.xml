@@ -6,22 +6,22 @@
 <resultMap type="com.nongshim.infra.baPetprofile.BaPetprofileDto" id="resultMapObj"></resultMap>
 	<select id="PetSelectList" resultMap="resultMapObj">
    		SELECT
-			bapeSeq,
-		    bapeName,
-		    bapeGender,
-		    bapeType,
-		    bapeAge,
-		    bapeWeight,
-		    bapeNtrNy,
-		    bapehospital,
-		    bapeDesc,
-		    bapeRegDate,
-		    bapeEditDate,
-		    bapeUseNy,
-		    bapeDelNy,
-		    BA_Member_bameSeq
+			d.bapeSeq,
+			d.bapeName,
+			d.bapeGender,
+			d.bapeType,
+			d.bapeAge,
+			d.bapeWeight,
+			d.bapeNtrNy,
+			d.bapehospital,
+			d.bapeDesc,
+			d.bapeRegDate,
+			d.bapeEditDate,
+			d.bapeUseNy,
+			d.bapeDelNy,
+			d.BA_Member_bameSeq
 		FROM
-			ba_petprofile
+			ba_petprofile d
 		ORDER BY
 			bapeSeq desc
 	</select>
@@ -64,7 +64,7 @@
 		    bapeDelNy,
 		    BA_Member_bameSeq
 		) VALUES (
-			#{bapeName}
+			#{bapeName},
 		    #{bapeGender},
 		    #{bapeType},
 		    #{bapeAge},
@@ -79,6 +79,25 @@
 		    #{BA_Member_bameSeq}
 		)
 	</insert>
+	
+	<update id="PetUpdate">
+		UPDATE ba_petprofile
+		SET
+			bapeName = #{bapeName},
+		    bapeGender = #{bapeGender},
+		    bapeType = #{bapeType},
+		    bapeAge = #{bapeAge},
+		    bapeWeight = #{bapeWeight},
+		    bapeNtrNy = #{bapeNtrNy},
+		    bapehospital = #{bapehospital},
+		    bapeDesc = #{bapeDesc},
+		    bapeEditDate = now(),
+		    bapeUseNy  = #{bapeUseNy},
+		    bapeDelNy = 0,
+		    BA_Member_bameSeq = #{BA_Member_bameSeq}
+		WHERE 1=1
+			AND  bapeSeq = #{bapeSeq}
+	</update>
 	
 	
 </mapper>
