@@ -34,10 +34,12 @@ public class BaMypageService {
 	} 
 	
 	
+	// 장소 리뷰 paging
+	
 	//--
 	// 예약 내역 리스트
-	public List<BaMypageDto> BaMypageBookingSelectList() {
-		return baMypageDao.BaMypageBookingSelectList();
+	public List<BaMypageDto> BaMypageBookingSelectList(BaMypageVo baMypageVo) {
+		return baMypageDao.BaMypageBookingSelectList(baMypageVo);
 	}
 	
 	// 예약 내역 selectOne
@@ -45,16 +47,29 @@ public class BaMypageService {
 		return baMypageDao.BaMypagePriceSelectOne(baMypageDto);
 	}
 	
+	// 예약 내역 paging
+	public int selectMypageBookingCount(BaMypageVo baMypageVo) {
+		return baMypageDao.selectMypageBookingCount(baMypageVo);
+	}
 	
 	
 	
 	// 시터 마이페이지
 	
 	// 나의 예약 리스트 
-	public List<BaMypageDto> sitterPageBookingSelectList() {
-		return baMypageDao.sitterPageBookingSelectList();
+	public List<BaMypageDto> sitterPageBookingSelectList(BaMypageVo baMypageVo) {
+		return baMypageDao.sitterPageBookingSelectList(baMypageVo);
+	}  
+	
+	// 나의 예약 paging
+	public int sitterPageBookingCount(BaMypageVo baMypageVo) {
+		return baMypageDao.sitterPageBookingCount(baMypageVo);
 	}
 	
+	// 페이징 없는 예약 리스트
+	public List<BaMypageDto> BaMypageBookingSelectListAll() {
+		return baMypageDao.BaMypageBookingSelectListAll();
+	}
 
 	
 

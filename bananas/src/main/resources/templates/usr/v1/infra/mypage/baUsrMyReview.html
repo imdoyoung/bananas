@@ -311,7 +311,7 @@
                     
                     <tbody th:each="list : ${mypageSitterReviewList}">  
                       <tr>
-                        <td>1</td>
+                        <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                         <td th:text="${#dates.format(list.bareRegDate,'yyyy-MM-dd')}">등록일</td>
                         <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
                         <td th:text="${list.basiName}">시터</td>
@@ -328,7 +328,7 @@
                   </table>
                 </div>
               </div>
-            </form>
+<!--             </form> -->
               
               <div class="tabs__pane -tab-item-2 ">
                 <div class="overflow-scroll scroll-bar-1">
@@ -644,7 +644,7 @@
           </div>
           
         </div>
-
+ 	</form>
 
         <footer class="footer -dashboard mt-60">
           <div class="footer__row row y-gap-10 items-center justify-between">

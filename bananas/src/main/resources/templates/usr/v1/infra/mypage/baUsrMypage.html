@@ -221,7 +221,7 @@
                   
                   <tbody th:each="list, iterStat : ${mypageBookingList}" th:if="${iterStat.index < 3}">
                     <tr align="center"> 
-                      <td></td>
+                      <td th:text="${iterStat.index + 1}">번호</td> <!-- 인덱스 + 1 -->
                       <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
                       <td th:text="${list.basiName}">시터</td>
                       <td th:text="${list.baopName}">서비스</td>
@@ -256,7 +256,7 @@
                   <!-- 리스틀 개수를 3개로 제한 -->
                   <tbody th:each="list, iterStat : ${mypageSitterReviewList}" th:if="${iterStat.index < 3}" class="contentList">
                     <tr align="center">
-                      <td></td> 
+                      <td th:text="${iterStat.index + 1}">번호</td> <!-- 인덱스 + 1 --> 
                       <td th:text="${#dates.format(list.bareRegDate,'yyyy-MM-dd')}">등록일</td>
                       <td th:text="${list.basiName}">시터 이름</td>
                       <td th:text="${list.baopName}">서비스</td>

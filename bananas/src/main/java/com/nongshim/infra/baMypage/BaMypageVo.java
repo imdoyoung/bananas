@@ -15,6 +15,9 @@ public class BaMypageVo {
 	private int endPage;										// 마지막 페이지 번호
  
 	private int startRnumForMysql = 0;							// 쿼리 시작 row 
+	
+	
+	
 	//--
 	public int getThisPage() {
 		return thisPage;

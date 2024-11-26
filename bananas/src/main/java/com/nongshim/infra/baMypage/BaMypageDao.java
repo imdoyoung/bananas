@@ -19,23 +19,35 @@ public interface BaMypageDao {
 	public BaMypageDto BaMypageSelectOne(BaMypageDto baMypageDto);
 	
 	// 시터 리뷰 paging  
-	public int selectSitterOneCount(BaMypageVo baMypageVo); 
+	public int selectSitterOneCount(BaMypageVo baMypageVo);
+	
+	// 장소 리뷰 paging 
 	
 	//--
 	
 	// 예약 내역 리스트
-	public List<BaMypageDto> BaMypageBookingSelectList();
+	public List<BaMypageDto> BaMypageBookingSelectList(BaMypageVo baMypageVo);
 	
 	// 예약 내역 selectOne
-	public BaMypageDto BaMypagePriceSelectOne(BaMypageDto baMypageDto); 
+	public BaMypageDto BaMypagePriceSelectOne(BaMypageDto baMypageDto);
+	
+	// 예약 내역 paging
+	public int selectMypageBookingCount(BaMypageVo baMypageVo);
 	
 	
+
 	
 	
 	// 시터 마이페이지
 	
 	// 나의 예약 리스트 
-	public List<BaMypageDto> sitterPageBookingSelectList();
+	public List<BaMypageDto> sitterPageBookingSelectList(BaMypageVo baMypageVo);
+	
+	// 나의 예약 paging
+	public int sitterPageBookingCount(BaMypageVo baMypageVo);
+	
+	// 페이징 없는 예약 리스트
+	public List<BaMypageDto> BaMypageBookingSelectListAll();
 
 	
 
