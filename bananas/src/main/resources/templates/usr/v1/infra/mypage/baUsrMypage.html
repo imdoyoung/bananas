@@ -14,147 +14,123 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/usr/v1/template/andTour/assets/css/vendors.css">
   <link rel="stylesheet" href="/usr/v1/template/andTour/assets/css/main.css">
-
+  
   <title>And tour</title>
 </head>
+
+
+<style>
+/* .dashboard__sidebar { */
+/* 	border:1px solid red; */
+/* } */
+ 
+</style>
+
 
 <body data-barba="wrapper"> 
 
   <div class="preloader js-preloader">
   </div>
   
-  <div class="header-margin"></div>
-  <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened">
-    <div data-anim="fade" class="header__container px-30 sm:px-20">
-      <div class="-left-side">
-        <a href="#!" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
-          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
-          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
-        </a>
-      </div>
+<!--   <div class="header-margin"></div> -->
+<!--   <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened"> -->
+<!--     <div data-anim="fade" class="header__container px-30 sm:px-20"> -->
+<!--       <div class="-left-side"> -->
+<!--         <a href="#!" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark"> -->
+<!--           <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon"> -->
+<!--           <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon"> -->
+<!--         </a> -->
+<!--       </div> -->
 
-      <div class="row justify-between items-center pl-60 lg:pl-20">
-        <div class="col-auto">
-          <div class="d-flex items-center">
-            <button data-x-click="dashboard">
-              <i class="icon-menu-2 text-20"></i>
-            </button>
+<!--       <div class="row justify-between items-center pl-60 lg:pl-20"> -->
+<!--         <div class="col-auto"> -->
+<!--           <div class="d-flex items-center"> -->
+<!--             <button data-x-click="dashboard"> -->
+<!--               <i class="icon-menu-2 text-20"></i> -->
+<!--             </button> -->
 
-            <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
-              <button class="absolute d-flex items-center h-full">
-                <i class="icon-search text-20 px-15 text-dark-1"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-auto">
-          <div class="d-flex items-center">
-            <div class="row items-center x-gap-5 y-gap-20 pl-20 lg:d-none">
-              <div class="col-auto">
-                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
-                  <i class="icon-email-2 text-20"></i>
-                </button>
-              </div>
-
-              <div class="col-auto">
-                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
-                  <i class="icon-notification text-20"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="pl-15">
-              <img src="/usr/v1/template/andTour/assets/img/avatars/3.png" alt="image" class="size-50 rounded-22 object-cover">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-
-  <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
-    <div class="dashboard__sidebar bg-white scroll-bar-1">
-      <div class="sidebar -dashboard">
-        <div class="sidebar__item">
-          <div class="sidebar__button -is-active">
-            <a href="/usr/v1/infra/mypage/baUsrMypage" class="d-flex items-center text-20 lh-1 fw-500">
-              <!-- <i class="fas fa-border-all mr-15"></i> -->
-              <i class="fas fa-user-circle  mr-15"></i>
-              마이페이지
-            </a>
-          </div>
-        </div>
-        <div class="sidebar__item">
-          <div class="sidebar__button">
-            <a href="/usr/v1/infra/mypage/baUsrBookingHistory" class="d-flex items-center text-20 lh-1 fw-500">
-              <i class="fas fa-calendar-check mr-15"></i>
-              예약내역
-            </a>
-          </div>
-        </div>
-
-        <!-- <div class="sidebar__item ">
-          <div class="accordion -db-sidebar js-accordion">
-            <div class="accordion__item">
-              <div class="accordion__button">
-                <div class="sidebar__button col-12 d-flex items-center justify-between">
-                  <div class="d-flex items-center text-15 lh-1 fw-500">
-                    <i class="fas fa-building mr-15"></i>
-                    Manage Hotel
-                  </div>
-                  <div class="icon-chevron-sm-down text-7"></div>
-                </div>
-              </div>
-
-              <div class="accordion__content">
-                <ul class="list-disc pb-5 pl-40">
-
-                  <li>
-                    <a href="db-vendor-hotels.html" class="text-15">All hotels</a>
-                  </li>
-
-                  <li>
-                    <a href="db-vendor-add-hotel.html" class="text-15">Add hotel</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-      
-<!--         <div class="sidebar__item"> -->
-<!--           <div class="sidebar__button"> -->
-<!--             <a href="/usr/v1/infra/mypage/baUsrPaymentHistory" class="d-flex items-center text-20 lh-1 fw-500"> -->
-<!--               <i class="fas fa-cart-plus mr-15"></i> -->
-<!--               <i class="fas fa-wallet mr-15"></i> -->
-<!--               결제내역 -->
-<!--             </a> -->
+<!--             <div class="single-field relative d-flex items-center md:d-none ml-30"> -->
+<!--               <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search"> -->
+<!--               <button class="absolute d-flex items-center h-full"> -->
+<!--                 <i class="icon-search text-20 px-15 text-dark-1"></i> -->
+<!--               </button> -->
+<!--             </div> -->
 <!--           </div> -->
 <!--         </div> -->
 
-        <div class="sidebar__item">
-          <div class="sidebar__button ">
-            <a href="/usr/v1/infra/mypage/baUsrNotice" class="d-flex items-center text-20 lh-1 fw-500">
-              <i class="fas fa-book mr-15"></i>
-              알림장
-            </a>
-          </div>
-        </div>
-      
-      </div>
-    </div>
+<!--         <div class="col-auto"> -->
+<!--           <div class="d-flex items-center"> -->
+<!--             <div class="row items-center x-gap-5 y-gap-20 pl-20 lg:d-none"> -->
+<!--               <div class="col-auto"> -->
+<!--                 <button class="button -blue-1-05 size-50 rounded-22 flex-center"> -->
+<!--                   <i class="icon-email-2 text-20"></i> -->
+<!--                 </button> -->
+<!--               </div> -->
 
-    <div class="dashboard__main">
+<!--               <div class="col-auto"> -->
+<!--                 <button class="button -blue-1-05 size-50 rounded-22 flex-center"> -->
+<!--                   <i class="icon-notification text-20"></i> -->
+<!--                 </button> -->
+<!--               </div> -->
+<!--             </div> -->
+
+<!--             <div class="pl-15"> -->
+<!--               <img src="/usr/v1/template/andTour/assets/img/avatars/3.png" alt="image" class="size-50 rounded-22 object-cover"> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </header> --> 
+ 
+
+  <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
+  	<div th:replace="~{usr/v1/infra/common/mypageSidebar :: aside}"></div> 
+  
+<!--     <div class="dashboard__sidebar bg-white scroll-bar-1"> -->
+<!--       <div class="sidebar -dashboard"> -->
+<!--       	<div class="sidebar__item"> -->
+<!--           <div class="sidebar__button -is-active"> -->
+<!--             <img src="/usr/v1/template/andTour/assets/image/logo.png" style="width:150px;height:30px;"> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="sidebar__item"> -->
+<!--           <div class="sidebar__button -is-active"> -->
+<!--             <a href="/usr/v1/infra/mypage/baUsrMypage" class="d-flex items-center text-20 lh-1 fw-500"> -->
+<!--               <i class="fas fa-border-all mr-15"></i> -->
+<!--               <i class="fas fa-user-circle  mr-15"></i> -->
+<!--               마이페이지 -->
+<!--             </a> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="sidebar__item"> -->
+<!--           <div class="sidebar__button"> -->
+<!--             <a href="/usr/v1/infra/mypage/baUsrBookingHistory" class="d-flex items-center text-20 lh-1 fw-500"> -->
+<!--               <i class="fas fa-calendar-check mr-15"></i> -->
+<!--               예약내역 -->
+<!--             </a> -->
+<!--           </div> -->
+<!--         </div>  -->
+<!--         <div class="sidebar__item"> -->
+<!--           <div class="sidebar__button "> -->
+<!--             <a href="/usr/v1/infra/mypage/baUsrNotice" class="d-flex items-center text-20 lh-1 fw-500"> -->
+<!--               <i class="fas fa-book mr-15"></i> -->
+<!--               알림장 -->
+<!--             </a> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+
+    <div class="dashboard__main"> 
       <div class="dashboard__content">
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
-            <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
-            <div class="text-15 text-light-1">임도영 님 환영합니다!</div>
-          </div>
+<!-- 	        <th:block th:if="${session.sessSeqXdm != null}"> -->
+	          <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
+              <div class="text-15 text-light-1" th:text="${session.sessNameXdm} + ' 님 환영합니다!' ">사용자이름</div>
+<!-- 	         </th:block> -->
+          </div>  
         </div>
 
         <div class="row y-gap-30">
@@ -167,9 +143,9 @@
                         <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">  
                         <div class="row">
                           <div class="col-md-12">
-                            <div class="text-30 lh-16 fw-600 text_orange">임도영 님</div>
-                            <div class="text-15 lh-14 text-light-1">user123</div>
-                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">user@gmail.com</div>
+                            <div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessNameXdm} + '님' "></div>
+                            <div class="text-15 lh-14 text-light-1" th:text>아이디</div>
+                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">이메일</div>
                           </div>
                           <a href="about.html" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
                         </div>     
@@ -287,10 +263,10 @@
   </div>
 
   <!-- JavaScript -->
+
 <!--   <script src="../../../cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script> -->
 <!--   <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script> -->
-
   <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/main.js"></script>

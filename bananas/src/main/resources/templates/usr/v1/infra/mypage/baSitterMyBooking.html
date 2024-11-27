@@ -307,6 +307,7 @@
                       <tr>
                         <th>No</th>
                         <th>예약일</th>
+                        <th>예약시간</th>
                         <th>서비스</th>
                         <th>돌봄장소</th>
                         <th>강아지이름</th>
@@ -318,6 +319,7 @@
                       <tr>
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                         <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td> 
+                        <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약시간</td> 
                         <td th:text="${list.baopName}">서비스</td>
                         <td th:text="${list.baboLocation}">돌봄장소</td> 
                         <td th:text="${list.bapeName}">강아지이름</td>

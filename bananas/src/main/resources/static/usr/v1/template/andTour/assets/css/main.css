@@ -4463,19 +4463,36 @@ h6 {
     }
 }
 
+/* .dashboard__sidebar { */
+/*     overflow-y: scroll; */
+/*     position: fixed; */
+/*     bottom: 0; */
+/*     left: 0; */
+/*     z-index: 100; */
+/*     width: var(--dashboard-width); */
+/*     height: calc(100% - 90px); */
+/*     padding: 60px 30px 40px; */
+/*     will-change: transform; */
+/*     transition: all .5s cubic-bezier(.215, .61, .355, 1); */
+/*     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.03); */
+/*     border:1px solid red; */
+/* } */
+
+
 .dashboard__sidebar {
-    overflow-y: scroll;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    width: var(--dashboard-width);
-    height: calc(100% - 90px);
-    padding: 60px 30px 40px;
+    overflow-y: scroll; /* 스크롤 활성화 유지 */
+    position: fixed; /* 고정 위치 */
+    top: 0; /* 상단으로 이동 */
+    left: 0; /* 화면 왼쪽에 고정 */
+    z-index: 100; /* 다른 요소 위에 표시 */
+    width: var(--dashboard-width); /* 사이드바의 기본 너비 유지 */
+    height: 100%; /* 화면 전체 높이로 확장 */
+    padding: 30px; /* 내부 여백 조정 */
     will-change: transform;
-    transition: all .5s cubic-bezier(.215, .61, .355, 1);
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); /* 전환 효과 유지 */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.03); /* 그림자 유지 */
 }
+
 
 @media (max-width:991px) {
     .dashboard__sidebar {
@@ -4516,15 +4533,21 @@ h6 {
     }
 }
 
+/* 사이드 바 */
 .sidebar.-dashboard .sidebar__item {
-    border: none
+    border: none;
+} 
+
+.sidebar__item:nth-child(2) {
+	margin-top: 50px; 
 }
 
 .sidebar.-dashboard .sidebar__button {
     display: flex;
     align-items: center;
     padding: 0 10px;
-    height: 50px;
+/*     height: 50px;  */
+    height: 70px;  
 }
 
 @media (max-width:575px) {

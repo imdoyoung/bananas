@@ -13,11 +13,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nongshim.infra.baMember.BaMemberService;
+
 @Controller
 public class BaMypageController {
 	
 	@Autowired
 	BaMypageService baMypageService;
+	
+	@Autowired
+	BaMemberService baMemberService;
 	
 	// 사용자 마이페이지 (메인)
 	@RequestMapping(value="/usr/v1/infra/mypage/baUsrMypage") 
@@ -25,9 +30,12 @@ public class BaMypageController {
 		 
 		model.addAttribute("mypageSitterReviewList", baMypageService.BaMypageReviewSelectList(baMypageVo)); 
 		model.addAttribute("mypageBookingList", baMypageService.BaMypageBookingSelectList(baMypageVo));
+		
+		//model.addAttribute("mypageMember", baMemberService.memberSelectList());
 		return "usr/v1/infra/mypage/baUsrMypage"; 
-	}
+	} 
 	
+	  
 	// 사용자 마이페이지 (예약 내역)
 	@RequestMapping(value="/usr/v1/infra/mypage/baUsrBookingHistory")
 	public String baUsrBookingHistory(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model) { 
@@ -124,10 +132,11 @@ public class BaMypageController {
 	
 	
 	// 페이징 없는 나의 예약 리스트
-    
     @RequestMapping(value="/usr/v1/infra/mypage/baSitterBookingEvents")
     @ResponseBody // JSON 반환
     public List<Map<String, Object>> getSitterBookingEvents(@ModelAttribute BaMypageVo baMypageVo) {
+    	
+    	System.out.println();
     	
     	 // 전체 예약 리스트 가져오기
         List<BaMypageDto> bookingList = baMypageService.BaMypageBookingSelectListAll();
@@ -137,7 +146,9 @@ public class BaMypageController {
         for (BaMypageDto booking : bookingList) {
             Map<String, Object> event = new HashMap<>();
 //            event.put("title", booking.getBaopName() + " " + booking.getBaboTime()); // 일정 제목
-            event.put("title", booking.getBaopName()); 
+//            event.put("title", booking.getBapeName() + " " + booking.getBaopName()); 
+//            event.put("title", booking.getBaopName()); 
+            event.put("title", booking.getBapeName() + " " + booking.getBaopName()); 
             event.put("start", booking.getBaboDate()); // 시작 날짜
             event.put("allDay", true); // 하루 종일 일정
             events.add(event);
@@ -153,6 +164,8 @@ public class BaMypageController {
 	}
 	
 	//--
+	  
+	
 	
 
 	
