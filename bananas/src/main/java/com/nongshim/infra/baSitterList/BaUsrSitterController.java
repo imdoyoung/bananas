@@ -28,7 +28,7 @@ public class BaUsrSitterController {
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterInst")
 	public String baUsrSitterInst(BaUsrSitterDto baUsrSitterDto) {
 		 baUsrSitterService.sitterInsert(baUsrSitterDto);
-		return "/usr/v1/infra/baSitter/baUsrSitterList";
+		return "redirect:/usr/v1/infra/baSitter/baUsrSitterList";
 	}
 	
 	//시터 상세보기
@@ -44,9 +44,15 @@ public class BaUsrSitterController {
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrReInst")
 	public String baUsrReInst(BaUsrSitterDto baUsrSitterDto) {
 		 baUsrSitterService.reInsert(baUsrSitterDto);
-		return "/usr/v1/infra/baSitter/baUsrSitterDetails";
+		return "redirect:/usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
 	
+	//시터예약 insert
+//		@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterResInst")
+//		public String baUsrSitterResInst(BaUsrSitterDto baUsrSitterDto) {
+//			 baUsrSitterService.sitterReInsert(baUsrSitterDto);
+//			return "redirect:/usr/v1/infra/baSitter/baUsrSitterReservate";
+//		}
 	//시터 예약하기
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterReservate")
 	public String baUsrSitterReservate() {

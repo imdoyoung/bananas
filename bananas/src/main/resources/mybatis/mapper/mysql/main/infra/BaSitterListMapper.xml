@@ -32,7 +32,6 @@
    <insert id="sitterInsert">
       INSERT INTO ba_sitterlist(
           basiName,
-		  basiGender,
 		  basiCareer,
 		  basiDesc,
 		  basiTel,
@@ -43,7 +42,6 @@
 		  basiDelNy
 	  )VALUES(
 		#{basiName},
-		#{basiGender},
 		#{basiCareer},
 		#{basiDesc},
 		#{basiTel},
@@ -96,17 +94,13 @@
 	  </select>
       <insert id="reInsert">
         INSERT INTO ba_review(
-		   bareType, 
 	       bareStar, 
 	       bareContents, 
-	       bareRegDate, 
-	       bareEditDate
+	       bareRegDate
 	    )VALUES(
-		  #{bareType},
-		  #{bareStar},
+		  ifNull(#{bareStar},0),
 		  #{bareContents},
-		  #{bareRegDate},
-		  #{bareEditDate})   
+		  now() )
       </insert>
       <select id="opSelectList" resultMap="resultMapObj">
 	    SELECT
