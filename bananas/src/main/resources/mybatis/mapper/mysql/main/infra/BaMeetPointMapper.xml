@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nongshim.infra.baMeetPoint.BaMeetPointDao">
+
+	<resultMap type="com.nongshim.infra.baMeetPoint.BaMeetPointDto" id="resultMapObj"></resultMap>
+
+	<select id="meetpointselectlist" resultMap="resultMapObj">
+	    SELECT 
+	        bameSeq, 
+	        bameStationName, 
+	        bameLatitude, 
+	        bameLongitudel,
+	        (6371 * ACOS(COS(RADIANS(#{midpointLatitude})) 
+	               * COS(RADIANS(bameLatitude)) 
+	               * COS(RADIANS(bameLongitudel) - RADIANS(#{midpointLongitude})) 
+	               + SIN(RADIANS(#{midpointLatitude})) 
+	               * SIN(RADIANS(bameLatitude)))) AS distance
+	    FROM 
+	        ba_meetpoint
+	    WHERE 
+	        bameUseNy = 1 	<!-- 사용 가능한 역만 조회 -->
+	    HAVING 
+	        distance = 1 	<!-- 반경 1km 이내 --> 
+	    ORDER BY 
+	        distance
+	    LIMIT 1
+	    
+	</select>
+
+</mapper>

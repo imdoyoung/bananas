@@ -7,19 +7,17 @@
 
 <style>
 .btn-primary:hover {
-    background-color: #564741; 
+	background-color: #564741;
 }
-  
+
 .btn-primary:active {
-   	background-color: #564741;
+	background-color: #564741;
 }
 
 .btn-primary:focus {
 	background-color: #564741;
 	border-color: #564741;
 }
- 
-
 </style>
 
 <body>
@@ -28,11 +26,11 @@
 		<div id="loading"></div>
 	</div>
 	<!--  Preloader end  -->
-	
+
 	<!-- ======= Header ======= -->
-	<div th:replace="~{/usr/v1/infra/common/header :: header}"></div>
+	<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
 	<!-- header-end -->
-	
+
 	<!-- offcanvas-area -->
 	<div class="offcanvas-menu">
 		<span class="menu-close"><i class="fas fa-times"></i></span>
@@ -108,148 +106,59 @@
 		<!-- breadcrumb-area-end -->
 		<!-- gallery-area -->
 		<section class="gallery-area fix pt-120 pb-90">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-6">
-						<div class="input-group input-group-lg">
-							<span class="input-group-text" id="inputGroup-sizing-lg"
-								style="background: none;"> <i class="bi bi-geo-alt-fill"></i>
-							</span> <input type="text" class="form-control"
-								placeholder="1. 출발지를 입력해주세요" aria-label="출발지 입력"
-								aria-describedby="inputGroup-sizing-lg">
+		    <div class="container">
+			    <form id="routeForm">
+			        <div class="row justify-content-center">
+			            <div class="col-md-6">
+			                <div class="input-group input-group-lg">
+			                    <span class="input-group-text" id="inputGroup-sizing-lg" style="background: none;"> 
+			                        <i class="bi bi-geo-alt-fill"></i>
+			                    </span> 
+			                    <input type="text" class="form-control" placeholder="1. 출발지를 입력해주세요" aria-label="출발지 입력" id="address1"
+			                        aria-describedby="inputGroup-sizing-lg" onclick="sample6_execDaumPostcode('address1')">
+			                </div>
+			            </div>
+			        </div>
+			        <div class="row mt-4 justify-content-center">
+			            <div class="col-md-6">
+			                <div class="input-group input-group-lg">
+			                    <span class="input-group-text" id="inputGroup-sizing-lg" style="background: none;"> 
+			                        <i class="bi bi-geo-alt-fill"></i>
+			                    </span> 
+			                    <input type="text" class="form-control" placeholder="2. 도착지를 입력해주세요" aria-label="도착지 입력" id="address2"
+			                        aria-describedby="inputGroup-sizing-lg" onclick="sample6_execDaumPostcode('address2')">
+			                </div>
+			            </div>
+			        </div>
+			        <div class="row mt-4 justify-content-center">
+			            <div class="col-md-6">
+			                <!-- 버튼과 input의 동일 너비를 위해 col-md-6 사용 -->
+			                <div class="d-grid gap-2">
+			                    <button class="btn btn-primary btn-lg" type="button" id="find-midpoint-btn">중간 장소 찾기</button>
+			                    <br>
+			                </div>
+			            </div>
+			        </div>
+			        <div th:each="list : ${meetPointList}">
+			        	<input type="text" name="bameStationName" id="bameStationName" th:value="${list.bameStationName}">
+<!-- 			        	<input type="text" name="" id="" th:value=""> -->
+<!-- 			        	<input type="text" name="" id="" th:value=""> -->
+<!-- 			        	<input type="text" name="" id="" th:value=""> -->
+			        </div>
+			        <div class="card mb-4">
+						<div class="card-body p-4">
+							<div id="map" style="width: 100%; height: 600px;"></div>
 						</div>
 					</div>
-				</div>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-md-6">
-						<div class="input-group input-group-lg">
-							<span class="input-group-text" id="inputGroup-sizing-lg"
-								style="background: none;"> <i class="bi bi-geo-alt-fill"></i>
-							</span> <input type="text" class="form-control"
-								placeholder="2. 출발지를 입력해주세요" aria-label="출발지 입력"
-								aria-describedby="inputGroup-sizing-lg">
-						</div>
-					</div>
-				</div>
-				<div class="row mt-4 justify-content-center">
-					<div class="col-md-6">
-						<!-- 버튼과 input의 동일 너비를 위해 col-md-6 사용 -->
-						<div class="d-grid gap-2">  
-							<button class="btn btn-primary btn-lg" type="button">중간 장소 찾기</button>
-						</div>  
-					</div>
-				</div> 
-			</div>
+				</form>
+		    </div>
 		</section>
 		<!-- gallery-area-end -->
 
 	</main>
 	<!-- main-area-end -->
 	<!-- footer -->
-	<footer class="footer-bg footer-p"
-		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-		<div class="footer-top  pt-120 pb-90">
-			<div class="container">
-				<div class="row justify-content-between">
-
-					<div class="col-xl-3 col-lg-3 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Working Hours</h2>
-							</div>
-							<div class="f-work-hour">
-								<ul>
-									<li><span>Mon - Fri:</span> <strong>7am - 6pm</strong></li>
-									<li><span>Saturday:</span> <strong>9am - 4pm</strong></li>
-									<li><span>Sunday:</span> <strong>Closed</strong></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Our Gallery</h2>
-							</div>
-							<div class="f-insta">
-								<ul>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png"
-											alt="img"></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Essential</h2>
-							</div>
-							<div class="footer-link">
-								<ul>
-									<li><a href="index.html">About us</a></li>
-									<li><a href="about.html"> Careers</a></li>
-									<li><a href="services.html"> Prices </a></li>
-									<li><a href="contact.html"> Services</a></li>
-									<li><a href="blog.html">Get In Touch </a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>More Pages</h2>
-							</div>
-							<div class="footer-link">
-								<ul>
-									<li><a href="index.html">Auto production</a></li>
-									<li><a href="about.html"> Investors</a></li>
-									<li><a href="services.html"> News </a></li>
-									<li><a href="contact.html"> FAQ’s</a></li>
-									<li><a href="blog.html">Contact us </a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>
-									<img src="/usr/v1/template/petxon/assets/img/logo/f_logo.png"
-										alt="img">
-								</h2>
-							</div>
-							<div class="f-contact">
-								<ul>
-									<li>
-										<h6>Call Us</h6> <span>+123 456 7890</span>
-									</li>
-									<li>
-										<h6>Our Address</h6> <span>92 Bowery St, New York, NY</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
 		<div class="copyright-wrap">
 			<div class="container">
 				<div class="row align-items-center c-mid">
@@ -302,5 +211,120 @@
 		src="/usr/v1/template/petxon/assets/js/jquery.magnific-popup.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/element-in-view.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/main.js"></script>
+
+	<!-- Daum 우편번호 api -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- KAKAO MAP API services 라이브러리 불러오기 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4e7a4c61c5d2d5eec0befbefd5116181&libraries=services"></script>
+
+
+	<script>
+	    // 카카오 지도 객체 생성
+	    var geocoder = new kakao.maps.services.Geocoder();
+	
+	    // Daum 우편번호 API
+	    function sample6_execDaumPostcode(inputId) {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 주소가 선택되었을 때
+	                document.getElementById(inputId).value = data.address;
+	            }
+	        }).open();
+	    }
+	    
+
+	
+	    // 중간 장소 찾기 버튼 클릭 이벤트
+	    document.getElementById('find-midpoint-btn').addEventListener('click', function() {
+	        var address1 = document.getElementById('address1').value;
+	        var address2 = document.getElementById('address2').value;
+	
+	        if (!address1 || !address2) {
+	            alert('두 장소를 모두 입력해주세요.');
+	            return;
+	        }
+	
+	        console.log('출발지:', address1);
+	        console.log('도착지:', address2);
+	
+	        // 주소 -> 위도, 경도로 변환
+	        function geocodeAddress(address, callback) {
+	            geocoder.addressSearch(address, function(result, status) {
+	                if (status === kakao.maps.services.Status.OK) {
+	                    callback(result[0].x, result[0].y); // 경도(x), 위도(y)
+	                } else {
+	                    alert("주소를 찾을 수 없습니다.");
+	                }
+	            });
+	        }
+	
+	        // 두 주소의 좌표 구하기
+	        geocodeAddress(address1, function(x1, y1) {
+	            geocodeAddress(address2, function(x2, y2) {
+	                // 중간 지점 계산
+	                var midpointX = (parseFloat(x1) + parseFloat(x2)) / 2;
+	                var midpointY = (parseFloat(y1) + parseFloat(y2)) / 2;
+	
+	                // 지도 생성
+	                var mapContainer = document.getElementById('map'), 
+	                    mapOption = { 
+	                        center: new kakao.maps.LatLng(midpointY, midpointX), 
+	                        level: 7
+	                    }; 
+	                var map = new kakao.maps.Map(mapContainer, mapOption);
+	
+	                // 마커와 텍스트 추가 함수
+	                function addMarkerWithText(map, position, text) {
+	                    // 마커 추가
+	                    var marker = new kakao.maps.Marker({
+	                        position: position,
+	                        map: map
+	                    });
+	
+	                    // 텍스트(정보창) 추가
+	                    var infowindow = new kakao.maps.InfoWindow({
+	                        position: position,
+	                        content: `<div style="padding:5px; font-size:14px;">${text}</div>`
+	                    });
+	
+	                    // 정보창 열기
+	                    infowindow.open(map, marker);
+	                }
+	
+	                // 출발지 마커와 텍스트 추가
+	                var startPosition = new kakao.maps.LatLng(y1, x1);
+	                addMarkerWithText(map, startPosition, "출발지");
+	                console.log('출발지 좌표:', startPosition);
+	                
+	
+	                // 도착지 마커와 텍스트 추가
+	                var endPosition = new kakao.maps.LatLng(y2, x2);
+	                addMarkerWithText(map, endPosition, "도착지");
+	                console.log('도착지 좌표:', endPosition);
+	
+	                // 중간 지점 마커와 텍스트 추가
+	                var midpointPosition = new kakao.maps.LatLng(midpointY, midpointX);
+	                addMarkerWithText(map, midpointPosition, "중간 지점");
+	                console.log('중간지점 좌표:', midpointPosition);
+	                
+	                // 최종 목적지인 중간지점에서 가장 가까운 지하철역 위치 마커와 텍스트 추가
+	                var finalmidpointPosition = new kakao.maps.LatLng(finalmidpointY, finalmidpointX);
+	                addMarkerWithText(map, finalmidpointPosition, "최종장소");
+	                console.log('최종장소 좌표:', finalmidpointPosition);             
+	                
+	                // 지도 중심을 중간 지점으로 설정
+	                map.setCenter(midpointPosition);
+	            });
+	        });
+	    });
+
+
+
+	</script>
+
+
+
+
 </body>
 </html>

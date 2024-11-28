@@ -44,8 +44,14 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws
 	implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.6.RELEASE'
 	
+	// Kakao Maps API 연동
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-rest
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '3.4.0'
+	
+	
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
