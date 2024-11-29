@@ -13,6 +13,7 @@ public class BaMeetPointService {
 	// meetpointselectOne
 	public BaMeetPointDto meetpointselectOne(BaMeetPointDto baMeetPointDto) {
 		
+		// DTO 전달값
 		System.out.println("DTO 전달값 Latitude: " + baMeetPointDto.getMidpointLatitude());
 		System.out.println("DTO 전달값 Longitude: " + baMeetPointDto.getMidpointLongitude());
 		
