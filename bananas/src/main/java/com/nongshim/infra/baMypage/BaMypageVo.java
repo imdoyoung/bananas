@@ -4,8 +4,6 @@ import com.nongshim.common.Constants;
 
 public class BaMypageVo {
 	
-	// 효빈아 받아라
-	
 	// paging 
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 개수

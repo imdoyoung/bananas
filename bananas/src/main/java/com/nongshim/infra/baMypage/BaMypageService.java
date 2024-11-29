@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class BaMypageService {
 	
-	// 효빈아 받아라
-	
 	@Autowired
 	BaMypageDao baMypageDao;
 	

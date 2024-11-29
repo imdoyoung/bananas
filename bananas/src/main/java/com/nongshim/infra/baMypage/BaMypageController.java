@@ -17,8 +17,6 @@ import com.nongshim.infra.baMember.BaMemberService;
 @Controller
 public class BaMypageController {  
 	
-	// 효빈아 받아라
-	
 	@Autowired
 	BaMypageService baMypageService;
 	
