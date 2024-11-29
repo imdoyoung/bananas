@@ -26,6 +26,8 @@
 		    c.bameDelNy
 		FROM
 			ba_member c
+		LEFT JOIN ba_petprofile d
+			ON c.bameSeq = d.BA_Member_bameSeq
 		ORDER BY
 			c.bameSeq desc
 	</select>
