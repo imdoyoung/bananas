@@ -37,7 +37,7 @@ public class BaMeetPointController {
 	    	System.out.println("rtMPDto에 담았다" + rtMPDto.getBameStationName());
 	    	
 	    	rtMap.put("rt", "success");
-	    	System.out.println("rtMPDto에 담아지는거 성공중");
+	    	System.out.println("rtMPDto에 담아지는거  성공중");
 	    	
 	        rtMap.put("stationName", rtMPDto.getBameStationName());
 	        rtMap.put("latitude", rtMPDto.getBameLatitude());
