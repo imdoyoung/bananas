@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nongshim.infra.baMember.BaMemberService;
 
 @Controller
-public class BaMypageController {  
+public class BaMypageController {     
 	
 	@Autowired
 	BaMypageService baMypageService;
