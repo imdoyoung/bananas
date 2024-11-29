@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BaMypageDao {
 	
+	// 효빈아 받아라
+	
 	// 이용자 마이페이지
 	
 	// 시터 리뷰 리스트

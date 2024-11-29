@@ -6,6 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class BaMypageDto {
 	
+	// 효빈아 받아라
+	
 	// 리뷰
 	private String bareSeq;
 	private Integer bareType; 
