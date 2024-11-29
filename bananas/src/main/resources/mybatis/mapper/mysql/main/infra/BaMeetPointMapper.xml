@@ -5,7 +5,7 @@
 
 	<resultMap type="com.nongshim.infra.baMeetPoint.BaMeetPointDto" id="resultMapObj"></resultMap>
 
-	<select id="meetpointselectlist" resultMap="resultMapObj">
+	<select id="meetpointselectOne" resultMap="resultMapObj">
 	    SELECT 
 	        bameSeq, 
 	        bameStationName, 
