@@ -324,6 +324,10 @@
 					    },
 					    success: function(response) {
 					        console.log('중간 지점 좌표가 서버에 전달되었습니다:', response);
+					        console.log('전송 데이터:', {
+					            midpointLongitude: midpointX,
+					            midpointLatitude: midpointY
+					        });
 					        
 					     	// 성공적으로 받은 데이터로 HTML 업데이트
 					        if (response.rt == "success") {

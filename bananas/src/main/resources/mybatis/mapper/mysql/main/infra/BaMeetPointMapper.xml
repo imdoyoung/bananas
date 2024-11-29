@@ -5,7 +5,7 @@
 
 	<resultMap type="com.nongshim.infra.baMeetPoint.BaMeetPointDto" id="resultMapObj"></resultMap>
 
-	<select id="meetpointselectOne" resultMap="resultMapObj">
+	<select id="meetpointselectOne" resultMap="resultMapObj" parameterType="com.nongshim.infra.baMeetPoint.BaMeetPointDto">
 	    SELECT 
 	        bameSeq, 
 	        bameStationName, 
@@ -19,9 +19,9 @@
 	    FROM 
 	        ba_meetpoint
 	    WHERE 
-	        bameUseNy = 1 	<!-- 사용 가능한 역만 조회 -->
+	        bameUseNy = 1 	
 	    HAVING 
-	        distance = 1 	<!-- 반경 1km 이내 --> 
+	        distance = 5 	
 	    ORDER BY 
 	        distance
 	    LIMIT 1

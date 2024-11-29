@@ -28,6 +28,7 @@ public class BaMeetPointController {
 	public Map<String, Object> baMeetPointProc(BaMeetPointDto baMeetPointDto) {
 		
 	    Map<String, Object> rtMap = new HashMap<>();
+	    
 	    System.out.println("rtMap 돌았다.");
 	    
 	    // 서비스에서 가장 가까운 역 조회
@@ -35,6 +36,8 @@ public class BaMeetPointController {
 
 	    if (rtMPDto != null) {
 	    	System.out.println("rtMPDto에 담았다" + rtMPDto.getBameStationName());
+	    	System.out.println("Latitude: " + baMeetPointDto.getMidpointLatitude());
+	    	System.out.println("Longitude: " + baMeetPointDto.getMidpointLongitude());
 	    	
 	    	rtMap.put("rt", "success");
 	    	System.out.println("rtMPDto에 담아지는거 성공중");

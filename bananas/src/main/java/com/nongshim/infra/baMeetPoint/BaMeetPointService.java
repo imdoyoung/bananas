@@ -12,7 +12,19 @@ public class BaMeetPointService {
 	
 	// meetpointselectOne
 	public BaMeetPointDto meetpointselectOne(BaMeetPointDto baMeetPointDto) {
-		return baMeetPointDao.meetpointselectOne(baMeetPointDto);
+		
+		System.out.println("DTO 전달값 Latitude: " + baMeetPointDto.getMidpointLatitude());
+		System.out.println("DTO 전달값 Longitude: " + baMeetPointDto.getMidpointLongitude());
+		
+		System.out.println("DAO 호출 전: " + baMeetPointDto);
+		
+		BaMeetPointDto result = baMeetPointDao.meetpointselectOne(baMeetPointDto);
+		
+		System.out.println("DAO 반환값: " + result);
+		
+//		return baMeetPointDao.meetpointselectOne(baMeetPointDto);
+		
+		return result;
 	};
 
 }
