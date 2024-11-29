@@ -8,14 +8,14 @@
 	<title>Petxon - Pet Care & Pet Shop HTML Template</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+	<link rel="shortcut icon" type="image/x-icon" href="/usr/v1/template/petxon/assets/img/favicon.ico">
 	<!-- Place favicon.ico in the root directory -->
 
 	<!-- CSS here -->
 	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/fonts/materialdesign/css/materialdesignicons.css">
-	<link rel="stylesheet"
-		href="/usr/v1/template/NailForest/assets/fonts/materialdesign/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/fonts/materialdesign/css/materialdesignicons.min.css">
 	<link rel="stylesheet" href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
+	
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/animate.min.css">
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/magnific-popup.css">
@@ -28,9 +28,9 @@
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/default.css">
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/style.css">
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/responsive.css">
-	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/bootstrap-icons.css">
-	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/index.html">
-	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/css/theme.min.css">
+	
+<!-- 	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/bootstrap-icons.css"> -->
+<!-- 	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/index.html"> -->
 	
 	<link href="/usr/v1/template/NailForest/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
 	    <link href="/usr/v1/template/NailForest/assets/libs/animate.css/animate.min.css" rel="stylesheet">
@@ -38,8 +38,11 @@
 	    <link href="/usr/v1/template/NailForest/assets/libs/uppy/dist/uppy.min.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/litepicker/dist/css/litepicker.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
-	    <link href="/usr/v1/template/NailForest/assets/libs/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<!-- 	    <link href="/usr/v1/template/NailForest/assets/libs/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
 	
+ 	
+</head>
+
 	<style>
 		/* 별점 컨테이너 */
 		.rating {
@@ -64,8 +67,95 @@
 		#selectedRating {
 			font-weight: bold;
 		}
+		/* shop_detail 페이지 메뉴 checkbox CSS start */
+		/* 기본 스타일 */
+		.custom-checkbox {
+		    color: #6c757d;
+		    background-color: #fff;
+		    border: 2px solid #F69946; 
+		    padding: 0px;
+		    cursor: pointer;
+		    display: flex;
+		    flex-direction: column;
+		    border-radius: 4px; /* 선택 사항: 모서리 둥글게 하기 */
+		    transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* 부드러운 전환 효과 */
+		    box-sizing: border-box; /* padding과 border를 포함하여 전체 크기를 계산합니다 */
+		}
+		 
+		.content {
+		    padding: 10px;
+		    border-radius: 4px; /* 선택 사항: 모서리 둥글게 하기 */
+		}
+		
+		
+		/* 체크박스 숨기기 */
+		.custom-checkbox input[type="checkbox"] {
+		    display: none;
+		}
+		
+		/* 체크박스가 선택된 상태와 마우스 오버 상태에서 label 전체 스타일 변경 */
+		.custom-checkbox:hover,
+		.custom-checkbox input[type="checkbox"]:checked {
+		    color: #000;
+		    background-color: #ffdec1; /* 배경색을 label에 직접 적용 */
+		    border-color: #13653f;
+		    border: 2px solid #F69946;
+		}
+		
+		/* 체크박스가 선택된 상태에서 .content 요소 스타일 */
+		.custom-checkbox input[type="checkbox"]:checked ~ .content {
+		    color: #000;
+		    background-color: #ffdec1; /* 배경색을 label에 직접 적용 */
+		    border-color: #13653f;
+		    font-weight: bolder;
+		}
+		
+		/* p 태그 스타일 - 내용 왼쪽 정렬 */
+		.custom-checkbox .align-left {
+		    text-align: left;
+		    margin: 0;
+		    display: flex;
+		    flex-direction: column;
+		}
+		
+		/* 가격과 버튼 그룹을 같은 라인에 배치 */
+		.custom-checkbox .price-and-buttons {
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    margin-bottom: 0; /* 불필요한 여백 제거 */
+		}
+		
+		/* 가격 스타일 */
+		.custom-checkbox .price {
+		    text-align: left;
+		    display: inline-block;
+		    margin-right: auto;
+		}
+		
+		/* 수량 조절 버튼 */
+		.custom-checkbox .btn-group {
+		    display: flex;
+		    align-items: center;
+		    gap: 5px;
+		    margin-bottom: 0; /* 버튼 아래 불필요한 여백 제거 */
+		}
+		
+		.sidebar-widget a{
+			color:#fff;
+		}
+		
+		.sidebar-widget .widget a:hover {
+			padding-right:10px;
+		}
+		
+		.sidebar-widget .widget a {
+			font-size: 18px;
+		}
+		
+		
+		
 	</style>
-</head>
 
 <body>
 	<!--  Preloader  -->
@@ -73,8 +163,9 @@
 		<div id="loading"> </div>
 	</div>
 	<!--  Preloader end  -->
+	
 	<!-- header -->
-	<div th:replace="~{/usr/v1/infra/common/header :: header}"></div>
+	<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
 	<!-- header-end -->
 	
 	<!-- offcanvas-area -->
@@ -132,7 +223,7 @@
 		</div>
 		<!-- /search-popup -->
 		<!-- breadcrumb-area -->
-		<section class="breadcrumb-area d-flex align-items-center" style="background-image:url(img/bg/bdrc-bg.jpg);">
+		<section class="breadcrumb-area d-flex align-items-center" style="background-image:url(/usr/v1/template/petxon/assets/img/bg/bdrc-bg.jpg);">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-xl-12 col-lg-12">
@@ -184,7 +275,7 @@
 									</div>
 								</form>
 							</div>
-							<div class="posts_navigation pt-35 pb-35">
+							<div class="posts_navigation pt-35 pb-60">
 								<div class="row align-items-center">
 									<h5>시터경력</h5>
 									<p id="basiCareer" th:text="${item?.basiCareer}"></p>
@@ -193,7 +284,7 @@
 							<div class="comment__wrap pb-45">
 								<form name="form" method="post" action="/usr/v1/infra/baSitter/baUsrSitterDetails">
 									<div class="comment__wrap-title">
-										<h5>review</h5>
+										<h5 class="pt-30">Review</h5>
 									</div>
 									<div class="single__comment mb-35" th:each="relist:${relist}">
 										<div class="comments-avatar">
@@ -300,9 +391,9 @@
 									  <form name="form" id="form" method="post" action="/usr/v1/infra/baSitter/baUsrSitterInst">
 										<div class="mb-3">
 											<div class="input-group mb-3">
-												<input type="text" class="form-control" id="boDate" name="boDate" placeholder="예약날짜" autocomplete="off"> <span class="input-group-text bg-transparent"> <i class="mdi mdi-calendar-month-outline"></i></span>
+												<input type="text" class="form-control" id="boDate" name="boDate" placeholder="예약날짜" autocomplete="off" style="cursor: pointer;"> <span class="input-group-text bg-transparent"> <i class="mdi mdi-calendar-month-outline"></i></span>
 											</div>
-										   <input type="text" class="form-control" id="boTime" name="boTime" placeholder="예약시간" autocomplete="off">
+										   <input type="text" class="form-control" id="boTime" name="boTime" placeholder="예약시간"  style="cursor: pointer;" autocomplete="off">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Option</label>
@@ -314,7 +405,7 @@
 															onchange="updateTotalPrice()">
 														<div class="content">
 															<p class="align-left">
-																<strong><span th:text="${oplist.baopName}">메뉴이름</span></strong>
+																<span th:text="${oplist.baopName}">메뉴이름</span>
 																<!--<span th:text="${oplist.meDesc}">메뉴설명</span>-->
 															</p>
 															<div class="price-and-buttons">
@@ -340,11 +431,11 @@
 												</div>
 											</div>
 											<div class="mt-3 d-grid">
-												<a href="" class="btn text-center"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo"> 예약하기</a>
+												<a href="" class="btn text-center"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo">예약하기</a>
 											</div>
-										</form>
+										</form>   
 									</div>
-								</div>
+								</div>  
 							</section>
 						</aside>
 					</div>
@@ -357,7 +448,7 @@
 	<!-- main-area-end -->
 	<!-- footer -->
 	<footer class="footer-bg footer-p"
-		style="background-color: #40332E; background-image: url(img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
+		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
 		<div class="footer-top  pt-120 pb-90">
 			<div class="container">
 				<div class="row justify-content-between">
@@ -382,12 +473,12 @@
 							</div>
 							<div class="f-insta">
 								<ul>
-									<li><a href="#"><img src="img/instagram/f-galler-01.png" alt="img"></a></li>
-									<li><a href="#"><img src="img/instagram/f-galler-02.png" alt="img"></a></li>
-									<li><a href="#"><img src="img/instagram/f-galler-03.png" alt="img"></a></li>
-									<li><a href="#"><img src="img/instagram/f-galler-04.png" alt="img"></a></li>
-									<li><a href="#"><img src="img/instagram/f-galler-05.png" alt="img"></a></li>
-									<li><a href="#"><img src="img/instagram/f-galler-06.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png" alt="img"></a></li>
+									<li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png" alt="img"></a></li>
 								</ul>
 							</div>
 						</div>
@@ -596,6 +687,7 @@
 			// 총 금액을 boTotalPrice에 표시
 			document.getElementById('baboTotalPrice').textContent = total.toLocaleString(); // 숫자 형식화 (콤마 추가)
 		}
+		
 	</script>
 
 	<script src="/usr/v1/js/fullcalendar/dist/index.global.min.js"></script>
