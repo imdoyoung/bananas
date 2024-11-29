@@ -26,27 +26,6 @@
 </head>
 
 <style>
-  .upload-box {
-    /* width: 150px;
-    height: 150px; */
-    border: 2px dashed #ccc;
-    color: #ccc;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .upload-box:hover {
-    border-color: #333;
-    color: #333;
-  }
-
-  #fileInput {
-    display: none;
-  }
-  
   /* 캘린더 */
   :root { 
 /*  	  --fc-border-color: #848484;  */
@@ -71,204 +50,9 @@
   </div>
 
 
-  <div class="header-margin"></div>
-  <header data-add-bg="" class="header -dashboard bg-white js-header" data-x="header" data-x-toggle="is-menu-opened">
-    <div data-anim="fade" class="header__container px-30 sm:px-20">
-      <div class="-left-side">
-        <a href="#!" class="header-logo" data-x="header-logo" data-x-toggle="is-logo-dark">
-          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
-          <img src="/usr/v1/template/andTour/assets/img/general/logo.png" alt="logo icon">
-        </a>
-      </div>
-
-      <div class="row justify-between items-center pl-60 lg:pl-20">
-        <div class="col-auto">
-          <div class="d-flex items-center">
-            <button data-x-click="dashboard">
-              <i class="icon-menu-2 text-20"></i>
-            </button>
-
-            <div class="single-field relative d-flex items-center md:d-none ml-30">
-              <input class="pl-50 border-light text-dark-1 h-50 rounded-8" type="email" placeholder="Search">
-              <button class="absolute d-flex items-center h-full">
-                <i class="icon-search text-20 px-15 text-dark-1"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-auto">
-          <div class="d-flex items-center">
-            <div class="row items-center x-gap-5 y-gap-20 pl-20 lg:d-none">
-              <div class="col-auto">
-                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
-                  <i class="icon-email-2 text-20"></i>
-                </button>
-              </div>
-
-              <div class="col-auto">
-                <button class="button -blue-1-05 size-50 rounded-22 flex-center">
-                  <i class="icon-notification text-20"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="pl-15">
-              <img src="/usr/v1/template/andTour/assets/img/avatars/3.png" alt="/usr/v1/template/andTour/assets/image" class="size-50 rounded-22 object-cover">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-
   <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
-    <div class="dashboard__sidebar bg-white scroll-bar-1">
-      <div class="sidebar -dashboard">
-        <div class="sidebar__item">
-          <div class="sidebar__button -is-active">
-            <a href="0_sitterDashboard.html" class="d-flex items-center text-20 lh-1 fw-500">
-              <!-- <i class="fas fa-border-all mr-15"></i> -->
-              <i class="fas fa-user-circle  mr-15"></i>
-              마이페이지(시터)
-            </a>
-          </div>
-        </div>
-        <div class="sidebar__item">
-          <div class="sidebar__button">
-            <a href="0_sitterReview.html" class="d-flex items-center text-20 lh-1 fw-500">
-              <i class="fas fa-calendar-check mr-15"></i>
-              나의 리뷰
-            </a>
-          </div>
-        </div>
-
-        <!-- <div class="sidebar__item ">
-          <div class="accordion -db-sidebar js-accordion">
-            <div class="accordion__item">
-              <div class="accordion__button">
-                <div class="sidebar__button col-12 d-flex items-center justify-between">
-                  <div class="d-flex items-center text-15 lh-1 fw-500">
-                    <i class="fas fa-building mr-15"></i>
-                    Manage Hotel
-                  </div>
-                  <div class="icon-chevron-sm-down text-7"></div>
-                </div>
-              </div>
-
-              <div class="accordion__content">
-                <ul class="list-disc pb-5 pl-40">
-
-                  <li>
-                    <a href="db-vendor-hotels.html" class="text-15">All hotels</a>
-                  </li>
-
-                  <li>
-                    <a href="db-vendor-add-hotel.html" class="text-15">Add hotel</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="sidebar__item ">
-          <div class="accordion -db-sidebar js-accordion">
-            <div class="accordion__item">
-              <div class="accordion__button">
-                <div class="sidebar__button col-12 d-flex items-center justify-between">
-                  <div class="d-flex items-center text-15 lh-1 fw-500">
-                    <i class="fas fa-flag  mr-15"></i>
-                    Manage tour
-                  </div>
-                  <div class="icon-chevron-sm-down text-7"></div>
-                </div>
-              </div>
-
-              <div class="accordion__content">
-                <ul class="list-disc pb-5 pl-40">
-
-                  <li>
-                    <a href="db-vendor-tour.html" class="text-15">All tour</a>
-                  </li>
-
-                  <li>
-                    <a href="db-vendor-add-tour.html" class="text-15">Add tour</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="sidebar__item ">
-          <div class="accordion -db-sidebar js-accordion">
-            <div class="accordion__item">
-              <div class="accordion__button">
-                <div class="sidebar__button col-12 d-flex items-center justify-between">
-                  <div class="d-flex items-center text-15 lh-1 fw-500">
-                    <i class="fas fa-bus-alt mr-15"></i>
-                    Manage bus
-                  </div>
-                  <div class="icon-chevron-sm-down text-7"></div>
-                </div>
-              </div>
-
-              <div class="accordion__content">
-                <ul class="list-disc pb-5 pl-40">
-
-                  <li>
-                    <a href="db-vendor-bus.html" class="text-15">All bus</a>
-                  </li>
-
-                  <li>
-                    <a href="db-vendor-add-bus.html" class="text-15">Add bus</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <div class="sidebar__item">
-          <div class="sidebar__button">
-            <a href="0_sitterReservation.html" class="d-flex items-center text-20 lh-1 fw-500">
-              <!-- <i class="fas fa-cart-plus mr-15"></i> -->
-              <i class="fas fa-wallet mr-15"></i>
-              나의 예약
-            </a>
-          </div>
-        </div>
-
-        <!-- <div class="sidebar__item">
-          <div class="sidebar__button ">
-            <a href="db-notification.html" class="d-flex items-center text-15 lh-1 fw-500">
-              <i class="fas fa-wallet mr-15"></i>
-              Notification
-            </a>
-          </div>
-        </div> -->
-        <!-- <div class="sidebar__item">
-          <div class="sidebar__button ">
-            <a href="db-settings.html" class="d-flex items-center text-15 lh-1 fw-500">
-              <i class="fas fa-cog mr-15"></i>
-              Settings
-            </a>
-          </div>
-        </div> -->
-
-        <!-- <div class="sidebar__item">
-          <div class="sidebar__button ">
-            <a href="#" class="d-flex items-center text-15 lh-1 fw-500">
-              <i class="fas fa-sign-out-alt mr-15"></i>
-              Logout
-            </a>
-          </div>
-        </div> -->
-      </div>
-    </div>
-
+  	<div th:replace="~{usr/v1/infra/common/sitterPageSidebar :: aside}"></div> 
+  
     <div class="dashboard__main">
       <div class="dashboard__content">
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
@@ -384,65 +168,65 @@
           </div> -->
 
 
-          <div class="cruise_search_item">
-            <div class="row">
-              <div class="col-lg-5"> <!-- col-lg-3 -->
-                <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox">
-                  사진 첨부하기
-                  <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)">
-                </div>
-              </div>
+<!--           <div class="cruise_search_item"> -->
+<!--             <div class="row"> -->
+<!--               <div class="col-lg-5"> col-lg-3 -->
+<!--                 <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox"> -->
+<!--                   사진 첨부하기 -->
+<!--                   <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)"> -->
+<!--                 </div> -->
+<!--               </div> -->
 
-              <div class="col-lg-7"> <!-- col-lg-8 -->
-                <div class="cruise_item_inner_content">
-                  <div class="cruise_content_top_wrapper">
-                    <div class="cruise_content_top_left">
-                      <div class="contact-fields">
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="펫시터 이름" required>
-                        </div>
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="반려동물 이름" required>
-                        </div>
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="방문날짜" required>
-                        </div>
-                      </div>
-                      <div class="contact-fields">
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="돌봄시간" required>
-                        </div>
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="돌봄서비스" required>
-                        </div>
-                      </div>
-                      <div class="contact-fields">
-                        <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" name="firstn" placeholder="To.00보호자님" required>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<!--               <div class="col-lg-7"> col-lg-8 -->
+<!--                 <div class="cruise_item_inner_content"> -->
+<!--                   <div class="cruise_content_top_wrapper"> -->
+<!--                     <div class="cruise_content_top_left"> -->
+<!--                       <div class="contact-fields"> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="펫시터 이름" required> -->
+<!--                         </div> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="반려동물 이름" required> -->
+<!--                         </div> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="방문날짜" required> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                       <div class="contact-fields"> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="돌봄시간" required> -->
+<!--                         </div> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="돌봄서비스" required> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                       <div class="contact-fields"> -->
+<!--                         <div class="contact-field p-relative c-name mb-20"> -->
+<!--                           <input type="text" id="firstn" name="firstn" placeholder="To.00보호자님" required> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                   </div> -->
 
-                  <div class="cruise_content_middel_wrapper">
-                    <div class="cruise_content_middel_left">
-                      <div class="form-input">
-                        <textarea required rows="7" cols="100"
-                          style="border-style:double;background:#fffbf8;"></textarea>
-                      </div>
-                    </div>
-                  </div>
+<!--                   <div class="cruise_content_middel_wrapper"> -->
+<!--                     <div class="cruise_content_middel_left"> -->
+<!--                       <div class="form-input"> -->
+<!--                         <textarea required rows="7" cols="100" -->
+<!--                           style="border-style:double;background:#fffbf8;"></textarea> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                   </div> -->
 
-                  <div class="cruise_content_bottom_wrapper" id="noticeBtn">
-                    <div class="cruise_content_bottom_right">
-                      <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">알림장 등록</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<!--                   <div class="cruise_content_bottom_wrapper" id="noticeBtn"> -->
+<!--                     <div class="cruise_content_bottom_right"> -->
+<!--                       <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">알림장 등록</a> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--                 </div> -->
+<!--               </div> -->
 
-            </div>
-          </div>
+<!--             </div> -->
+<!--           </div> -->
 		
 		  <!-- 캘린더 -->
           <div class="cruise_search_item" id="calendar" style="width:80%;"></div>
@@ -561,12 +345,13 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
-    <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script>
-
-    <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
-    <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+    <!-- JavaScript -->
+<!--   <script src="../../../cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script> -->
+<!--   <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script> -->
+  <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
+  <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
+  <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
     
 <!--     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script> -->
 	<script src='/usr/v1/js/fullcalendar/dist/index.global.js'></script>
@@ -574,32 +359,6 @@
 	
 	
     <script>
-      // 사진 첨부
-      function handleFileUpload(event) {
-        const file = event.target.files[0];
-        const imageBox = document.getElementById('imageBox');
-
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            // div 부분을 사진으로 바꾸기
-            imageBox.style.backgroundImage = 'url(' + e.target.result + ')';
-            imageBox.textContent = '';  // '사진 첨부' 텍스트 지우기
-          };
-          reader.readAsDataURL(file);
-        }
-      }
-      
-      // 캘린더
-//       document.addEventListener('DOMContentLoaded', function() {
-//          var calendarEl = document.getElementById('calendar');
-//          var calendar = new FullCalendar.Calendar(calendarEl, {
-//          initialView: 'dayGridMonth'
-//         });
-//         calendar.render();
-//       });
-      
-      
       document.addEventListener('DOMContentLoaded', function() {
     	    var calendarEl = document.getElementById('calendar');
 

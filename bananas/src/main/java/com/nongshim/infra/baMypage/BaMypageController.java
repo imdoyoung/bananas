@@ -86,7 +86,10 @@ public class BaMypageController {
 	}
 	  
 	
+	
 	//--
+	
+	
 	
 	// 시터 마이페이지 (메인)
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMypage")
@@ -131,12 +134,10 @@ public class BaMypageController {
 //    }
 	
 	
-	// 페이징 없는 나의 예약 리스트
+	// 페이징 없는 나의 예약 리스트 
     @RequestMapping(value="/usr/v1/infra/mypage/baSitterBookingEvents")
     @ResponseBody // JSON 반환
     public List<Map<String, Object>> getSitterBookingEvents(@ModelAttribute BaMypageVo baMypageVo) {
-    	
-    	System.out.println();
     	
     	 // 전체 예약 리스트 가져오기
         List<BaMypageDto> bookingList = baMypageService.BaMypageBookingSelectListAll();
@@ -161,6 +162,12 @@ public class BaMypageController {
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMyReview")
 	public String baSitterMyReview() {
 		return "usr/v1/infra/mypage/baSitterMyReview";
+	}
+	
+	// 시터 마이페이지(알림장 쓰기)
+	@RequestMapping(value="/usr/v1/infra/mypage/baSitterNotice")
+	public String baSitterNotice() {
+		return "usr/v1/infra/mypage/baSitterNotice";
 	}
 	
 	//--
