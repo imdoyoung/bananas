@@ -14,7 +14,7 @@ public class BaMemberController {
 	@RequestMapping(value="/usr/v1/infra/baMember/baMemberUsrMform")
 	public String baMemberUsrMform(BaMemberDto baMemberDto, Model model) {
 		model.addAttribute("memberItem", baMemberService.memberSelectOne(baMemberDto));
-		return "/usr/v1/infra/baMember/baMemberUsrMform";
+		return "usr/v1/infra/baMember/baMemberUsrMform";
 	}
 	
 	@RequestMapping(value="/usr/v1/infra/baMember/baMemberUsrInst")

@@ -17,14 +17,14 @@ public class BaUsrSitterController {
 	//시터 입력창
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterForm")
 	public String baUsrSitterForm() {
-		return "/usr/v1/infra/baSitter/baUsrSitterForm";
+		return "usr/v1/infra/baSitter/baUsrSitterForm";
 	}
 	//시터 리스트
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterList")
 	public String baUsrSitterList(Model model) {
 			model.addAttribute("list", baUsrSitterService.selectList());
 			
-		return "/usr/v1/infra/baSitter/baUsrSitterList";
+		return "usr/v1/infra/baSitter/baUsrSitterList";
 	}
 	//시터 insert
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterInst")
@@ -41,7 +41,7 @@ public class BaUsrSitterController {
 		model.addAttribute("oplist", baUsrSitterService.opSelectList());
 		
 		
-		return "/usr/v1/infra/baSitter/baUsrSitterDetails";
+		return "usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
 	
 	//review insert
@@ -60,7 +60,7 @@ public class BaUsrSitterController {
 	//시터 예약하기
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterReservate")
 	public String baUsrSitterReservate() {
-		return "/usr/v1/infra/baSitter/baUsrSitterReservate";
+		return "usr/v1/infra/baSitter/baUsrSitterReservate";
 	}
 	
 	

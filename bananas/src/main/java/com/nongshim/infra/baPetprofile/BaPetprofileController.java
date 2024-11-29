@@ -13,13 +13,13 @@ public class BaPetprofileController {
 	
 	@RequestMapping(value="/usr/v1/infra/baPetprofile/baPetprofileUsrForm")
 	public String baPetprofileUsrForm() {
-		return "/usr/v1/infra/baPetprofile/baPetprofileUsrForm";
+		return "usr/v1/infra/baPetprofile/baPetprofileUsrForm";
 	}
 
 	@RequestMapping(value="/usr/v1/infra/baPetprofile/baPetprofileUsrMform")
 	public String baPetprofileUsrMform(BaPetprofileDto baPetprofileDto, Model model) {
 		model.addAttribute("PetItem", baPetprofileService.PetSelectOne(baPetprofileDto));
-		return "/usr/v1/infra/baPetprofile/baPetprofileUsrMform";
+		return "usr/v1/infra/baPetprofile/baPetprofileUsrMform";
 	}
 	
 	@RequestMapping(value="/usr/v1/infra/baPetprofile/baPetprofileUsrInst")

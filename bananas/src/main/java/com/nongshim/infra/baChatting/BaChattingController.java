@@ -9,7 +9,7 @@ public class BaChattingController {
 	// 채팅
 	@RequestMapping(value="/usr/v1/infra/chatting/baChatting")
 	public String baChatting() {
-		return "/usr/v1/infra/chatting/baChatting";
+		return "usr/v1/infra/chatting/baChatting";
 	}
 
 }

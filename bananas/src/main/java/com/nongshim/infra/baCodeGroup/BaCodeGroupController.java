@@ -45,14 +45,14 @@ public class BaCodeGroupController {
 //			model.addAttribute("vo", codeGroupVo);
 		}
 		
-		return "/xdm/v1/infra/baCodeGroup/baCodeGroupXdmList";
+		return "xdm/v1/infra/baCodeGroup/baCodeGroupXdmList";
 	}
 	
 	// Form
 	@RequestMapping(value="/xdm/v1/infra/baCodeGroup/baCodeGroupXdmForm")
 	public String baCodeGroupXdmForm() {
 		
-		return "/xdm/v1/infra/baCodeGroup/baCodeGroupXdmForm";
+		return "xdm/v1/infra/baCodeGroup/baCodeGroupXdmForm";
 	}
 	
 	// INSERT
@@ -71,7 +71,7 @@ public class BaCodeGroupController {
 	@RequestMapping(value="/xdm/v1/infra/baCodeGroup/baCodeGroupXdmMfom")
 	public String baCodeGroupXdmMfom(BaCodeGroupDto baCodeGroupDto, Model model) {
 		model.addAttribute("item", baCodeGroupService.selectOne(baCodeGroupDto));
-		return "/xdm/v1/infra/baCodeGroup/baCodeGroupXdmMfom";
+		return "xdm/v1/infra/baCodeGroup/baCodeGroupXdmMfom";
 	}
 	
 	//UPDATE

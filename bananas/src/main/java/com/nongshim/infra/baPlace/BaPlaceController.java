@@ -67,12 +67,12 @@ public class BaPlaceController {
 //		System.out.println("node.get(\"header\").get(\"resultMsg\").asText(): " + node.get("header").get("resultMsg").asText());
 //		System.out.println("node.get(\"header\").get(\"resultMsg\").asText(): " + node.get("body").get("items").get(0).get("KIT_PROD_QTY").asText());
 		
-		return "/usr/v1/infra/baPlace/baPlaceList";
+		return "usr/v1/infra/baPlace/baPlaceList";
 	}
 	
 	@RequestMapping(value="/usr/v1/infra/baPlace/baPlaceDetailList")
 	public String baPlaceDetailList() {
-		return "/usr/v1/infra/baPlace/baPlaceDetailList";
+		return "usr/v1/infra/baPlace/baPlaceDetailList";
 	}
 	
 	

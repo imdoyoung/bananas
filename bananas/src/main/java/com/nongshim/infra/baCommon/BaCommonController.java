@@ -25,14 +25,14 @@ public class BaCommonController {
 	// INDEX
 	@RequestMapping(value = "/usr/v1/infra/common/baUsrIndex")
 	public String baUsrIndex() {
-		return "/usr/v1/infra/common/baUsrIndex";
+		return "usr/v1/infra/common/baUsrIndex";
 	}
 	
 	// 사용자 로그인
 	// SIGNIN
 	@RequestMapping(value = "/usr/v1/infra/common/baUsrSignIn")
 	public String baUsrSignIn() {
-		return "/usr/v1/infra/common/baUsrSignIn";
+		return "usr/v1/infra/common/baUsrSignIn";
 	}
 	
 	// 사용자 로그인 세션유지
@@ -86,7 +86,7 @@ public class BaCommonController {
 	@RequestMapping(value = "/usr/v1/infra/common/baUsrSignUp")
 	public String baUsrSignUp(BaMemberDto baMemberDto) {
 		baMemberService.memberInsert(baMemberDto);
-		return "/usr/v1/infra/common/baUsrSignUp";
+		return "usr/v1/infra/common/baUsrSignUp";
 	}
 	
 	
@@ -94,7 +94,7 @@ public class BaCommonController {
 	// INDEX
 	@RequestMapping(value = "/xdm/v1/infra/common/baXdmIndex")
 	public String baXdmIndex() {
-		return "/xdm/v1/infra/common/baXdmIndex";
+		return "xdm/v1/infra/common/baXdmIndex";
 	}
 
 	// 관리자 로그인
@@ -102,7 +102,7 @@ public class BaCommonController {
 	@RequestMapping(value = "/xdm/v1/infra/common/baXdmSignin")
 	public String baXdmSignn(BaMemberDto baMemberDto) {
 		baMemberService.xdmSelectOneSignin(baMemberDto);
-		return "/xdm/v1/infra/common/baXdmSignin";
+		return "xdm/v1/infra/common/baXdmSignin";
 	}
 
 	// 관리자 로그인 세션유지

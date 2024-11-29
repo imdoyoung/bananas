@@ -36,7 +36,7 @@ public class BaCodeController {
 //			model.addAttribute("vo", codeVo);
 		}
 		
-		return "/xdm/v1/infra/baCode/baCodeXdmList";
+		return "xdm/v1/infra/baCode/baCodeXdmList";
 	}
 
 	// Form
@@ -50,7 +50,7 @@ public class BaCodeController {
 		// 불러온 코드그룹 정보를 codeXdmForm에 전달해주어야함
 		model.addAttribute("listCodeGroup", baCodeService.selectListCodeGroup());
 		
-		return "/xdm/v1/infra/baCode/baCodeXdmForm";
+		return "xdm/v1/infra/baCode/baCodeXdmForm";
 	}
 	
 	// Inst
@@ -72,7 +72,7 @@ public class BaCodeController {
 
 		// 불러온 코드그룹 정보를 codeXdmForm.html에 전달함
 		model.addAttribute("listCodeGroup", baCodeService.selectListCodeGroup());
-		return "/xdm/v1/infra/baCode/baCodeXdmMfom";
+		return "xdm/v1/infra/baCode/baCodeXdmMfom";
 	}
 	
 	// Updt - update
