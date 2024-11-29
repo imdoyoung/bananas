@@ -289,8 +289,8 @@
 								<h2>예약내역</h2>
 							</div>
 							<p>예약내역을 확인하여 주세요!</p>
-							<form action="mail.php" method="post" class="contact-form mt-30 wow fadeInUp animated"
-								data-animation="fadeInUp" data-delay=".4s">
+							<form action="/usr/v1/infra/baSitter/payReady" method="post" class="contact-form mt-30 wow fadeInUp animated"
+								data-animation="fadeInUp" data-delay=".4s"> <!--action="/usr/v1/infra/baSitter/kakaopay" -->
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="contact-field p-relative c-name mb-20">
@@ -333,9 +333,10 @@
 										</div>
 									</div>
 								</div>
+								<button class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" onclick="pay('카드',jsons.card);"><img src="img/icon/btn-pet-icon3.png">토스</button>
+								<button class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" type="submit" id="buyBtn"><img src="img/icon/btn-pet-icon3.png">카카오페이</button>
 							</form>
-							<button class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" onclick="pay('카드',jsons.card);"><img src="img/icon/btn-pet-icon3.png">토스</button>
-							<button class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" id="buyBtn"><img src="img/icon/btn-pet-icon3.png">카카오페이</button>
+
 						</div>
 					</div>
 				</div>
@@ -533,160 +534,34 @@
 		}
 	}
 </script>
+
 <script>
-        // 카카오 JavaScript SDK 초기화
-        Kakao.init('9dc2f2adbb4da3bf9cd54ea641e04261'); // 여기에 자신의 카카오 API 키를 입력하세요.
+		document.getElementById("buyBtn").onclick=function(){	
+			$ajax({
+				async: true ,
+				cache: false,
+				type: "POST",
+				url:'/usr/v1/infra/baSitter/payReady',		
+				success:function(response){
+	
+					alert("성공");
+						// 새 창의 크기와 위치 설정
+					    const width = 600;  // 새 창의 너비
+					    const height = 500; // 새 창의 높이
+					    const left = (screen.width - width) / 2; // 화면 중앙에 위치시키기
+					    const top = (screen.height - height) / 2; // 화면 중앙에 위치시키기
+						
+					    // 새 창 열기
+					    const popup = window.open(response.next_redirect_pc_url, '', `width=${width},height=${height},top=${top},left=${left}`);
+				},
+				error:function(error){
+					alert(error);
+				}
 
-        document.getElementById('payButton').onclick = function() {
-            // 카카오페이 결제 요청
-            Kakao.Pay.request({
-                // 카카오페이 결제 요청 정보
-                partner_order_id: 'order1234', // 주문 ID
-                partner_user_id: 'user5678',  // 사용자 ID
-                item_name: '상품 이름',        // 상품 이름
-                quantity: 1,                  // 수량
-                total_amount: 10000,          // 결제 금액
-                tax_free_amount: 0,           // 면세 금액
-                approval_url: 'https://yourdomain.com/success', // 결제 성공 시 이동할 URL
-                fail_url: 'https://yourdomain.com/fail',       // 결제 실패 시 이동할 URL
-                cancel_url: 'https://yourdomain.com/cancel',   // 결제 취소 시 이동할 URL
-            });
-        };
-    </script>
-	<script th:inline="javascript" type="text/javascript">
-	       window.onload = function() {
-	           const queryString = window.location.search;
-	           // URLSearchParams 객체 생성
-	           const urlParams = new URLSearchParams(queryString);
-	           // 'seq' 파라미터 값 가져오기
-	           // 'seq'와 'uoQuantity' 파라미터 값 가져오기
-	           const seq = urlParams.get('seq');
-	           const Quantity = urlParams.get('uoQuantity');
-	           if (Quantity == null) {
-	               $(".total_qty span").text(1);
-	               $(".prod_quantity span").text(1);
-	           }else{
-	               $(".total_qty span").text(Quantity);
-	               $(".prod_quantity span").text(Quantity);
-	           }
-	           
+			});
+		}
 
-	           // 값이 존재하는지 확인
-	           // if (seq !== null && uoQuantity !== null) {
-	           //     console.log("상품 seq:", seq);
-	           //     console.log("수량:", uoQuantity);
-
-	           //     // jQuery를 사용하여 .total_qty span 요소의 텍스트를 설정
-	           //     $(".total_qty span").text(uoQuantity);
-	           // } else {
-	           //     console.error("파라미터가 존재하지 않습니다.");
-	           // }
-	           const isaddress = document.querySelector(".isaddress");
-	           
-	           if(isaddress){
-	               const isSelected = localStorage.getItem("isSelected");
-	               const selectedProduct = localStorage.getItem("selectedProduct");
-	               if(isSelected == true){
-	                       if (isSelected) {
-	                       document.querySelector('input[name="isSelected"]').value = true;
-	                   }
-	                   if (selectedProduct) {
-	                       document.querySelector('select[id="addressSelected"]').value = selectedProduct;
-	                   }
-	               }
-	               
-	           }
-	           $("#buyBtn").click(function(e) {
-	               
-	               // 아래 데이터 외에도 필요한 데이터를 원하는 대로 담고, Controller에서 @RequestBody로 받으면 됨
-	               // HTML 요소에서 값 가져오기
-	               let itemTitle = $(".title").text(); // 예: id가 itemTitle인 요소에서 텍스트 가져오기
-	               const formattedTitle = itemTitle.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
-	               
-	               let orderTotalPriceText = $(".order_total_price span").text(); // 총 결제금액 텍스트 가져오기
-	               let userName = $("#userId").val();
-	               
-
-	               let orderQuantity = parseFloat($(".total_qty span").text().replace(/,/g, ''));
-	               // 천 단위 구분 기호 제거하고 숫자로 변환
-	               let orderTotalPrice = parseFloat(orderTotalPriceText.replace(/,/g, '')); 
-	               console.log(formattedTitle);
-	               console.log(userName);
-	               console.log(orderQuantity);
-	               let data = {
-	                   name: formattedTitle,    // 카카오페이에 보낼 대표 상품명
-	                   userId: userName,
-	                   quantity: orderQuantity,
-	                   totalPrice: orderTotalPrice // 총 결제금액
-	               };
-	           
-	               $.ajax({
-	                   type: 'POST',
-	                   url: '/order/pay/ready',
-	                   data: JSON.stringify(data),
-	                   contentType: 'application/json',
-	                   success: function(response) {
-	                       // 새 창의 크기와 위치 설정
-	                           const width = 600;  // 새 창의 너비
-	                           const height = 500; // 새 창의 높이
-	                           const left = (screen.width - width) / 2; // 화면 중앙에 위치시키기
-	                           const top = (screen.height - height) / 2; // 화면 중앙에 위치시키기
-	                       
-	                           // 새 창 열기
-	                           const popup = window.open(response.next_redirect_pc_url, '', `width=${width},height=${height},top=${top},left=${left}`);
-	                       
-	                           // let timer = setInterval(function() {
-	                           //     console.log("감지");
-	                           //     if (popup.closed) { 
-	                           //         clearInterval(timer);
-	                           //         window.location.href = '/user_order_list';
-	                           //     }
-	                           // }, 1000);
-	                   }
-	               });
-	           });
-	           
-	       }
-	       // 결제 성공 함수
-	       function paymentSuccess(approveResponse) {
-	           let deliveryDate = /*[[${#dates.format(deliveryDate,'yyyy-MM-dd')}]]*/ '';
-	               
-	           let orderTotalPrice = parseFloat($(".order_total_price span").text().replace(/,/g, '')); 
-	           const uoDeliveryReqInput = document.getElementById("directInput");
-	           var uoDeliveryReq = "";
-	           if (deliveryRequest.value == 4) {
-	                   uoDeliveryReq = uoDeliveryReqInput.value;
-	           }else{
-	               uoDeliveryReq = deliveryRequest.options[deliveryRequest.selectedIndex].text;
-	           }
-	           console.log("uoDeliveryReq: " +uoDeliveryReq);
-	           console.log("Delivery Date: " + deliveryDate);
-	           console.log('결제 승인 데이터:', approveResponse);
-	           console.log(approveResponse.partner_order_id);
-	           $.ajax({
-	               async: true 
-	               ,cache: false
-	               ,type: "post"
-	               ,url: "/orderinst"
-	               ,data : { 
-	                   "orderNumber" : approveResponse.partner_order_id
-	                   ,"uoQuantity": $(".total_qty span").text()
-	                   ,"uoPrice":orderTotalPrice
-	                   ,"uoDeliveryReq":uoDeliveryReq
-	                   ,"product_seq":$("#prod_seq").val()
-	                   ,"daSeq":$("#addressSelected").val()
-	                   ,"mmSeq":$("#userSeq").val()
-	                   ,"deliveryDate":deliveryDate
-	               }
-	               ,success: function(response) {
-	                   window.location.href = '/user_order_list';
-	               }
-	               ,error : function(jqXHR, textStatus, errorThrown){
-	                   alert("insert ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-	               }
-	           });
-	           // window.location.href = '/user_order_list'; // 성공 후 리디렉션
-	       }
-	   </script>
+	
+</script>
 
 </html>

@@ -1,34 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Petxon - Pet Care & Pet Shop HTML Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
+	
+<!-- ======= Head ======= -->
+<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
+<!-- Head end -->
 
-		<!-- CSS here -->
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/animate.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome-pro/css/all.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/dripicons.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/slick.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/meanmenu.css">        
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/swiper.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/default.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/style.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/responsive.css">
-        <!--<style>
-            #col-xl-8{
-                margin: 0 auto;
-            }
-            #select.underline {border:0;border-bottom:1 solid #FF0000;}
-        </style>-->
-    </head>
     <body>
          <!--  Preloader  -->
             <div id="preloader">
@@ -74,7 +50,7 @@
         <main>
             
             <!-- breadcrumb-area -->
-            <section class="breadcrumb-area d-flex align-items-center" style="background-image:url(img/bg/bdrc-bg.jpg)">
+            <section class="breadcrumb-area d-flex align-items-center" style="background-image:url(/usr/v1/template/petxon/assets/img/bg/bdrc-bg.jpg)">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-12 col-lg-12">
@@ -193,11 +169,12 @@
                                     </div>	
                                    <div class="col-lg-6">
                                         <div class="contact-field p-relative c-subject mb-20">  
-                                            <select class="underline" style="width:375px; height:65px; border-width: 0;  border-bottom: 1px solid #E0E0E0;">
-                                                <option value="">성별</option>
-                                                <option value="1">남</option>
-                                                <option value="2">여</option>
-                                            </select>                                  
+                                            <select class="underline" style="width:375px; height:65px; border-width: 0;  border-bottom: 1px solid #E0E0E0;" id="basiGender">
+                                                <option value="">선택하세요</option>
+                                                 <option th:each="list : ${@baCodeService.selectListCachedCode(1)}"
+												 th:value="${list.ifcdSeq}" th:text="${list.ifcdName}"
+												 th:selected="${list.ifcdSeq} == ${item?.basiGender}"></option>
+                                            </select>                
                                         </div>                               
                                     </div>
                                     <div class="col-lg-6">
@@ -208,7 +185,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="contact-field p-relative c-name mb-20">  
-                                            <input class="btn btn-brown mt-10" data-animation="fadeInLeft" data-delay=".4s" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" img src="img/icon/btn-pet-icon3.png" alt="logo" >
+                                            <input class="btn btn-brown mt-10" data-animation="fadeInLeft" data-delay=".4s" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo" >
                                         </div>                              
                                     </div>
                                     <div class="col-lg-6">
@@ -221,6 +198,7 @@
                                             <input type="text" id="basiAddrDetail" name="basiAddrDetail" placeholder="상세주소" required>
                                         </div>                               
                                     </div>
+									
                                     <div class="col-lg-6">
                                         <div class="contact-field p-relative c-name mb-20">  
                                             <input type="file" name="files[]" class="multi file-upload-input with-preview form-control form--control ps-3" multiple placeholder="사진" />
@@ -234,7 +212,7 @@
                                            <textarea id="basiCareer" name="basiCareer" cols="30" rows="10" placeholder="시터경력"></textarea>
                                         </div>
                                         <div class="slider-btn">                
-                                            <button href="/usr/v1/infra/baSitter/baUsrSitterList" class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo">등록하기</button>	
+                                            <button class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo">등록하기</button>	
                                         </div>                             
                                     </div>
                                 </div>                        
@@ -247,7 +225,7 @@
         </main>
         <!-- main-area-end -->
         <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
+        <footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
             <div class="footer-top  pt-120 pb-90">
                 <div class="container">
                     <div class="row justify-content-between">
@@ -273,12 +251,12 @@
                                 </div>
                                 <div class="f-insta">
                                     <ul>
-                                        <li><a href="#"><img src="img/instagram/f-galler-01.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-02.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-03.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-04.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-05.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-06.png" alt="img"></a></li>                                       
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png" alt="img"></a></li>                                       
                                     </ul>
                                 </div>
                             </div>

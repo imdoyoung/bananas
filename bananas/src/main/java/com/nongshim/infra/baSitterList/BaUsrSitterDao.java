@@ -19,5 +19,7 @@ public interface BaUsrSitterDao {
 	public int reInsert(BaUsrSitterDto baUsrSitterDto);
 	
 	public List<BaUsrSitterDto> opSelectList();
+	
+	//public int selectOneCount(BaUsrSitterVo baUsrSittervo);
 
 }

@@ -92,14 +92,17 @@
 			ORDER BY  
 			j.bareSeq Asc    
 	  </select>
+	  
       <insert id="reInsert">
         INSERT INTO ba_review(
 	       bareStar, 
 	       bareContents, 
-	       bareRegDate
+	       bareRegDate,
+	       bareEditDate
 	    )VALUES(
 		  ifNull(#{bareStar},0),
 		  #{bareContents},
+		  now(),
 		  now() )
       </insert>
       <select id="opSelectList" resultMap="resultMapObj">

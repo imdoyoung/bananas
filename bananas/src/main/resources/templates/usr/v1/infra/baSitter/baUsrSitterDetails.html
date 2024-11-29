@@ -319,11 +319,11 @@
 									<form method="post" name="form" action="/usr/v1/infra/baSitter/baUsrReInst"
 										class="comment-form" novalidate="">
 										<div class="rating" id="bareStar">
-											<span class="star" data-value="1" id="rating-1">&#9733;</span>
-											<span class="star" data-value="2" id="rating-2">&#9733;</span>
-											<span class="star" data-value="3" id="rating-3">&#9733;</span>
-											<span class="star" data-value="4" id="rating-4">&#9733;</span>
-											<span class="star" data-value="5" id="rating-5">&#9733;</span>
+											<span class="star" data-value="1" id="rating-1" th:attr="onclick=|starnum('1')|">&#9733;</span>
+											<span class="star" data-value="2" id="rating-2" th:attr="onclick=|starnum('2')|">&#9733;</span>
+											<span class="star" data-value="3" id="rating-3" th:attr="onclick=|starnum('3')|">&#9733;</span>
+											<span class="star" data-value="4" id="rating-4" th:attr="onclick=|starnum('4')|">&#9733;</span>
+											<span class="star" data-value="5" id="rating-5" th:attr="onclick=|starnum('5')|">&#9733;</span>
 										</div>
 										<div style="width: 300px; height: 50px;"></div>
 										<!--<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p>-->
@@ -567,128 +567,126 @@
 	<!-- footer-end -->
 	<!-- JS here -->
 	<script>
-		document.getElementById("btnRevSubmit").onclick=function(){
-				var bareContents = document.getElementById('bareContents').value;
-				var bareStar = 0;
-				
-				if(document.getElementById('rating-1').checked){
-					bareStar = 5;
-				}else if(document.getElementById('rating-2').checked){
-					bareStar = 4;
-				}else if(document.getElementById('rating-3').checked){
-					bareStar = 3;
-				}else if(document.getElementById('rating-4').checked){
-					bareStar = 2;
-				}else{
-					bareStar = 1;
-				} 
-				
-				if (bareStar == 0) {
-					alert("별점을 매겨주세요.");
-				    return false;
-				}
-				$.ajax({
-							async: true 
-							,cache: false
-							,type: "post"
-							/* ,dataType:"json" */
-							,url: "/usr/v1/infra/baSitter/baUsrSitterDetails"
-							/* ,data : $("#formLogin").serialize() */
-							
-							,data : { "bareContents" : bareContents,
-									  "bareStar" : bareStar
-							}
-							,success: function(response) {
-								alert("리뷰등록 완료");
-							}
-						});		
-					
-			  }	
 			
-	</script>
-	<script>
-		const stars = document.querySelectorAll('.star');
-		const selectedRatingDisplay = document.getElementById('selectedRating');
+		   var bareStar = 0;
 
-		// 별점 선택 시 동작하는 이벤트 핸들러
-		stars.forEach(star => {
-			star.addEventListener('mouseover', function () {
-				const value = this.getAttribute('data-value');
-				updateStars(value);
-			});
-			star.addEventListener('mouseout', function () {
-				const value = document.querySelector('.star.selected')
-					? document.querySelector('.star.selected').getAttribute('data-value')
-					: 0;
-				updateStars(value);
-			});
-			star.addEventListener('click', function () {
-				const value = this.getAttribute('data-value');
-				setRating(value);
-			});
-		});
+		   starnum = function(num) {
+		 		bareStar = num;
+		   }		
+		   
+		   document.getElementById("btnRevSubmit").onclick=function(){
+		            var bareContents = document.getElementById('bareInput').value;
+					alert(bareContents);
+					     
+		            if (bareStar == 0) {
+		               alert("별점을 매겨주세요.");
+		               return false;
+		            }else if(bareContents == ""){
+						alert("리뷰내용을 등록해야합니다.");
+						return false;		
+					}
+					
+		            $.ajax({
+		                     async: true 
+		                     ,cache: false
+		                     ,type: "post"
+		                     /* ,dataType:"json" */
+		                     ,url: "/usr/v1/infra/baSitter/baUsrReInst"
+		                     /* ,data : $("#formLogin").serialize() */
+		                     
+		                     ,data : { "bareContents" : bareContents,
+		                             "bareStar" : bareStar
+		                     }
+		                     ,success: function(response) {
+		                        alert("리뷰등록 완료");
+		                     }
+		                  });      
+		               
+		           }   
+		         
+		   </script>
+		<script>
+			const stars = document.querySelectorAll('.star');
+			const selectedRatingDisplay = document.getElementById('selectedRating');
 
-		// 별점 업데이트 함수
-		function updateStars(rating) {
+			// 별점 선택 시 동작하는 이벤트 핸들러
 			stars.forEach(star => {
-				if (star.getAttribute('data-value') <= rating) {
-					star.classList.add('hover');
-				} else {
-					star.classList.remove('hover');
-				}
+				star.addEventListener('mouseover', function () {
+					const value = this.getAttribute('data-value');
+					updateStars(value);
+				});
+				star.addEventListener('mouseout', function () {
+					const value = document.querySelector('.star.selected')
+						? document.querySelector('.star.selected').getAttribute('data-value')
+						: 0;
+					updateStars(value);
+				});
+				star.addEventListener('click', function () {
+					const value = this.getAttribute('data-value');
+					setRating(value);
+				});
 			});
-		}
 
-		// 별점 선택 후 저장 함수
-		function setRating(rating) {
-			stars.forEach(star => {
-				if (star.getAttribute('data-value') <= rating) {
-					star.classList.add('selected');
-				} else {
-					star.classList.remove('selected');
-				}
-			});
-			selectedRatingDisplay.textContent = rating;  // 선택한 평점 표시
-		}
-	</script>
+			// 별점 업데이트 함수
+			function updateStars(rating) {
+				stars.forEach(star => {
+					if (star.getAttribute('data-value') <= rating) {
+						star.classList.add('hover');
+					} else {
+						star.classList.remove('hover');
+					}
+				});
+			}
 
-	<script>
-		// 예약 날짜,시간 검색 - datetimepicker
-		window.addEventListener('load', function () {
-			$.datetimepicker.setLocale('ko');
-			// 날짜 선택 필드 초기화
-			$("#boDate").datetimepicker({
-				timepicker: false,    // 시간 선택 비활성화
-				format: 'Y-m-d'      // 날짜 형식
-			}).on('change', function () {
-				// 날짜 선택 시 rvDate에 값 반영
-				const selectedDate = $(this).val();
-				$('#baboDate').text(selectedDate);
+			// 별점 선택 후 저장 함수
+			function setRating(rating) {
+				stars.forEach(star => {
+					if (star.getAttribute('data-value') <= rating) {
+						star.classList.add('selected');
+					} else {
+						star.classList.remove('selected');
+					}
+				});
+				selectedRatingDisplay.textContent = rating;  // 선택한 평점 표시
+			}
+		</script>
+
+		<script>
+			// 예약 날짜,시간 검색 - datetimepicker
+			window.addEventListener('load', function () {
+				$.datetimepicker.setLocale('ko');
+				// 날짜 선택 필드 초기화
+				$("#boDate").datetimepicker({
+					timepicker: false,    // 시간 선택 비활성화
+					format: 'Y-m-d'      // 날짜 형식
+				}).on('change', function () {
+					// 날짜 선택 시 rvDate에 값 반영
+					const selectedDate = $(this).val();
+					$('#baboDate').text(selectedDate);
+				});
+				// 시간 선택 필드 초기화
+				$("#boTime").datetimepicker({
+					datepicker: false,    // 날짜 선택 비활성화
+					timepicker: true,     // 시간 선택 활성화
+					format: 'H:i',        // 시간 형식 (24시간제)
+					step: 30              // 30분 단위
+				}).on('change', function () {
+					// 시간 선택 시 rvTime에 값 반영
+					const selectedTime = $(this).val();
+					$('#baboTime').text(selectedTime);
+				});
 			});
-			// 시간 선택 필드 초기화
-			$("#boTime").datetimepicker({
-				datepicker: false,    // 날짜 선택 비활성화
-				timepicker: true,     // 시간 선택 활성화
-				format: 'H:i',        // 시간 형식 (24시간제)
-				step: 30              // 30분 단위
-			}).on('change', function () {
-				// 시간 선택 시 rvTime에 값 반영
-				const selectedTime = $(this).val();
-				$('#baboTime').text(selectedTime);
-			});
-		});
-		// 메뉴 가격 합산
-		function updateTotalPrice() {
-			let total = 0;
-			// 선택된 체크박스들의 값을 합산
-			document.querySelectorAll('.menu-checkbox:checked').forEach(checkbox => {
-				total += parseInt(checkbox.value || 0); // 체크박스의 value를 숫자로 변환하여 더함
-			});
-			// 총 금액을 boTotalPrice에 표시
-			document.getElementById('baboTotalPrice').textContent = total.toLocaleString(); // 숫자 형식화 (콤마 추가)
-		}
-		
-	</script>
+			// 메뉴 가격 합산
+			function updateTotalPrice() {
+				let total = 0;
+				// 선택된 체크박스들의 값을 합산
+				document.querySelectorAll('.menu-checkbox:checked').forEach(checkbox => {
+					total += parseInt(checkbox.value || 0); // 체크박스의 value를 숫자로 변환하여 더함
+				});
+				// 총 금액을 boTotalPrice에 표시
+				document.getElementById('baboTotalPrice').textContent = total.toLocaleString(); // 숫자 형식화 (콤마 추가)
+			}
+		</script>
 
 	<script src="/usr/v1/js/fullcalendar/dist/index.global.min.js"></script>
 	<script src="/usr/v1/js/fullcalendar/dist/index.global.js"></script>
