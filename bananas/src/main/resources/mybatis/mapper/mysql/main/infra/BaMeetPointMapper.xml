@@ -21,7 +21,7 @@
 	    WHERE 
 	        bameUseNy = 1 	
 	    HAVING 
-	        distance = 5 	
+	        distance <![CDATA[<=]]> 5 	
 	    ORDER BY 
 	        distance
 	    LIMIT 1
