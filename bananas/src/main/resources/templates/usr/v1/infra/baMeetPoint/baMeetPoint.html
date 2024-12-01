@@ -262,105 +262,79 @@
 	            });
 	        }
 	
+	     // 지도 생성
+	        var mapContainer = document.getElementById('map'),
+	            mapOption = { 
+	                center: new kakao.maps.LatLng(0, 0), // 임시 중심점 (bounds로 설정될 예정)
+	                level: 10 // 초기 줌 레벨 세팅
+	            };
+	        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	        // LatLngBounds 객체 생성 (마커 범위 설정용)
+	        var bounds = new kakao.maps.LatLngBounds();
+
+	        // 마커와 텍스트 추가 함수
+	        function addMarkerWithText(map, position, text, bounds) {
+	            // 마커 추가
+	            var marker = new kakao.maps.Marker({
+	                position: position,
+	                map: map
+	            });
+
+	            // 텍스트(정보창) 추가
+	            var infowindow = new kakao.maps.InfoWindow({
+	                position: position,
+	                content: `<div style="padding:5px; font-size:14px;">${text}</div>`
+	            });
+
+	            // 정보창 열기
+	            infowindow.open(map, marker);
+
+	            // 마커의 위치를 bounds에 추가
+	            bounds.extend(position);
+	        }
+
 	        // 두 주소의 좌표 구하기
-	        geocodeAddress(address1, function(x1, y1) {
-	            geocodeAddress(address2, function(x2, y2) {
+	        geocodeAddress(address1, function (x1, y1) {
+	            geocodeAddress(address2, function (x2, y2) {
 	                // 중간 지점 계산
 	                var midpointX = (parseFloat(x1) + parseFloat(x2)) / 2;
 	                var midpointY = (parseFloat(y1) + parseFloat(y2)) / 2;
-	
-	                // 지도 생성
-	                var mapContainer = document.getElementById('map'), 
-	                    mapOption = { 
-	                        center: new kakao.maps.LatLng(midpointY, midpointX), 
-	                        level: 10
-	                    }; 
-	                var map = new kakao.maps.Map(mapContainer, mapOption);
-	
-	                // 마커와 텍스트 추가 함수
-	                function addMarkerWithText(map, position, text) {
-	                    // 마커 추가
-	                    var marker = new kakao.maps.Marker({
-	                        position: position,
-	                        map: map
-	                    });
-	
-	                    // 텍스트(정보창) 추가
-	                    var infowindow = new kakao.maps.InfoWindow({
-	                        position: position,
-	                        content: `<div style="padding:5px; font-size:14px;">${text}</div>`
-	                    });
-	
-	                    // 정보창 열기
-	                    infowindow.open(map, marker);
-	                }
-	
+
 	                // 출발지 마커와 텍스트 추가
 	                var startPosition = new kakao.maps.LatLng(y1, x1);
-	                addMarkerWithText(map, startPosition, "출발지1: " + address1);
-	                console.log('출발지 좌표:', startPosition);
-	                
-	
+	                addMarkerWithText(map, startPosition, "출발지1: " + address1, bounds);
+
 	                // 도착지 마커와 텍스트 추가
 	                var endPosition = new kakao.maps.LatLng(y2, x2);
-	                addMarkerWithText(map, endPosition, "출발지2: " + address2);
-	                console.log('도착지 좌표:', endPosition);
-	
-	                // 중간 지점 마커와 텍스트 추가
-	                var midpointPosition = new kakao.maps.LatLng(midpointY, midpointX);
-// 	                addMarkerWithText(map, midpointPosition, "중간 지점");
-	                console.log('중간지점 좌표:', midpointPosition);
-	                
-	                document.getElementById("midpointX").value = midpointX;
-	                document.getElementById("midpointY").value = midpointY;
-	                
-	                
-	                var stationName;
-	                var latitude;
-	                var longitude;
-	                var finalmidpointPosition;
-	                
-	                // ajax를 이용하여 midpointX와 midpointY를 mapper에 전달
+	                addMarkerWithText(map, endPosition, "출발지2: " + address2, bounds);
+
+	                // 중간 지점 서버 요청 및 처리
 	                $.ajax({
-					    url: '/usr/v1/infra/baMeetPoint/baMeetPointProc', // 서버 API 엔드포인트
-					    method: 'POST',
-					    data: {
-					    	midpointLongitude: midpointX,
-					    	midpointLatitude: midpointY
-					    },
-					    success: function(response) {
-					        console.log('중간 지점 좌표가 서버에 전달되었습니다:', response);
-					        console.log('전송 데이터:', {
-					            midpointLongitude: midpointX,
-					            midpointLatitude: midpointY
-					        });
-					        
-					     	// 성공적으로 받은 데이터로 HTML 업데이트
-					        if (response.rt == "success") {
-// 					        	 && response.stationName
-					            document.getElementById('stationInfo').innerText =
-					                `가장 가까운 지하철 역: ${response.stationName}`;
-					            console.log("response.stationName : " + response.stationName);
-					            stationName = response.stationName;
-					            latitude = response.latitude;
-					            longitude = response.longitude;
-					            
-	                // 최종 목적지인 중간지점에서 가장 가까운 지하철역 위치 마커와 텍스트 추가
-	                finalmidpointPosition = new kakao.maps.LatLng(latitude, longitude);
-	                addMarkerWithText(map, finalmidpointPosition, stationName);
-	                console.log('최종장소 좌표:', finalmidpointPosition);             
-					        }
-					    },
-					    error: function(error) {
-					        console.error('가장 가까운 지하철 역 정보 조회 중 오류 발생:', error);
-					    }
-					});
-	                
-	                
-	                // 지도 중심을 중간 지점으로 설정
-// 	                map.setCenter(midpointPosition);
-	                // 지도 중심을 중간지점인 지하철역으로 설정
-	                map.setCenter(finalmidpointPosition);
+	                    url: '/usr/v1/infra/baMeetPoint/baMeetPointProc',
+	                    method: 'POST',
+	                    data: {
+	                        midpointLongitude: midpointX,
+	                        midpointLatitude: midpointY
+	                    },
+	                    success: function (response) {
+	                        if (response.rt === "success") {
+	                            var stationName = response.stationName;
+	                            var latitude = response.latitude;
+	                            var longitude = response.longitude;
+
+	                            // 최종 중간 지점 마커와 텍스트 추가
+	                            var finalMidpointPosition = new kakao.maps.LatLng(latitude, longitude);
+	                            addMarkerWithText(map, finalMidpointPosition, stationName, bounds);
+
+	                            // 모든 마커가 포함되도록 지도 영역 설정
+	                            map.setBounds(bounds);
+	                        }
+	                    },
+	                    error: function (error) {
+	                        console.error('가장 가까운 지하철 역 정보 조회 중 오류 발생:', error);
+	                    }
+	                });
 	            });
 	        });
 	    });
