@@ -18,6 +18,18 @@
 	background-color: #564741;
 	border-color: #564741;
 }
+	
+/* 배경 이미지 */
+.meetPointBg ::before {
+	content: "";
+    background-color: #00000002;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}	
+	
+	
+
 </style>
 
 <body>
@@ -80,7 +92,7 @@
 	<main>
 
 		<!-- breadcrumb-area -->
-		<section class="breadcrumb-area d-flex align-items-center"
+		<section class="breadcrumb-area d-flex align-items-center meetPointBg"
 			style="background-image: url(/usr/v1/template/petxon/assets/img/backgroundimg/dogBg01.jpg)">
 			<div class="container">
 				<div class="row align-items-center">
