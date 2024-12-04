@@ -159,8 +159,23 @@ public class BaMypageController {
 	
 	// 시터 마이페이지 (나의 리뷰)
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMyReview")
-	public String baSitterMyReview() {
+	public String baSitterMyReview(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model) {
+		
+		baMypageVo.setParamsPaging(baMypageService.selectSitterOneCount(baMypageVo));
+		
+		if(baMypageVo.getTotalRows() > 0) {
+			model.addAttribute("mypageSitterReviewList", baMypageService.BaMypageReviewSelectList(baMypageVo));
+		}
+		
 		return "usr/v1/infra/mypage/baSitterMyReview";
+	}
+	
+	// 시터 마이페이지(리뷰 내역 - 내용 보기)
+	@RequestMapping(value="/usr/v1/infra/mypage/baSitterReviewContents")
+	public String baSitterReviewContents(BaMypageDto baMypageDto, Model model) {
+		
+		model.addAttribute("mypageReviewItem", baMypageService.BaMypageSelectOne(baMypageDto)); 
+		return "usr/v1/infra/mypage/baSitterReviewContents";
 	}
 	
 	// 시터 마이페이지(알림장 쓰기)
