@@ -53,6 +53,37 @@
     font-size: 16px; /* 기본 글씨 크기 */
     line-height: 1.5; /* 줄 간격 */
 }
+
+	/* 사진 첨부*/
+	.active .size-40 {
+	  background-color: #F69946; /* 원하는 색상 */
+	  color: white; /* 텍스트 색상 */
+	  font-weight: bold; /* 강조 효과 */
+	}
+	
+	.upload-box {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .upload-box:hover {
+    border-color: #333;
+    color: #333;
+  }
+
+  #fileInput {
+    display: none;
+  }
+
+
+
 </style>
 
   <title>And Tour</title>
@@ -91,11 +122,19 @@
             <div class="tabs__content pt-30 js-tabs-content">
               <div class="tabs__pane -tab-item-1 is-tab-el-active">
                 <div class="row y-gap-30 items-center">
-                  <div class="col-12">
-                    <div class="d-flex ratio ratio-1:1 w-200">
-                      <img src="img/꼬미.jpg" alt="image" class="img-ratio rounded-4">
-                    </div>
-                  </div>
+<!--                   <div class="col-12"> -->
+<!--                     <div class="d-flex ratio ratio-1:1 w-200"> -->
+<!--                       <img src="img/꼬미.jpg" alt="image" class="img-ratio rounded-4"> -->
+<!--                     </div> -->
+<!--                   </div> -->
+				<div class="row">
+				    <div class="col-lg-5"> <!-- col-lg-3 -->
+		                <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox">
+		                  사진 첨부하기
+		                  <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)">
+		                </div>
+	                </div>
+                </div>
 
                   <div class="col-12">
                     <h4 class="text-16 fw-500">반려견 사진을 첨부해주세요.</h4>
@@ -228,6 +267,34 @@
 
   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+  
+  
+  <script>
+  // 사진 첨부
+  function handleFileUpload(event) {
+    const file = event.target.files[0];
+    const imageBox = document.getElementById('imageBox');
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        // div 부분을 사진으로 바꾸기
+        imageBox.style.backgroundImage = 'url(' + e.target.result + ')';
+        imageBox.textContent = '';  // '사진 첨부' 텍스트 지우기
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  
+  
+  </script>
+  
+  
+  
+  
+  
+  
+  
 </body>
 
 </html>
