@@ -112,7 +112,7 @@
                                 <!-- id -->
                                 <div class="mb-3">
                                     <label for="id" class="form-label">아이디</label>
-                                    <input type="id" class="form-control"
+                                    <input type="id" class="form-control" value="admin123"
                                     id="bameId" name="bameId" placeholder="아이디" required>
                                     <div class="invalid-feedback" id="bameIdFeedback">아이디를 입력해 주세요.</div>
 					      			<div class="invalid-feedback" id="bameIdRegExpFeedback">일치하지 않습니다.</div>
@@ -120,7 +120,7 @@
                                 <!-- password -->
                                 <div class="mb-3">
                                     <label for="password" class="form-label">비밀번호</label>
-                                    <input type="password" class="form-control"
+                                    <input type="password" class="form-control" value="admin123!@"
                                     id="bamePw" name="bamePw" placeholder="**********" required>
                                     <div class="invalid-feedback" id="bamePwFeedback">비밀번호를 입력해 주세요.</div>
 						  			<div class="invalid-feedback" id="bamePwRegExpFeedback">일치하지 않습니다.</div>
@@ -181,8 +181,8 @@
 	document.getElementById("btnSubmit").onclick = function (){
 	// validation
 	// id
-	var bameId = document.getElementById("bameId");  					// 객체를 만들고
-	var bameIdValue = document.getElementById("bameId").value.trim();	// 객체의 값을 받는 객체 생성
+	var bameId = document.getElementById("bameId");
+	var bameIdValue = document.getElementById("bameId").value.trim();
 	var bameIdRegExp = /^[A-Za-z0-9]+$/;
 	var bameIdFeedback = document.getElementById("bameIdFeedback");
 	var bameIdRegExpFeedback = document.getElementById("bameIdRegExpFeedback");
@@ -193,24 +193,24 @@
 	bameIdRegExpFeedback.style.display='none';
 	    
 	if(bameId == "" || bameId == null) { 
-		bameIdFeedback.style.display='block';			// 에러 메세지 표시
-		bameId.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
-		bameId.focus(); // input창에 포커스 함
- 	  return false; // 함수를 빠져나옴   
+		bameIdFeedback.style.display='block';
+		bameId.classList.add('is-invalid');
+		bameId.focus();
+ 	  return false; 
 	} else {
 // 	    	by pass
 	}
 	if(!bameIdRegExp.test(bameIdValue)) {
-		bameIdRegExpFeedback.style.display='block';		// 에러 메세지 표시
+		bameIdRegExpFeedback.style.display='block';
 		bameId.focus();
 	  return false;
 	  } else {
-		bameId.classList.add('is-valid');				// 유효성 검사 성공 처리 - 초록 테두리
+		bameId.classList.add('is-valid');
 	  }
 	    
 	 	// password
-	    var bamePw = document.getElementById("bamePw");  					// 객체를 만들고
-	    var bamePwValue = document.getElementById("bamePw").value.trim();	// 객체의 값을 받는 객체 생성
+	    var bamePw = document.getElementById("bamePw");
+	    var bamePwValue = document.getElementById("bamePw").value.trim();
 	    var bamePwRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 	    var bamePwFeedback = document.getElementById("bamePwFeedback");
 	    var bamePwRegExpFeedback = document.getElementById("bamePwRegExpFeedback");
@@ -221,19 +221,19 @@
 	    bamePwRegExpFeedback.style.display='none';
 	    
 	    if(bamePwValue == "" || bamePwValue == null) { 
-	    	bamePwFeedback.style.display='block';				// 에러 메세지 표시
-	    	bamePw.classList.add('is-invalid');				// 유효성 검사 실패 처리 - 빨간 테두리
-	    	bamePw.focus(); 									// input창에 포커스 함
- 			return false; 										// 함수를 빠져나옴   
+	    	bamePwFeedback.style.display='block';
+	    	bamePw.classList.add('is-invalid');
+	    	bamePw.focus();
+ 			return false;
 	    } else {
 // 	    	by pass
 	    }
 	    if(!bamePwRegExp.test(bamePwValue)) {
-	    	bamePwRegExpFeedback.style.display='block';		// 에러 메세지 표시
+	    	bamePwRegExpFeedback.style.display='block';
 	    	bamePw.focus();
 	    	return false;
 	    } else {
-	    	bamePw.classList.add('is-valid');					// 유효성 검사 성공 처리 - 초록 테두리
+	    	bamePw.classList.add('is-valid');
 	    }
 	    
 		$.ajax({
@@ -249,7 +249,7 @@
 			}
 			,success: function(response) {
 				if(response.rt == "success") {
-					alert("성공");
+// 					alert("성공");
 						location.href = "/usr/v1/infra/common/baUsrIndex";
 				} else {
 					alert("실패");

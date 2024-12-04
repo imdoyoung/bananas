@@ -123,7 +123,8 @@
 			c.bameSeq,
 			c.bameId,
 			c.bamePw,
-			c.bameGrade
+			c.bameGrade,
+			c.bameEmail
 		FROM
 			bananas.ba_member AS c
 		WHERE 1 = 1
@@ -136,7 +137,8 @@
 			c.bameSeq,
 			c.bameName,
 			c.bameId,
-			c.bameGrade
+			c.bameGrade,
+			c.bameEmail
 		FROM
 			bananas.ba_member As c
 		WHERE 1 = 1

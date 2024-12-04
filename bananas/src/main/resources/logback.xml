@@ -18,10 +18,10 @@
 	<property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %highlight([%-3level]) %logger{5} - %msg %n" />
 	
 	<property name="LOG_FILE_PATTERN_APPLICATION" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %-3level %logger{5} - %msg %n" />
-	<property name="LOG_FILE_NAME_APPLICATION" value="./logs/application.%d{yyyy-MM-dd'T'HH}.%i.log" />
+	<property name="LOG_FILE_NAME_APPLICATION" value="./logsBananas/application.%d{yyyy-MM-dd'T'HH}.%i.log" />
 	
 	<property name="LOG_FILE_PATTERN_ERROR" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%thread] %-3level %logger{5} - %msg %n" />
-	<property name="LOG_FILE_NAME_ERROR" value="./logs/error.%d{yyyy-MM-dd}.%i.log" />
+	<property name="LOG_FILE_NAME_ERROR" value="./logsBananas/error.%d{yyyy-MM-dd}.%i.log" />
 	
 	<property name="MAX_FILE_SIZE" value="1MB" />
 

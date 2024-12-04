@@ -56,6 +56,7 @@ public class BaCommonController {
 				httpSession.setAttribute("sessIdXdm", rtUser2.getBameId());
 				httpSession.setAttribute("sessNameXdm", rtUser2.getBameName());
 				httpSession.setAttribute("sessGradeXdm", rtUser2.getBameGrade());
+				httpSession.setAttribute("sessEmailXdm", rtUser2.getBameGrade());
 				// 성공 응답 설정
 				returnMap.put("rt", "success");
 				// 저장된 세션값 확인
@@ -63,6 +64,7 @@ public class BaCommonController {
 				System.out.println("sessIdXdm: " + httpSession.getAttribute("sessIdXdm"));
 				System.out.println("sessNameXdm: " + httpSession.getAttribute("sessNameXdm"));
 				System.out.println("sessGradeXdm: " + httpSession.getAttribute("sessGradeXdm"));
+				System.out.println("sessEmailXdm: " + httpSession.getAttribute("sessEmailXdm"));
 			} else {
 				returnMap.put("rt", "fail"); // 실패 응답 설정
 			}

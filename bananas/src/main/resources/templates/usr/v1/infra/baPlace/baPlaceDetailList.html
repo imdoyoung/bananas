@@ -1,183 +1,26 @@
 <!doctype html>
 <html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Petxon - Pet Care & Pet Shop HTML Template</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="/usr/v1/template/petxon/assets/img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
-
-		<!-- CSS here -->
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/animate.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/magnific-popup.css">  
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome/css/all.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome-pro/css/all.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/dripicons.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/slick.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/meanmenu.css">        
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/swiper.min.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/default.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/style.css">
-        <link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/responsive.css">
-    </head>
+    <!-- ======= Head ======= -->
+	<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
+	<!-- head-end -->
     <body>
-         <!--  Preloader  -->
-            <div id="preloader">
-                <div id="loading"> </div>
-            </div>
-            <!--  Preloader end  -->
-           <!-- header -->
-        <header class="header-area header-three">
-            <div class="header-mid d-none d-md-block pt-25 pb-25">
-                <div class="container">
-                    <div class="row align-items-center">      
-                         <div class="col-lg-6 col-md-6 d-none d-md-block">
-                            <div class="header-cta">
-                                <ul>
-                                    <li>
-                                      <div class="call-box">
-                                         <div class="icon">
-                                          <i class="fa-light fa-envelope"></i>
-                                         </div>
-                                         <div class="text">                                            
-                                            <strong><a href="mailto:info@example.com"> info@example.com  </a></strong>                                               
-                                         </div>
-                                      </div>
-                                   </li>  
-                                   <li>
-                                      <div class="call-box">
-                                         <div class="icon">
-                                           <i class="fa-light fa-mobile"></i>
-                                         </div>
-                                         <div class="text">                                            
-                                            <strong><a href="tel:+917052101786">+91 7052 101 786</a></strong>                                              
-                                         </div>
-                                      </div>
-                                   </li>
-                                   
-                                </ul>
-                             </div>
-                        </div>
-                         <div class="col-lg-6 col-md-6 text-right d-none d-md-block">
-                            <div class="header-social">                                    
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>                                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>		
-			  <div id="header-sticky" class="menu-area">
-                <div class="container">
-                    <div class="second-menu">
-                        <div class="row align-items-center">
-                        <div class="col-lg-2 col-md-12">
-                            <div class="logo">
-                                <a href="index.html">
-                                	<img src="/usr/v1/template/petxon/assets/img/logo/logo.png" alt="logo">
-                                </a>
-                            </div>
-                        </div>
-                           <div class="col-xl-7 col-lg-7">
-                              
-                                <div class="main-menu">
-                                    <nav id="mobile-menu">
-                                        <ul>
-                                            <li class="has-sub">
-												<a href="index.html">Home</a>
-												<ul>
-                                                    <li><a href="index.html">Home Page 01</a></li>
-                                                    <li><a href="index-2.html">Home Page 02</a></li>
-												</ul>
-											</li>                                           
-                                             <li class="has-sub"> 
-                                              <a href="services.html">Services</a>
-                                                <ul>
-                                                     <li><a href="services.html">Services</a></li>
-                                                    <li><a href="single-service.html">Services Details</a></li>
-												</ul>
-                                            </li>
-                                             <li><a href="projects.html">Case Study</a></li>
-                                            <li class="has-sub"><a href="#">Pages</a>
-												<ul>
-                                                     <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="pricing.html">Pricing</a></li>
-                                                    <li><a href="team.html">Team</a></li>                                                    
-                                                    <li><a href="faq.html">Faq</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="shop-details.html">Shop Details</a></li>
-                                                </ul>
-											</li>
-                                            <li><a href="contact.html">Contact Us</a></li>                                           
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>   
-                             <div class="col-xl-3 col-lg-3 text-right d-none d-lg-block">
-                                 <div class="login">
-                                    <ul>
-                                        <li>
-                                        	<a href="#" class="menu-tigger"><img src="/usr/v1/template/petxon/assets/img/icon/search.png" alt="logo"></a>
-                                        </li>
-                                        <li>
-                                           <a href="contact.html" class="btn"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo"> Let’s Talk</a>
-                                        </li>
-                                    </ul>
-                                </div>                               
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile-menu"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- header-end -->
-         <!-- offcanvas-area -->
-                <div class="offcanvas-menu">
-                <span class="menu-close"><i class="fas fa-times"></i></span>
-              <form role="search" method="get" id="searchform"   class="searchform" action="http://wordpress.zcube.in/xconsulta/">
-                                <input type="text" name="s" id="search" placeholder="Search"/>
-                                <button><i class="fa fa-search"></i></button>
-                            </form>
-
-                    
-                    <div id="cssmenu3" class="menu-one-page-menu-container">
-                        <ul  class="menu">
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html">Home</a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="about.html">About Us</a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="services.html">Services</a></li>
-                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="pricing.html">Pricing </a></li>
-                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="team.html">Team </a></li>
-                             
-                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="projects.html">Cases Study</a></li>
-                             <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="blog.html">Blog</a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>  
-                    
-                    <div id="cssmenu2" class="menu-one-page-menu-container">
-                        <ul id="menu-one-page-menu-12" class="menu">
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#home"><span>+8 12 3456897</span></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#howitwork"><span>info@example.com</span></a></li>
-                        </ul>
-                    </div>                
-            </div>
-            <div class="offcanvas-overly"></div>
-                 <!-- offcanvas-end -->
+    	<!--  Preloader  -->
+    	<div id="preloader">
+        	<div id="loading"> </div>
+        </div>
+        <!--  Preloader end  -->
+        
+        <!-- ======= Header ======= -->
+		<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
+		<!-- header-end -->
+			
+		<!-- ======= offcanvas_menu ======= -->
+		<div th:replace="~{usr/v1/infra/common/offcanvas_menu :: div}"></div>
+		<!-- offcanvas_menu end -->
+        
         <!-- main-area -->
         <main>
-            
-            <!-- search-popup -->
+        <!-- search-popup -->
 		<div class="modal fade bs-example-modal-lg search-bg popup1" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content search-popup">

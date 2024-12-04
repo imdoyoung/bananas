@@ -1,0 +1,28 @@
+2024-11-30T15:50:20.231 [restartedMain] INFO c.n.BananasApplication - Starting BananasApplication using Java 17.0.11 with PID 23568 (C:\factory\ws_sts4_4240\repo_bananas\bananas\bin\main started by user in C:\factory\ws_sts4_4240\repo_bananas\bananas) 
+2024-11-30T15:50:20.234 [restartedMain] INFO c.n.BananasApplication - The following 1 profile is active: "external" 
+2024-11-30T15:50:20.301 [restartedMain] INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2024-11-30T15:50:20.301 [restartedMain] INFO o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2024-11-30T15:50:21.592 [restartedMain] INFO o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8082 (http) 
+2024-11-30T15:50:21.608 [restartedMain] INFO o.a.c.h.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8082"] 
+2024-11-30T15:50:21.613 [restartedMain] INFO o.a.c.c.StandardService - Starting service [Tomcat] 
+2024-11-30T15:50:21.614 [restartedMain] INFO o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31] 
+2024-11-30T15:50:21.680 [restartedMain] INFO o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext 
+2024-11-30T15:50:21.681 [restartedMain] INFO o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1379 ms 
+2024-11-30T15:50:22.141 [restartedMain] INFO c.z.h.HikariDataSource - HikariPool-1 - Starting... 
+2024-11-30T15:50:23.109 [restartedMain] INFO c.z.h.p.HikariPool - HikariPool-1 - Added connection net.sf.log4jdbc.sql.jdbcapi.ConnectionSpy@f624d1f 
+2024-11-30T15:50:23.113 [restartedMain] INFO c.z.h.HikariDataSource - HikariPool-1 - Start completed. 
+2024-11-30T15:50:23.178 [restartedMain] DEBUG j.sqltiming -  com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+1. SELECT 
+			ifcdSeq,
+			ifcdName,
+			ba_codegroup_ifcgSeq
+		FROM
+			bananas.ba_code
+		WHERE 1=1
+			AND ifcdDelNy = 0
+		    AND ifcdUseNy = 1
+ {executed in 39 msec} 
+2024-11-30T15:50:26.449 [restartedMain] INFO o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729 
+2024-11-30T15:50:26.476 [restartedMain] INFO o.a.c.h.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8082"] 
+2024-11-30T15:50:26.506 [restartedMain] INFO o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8082 (http) with context path '/' 
+2024-11-30T15:50:26.521 [restartedMain] INFO c.n.BananasApplication - Started BananasApplication in 6.778 seconds (process running for 7.836) 
