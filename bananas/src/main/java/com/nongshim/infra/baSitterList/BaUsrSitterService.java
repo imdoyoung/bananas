@@ -78,9 +78,5 @@ public class BaUsrSitterService {
 //  application/json
         return headers;
     }
-    
-//    public int selectOneCount(BaUsrSitterVo baUsrSittervo){
-//        return baUsrSitterDao.selectOneCount(baUsrSittervo);
-//
-//}
+   
 }

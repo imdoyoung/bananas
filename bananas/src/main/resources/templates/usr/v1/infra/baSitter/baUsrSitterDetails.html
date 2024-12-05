@@ -29,18 +29,12 @@
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/style.css">
 	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/responsive.css">
 	
-<!-- 	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/bootstrap-icons.css"> -->
-<!-- 	<link rel="stylesheet" href="/usr/v1/template/NailForest/assets/libs/bootstrap-icons/font/index.html"> -->
-	
 	<link href="/usr/v1/template/NailForest/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
 	    <link href="/usr/v1/template/NailForest/assets/libs/animate.css/animate.min.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/nouislider/dist/nouislider.min.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/uppy/dist/uppy.min.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/litepicker/dist/css/litepicker.css" rel="stylesheet">
 	    <link href="/usr/v1/template/NailForest/assets/libs/simplebar/dist/simplebar.min.css" rel="stylesheet">
-<!-- 	    <link href="/usr/v1/template/NailForest/assets/libs/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"> -->
-	
- 	
 </head>
 
 	<style>
@@ -167,43 +161,11 @@
 	<!-- header -->
 	<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
 	<!-- header-end -->
+
+	<!-- ======= offcanvas_menu ======= -->
+	<div th:replace="~{usr/v1/infra/common/offcanvas_menu :: div}"></div>
+	<!-- offcanvas_menu end -->
 	
-	<!-- offcanvas-area -->
-	<div class="offcanvas-menu">
-		<span class="menu-close"><i class="fas fa-times"></i></span>
-		<form role="search" method="get" id="searchform" class="searchform"
-			action="http://wordpress.zcube.in/xconsulta/">
-			<input type="text" name="s" id="search" placeholder="Search" />
-			<button><i class="fa fa-search"></i></button>
-		</form>
-		<div id="cssmenu3" class="menu-one-page-menu-container">
-			<ul class="menu">
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html">Home</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="about.html">About Us</a>
-				</li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="services.html">Services</a>
-				</li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="pricing.html">Pricing </a>
-				</li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="team.html">Team </a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="projects.html">Cases
-						Study</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="blog.html">Blog</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="contact.html">Contact</a>
-				</li>
-			</ul>
-		</div>
-		<div id="cssmenu2" class="menu-one-page-menu-container">
-			<ul id="menu-one-page-menu-12" class="menu">
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#home"><span>+8 12
-							3456897</span></a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-						href="#howitwork"><span>info@example.com</span></a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="offcanvas-overly"></div>
-	<!-- offcanvas-end -->
 	<!-- main-area -->
 	<main>
 		<!-- search-popup -->
@@ -223,18 +185,18 @@
 		</div>
 		<!-- /search-popup -->
 		<!-- breadcrumb-area -->
-		<section class="breadcrumb-area d-flex align-items-center" style="background-image:url(/usr/v1/template/petxon/assets/img/bg/bdrc-bg.jpg);">
+		<section class="breadcrumb-area d-flex align-items-center" style="background-image:url(/usr/v1/template/petxon/assets/img/backgroundimg/dogBg07.jpg);">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-xl-12 col-lg-12">
 						<div class="breadcrumb-wrap text-left">
 							<div class="breadcrumb-title">
-								<h2>Blog Details</h2>
+								<h2>시터 상세보기</h2>
 								<div class="breadcrumb-wrap">
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+											<li class="breadcrumb-item active" aria-current="page">Details</li>
 										</ol>
 									</nav>
 								</div>
@@ -316,7 +278,7 @@
 												style="display:none;">Cancel reply</a></small></h3>
 
 									<!--<form action="http://wordpress.zcube.in/finco/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">-->
-									<form method="post" name="form" action="/usr/v1/infra/baSitter/baUsrReInst"
+									<form method="post" name="form" action="/usr/v1/infra/baSitter/baUsrSitterDetails"
 										class="comment-form" novalidate="">
 										<div class="rating" id="bareStar">
 											<span class="star" data-value="1" id="rating-1" th:attr="onclick=|starnum('1')|">&#9733;</span>
@@ -332,7 +294,7 @@
 										<p class="comment-field"><i class="fas fa-envelope"></i><input id="email" placeholder="your-real-email@example.com" name="email" type="text"></p>-->
 										<!--<p class="comment-field"><i class="fas fa-globe"></i><input id="url" name="url" placeholder="http://your-site-name.com" type="text"> </p>-->
 										<p class="comment-form-comment"><label for="bareContents">Comment</label> <textarea
-												id="bareContents" name="bareContents" cols="45" rows="8" maxlength="65525"
+												id="bareInput" name="bareInput" cols="45" rows="8" maxlength="65525"
 												required="required"></textarea></p>
 										<button type="submit" class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" id="btnRevSubmit"><img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo">리뷰쓰기</button>
 											<input type="hidden"
@@ -391,9 +353,9 @@
 									  <form name="form" id="form" method="post" action="/usr/v1/infra/baSitter/baUsrSitterInst">
 										<div class="mb-3">
 											<div class="input-group mb-3">
-												<input type="text" class="form-control" id="boDate" name="boDate" placeholder="예약날짜" autocomplete="off" style="cursor: pointer;"> <span class="input-group-text bg-transparent"> <i class="mdi mdi-calendar-month-outline"></i></span>
+												<input type="text" class="form-control" id="boDate" name="boDate" placeholder="예약날짜" autocomplete="off" style="cursor: pointer;" readonly> <span class="input-group-text bg-transparent"> <i class="mdi mdi-calendar-month-outline"></i></span>
 											</div>
-										   <input type="text" class="form-control" id="boTime" name="boTime" placeholder="예약시간"  style="cursor: pointer;" autocomplete="off">
+										   <input type="text" class="form-control" id="boTime" name="boTime" placeholder="예약시간"  style="cursor: pointer;" autocomplete="off" readonly>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Option</label>

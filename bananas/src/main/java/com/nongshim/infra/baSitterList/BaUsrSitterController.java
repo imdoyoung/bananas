@@ -47,8 +47,9 @@ public class BaUsrSitterController {
 	//review insert
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrReInst")
 	public String baUsrReInst(BaUsrSitterDto baUsrSitterDto) {
+		System.out.println("별점 : " + baUsrSitterDto.getBareStar());
 		 baUsrSitterService.reInsert(baUsrSitterDto);
-		return "redirect:/usr/v1/infra/baSitter/baUsrSitterDetails";
+		return "/usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
 	
 	//시터예약 insert
