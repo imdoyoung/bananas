@@ -46,8 +46,9 @@ public interface BaMypageDao {
 	// 나의 예약 paging
 	public int sitterPageBookingCount(BaMypageVo baMypageVo);
 	
-	// 페이징 없는 예약 리스트
-	public List<BaMypageDto> BaMypageBookingSelectListAll();
+	// 페이징 없는 예약 리스트  
+	public List<BaMypageDto> BaMypageBookingSelectListAll(); 
+	
 
 	
 

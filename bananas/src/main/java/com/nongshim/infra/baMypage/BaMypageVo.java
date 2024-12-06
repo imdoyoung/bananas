@@ -16,6 +16,8 @@ public class BaMypageVo {
  
 	private int startRnumForMysql = 0;							// 쿼리 시작 row 
 	
+	private String basiSeq;
+	
 	
 	
 	//--
@@ -67,10 +69,18 @@ public class BaMypageVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+	public String getBasiSeq() {
+		return basiSeq;
+	}
+	public void setBasiSeq(String basiSeq) {
+		this.basiSeq = basiSeq;
+	}
 	
 	
 	
 	////////////////////////////////////////////////////////////////
+	
+	
 	
 	public void setParamsPaging(int totalRows) {
 

@@ -36,7 +36,8 @@ public class BaMypageDto {
 	private Date baboEditDate; 
 	private Integer baboDelNy; 
 	private String bA_Petprofile_bapeSeq; 
-	private String bA_SitterList_basiSeq;
+	private String bA_SitterList_basiSeq; 
+	private Integer baboDiaryNy;
 	
 	// 예약 내역 
 	private String baboopSeq;
@@ -686,6 +687,12 @@ public class BaMypageDto {
 	}
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
+	}
+	public Integer getBaboDiaryNy() {
+		return baboDiaryNy;
+	}
+	public void setBaboDiaryNy(Integer baboDiaryNy) {
+		this.baboDiaryNy = baboDiaryNy;
 	}
 	
 	

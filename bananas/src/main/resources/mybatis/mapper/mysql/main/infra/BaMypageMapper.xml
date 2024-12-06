@@ -339,46 +339,35 @@
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
 				on e.basiSeq = f.ba_sitterList_basiSeq
+			where 1=1
+				and e.basiSeq = #{basiSeq}
 	  </sql>
 	  
 	   <select id="sitterPageBookingCount">
-		SELECT COUNT(*)
+		 SELECT COUNT(DISTINCT e.basiSeq)
 		<include refid="sitterPageBookingCommon"/>
 	  </select>
 	  
 	  <!-- 나의 예약 리스트 -->
 	  <select id="sitterPageBookingSelectList" resultMap="resultMapObj">
-	  select aa.* from (
-	  		select 
-				g.baopSeq,
-			    g.baopType,
-			    g.baopName,
-			    g.baopPrice,
-			    h.baboopSeq,
-			    h.ba_booking_baboSeq,
-			    h.ba_option_baopSeq,
-				f.baboSeq,
-			    f.baboDate,
-			    f.baboTime,
-			    f.baboLocation,
-			    f.baboPayment,
-			    f.baboTotalPrice,
-			    f.baboSettleDate,
-			    f.ba_petprofile_bapeSeq,
-			    f.ba_sitterList_basiSeq,
-			    d.bapeSeq,
-			    d.bapeName,
-			    d.ba_Member_bameSeq,
-			    c.bameSeq,
-			    c.bameName,
-			    e.basiSeq,
-			    e.basiName
+	  select bb.* from (  
+			select DISTINCT
+		        e.basiSeq,
+		        f.baboSeq,
+		        f.baboDate,
+		        f.baboTime,
+		        f.baboLocation, 
+		        f.baboDiaryNy,
+		        d.bapeName,
+		        c.bameName
 			<include refid="sitterPageBookingCommon"/>
-			order by 
-	  			f.baboDate desc
-	  		) aa
+	  		) bb
 	  		limit #{rowNumToShow} offset #{startRnumForMysql}
 	  </select>
+	
+	  
+
+	    
 	  
 	  
 	  

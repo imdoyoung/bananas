@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nongshim.infra.baMember.BaMemberService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class BaMypageController {     
 	
@@ -95,17 +97,22 @@ public class BaMypageController {
 	public String baSitterMypage(BaMypageVo baMypageVo, Model model) {
 		
 		model.addAttribute("sitterPageBookingLsit", baMypageService.sitterPageBookingSelectList(baMypageVo));
+		model.addAttribute("mypageSitterReviewList", baMypageService.BaMypageReviewSelectList(baMypageVo)); // 시터 리뷰 리스트
 		return "usr/v1/infra/mypage/baSitterMypage";
 	}
 	
 	// 시터 마이페이지 (나의 예약)
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMyBooking")
-	public String baSitterMyBooking(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model) {
+	public String baSitterMyBooking(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model, HttpSession httpSession) {
 		
-		baMypageVo.setParamsPaging(baMypageService.selectMypageBookingCount(baMypageVo));
+		// 세션에서 sessSeqUsr 값 가져오기
+	    String sessSeqXdm = (String) httpSession.getAttribute("sessSeqXdm"); 
+		  
+		baMypageVo.setParamsPaging(baMypageService.sitterPageBookingCount(baMypageVo));
 		
-		if(baMypageVo.getTotalRows() > 0) {                               
+		if(baMypageVo.getTotalRows() > 0) {    
 			model.addAttribute("sitterPageBookingLsit", baMypageService.sitterPageBookingSelectList(baMypageVo));
+			System.out.println("Total 리스트 : " + baMypageVo.getTotalRows());
 		}
 		
 		return "usr/v1/infra/mypage/baSitterMyBooking";

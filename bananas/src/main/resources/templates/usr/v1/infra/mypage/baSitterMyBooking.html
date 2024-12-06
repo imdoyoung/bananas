@@ -107,10 +107,11 @@
                         <th>No</th>
                         <th>예약일</th>
                         <th>예약시간</th>
-                        <th>서비스</th>
+<!--                         <th>서비스</th> -->
                         <th>돌봄장소</th>
                         <th>강아지이름</th>
                         <th>보호자성함</th>
+                        <th>알림장쓰기</th>
                       </tr>
                     </thead>
                     
@@ -119,10 +120,17 @@
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                         <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td> 
                         <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약시간</td> 
-                        <td th:text="${list.baopName}">서비스</td>
+<!--                         <td th:text="${list.baopName}">서비스</td> -->
                         <td th:text="${list.baboLocation}">돌봄장소</td> 
                         <td th:text="${list.bapeName}">강아지이름</td>
                         <td th:text="${list.bameName}">보호자성함</td>
+                        <th:block th:if="${list.baboDiaryNy == 1}">
+                        	<td>
+							<a th:href="@{/usr/v1/infra/mypage/baSitterNotice}"
+								th:text="'내용 보기'" style="text-decoration: underline;">
+							</a>
+						    </td>
+                        </th:block>
                       </tr>
                     </tbody>
                     
@@ -554,15 +562,17 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="../../../cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
-    integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
-  <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script>
+    <!-- JavaScript -->
+<!--   <script src="../../../cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script> -->
+<!--   <script src="../../../unpkg.com/%40googlemaps/markerclusterer%402.0.13/dist/index.min.js"></script> -->
+<!--   <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script> -->
+<!--   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script> -->
+<!--   <script src="/usr/v1/template/andTour/assets/js/main.js"></script> -->
+    
 
-  <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
-  <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+	  <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
+	  <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
   
   <script>
 	//paging 
