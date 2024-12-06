@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class BaMemberController {
 	
@@ -12,7 +14,9 @@ public class BaMemberController {
 	BaMemberService baMemberService;
 	
 	@RequestMapping(value="/usr/v1/infra/baMember/baMemberUsrMform")
-	public String baMemberUsrMform(BaMemberDto baMemberDto, Model model) {
+	public String baMemberUsrMform(BaMemberDto baMemberDto, Model model, HttpSession session) {
+		session.getAttribute("sessSeqXdm");
+		
 		model.addAttribute("memberItem", baMemberService.memberSelectOne(baMemberDto));
 		return "usr/v1/infra/baMember/baMemberUsrMform";
 	}
