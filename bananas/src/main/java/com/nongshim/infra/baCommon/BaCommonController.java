@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nongshim.common.Constants;
 import com.nongshim.infra.baMember.BaMemberDto;
 import com.nongshim.infra.baMember.BaMemberService;
+import com.nongshim.infra.baSitter.BaSitterDto;
+import com.nongshim.infra.baSitter.BaSitterService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,6 +21,9 @@ public class BaCommonController {
 
 	@Autowired
 	BaMemberService baMemberService;
+	
+	@Autowired
+	BaSitterService baSitterService;
 
 	// 사용자 메인화면
 	// INDEX
@@ -151,5 +155,55 @@ public class BaCommonController {
 		returnMap.put("rt", "success");
 		return returnMap;
 	}
+	
+	
+	
+	
+	
+	// 시터 로그인
+	@RequestMapping(value="/usr/v1/infra/common/baSitterSignIn")
+	public String baSitterSignIn(BaSitterDto baSitterDto)  {
+		
+		baSitterService.sitterLoginSelectOne(baSitterDto);
+		return "usr/v1/infra/common/baSitterSignIn";
+	}
+	
+	// 시터 로그인 처리 페이지
+	@ResponseBody // ajax 어노테이션
+	@RequestMapping(value="/usr/v1/infra/common/baSitterSignInProc") // 로그인 처리 페이지 
+	public Map<String, Object> signinXdmProc(BaSitterDto baSitterDto, HttpSession httpSession) {
+		Map<String, Object> returnMap = new HashMap<String, Object>(); // 결과를 담기 위한 맵 생성 
+		
+		BaSitterDto rtMember = baSitterService.sitterLoginSelectOne(baSitterDto); // 로그인 정보를 가져옴
+		
+		System.out.println("로그인 정보 가져옴");
+		 	
+		if(rtMember != null) { // 로그인 정보가 있을 때 
+			BaSitterDto rtMemberSession = baSitterService.sitterLoginSelectOne(baSitterDto); // 세션을 생성
+		 
+			if(rtMemberSession != null) { // 세션 정보가 있을 때 
+				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+				httpSession.setAttribute("sessSeqSit", rtMemberSession.getBasiSeq()); // seq 정보를 가져옴 
+				httpSession.setAttribute("sessIdSit", rtMemberSession.getBasiId()); // 아이디 정보를 가져옴
+				httpSession.setAttribute("sessNameSit", rtMemberSession.getBasiName()); // 이름 정보를 가져옴 
+				httpSession.setAttribute("sessEmailSit", rtMemberSession.getBasiEmail()); // 이메일 정보를 가져옴
+				 
+				returnMap.put("rt", "success"); // 로그인 성공 
+				
+			}
+			
+	  } else {
+		  	System.out.println("로그인 실패");
+			returnMap.put("rt", "fail"); // 로그인 실패 
+    }
+		return returnMap;   
+ } // end
+	
+	
+	
+	
+	
+	
+	
 
 }
