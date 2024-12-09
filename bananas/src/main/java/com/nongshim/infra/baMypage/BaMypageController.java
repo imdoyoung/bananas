@@ -19,6 +19,8 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class BaMypageController {     
 	
+	// 도영아 제발 받아줘...
+	
 	@Autowired
 	BaMypageService baMypageService;
 	
