@@ -1,11 +1,10 @@
-package com.nongshim.infra.baSitter;
+package com.nongshim.infra.baSitterList;
 
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-public class BaSitterDto {
-	
+ 
+public class BaUsrSitterDto {
 //	========== field ========== //
 	// 시터Dto
 	private String basiSeq; 
@@ -703,4 +702,5 @@ public class BaSitterDto {
 		this.baplDelNy = baplDelNy;
 	}
 
+			 
 }
