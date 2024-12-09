@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BaUsrSitterDto {
 	
-	// 도영이 받아라
+	// 도영이 받아라22
 
 	
 	private String basiSeq;

@@ -7,7 +7,7 @@ public class ReadyResponse {
   private String partner_user_id;
 //----------------------------------------
   
-    //도영이 받아라
+    //도영이 받아라22
 
   
   

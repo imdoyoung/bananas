@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BaUsrSitterService {
 	
-	// 도영이 받아라
+	// 도영이 받아라22
 
 	
 	@Autowired

@@ -10,7 +10,7 @@ import com.nongshim.infra.baCodeGroup.BaCodeGroupVo;
 @Repository
 public interface BaUsrSitterDao {
 	
-	// 도영이 받아라
+	// 도영이 받아라22
 
 	
 	public List<BaUsrSitterDto> selectList(BaUsrSitterVo baUsrSitterVo);
