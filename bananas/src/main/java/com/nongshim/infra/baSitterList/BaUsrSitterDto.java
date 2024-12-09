@@ -3,7 +3,7 @@ package com.nongshim.infra.baSitterList;
 import java.util.Date;
  
 public class BaUsrSitterDto {
-	
+	// 도영이에유
 	private String basiSeq;
 	private String basiName;
 	private String basiId;

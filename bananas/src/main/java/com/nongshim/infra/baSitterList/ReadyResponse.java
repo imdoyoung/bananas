@@ -24,5 +24,7 @@ public class ReadyResponse {
 	public void setPartner_user_id(String partner_user_id) {
 		this.partner_user_id = partner_user_id;
 	}
+	
+	// 도영이에유
   
 }

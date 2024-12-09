@@ -8,7 +8,7 @@ import com.nongshim.infra.baCodeGroup.BaCodeGroupVo;
 
 @Repository
 public interface BaUsrSitterDao {
-	
+	// 도영이에유
 	public List<BaUsrSitterDto> selectList(BaUsrSitterVo baUsrSitterVo);
 	
 	public int sitterInsert(BaUsrSitterDto baUsrSitterDto);

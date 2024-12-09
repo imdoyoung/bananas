@@ -3,7 +3,7 @@ package com.nongshim.infra.baSitterList;
 import com.nongshim.common.Constants;
  
 public class BaUsrSitterVo {
-	
+	// 도영이에유
 	// search
 		private Integer shDelNy;
 		private Integer shJobNy;
