@@ -1,6 +1,6 @@
 package com.nongshim.infra.baSitterList;
 
-import com.nongshim.common.Constants;
+import com.nongshim.common.Constants;  
 
 public class BaUsrSitterVo {
 	

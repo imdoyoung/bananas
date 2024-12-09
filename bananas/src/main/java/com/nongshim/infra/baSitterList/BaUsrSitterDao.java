@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.nongshim.infra.baCodeGroup.BaCodeGroupVo;
-
+  
 
 @Repository
 public interface BaUsrSitterDao {
