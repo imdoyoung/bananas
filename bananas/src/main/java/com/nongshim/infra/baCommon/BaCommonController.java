@@ -14,6 +14,7 @@ import com.nongshim.infra.baMember.BaMemberService;
 import com.nongshim.infra.baSitter.BaSitterDto;
 import com.nongshim.infra.baSitter.BaSitterService;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -157,7 +158,7 @@ public class BaCommonController {
 	}
 	
 	
-	
+	//--
 	
 	
 	// 시터 로그인
@@ -175,8 +176,6 @@ public class BaCommonController {
 		Map<String, Object> returnMap = new HashMap<String, Object>(); // 결과를 담기 위한 맵 생성 
 		
 		BaSitterDto rtMember = baSitterService.sitterLoginSelectOne(baSitterDto); // 로그인 정보를 가져옴
-		
-		System.out.println("로그인 정보 가져옴");
 		 	
 		if(rtMember != null) { // 로그인 정보가 있을 때 
 			BaSitterDto rtMemberSession = baSitterService.sitterLoginSelectOne(baSitterDto); // 세션을 생성
@@ -197,13 +196,20 @@ public class BaCommonController {
 			returnMap.put("rt", "fail"); // 로그인 실패 
     }
 		return returnMap;   
- } // end
+ } // end 
 	
 	
+	// 시터 로그아웃
+	@ResponseBody
+	@RequestMapping(value="/usr/v1/infra/common/baSitterSignOutProc")
+	public Map<String, Object> baSitterSignOutProc(HttpSession httpSession) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate(); 
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
 	
 	
-	
-	
-	
+	 
 
 }

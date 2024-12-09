@@ -17,3 +17,4 @@ document.getElementById("SignoutBtn").onclick = function() {
 		}
 	});
 }
+

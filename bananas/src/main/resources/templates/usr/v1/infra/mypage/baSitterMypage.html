@@ -21,6 +21,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
   
+  
 
   <title>And tour</title>
 </head>
@@ -58,7 +59,7 @@
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
             <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
-            <div class="text-15 text-light-1">박효빈 시터 님 환영합니다!</div>
+            <div class="text-15 text-light-1" th:text="${session.sessNameSit} + ' 시터 님 환영합니다!' " ></div>
           </div>
         </div>
 
@@ -119,9 +120,9 @@
                   <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="text-30 lh-16 fw-600 text_orange">박효빈 시터 님</div>
-                      <div class="text-15 lh-14 text-light-1">sitter123</div>
-                      <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">sitter@gmail.com</div>
+                      <div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessNameSit} + ' 시터 님 ' ">시터이름</div>
+                      <div class="text-15 lh-14 text-light-1" th:text="${session.sessIdSit}">아이디</div>
+                      <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;" th:text="${session.sessEmailSit}">이메일</div>
                     </div>
                     <a href="about.html" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
                   </div>
@@ -356,6 +357,8 @@
 	<script src='/usr/v1/js/fullcalendar/dist/index.global.js'></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- Axios for AJAX -->
 	
+	<script src="/usr/v1/js/commonUsr.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
 	
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -372,6 +375,8 @@
 
     	    calendar.render();
     	});
+      
+     
 
 
       

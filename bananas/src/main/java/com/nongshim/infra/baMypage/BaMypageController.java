@@ -101,12 +101,15 @@ public class BaMypageController {
 		return "usr/v1/infra/mypage/baSitterMypage";
 	}
 	
-	// 시터 마이페이지 (나의 예약)
+	// 시터 마이페이지 (나의 예약) 
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMyBooking")
 	public String baSitterMyBooking(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model, HttpSession httpSession) {
 		
-		// 세션에서 sessSeqUsr 값 가져오기
-	    String sessSeqXdm = (String) httpSession.getAttribute("sessSeqXdm"); 
+		// 세션 값 가져오기
+		String sessSeqSit = (String) httpSession.getAttribute("sessSeqSit");
+		
+		// vo에 세션 값 set
+		baMypageVo.setBasiSeq(sessSeqSit);
 		  
 		baMypageVo.setParamsPaging(baMypageService.sitterPageBookingCount(baMypageVo));
 		
