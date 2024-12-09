@@ -3,7 +3,6 @@ package com.nongshim.infra.baSitterList;
 import com.nongshim.common.Constants;
  
 public class BaUsrSitterVo {
-	// 도영이에유
 	// search
 		private Integer shDelNy;
 		private Integer shJobNy;
@@ -33,7 +32,6 @@ public class BaUsrSitterVo {
 		public void setIfcdSeq(String ifcdSeq) {
 			this.ifcdSeq = ifcdSeq;
 		}
-		//--
 		public Integer getShDelNy() {
 			return shDelNy;
 		}

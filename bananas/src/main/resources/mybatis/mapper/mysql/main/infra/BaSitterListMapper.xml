@@ -5,7 +5,6 @@
 
 	<resultMap type="com.nongshim.infra.baSitterList.BaUsrSitterDto" id="resultMapObj"></resultMap>
 	
-	<!-- 도영이에유 -->
 	
 	<!-- 시터 리스트 -->
 	<select id="selectList" resultMap="resultMapObj">
@@ -44,31 +43,6 @@
 		<include refid="selectCommon" />
 	</select>
 	
-	<!-- 시터 등록(회원가입) -->
-<!-- 	<insert id="sitterInsert"> -->
-<!-- 		INSERT INTO ba_sitterlist( -->
-<!-- 			basiName, -->
-<!-- 			basiCareer, -->
-<!-- 			basiDesc, -->
-<!-- 			basiTel, -->
-<!-- 			basiZipCode, -->
-<!-- 			basiAddr, -->
-<!-- 			basiAddrDetail, -->
-<!-- 			basiEmail, -->
-<!-- 			basiDelNy -->
-<!-- 		)VALUES( -->
-<!-- 			#{basiName}, -->
-<!-- 			#{basiCareer}, -->
-<!-- 			#{basiDesc}, -->
-<!-- 			#{basiTel}, -->
-<!-- 			#{basiZipCode}, -->
-<!-- 			#{basiAddr}, -->
-<!-- 			#{basiAddrDetail}, -->
-<!-- 			#{basiEmail}, -->
-<!-- 			0 -->
-<!-- 		) -->
-<!-- 	</insert> -->
-
 	<!-- 시터 상세페이지 - 시터 정보 출력 -->
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
@@ -112,6 +86,64 @@
 			j.bareSeq Asc
 	</select>
 	
+	<!-- 시터 상세페이지 - 예약 옵션 리스트 출력 -->
+	<select id="opSelectList" resultMap="resultMapObj">
+		SELECT
+			g.baopSeq,
+			g.baopType,
+			g.baopName,
+			g.baopPrice,
+			g.baopUseNy,
+			g.baopDelNy
+		FROM
+			bananas.ba_option g
+		WHERE 1=1
+		ORDER BY
+			g.baopSeq ASC
+	</select>
+	
+	<!-- 예약 insert -->
+	<insert id="bookingInsert">
+		INSERT INTO ba_booking (
+			baboDate, 
+			baboTime, 
+			baboLocation, 
+			baboPayment, 
+			baboTotalPrice, 
+			baboSettleDate, 
+			baboRegDate, 
+			baboEditDate, 
+			baboDelNy, 
+			baboDiaryNy, 
+			ba_sitterlist_basiSeq, 
+			ba_petprofile_bapeSeq
+		) VALUES (
+			#{baboDate}, 
+			#{baboTime}, 
+			#{baboLocation}, 
+			#{baboPayment}, 
+			#{baboTotalPrice}, 
+			#{baboSettleDate}, 
+			#{baboRegDate}, 
+			#{baboEditDate}, 
+			#{baboDelNy}, 
+			#{baboDiaryNy}, 
+			#{ba_sitterlist_basiSeq}, 
+			#{ba_petprofile_bapeSeq}
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	<!-- 시터 상세페이지 - 리뷰 등록 -->
 	<insert id="reInsert">
 		INSERT INTO ba_review(
@@ -126,21 +158,5 @@
 			now()
 		)
 	</insert>
-	
-	<select id="opSelectList" resultMap="resultMapObj">
-		SELECT
-			g.baopSeq,
-			g.baopType,
-			g.baopName,
-			g.baopPrice,
-			g.baopUseNy,
-			g.baopDelNy
-		FROM
-			bananas.ba_option g
-		WHERE 1=1
-		ORDER BY
-			g.baopSeq Asc
-	</select>
-
 
 </mapper>

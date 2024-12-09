@@ -25,6 +25,4 @@ public class ReadyResponse {
 		this.partner_user_id = partner_user_id;
 	}
 	
-	// 도영이에유
-  
 }
