@@ -49,7 +49,7 @@ public class BaMeetPointController {
 	    	rtMap.put("rt", "fail");
 	    }
 
-	    return rtMap; // 결과 반환
+	    return rtMap; // 결과 반환//
 	}
 
 }
