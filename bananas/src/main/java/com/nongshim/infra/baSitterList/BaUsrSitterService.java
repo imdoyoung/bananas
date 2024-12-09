@@ -14,8 +14,8 @@ public class BaUsrSitterService {
 	@Autowired
 	private BaUsrSitterDao baUsrSitterDao;
 	
-	public List<BaUsrSitterDto>selectList(){
-       return baUsrSitterDao.selectList();
+	public List<BaUsrSitterDto>selectList(BaUsrSitterVo baUsrSitterVo){
+       return baUsrSitterDao.selectList(baUsrSitterVo);
     }
 	
 	public int sitterInsert(BaUsrSitterDto baUsrSitterDto) {
@@ -35,6 +35,10 @@ public class BaUsrSitterService {
 	
 	public List<BaUsrSitterDto>opSelectList(){
 	    return baUsrSitterDao.opSelectList();
+	}
+	
+	public int selectOneCount(BaUsrSitterVo baUsrSitterVo) {
+		return baUsrSitterDao.selectOneCount(baUsrSitterVo);
 	}
 	
 

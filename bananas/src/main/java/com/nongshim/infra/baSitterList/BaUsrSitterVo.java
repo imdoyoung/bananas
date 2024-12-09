@@ -23,7 +23,16 @@ public class BaUsrSitterVo {
 		private int startPage;                                     // 시작 페이지 번호
 		private int endPage;         							   // 마지막 페이지 번호
 		private int startRnumForMySql;                             // 쿼리 시작 row
+		private String ifcdSeq;
+		
+		
 
+		public String getIfcdSeq() {
+			return ifcdSeq;
+		}
+		public void setIfcdSeq(String ifcdSeq) {
+			this.ifcdSeq = ifcdSeq;
+		}
 		//--
 		public Integer getShDelNy() {
 			return shDelNy;

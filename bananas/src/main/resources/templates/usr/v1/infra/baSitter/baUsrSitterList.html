@@ -51,7 +51,7 @@
                     <div class="lower-content">
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
-                            <h6 class="mt-20 mb-30">시터를 선택해 주세요</h6>
+                            <h3 class="mt-20 mb-30">시터를 선택해 주세요</h3>
                             </div>
                             <!--<div class="col-lg-6 col-sm-6 text-right">
                                 <select name="orderby" class="orderby" aria-label="Shop order">
@@ -66,6 +66,9 @@
                         </div>
                         <div class="row">
                              <div class="col-lg-4 col-md-12 col-sm-12" th:each="list:${list}">
+								<form name="form" method="post" action="/usr/v1/infra/baSitter/baUsrSitterList">	
+								<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1" id="thisPageInfo" /> 
+								<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}" />
                                 <div class="product__img">
                                     <a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}"><img src="/usr/v1/template/petxon/assets/img/shop/img5.jpg" alt=""></a>
                                     <div class="product-action text-center">
@@ -76,19 +79,21 @@
                                     <h4><a th:text="${list.basiName}" th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}"></a></h4> 
                                         <ul>
                                             <li>
-                                                <div class="icon"><i class="fal fa-envelope"></i> <strong>Email</strong></div>
-                                                <div class="text" th:text="${list.basiEmail}"></div>
+                                                <div class="icon"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}"><i class="fal fa-envelope"></i><strong>Email</strong></a></div>
+                                                <div class="text"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}" th:text="${list.basiEmail}"></a></div>
                                             </li>    
                                             <li>
-                                                <div class="icon"><i class="fal fa-phone"></i> <strong>전화번호</strong></div>
-                                                <div class="text" th:text="${list.basiTel}"></div>
+                                                <div class="icon"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}"><i class="fal fa-phone"></i><strong>전화번호</strong></a></div>
+                                                <div class="text"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}" th:text="${list.basiTel}"></a></div>
                                             </li>    
                                             <li>
-                                                <div class="icon"><i class="fal fa-map-marker-alt"></i><strong>주소</strong></div>
-                                                <div class="text" th:text="${list.basiAddr}"></div>
+                                                <div class="icon"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}"><i class="fal fa-map-marker-alt"></i><strong>주소</strong></a></div>
+                                                <div class="text"><a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}" th:text="${list.basiAddr}"></a></div>
                                             </li>      
                                         </ul>     
                                  </div>
+								 
+								</form>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <!--<div class="product__img">
@@ -121,11 +126,31 @@
                         <div class="col-12">
                             <div class="pagination-wrap mt-50 text-center">
                                 <nav>
-                                    <ul class="pagination">
-                                        <li class="page-item"><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                        <li class="page-item active"><a href="#">1</a></li>
-                                        <li class="page-item"><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                                    </ul>
+									<ul class="pagination justify-content-center">
+										<li class="page-item disabled"
+											th:if="${vo.startPage gt vo.pageNumToShow}"
+											style="cursor: pointer;">
+											<a class="page-link" aria-label="Previous"
+												href="javascript:goList(${vo.startPage - 1})"
+												th:attr="onclick=|goList('${vo.startPage - 1}')|">
+												<span aria-hidden="true">&laquo;</span>
+											</a>
+										</li>
+										<li class="page-item"
+											th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
+											th:classappend="${num eq vo.thisPage} ? active : ''"
+											style="cursor: pointer;">
+											<a class="page-link" th:attr="onclick=|goList('${num}')|"
+												th:text="${num}"></a>
+										</li>
+										<li class="page-item" th:if="${vo.endPage ne vo.totalPages}"
+											style="cursor: pointer;">
+											<a class="page-link" aria-label="Next"
+												th:attr="onclick=|goList('${vo.endPage + 1}')|">
+												<span aria-hidden="true">&raquo;</span>
+											</a>
+										</li>
+									</ul>
                                 </nav>
                             </div>
                        </div>
@@ -135,11 +160,10 @@
         </main>
         <!-- main-area-end -->
         <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
+        <footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
             <div class="footer-top  pt-120 pb-90">
                 <div class="container">
                     <div class="row justify-content-between">
-                        
                         <div class="col-xl-3 col-lg-3 col-sm-6">
                             <div class="footer-widget mb-30">  
                                  <div class="f-widget-title">
@@ -161,12 +185,12 @@
                                 </div>
                                 <div class="f-insta">
                                     <ul>
-                                        <li><a href="#"><img src="img/instagram/f-galler-01.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-02.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-03.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-04.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-05.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="img/instagram/f-galler-06.png" alt="img"></a></li>                                       
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png" alt="img"></a></li>
+                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png" alt="img"></a></li>                                       
                                     </ul>
                                 </div>
                             </div>
@@ -206,7 +230,7 @@
                         <div class="col-xl-2 col-lg-2 col-sm-6">
                              <div class="footer-widget mb-30">
                                 <div class="f-widget-title">
-                                   <h2> <img src="img/logo/f_logo.png" alt="img"></h2>
+                                   <h2> <img src="/usr/v1/template/petxon/assets/img/logo/f_logo.png" alt="img"></h2>
                                 </div>
                                   <div class="f-contact">
                                    <ul>
@@ -249,12 +273,26 @@
                             </div>    
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </footer>
         <!-- footer-end -->
 		<!-- JS here -->
+		
+		<script type="text/javascript">
+			goList = function (thisPage) {
+				document.querySelector("input[name=thisPage]").value = thisPage;
+				document.querySelector("form[name=form]").action = "/usr/v1/infra/baSitter/baUsrSitterList";
+				document.querySelector("form[name=form]").submit();
+			}
+			document.getElementById("changeRowNum").onchange = function () {
+				document.getElementById("rowNumToShow").value = document.getElementById("changeRowNum").value;
+				
+				form.action = "/usr/v1/infra/baSitter/baUsrSitterList";
+				form.submit();
+			}
+		</script>
+		
         <script src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
         <script src="/usr/v1/template/petxon/assets/js/popper.min.js"></script>

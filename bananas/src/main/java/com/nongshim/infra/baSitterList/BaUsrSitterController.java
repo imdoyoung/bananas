@@ -1,6 +1,8 @@
 package com.nongshim.infra.baSitterList;
 
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +22,12 @@ public class BaUsrSitterController {
 		return "usr/v1/infra/baSitter/baUsrSitterForm";
 	}
 	//시터 리스트
-	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterList")
-	public String baUsrSitterList(Model model) {
-			model.addAttribute("list", baUsrSitterService.selectList());
-			
-		return "usr/v1/infra/baSitter/baUsrSitterList";
-	}
+//	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterList")
+//	public String baUsrSitterList(Model model) {
+//			model.addAttribute("list", baUsrSitterService.selectList());
+//			
+//		return "usr/v1/infra/baSitter/baUsrSitterList";
+//	}
 	//시터 insert
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterInst")
 	public String baUsrSitterInst(BaUsrSitterDto baUsrSitterDto) {
@@ -63,6 +65,22 @@ public class BaUsrSitterController {
 	public String baUsrSitterReservate() {
 		return "usr/v1/infra/baSitter/baUsrSitterReservate";
 	}
+	
+	//List
+	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterList")
+	public String baUsrSitterList(@ModelAttribute("vo") BaUsrSitterVo baUsrSitterVo, Model model) throws IOException {
+
+		// paging
+		baUsrSitterVo.setParamsPaging(baUsrSitterService.selectOneCount(baUsrSitterVo));
+		System.out.println("StartRnumForMySql: " + baUsrSitterVo.getStartRnumForMySql());
+		
+		if (baUsrSitterVo.getTotalRows() > 0) {
+			model.addAttribute("list", baUsrSitterService.selectList(baUsrSitterVo));
+		}
+		
+		return "usr/v1/infra/baSitter/baUsrSitterList";
+	}
+	
 	
 	
 }

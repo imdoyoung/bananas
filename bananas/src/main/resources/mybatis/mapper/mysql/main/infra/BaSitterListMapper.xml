@@ -5,6 +5,7 @@
 
 <resultMap type="com.nongshim.infra.baSitterList.BaUsrSitterDto" id="resultMapObj"></resultMap>
    <select id="selectList" resultMap="resultMapObj">
+     SELECT aa.* FROM(
 	   SELECT
 		  e.basiSeq,
 		  e.basiName,
@@ -23,12 +24,22 @@
 		  e.basiTosNy,
 		  e.basiUseNy,
 		  e.basiDelNy
+		<include refid="selectCommon"/>  
+		ORDER BY
+		   e.basiSeq Asc
+		) aa limit #{rowNumToShow} offset #{startRnumForMySql}   
+	</select>
+	<sql id="selectCommon">
 		FROM
 			bananas.ba_sitterlist e
 		  WHERE 1=1
-			ORDER BY  
-			e.basiSeq Asc
+	</sql>
+			
+   <select id="selectOneCount">
+	  	SELECT COUNT(*)
+	  	<include refid="selectCommon"/>
    </select>
+   
    <insert id="sitterInsert">
       INSERT INTO ba_sitterlist(
           basiName,
