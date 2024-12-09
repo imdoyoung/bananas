@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nongshim.common.Constants;
 import com.nongshim.infra.baMember.BaMemberDto;
 import com.nongshim.infra.baMember.BaMemberService;
+import com.nongshim.infra.baPetprofile.BaPetprofileDto;
 import com.nongshim.infra.baSitter.BaSitterDto;
 import com.nongshim.infra.baSitter.BaSitterService;
 
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -61,7 +61,14 @@ public class BaCommonController {
 				httpSession.setAttribute("sessIdXdm", rtUser2.getBameId());
 				httpSession.setAttribute("sessNameXdm", rtUser2.getBameName());
 				httpSession.setAttribute("sessGradeXdm", rtUser2.getBameGrade());
-				httpSession.setAttribute("sessEmailXdm", rtUser2.getBameGrade());
+				httpSession.setAttribute("sessEmailXdm", rtUser2.getBameEmail());
+				
+				// BaPetprofileDto에서 petSeq를 가져와 세션에 저장
+	            BaPetprofileDto bapetProfileDto = rtUser2.getBaPetprofileDto();
+	            if (bapetProfileDto != null && bapetProfileDto.getBapeSeq() != null) {
+	                httpSession.setAttribute("sessPetSeq", bapetProfileDto.getBapeSeq());
+	            }
+				
 				// 성공 응답 설정
 				returnMap.put("rt", "success");
 				// 저장된 세션값 확인
@@ -70,6 +77,7 @@ public class BaCommonController {
 				System.out.println("sessNameXdm: " + httpSession.getAttribute("sessNameXdm"));
 				System.out.println("sessGradeXdm: " + httpSession.getAttribute("sessGradeXdm"));
 				System.out.println("sessEmailXdm: " + httpSession.getAttribute("sessEmailXdm"));
+				System.out.println("sessPetSeq: " + httpSession.getAttribute("sessPetSeq"));
 			} else {
 				returnMap.put("rt", "fail"); // 실패 응답 설정
 			}

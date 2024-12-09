@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.nongshim.infra.baPetprofile.BaPetprofileDto;
+
 public class BaMemberDto {
 
 // ---- filed ----- //
@@ -27,6 +29,18 @@ public class BaMemberDto {
 	private Integer bameTosNy;
 	private Integer bameMktNy;
 	private Integer bameDelNy;
+	
+    // BaPetprofileDto 포함
+//    private BaPetprofileDto baPetprofileDto;
+//
+//    public BaPetprofileDto getBaPetprofileDto() {
+//        return baPetprofileDto;
+//    }
+//
+//    public void setBaPetprofileDto(BaPetprofileDto baPetprofileDto) {
+//        this.baPetprofileDto = baPetprofileDto;
+//    }
+	
 	
 // ----- getter/setter ----- //
 	public String getBameSeq() {
