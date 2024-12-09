@@ -1,7 +1,7 @@
 package com.nongshim.infra.baSitterList;
 
 import java.util.Date;
-
+ 
 public class BaUsrSitterDto {
 	
 	private String basiSeq;

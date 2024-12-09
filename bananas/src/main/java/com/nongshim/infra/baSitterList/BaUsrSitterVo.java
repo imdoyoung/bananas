@@ -1,7 +1,7 @@
 package com.nongshim.infra.baSitterList;
 
 import com.nongshim.common.Constants;
-
+ 
 public class BaUsrSitterVo {
 	
 	// search

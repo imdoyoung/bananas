@@ -1,5 +1,5 @@
 package com.nongshim.infra.baSitterList;
-
+ 
 //(DTO)
 public class ReadyResponse {
 	private String tid;                  // 결제 고유번호
