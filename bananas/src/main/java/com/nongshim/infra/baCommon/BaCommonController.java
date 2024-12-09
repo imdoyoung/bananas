@@ -64,10 +64,10 @@ public class BaCommonController {
 				httpSession.setAttribute("sessEmailXdm", rtUser2.getBameEmail());
 				
 				// BaPetprofileDto에서 petSeq를 가져와 세션에 저장
-	            BaPetprofileDto bapetProfileDto = rtUser2.getBaPetprofileDto();
-	            if (bapetProfileDto != null && bapetProfileDto.getBapeSeq() != null) {
-	                httpSession.setAttribute("sessPetSeq", bapetProfileDto.getBapeSeq());
-	            }
+//	            BaPetprofileDto bapetProfileDto = rtUser2.getBaPetprofileDto();
+//	            if (bapetProfileDto != null && bapetProfileDto.getBapeSeq() != null) {
+//	                httpSession.setAttribute("sessPetSeq", bapetProfileDto.getBapeSeq());
+//	            }
 				
 				// 성공 응답 설정
 				returnMap.put("rt", "success");
@@ -77,7 +77,7 @@ public class BaCommonController {
 				System.out.println("sessNameXdm: " + httpSession.getAttribute("sessNameXdm"));
 				System.out.println("sessGradeXdm: " + httpSession.getAttribute("sessGradeXdm"));
 				System.out.println("sessEmailXdm: " + httpSession.getAttribute("sessEmailXdm"));
-				System.out.println("sessPetSeq: " + httpSession.getAttribute("sessPetSeq"));
+//				System.out.println("sessPetSeq: " + httpSession.getAttribute("sessPetSeq"));
 			} else {
 				returnMap.put("rt", "fail"); // 실패 응답 설정
 			}
