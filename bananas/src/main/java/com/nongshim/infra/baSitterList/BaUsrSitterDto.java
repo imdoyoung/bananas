@@ -4,6 +4,9 @@ import java.util.Date;
 
 public class BaUsrSitterDto {
 	
+	// 도영이 받아라
+
+	
 	private String basiSeq;
 	private String basiName;
 	private String basiId;

@@ -4,6 +4,9 @@ import com.nongshim.common.Constants;
 
 public class BaUsrSitterVo {
 	
+	// 도영이 받아라
+
+	
 	// search
 		private Integer shDelNy;
 		private Integer shJobNy;

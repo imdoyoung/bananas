@@ -131,5 +131,6 @@
 		  g.baopSeq Asc
 	  </select> 
       
+      <!-- 도영이 받아라 -->
       
 </mapper>

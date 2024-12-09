@@ -6,6 +6,12 @@ public class ReadyResponse {
   private String next_redirect_pc_url; // 카카오톡으로 결제 요청 메시지(TMS)를 보내기 위한 사용자 정보 입력화면 Redirect URL (카카오 측 제공)
   private String partner_user_id;
 //----------------------------------------
+  
+    //도영이 받아라
+
+  
+  
+  
 	public String getTid() {
 		return tid;
 	}
