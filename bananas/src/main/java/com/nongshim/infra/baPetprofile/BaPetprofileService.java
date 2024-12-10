@@ -30,5 +30,15 @@ public class BaPetprofileService {
 	public int PetUpdate(BaPetprofileDto baPetprofileDto) {
 		return baPetprofileDao.PetUpdate(baPetprofileDto);
 	}
+	
+	// 회원 로그인시 펫 시퀀스 넘기기
+	public BaPetprofileDto selectOnePet(BaPetprofileDto baPetprofileDto) {
+		return baPetprofileDao.selectOnePet(baPetprofileDto);
+	}
+	
+	// 회원 로그인시 펫 세션 유지
+	public BaPetprofileDto selectOnePetSeq(BaPetprofileDto baPetprofileDto) {
+		return baPetprofileDao.selectOnePetSeq(baPetprofileDto);
+	};
 
 }

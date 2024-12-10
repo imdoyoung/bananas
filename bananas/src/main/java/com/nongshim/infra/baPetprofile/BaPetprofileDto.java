@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class BaPetprofileDto {
 	
+	private String bameSeq;
+	
 	private String bapeSeq;
 	private String bapeName;
     private Integer bapeGender;
@@ -103,6 +105,12 @@ public class BaPetprofileDto {
 	}
 	public void setBA_Member_bameSeq(String bA_Member_bameSeq) {
 		BA_Member_bameSeq = bA_Member_bameSeq;
+	}
+	public String getBameSeq() {
+		return bameSeq;
+	}
+	public void setBameSeq(String bameSeq) {
+		this.bameSeq = bameSeq;
 	}
 
 }
