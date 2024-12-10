@@ -43,7 +43,15 @@ public class BaUsrSitterService {
 	    return baUsrSitterDao.opSelectList();
 	}
 	
+	// sitterDetil에서 booking insert
+	public int bookingInsert(BaUsrSitterDto baUsrSitterDto) {
+		return baUsrSitterDao.bookingInsert(baUsrSitterDto);
+	}
 	
+	// sitterDetil에서 bookingOption insert
+	public int bookingOptionInsert(BaUsrSitterDto baUsrSitterDto) {
+		return baUsrSitterDao.bookingOptionInsert(baUsrSitterDto);
+	}
 	
 
 

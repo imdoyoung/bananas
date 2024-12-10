@@ -69,23 +69,6 @@
 			AND e.basiSeq = #{basiSeq}
 	</select>
 	
-	<!-- 시터 상세페이지 - 리뷰 리스트 출력 -->
-	<select id="reSelectList" resultMap="resultMapObj">
-		SELECT
-			j.bareSeq,
-			j.bareType,
-			j.bareStar,
-			j.bareContents,
-			j.bareRegDate,
-			j.bareEditDate,
-			j.bareDelNy
-		FROM
-			bananas.ba_review j
-		WHERE 1=1
-		ORDER BY
-			j.bareSeq Asc
-	</select>
-	
 	<!-- 시터 상세페이지 - 예약 옵션 리스트 출력 -->
 	<select id="opSelectList" resultMap="resultMapObj">
 		SELECT
@@ -96,14 +79,16 @@
 			g.baopUseNy,
 			g.baopDelNy
 		FROM
-			bananas.ba_option g
+			bananas.ba_option AS g
 		WHERE 1=1
 		ORDER BY
 			g.baopSeq ASC
 	</select>
 	
 	<!-- 예약 insert -->
-	<insert id="bookingInsert">
+	<!-- sitterDetil에서 booking insert -->
+	<!-- baboSeq 값을 booking에 삽입한 후 bookingOption에 전달하려면, mybatis에서는 useGeneratedKeys를 설정하여 자동으로 생성된 baboSeq 값을 가져올 수 있다. -->
+	<insert id="bookingInsert" useGeneratedKeys="true" keyProperty="baboSeq">
 		INSERT INTO ba_booking (
 			baboDate, 
 			baboTime, 
@@ -121,16 +106,35 @@
 			#{baboDate}, 
 			#{baboTime}, 
 			#{baboLocation}, 
-			#{baboPayment}, 
+			null, 
 			#{baboTotalPrice}, 
-			#{baboSettleDate}, 
-			#{baboRegDate}, 
-			#{baboEditDate}, 
-			#{baboDelNy}, 
-			#{baboDiaryNy}, 
+			null, 
+			now(), 
+			now(), 
+			0, 
+			0, 
 			#{ba_sitterlist_basiSeq}, 
 			#{ba_petprofile_bapeSeq}
 		)
+	</insert>
+	
+	<!-- sitterDetil에서 bookingOption insert -->
+	<insert id="bookingOptionInsert" parameterType="map">
+		<!-- 선택된 옵션들의 baboSeq 값이 optionSeqs 리스트로 전달되어 bookingOptionInsert에서 각각의 optionSeq를 사용하여 bookingoption 테이블에 데이터를 삽입할 수 잇다. -->
+		INSERT INTO ba_bookingoption (
+			baboopUseNy, 
+			baboopDelNy, 
+			ba_booking_baboSeq, 
+			ba_option_baopSeq
+		) VALUES 
+		<foreach collection="optionSeqs" item="optionSeq" separator=",">
+			(
+				1, 
+				0,
+				#{baboSeq},
+				#{optionSeq}
+			)
+		</foreach>
 	</insert>
 	
 	
@@ -143,6 +147,26 @@
 	
 	
 	
+	
+	
+	
+	
+	<!-- 시터 상세페이지 - 리뷰 리스트 출력 -->
+	<select id="reSelectList" resultMap="resultMapObj">
+		SELECT
+			j.bareSeq,
+			j.bareType,
+			j.bareStar,
+			j.bareContents,
+			j.bareRegDate,
+			j.bareEditDate,
+			j.bareDelNy
+		FROM
+			bananas.ba_review j
+		WHERE 1=1
+		ORDER BY
+			j.bareSeq Asc
+	</select>
 
 	<!-- 시터 상세페이지 - 리뷰 등록 -->
 	<insert id="reInsert">

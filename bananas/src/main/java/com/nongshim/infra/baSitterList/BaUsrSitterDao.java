@@ -27,5 +27,10 @@ public interface BaUsrSitterDao {
 	// 시터 상세페이지 - 예약 옵션 리스트 출력
 	public List<BaUsrSitterDto> opSelectList();
 	
+	// sitterDetil에서 booking insert
+	public int bookingInsert(BaUsrSitterDto baUsrSitterDto);
+	
+	// sitterDetil에서 bookingOption insert
+	public int bookingOptionInsert(BaUsrSitterDto baUsrSitterDto);
 
 }
