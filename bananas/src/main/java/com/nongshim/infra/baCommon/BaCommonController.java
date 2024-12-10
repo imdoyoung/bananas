@@ -66,6 +66,7 @@ public class BaCommonController {
 	        	// 저장된 세션값 확인
 	            httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
 	            httpSession.setAttribute("sessSeqXdm", rtUser2.getBameSeq());
+//	            System.out.println("sessSeqXdm: " + rtUser2.getBameSeq());
 	            httpSession.setAttribute("sessIdXdm", rtUser2.getBameId());
 	            httpSession.setAttribute("sessNameXdm", rtUser2.getBameName());
 	            httpSession.setAttribute("sessGradeXdm", rtUser2.getBameGrade());
@@ -75,6 +76,10 @@ public class BaCommonController {
 	            	// 저장된 세션값 확인
 	                httpSession.setAttribute("sessPetSeq", rtPet2.getBapeSeq());
 	                httpSession.setAttribute("sessPetName", rtPet2.getBapeName());
+	                httpSession.setAttribute("sessPetAge", rtPet2.getBapeAge());
+	                httpSession.setAttribute("sessPetWeight", rtPet2.getBapeWeight());
+//	                System.out.println("sessPetSeq: " + rtPet2.getBapeSeq());
+//	                System.out.println("sessPetName: " + rtPet2.getBapeName());
 	            } else {
 	                System.out.println("회원정보를 찾을 수 없습니다.");
 	            }
@@ -86,7 +91,7 @@ public class BaCommonController {
 	    } else {
 	        returnMap.put("rt", "fail"); // 실패 응답 설정
 	    }
-
+	    
 	    return returnMap;
 	}
 
