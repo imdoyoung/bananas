@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nongshim.infra.baPlace.BaPlaceDao">
+ 
+	  <resultMap type="com.nongshim.infra.baPlace.BaPlaceDto" id="resultMapObj"></resultMap>
+
+	  <select id="placeSelectList" resultMap="resultMapObj">
+	  	SELECT 
+	  		i.baplSeq,
+	  		i.baplCity,
+	  		i.baplType,
+	  		i.baplDeType,
+	  		i.baplName,
+	  		i.baplAddr,
+	  		i.baplTel,
+	  		i.baplWeb,
+	  		i.baplAvailPlace,
+	  		i.baplRestrictions,
+	  		i.baplFee,
+	  		i.baplEtc,
+	  		i.baplTime,
+	  		i.baplOff, 
+	  		i.baplParking,
+	  		i.baplRegDate,
+	  		i.baplEditDate,
+	  		i.baplUseNy,
+	  		i.baplDelNy
+	  	FROM ba_place AS i
+	  	ORDER BY i.baplSeq DESC
+	  </select>
+	  
+</mapper>

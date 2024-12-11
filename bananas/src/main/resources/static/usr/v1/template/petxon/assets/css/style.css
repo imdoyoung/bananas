@@ -7797,9 +7797,9 @@ color: #F69946;
   font-weight: 500;
 }
 .product__content{
-    padding: 30px;
+    padding: 15px;
     border-radius: 0px 0px 10px 10px;
-background: #FFF8F1;
+	background: #FFF8F1;
     margin-top: 10px;
 }
 @media (max-width: 767px) {
