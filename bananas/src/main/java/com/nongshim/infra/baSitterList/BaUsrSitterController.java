@@ -50,11 +50,7 @@ public class BaUsrSitterController {
 		return "/usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
 	
-	//시터 예약하기
-	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrSitterReservate")
-	public String baUsrSitterReservate() {
-		return "usr/v1/infra/baSitter/baUsrSitterReservate";
-	}
+	
 	
 	
 	
