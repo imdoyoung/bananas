@@ -1,30 +1,21 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Petxon - Pet Care & Pet Shop HTML Template</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-	<!-- Place favicon.ico in the root directory -->
-
-	<!-- CSS here -->
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/animate.min.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/fontawesome-pro/css/all.min.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/dripicons.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/slick.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/meanmenu.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/swiper.min.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/default.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/style.css">
-	<link rel="stylesheet" href="/usr/v1/template/petxon/assets/css/responsive.css">
-</head>
-
+<!-- ======= Head ======= -->
+	<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
+	<!-- head-end -->
+<style>
+	.center-text {
+	  text-align: center;
+	}
+	
+	.center-section {
+	  text-align: center; /* 텍스트와 콘텐츠를 수평 가운데 정렬 */
+	  margin-left: auto;
+	  margin-right: auto;
+	  }
+	  
+</style>
 <body>
 	<!--  Preloader  -->
 	<div id="preloader">
@@ -54,7 +45,7 @@
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
 											<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">About</li>
+											<li class="breadcrumb-item active" aria-current="page">Payment</li>
 										</ol>
 									</nav>
 								</div>
@@ -69,17 +60,17 @@
 		<section class="contact-home-area pt-120 pb-120 p-relative fix" style="background-color: #F3F3F3;">
 			<div class="animations-01"><img src="/usr/v1/template/petxon/assets/img/bg/communication.png" alt="an-img-01"></div>
 			<div class="container">
-				<div class="row" margin=" 0 auto;">
-					<div class="col-lg-8 col-xl-8">
-						<div class="contact-bg02 contact-bg-gry">
+				<div class="row center-section" margin=" 0 auto;">
+					<div class="col-lg-8 col-xl-8 center-section">
+						<div class="contact-bg02 contact-bg-gry center-section">
 							<div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s">
 								<h4>결제완료</h4>
 							</div>
 							<div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s" style="height: 30px;"></div>
-							<div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s">
-								<h2>결제가 완료되었습니다!</h2>
+							<div class="section-title mb-20 wow fadeInDown animated center-text" data-animation="fadeInDown" data-delay=".4s">
+								<h2>결제가&nbsp;&nbsp;&nbsp;완료되었습니다!</h2>
 							</div>
-							<div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s" style="height: 100px;"></div>
+							<div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s" style="height: 80px;"></div>
 							<a href="/usr/v1/infra/common/baUsrIndex" class="btn">
 							   <img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo">메인 페이지로 가기
 							</a>
