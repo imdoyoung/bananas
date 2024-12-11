@@ -1,256 +1,451 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-	
-<!-- ======= Head ======= -->
-<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
-<!-- Head end -->
 
-    <body>
-         <!--  Preloader  -->
-            <div id="preloader">
-                <div id="loading"> </div>
-            </div>
-            <!--  Preloader end  -->
-        <!-- ======= Header ======= -->
-        <div th:replace="~{usr/v1/infra/common/header :: header}"></div>
-        <!-- header-end -->
-       
-		<!-- ======= offcanvas_menu ======= -->
-		<div th:replace="~{usr/v1/infra/common/offcanvas_menu :: div}"></div>
-		<!-- offcanvas_menu end -->
-		
-        <!-- main-area -->
-        <main>
-            <!-- breadcrumb-area -->
-            <section class="breadcrumb-area d-flex align-items-center" style="background-image:url(/usr/v1/template/petxon/assets/img/bg/bdrc-bg.jpg)">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-xl-12 col-lg-12">
-                            <div class="breadcrumb-wrap text-left">
-                                <div class="breadcrumb-title">
-                                    <h2>결제하기 payment 페이지</h2>    
-                                    <div class="breadcrumb-wrap">
-                              
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">About</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </section>
-            <!-- breadcrumb-area-end -->
-            <!-- contact-area-end -->
-                <!-- contact-area -->
-            <section class="contact-home-area pt-120 pb-120 p-relative fix" style="background-color: #F3F3F3;"> 
-                <div class="animations-01"><img src="/usr/v1/template/petxon/assets/img/bg/communication.png" alt="an-img-01"></div>
-                <div class="container">
-                    <div class="row" margin=" 0 auto;">       
-					    <div class="col-lg-8 col-xl-8">
-                            <div class="contact-bg02 contact-bg-gry">
-	                            <div class="section-title mb-20 wow fadeInDown animated" data-animation="fadeInDown" data-delay=".4s">                             
-	                                <h2>결제 하기</h2>  
-	                            </div>    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <!-- main-area-end -->
-        <!-- footer -->
-        <footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-            <div class="footer-top  pt-120 pb-90">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        
-                        <div class="col-xl-3 col-lg-3 col-sm-6">
-                            <div class="footer-widget mb-30">  
-                                 <div class="f-widget-title">
-                                    <h2>Working Hours</h2>
-                                </div>
-                                <div class="f-work-hour">
-                                    <ul>
-                                        <li><span>Mon - Fri:</span> <strong>7am - 6pm</strong></li>
-                                        <li><span>Saturday:</span> <strong>9am - 4pm</strong></li>
-                                        <li><span>Sunday:</span> <strong>Closed</strong></li>
-                                    </ul>
-                                </div>                                 
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-sm-6">
-                            <div class="footer-widget mb-30">
-                                <div class="f-widget-title">
-                                    <h2>Our Gallery</h2>
-                                </div>
-                                <div class="f-insta">
-                                    <ul>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png" alt="img"></a></li>
-                                        <li><a href="#"><img src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png" alt="img"></a></li>                                       
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-						<div class="col-xl-2 col-lg-2 col-sm-6">
-                            <div class="footer-widget mb-30">
-                                <div class="f-widget-title">
-                                    <h2>Essential</h2>
-                                </div>
-                                <div class="footer-link">
-                                    <ul>                                        
-                                        <li><a href="index.html">About us</a></li>
-                                        <li><a href="about.html"> Careers</a></li>
-                                        <li><a href="services.html"> Prices </a></li>
-                                        <li><a href="contact.html"> Services</a></li>
-                                        <li><a href="blog.html">Get In Touch </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2 col-sm-6">
-                            <div class="footer-widget mb-30">
-                                <div class="f-widget-title">
-                                    <h2>More Pages</h2>
-                                </div>
-                                <div class="footer-link">
-                                    <ul>                                        
-                                        <li><a href="index.html">Auto production</a></li>
-                                        <li><a href="about.html"> Investors</a></li>
-                                        <li><a href="services.html"> News </a></li>
-                                        <li><a href="contact.html"> FAQ’s</a></li>
-                                        <li><a href="blog.html">Contact us </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>                        
-                        <div class="col-xl-2 col-lg-2 col-sm-6">
-                             <div class="footer-widget mb-30">
-                                <div class="f-widget-title">
-                                   <h2> <img src="img/logo/f_logo.png" alt="img"></h2>
-                                </div>
-                                  <div class="f-contact">
-                                   <ul>
-                                      <li>
-                                        <h6>Call Us</h6>
-                                         <span>+123 456 7890</span>
-                                      </li>
-                                      <li>
-                                        <h6>Our Address</h6>
-                                         <span>92 Bowery St, New York, NY</span>
-                                      </li>
-                                   </ul>
-                                </div>
-                             </div>
-                          </div>                       
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-wrap">
-                <div class="container">
-                    <div class="row align-items-center c-mid">                        
-                         <div class="col-lg-4 col-md-6 ">
-                               <ul>
-                                    <li><a href="#">Privacy Policy</a></li>    
-                                    <li><a href="#">Terms Of Service</a></li>
-                                </ul>
-                            </div>
-                         <div class="col-lg-4 col-md-6 ">
-                          <div class="copy-text text-center">
-                                 Copyright &copy; Petxon 2024. All rights reserved.       
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 text-right text-xl-right">
-                            <div class="footer-social">                                    
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </div>    
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </footer>
-        <!-- footer-end -->
-		<!-- JS here -->
-        <script>
-            function sample6_execDaumPostcode() {
-            new daum.Postcode({
-            oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>투개더</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<!-- Place favicon.ico in the root directory -->
 
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
+<!-- CSS here -->
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/animate.min.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/magnific-popup.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/fontawesome/css/all.min.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/fontawesome-pro/css/all.min.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/dripicons.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/slick.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/meanmenu.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/swiper.min.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/default.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/style.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/petxon/assets/css/responsive.css">
 
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
-            }
+<link rel="stylesheet"
+	href="/usr/v1/template/andTour/assets/css/vendors.css">
+<link rel="stylesheet"
+	href="/usr/v1/template/andTour/assets/css/main.css">
 
-            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            if(data.userSelectedType === 'R'){
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-               // document.getElementById("sample6_extraAddress").value = extraAddr;
-            } else {
-                //document.getElementById("sample6_extraAddress").value = '';
-            }
-            document.getElementById('basiZipCode').value = data.zonecode;
-            document.getElementById("basiAddr").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("basiAddrDetail").focus();
-        }
-    }).open();
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Stylesheets -->
+
+<style>
+.contact-field input, .contact-field select, .contact-field textarea {
+	width: 100%;
+	border: none;
+	padding-left: 15px;
+	transition: .3s;
+	border-radius: 0;
+	border: none;
+	height: calc(3.0em + .75rem + 2px);
+	border-bottom: 1px solid #E0E0E0;
 }
-        </script>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/popper.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/bootstrap.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/slick.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/ajax-form.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/paroller.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/wow.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/js_isotope.pkgd.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/imagesloaded.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/parallax.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/jquery.waypoints.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/jquery.counterup.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/jquery.meanmenu.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/parallax-scroll.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/swiper.min.js"></script>
-        
-        <script src="/usr/v1/template/petxon/assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/element-in-view.js"></script>
-        <script src="/usr/v1/template/petxon/assets/js/main.js"></script>
-    </body>
+
+.tabs.-underline-2 .tabs__controls .tabs__button:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #F69946;
+	transition: all .2s cubic-bezier(.165, .84, .44, 1);
+	opacity: 0;
+}
+
+.btn {
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	letter-spacing: 0;
+	line-height: 1;
+	margin-bottom: 0;
+	padding: 12px 3px;
+	text-align: center;
+	transition: all 0.3s ease 0s;
+	vertical-align: middle;
+	white-space: nowrap;
+	position: relative;
+	z-index: 1;
+	background: #F69946;
+	border: none;
+	font-weight: 700;
+	text-transform: capitalize;
+	position: relative;
+	font-size: 16px;
+	overflow: hidden;
+	border: 1px solid #F69946;
+}
+
+.btn img {
+	position: absolute;
+	top: 0;
+	right: 20%;
+}
+
+.btn:hover {
+	background: #564741;
+	border: 1px solid #564741;
+	color: #fff;
+}
+
+@font-face {
+	font-family: 'goorm-sans-bold';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/goorm-sans-bold.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+body {
+	font-family: 'goorm-sans-bold', sans-serif;
+	/* 'TTLaundryGothicB' 폰트를 우선 사용하고, 없으면 sans-serif 사용 */
+	font-weight: 500; /* 두꺼운 폰트 사용 */
+	font-size: 16px; /* 기본 글씨 크기 */
+	line-height: 1.5; /* 줄 간격 */
+}
+</style>
+</head>
+
+<body>
+	<!--  Preloader  -->
+	<div id="preloader">
+		<div id="loading"></div>
+	</div>
+	<!--  Preloader end  -->
+	<!-- header -->
+	<!-- ======= Header ======= -->
+	<header class="header-area header-three">
+		<div class="header-mid  d-md-block pt-25 pb-25">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="">
+						<div class="header-cta">
+							<th:block th:if="${session.sessSeqXdm != null}">
+								<ul>
+									<li>
+										<div class="call-box">
+											<div class="icon">
+												<i class="fa-solid fa-paw"></i>
+											</div>
+											<div class="text" style="font-size: 18px;">
+												<strong> <span th:text="${session.sessNameXdm}"></span>
+												</strong>
+											</div>
+										</div>
+									</li>
+									<li>
+										<div class="call-box">
+											<div class="icon">
+												<i class="fa-solid fa-right-from-bracket"></i>
+											</div>
+											<div class="text" style="font-size: 18px;">
+												<strong> <a id="logoutBtn">Log Out</a>
+												</strong>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</th:block>
+						</div>
+					</div>
+					<div class="text-right">
+						<div class="header-social">
+							<th:block th:if="${session.sessSeqXdm == null}">
+								<ul class="navbar-nav ms-lg-3">
+									<li class="nav-item"><strong> <a class="nav-link"
+											href="/usr/v1/infra/common/baUsrSignIn">Log In</a> <a
+											class="nav-link" href="/usr/v1/infra/common/baUsrSignUp">Sign
+												Up</a>
+									</strong></li>
+								</ul>
+							</th:block>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="header-sticky" class="menu-area">
+			<div class="container">
+				<div class="second-menu">
+					<div class="row align-items-center">
+						<div class="col-lg-2 col-md-12">
+							<div class="logo">
+								<a href="/usr/v1/infra/common/baUsrIndex"> <img
+									src="/usr/v1/template/petxon/assets/img/logo/logo.png"
+									alt="logo">
+								</a>
+							</div>
+						</div>
+						<div class="col-xl-7 col-lg-7">
+							<div class="main-menu">
+								<nav id="mobile-menu">
+									<ul>
+										<li class="has-sub"><a
+											href="/usr/v1/infra/common/baUsrIndex">홈</a></li>
+										<li class="has-sub"><a
+											href="/usr/v1/infra/baSitter/baUsrSitterList">시터찾기</a></li>
+										<li class="has-sub"><a
+											href="/usr/v1/infra/baMeetPoint/baMeetPoint">중간지점찾기</a></li>
+										<li class="has-sub"><a
+											href="/usr/v1/infra/baPlace/baPlaceList">장소추천</a></li>
+										<li class="has-sub"><a
+											href="/usr/v1/infra/mypage/baUsrMypage">마이페이지</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<div class="col-xl-3 col-lg-3 text-right d-lg-block">
+							<div class="login">
+								<ul>
+									<li><a href="#" class="menu-tigger"> <img
+											src="/usr/v1/template/petxon/assets/img/icon/search.png"
+											alt="logo">
+									</a></li>
+									<li><a href="contact.html" class="btn"> <img
+											src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png"
+											alt="logo"> Let’s Talk
+									</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="mobile-menu"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- header-end -->
+	<!-- ======= offcanvas_menu ======= -->
+	<div th:replace="~{usr/v1/infra/common/offcanvas_menu :: div}"></div>
+	<!-- offcanvas_menu end -->
+	<!-- main-area -->
+	<main>
+		<!-- breadcrumb-area -->
+		<section class="breadcrumb-area d-flex align-items-center"
+			style="background-image: url(/usr/v1/template/petxon/assets/img/backgroundimg/dogBg11.jpg)">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-xl-12 col-lg-12">
+						<div class="breadcrumb-wrap text-left">
+							<div class="breadcrumb-title">
+								<h2>결제내역</h2>
+								<div class="breadcrumb-wrap">
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+											<li class="breadcrumb-item active" aria-current="page">Payment</li>
+										</ol>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="d-flex align-items-center" style="height: 100px;"></section>
+		<!-- breadcrumb-area-end -->
+		<!-- contact-area -->
+		<div class="dashboard" data-x="dashboard"
+			data-x-toggle="-is-sidebar-open">
+			<div class="dashboard__main">
+				<div class="dashboard__content bg-light-2" style="width: 27cm;">
+					<div
+						class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
+						<div class="col-auto">
+							<h1 class="text-30 lh-14 fw-600">결제정보 확인</h1>
+							<br>
+							<div class="text-15 text-light-1">결제 정보를 확인해주세요.</div>
+						</div>
+						<div class="col-auto"></div>
+					</div>
+					<form id="form" name="form" method="post" style="width: 25cm;">
+						<div class="py-30 px-30 rounded-2 bg-white shadow-3">
+							<div class="tabs -underline-2 js-tabs">
+								<div
+									class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 js-tabs-controls">
+									<div class="col-auto">
+										<button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">결제정보</button>
+									</div>
+								</div>
+								<div class="tabs__content pt-30 js-tabs-content">
+									<div class="tabs__pane -tab-item-1 is-tab-el-active">
+										<div class="col-xl-12">
+											<div class="row x-gap-20 y-gap-20">
+												<!-- 1st row start -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">회원이름</label> <input
+																type="text" id="bameName" name="bameName">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">회원 전화번호</label>
+															<input type="text" id="bameTel" name="bameTel">
+														</div>
+													</div>
+												</div>
+												<!-- 1st row end -->
+												<!-- 2nd row start -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">시터이름</label> <input
+																type="text" id="basiName" name="basiName">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">시터 전화번호</label>
+															<input type="text" id="basiTel" name="basiTel">
+														</div>
+													</div>
+												</div>
+												<!-- 2nd row end -->
+												<!-- 3rd row start -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">예약날짜</label> <input
+																type="text" id="baboDate" name="baboDate">
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">예약시간</label> <input
+																type="text" id="baboTime" name="baboTime">
+														</div>
+													</div>
+												</div>
+												<!-- 3rd row end -->
+												<!-- 4th row start -->
+												<div class="row">
+													<div class="col-md-12">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">옵션선택</label> <input
+																type="text" id="baopName" name="baopName">
+														</div>
+													</div>
+												</div>
+												<!-- 4th row end -->
+												<!-- 5th row start -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">시터주소</label> <input
+																type="text" id="basiAddr" name="basiAddr"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">시터 상세주소</label>
+															<input type="text" id="basiAddrDetail"
+																name="basiAddrDetail" class="form-control" />
+														</div>
+													</div>
+												</div>
+												<!-- 5th row end -->
+												<!-- 6th row start -->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">총금액</label> <input
+																type="text" id="baboTotalPrice" name="baboTotalPrice"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="contact-field p-relative c-name mb-20">
+															<label class="lh-1 text-16 text-light-1">결제수단</label> <input
+																type="text" id="baboPayment" name="baboPayment"
+																class="form-control" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="d-inline-block pt-30">
+											<a href="/usr/v1/infra/baPayment/baPaymentBookEnds"
+												class="PetprofileBtn btn-brown"><img
+												src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">
+												결제완료 </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<footer class="dashboard mt-60"></footer>
+				</div>
+			</div>
+		</div>
+		<section class="d-flex align-items-center" style="height: 100px;"></section>
+		<!-- contact-area-end -->
+	</main>
+	<!-- main-area-end -->
+
+
+	<!-- footer -->
+	<footer class="footer-bg footer-p"
+		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
+	</footer>
+	<!-- footer-end -->
+
+
+	<!-- JS here -->
+	<script
+		src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/popper.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/bootstrap.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/slick.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/ajax-form.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/paroller.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/wow.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/js_isotope.pkgd.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/imagesloaded.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/parallax.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/jquery.waypoints.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/jquery.counterup.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/jquery.scrollUp.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/jquery.meanmenu.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/parallax-scroll.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/swiper.min.js"></script>
+
+	<script
+		src="/usr/v1/template/petxon/assets/js/jquery.magnific-popup.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/element-in-view.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/main.js"></script>
+</body>
+
 </html>
