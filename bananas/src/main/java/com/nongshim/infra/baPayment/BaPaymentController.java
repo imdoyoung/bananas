@@ -13,7 +13,7 @@ public class BaPaymentController {
 	//시터 예약 결제하기
 		@RequestMapping(value="/usr/v1/infra/baPayment/baPaymentBook")
 		public String baPaymentBook() {
-			return "/usr/v1/infra/baPayment/baPaymentBook";
+			return "usr/v1/infra/baPayment/baPaymentBook";
 		}
 		
 		
