@@ -1,6 +1,7 @@
 package com.nongshim.infra.baSitterList;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
  
@@ -83,7 +84,7 @@ public class BaUsrSitterDto {
 	
 	// booking Dto
 	private String baboSeq;
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date baboDate;
 	@DateTimeFormat(pattern="HH:mm")
 	private Date baboTime;
@@ -115,6 +116,7 @@ public class BaUsrSitterDto {
 	private Integer baboopDelNy;
 //	private String ba_booking_baboSeq;
 	private String ba_option_baopSeq;
+	private List<String> optionSeqs;	// checkbox 선택된 optionSeq 배열
 	
 	// place Dto
 	private String baplSeq;
@@ -700,6 +702,12 @@ public class BaUsrSitterDto {
 	}
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
+	}
+	public List<String> getOptionSeqs() {
+		return optionSeqs;
+	}
+	public void setOptionSeqs(List<String> optionSeqs) {
+		this.optionSeqs = optionSeqs;
 	}
 
 			 

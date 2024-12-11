@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Petxon - Pet Care & Pet Shop HTML Template</title>
+<title>투개더</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/x-icon"
@@ -17,8 +17,6 @@
 	href="/usr/v1/template/NailForest/assets/fonts/materialdesign/css/materialdesignicons.css">
 <link rel="stylesheet"
 	href="/usr/v1/template/NailForest/assets/fonts/materialdesign/css/materialdesignicons.min.css">
-<link rel="stylesheet"
-	href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
 
 <link rel="stylesheet"
 	href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
@@ -63,6 +61,9 @@
 <link
 	href="/usr/v1/template/NailForest/assets/libs/simplebar/dist/simplebar.min.css"
 	rel="stylesheet">
+
+<link rel="stylesheet"
+	href="/xdm/v1/css/datetimepicker/jquery.datetimepicker.min.css">
 </head>
 
 <style>
@@ -407,14 +408,14 @@
 								<!-- listing detail -->
 								<div>
 									<div>
-										<form name="form" id="form" method="post"
-											action="/usr/v1/infra/baSitter/baUsrSitterInst">
+										<form name="bookingForm" id="bookingForm" method="post" action="/usr/v1/infra/baSitter/baUsrSitterBookingInst">
+															<input type="hidden" id="basiSeqInput" name="basiSeq">
 											<div class="mb-3">
 												<div class="input-group mb-3">
 													<input type="text" class="form-control bookinginput" id="baboDate" name="baboDate" placeholder="예약날짜"
 														autocomplete="off" style="cursor: pointer; background-color: #fff;" readonly>
-													<span class="input-group-text bg-transparent"> 
-														<i class="mdi mdi-calendar-month-outline"></i>
+													<span class="input-group-text bg-transparent"> <i
+														class="mdi mdi-calendar-month-outline"></i>
 													</span>
 												</div>
 												<div class="input-group mb-3">
@@ -422,24 +423,24 @@
 														style="cursor: pointer; background-color: #fff;" autocomplete="off" readonly>
 												</div>
 												<div class="input-group mb-3">
-													<input type="text" class="form-control" id="baboLocation"
-														name="baboLocation" placeholder="돌봄장소" style="cursor: pointer;" autocomplete="off">
+													<input type="text" class="form-control" id="baboLocation" name="baboLocation" placeholder="돌봄장소" 
+														style="cursor: pointer;" autocomplete="off" oninput="updateLocation()">
 												</div>
 											</div>
 											<div class="mb-3">
 												<label class="form-label">Option</label>
-												<div th:each="oplist : ${oplist}">
+												<div th:each="list : ${opList}">
 													<div class="input-group mb-3">
-														<label class="form-control custom-checkbox"> <input
-															type="checkbox" id="checkbox1" name="checkbox"
-															class="menu-checkbox" th:value="${oplist.baopPrice}"
-															onchange="updateTotalPrice()">
+														<label class="form-control custom-checkbox"> 
+															<input type="checkbox" id="checkbox1" name="optionSeqs" class="menu-checkbox" th:value="${list.baopSeq}" 
+																th:attr="data-price=${list.baopPrice != null ? list.baopPrice : 0}" onchange="updateTotalPrice()">
+															<input type="hidden" name="baboTotalPrice" id="baboTotalPriceInput">
 															<div class="content">
 																<p class="align-left">
-																	<span th:text="${oplist.baopName}">메뉴이름</span>
+																	<strong><span th:text="${list.baopName}">옵션이름</span></strong>
 																</p>
 																<div class="price-and-buttons">
-																	<span th:text="${oplist.baopPrice} + 원">가격</span>
+																	<span th:text="${list.baopPrice} + 원">가격</span>
 																</div>
 															</div>
 														</label>
@@ -451,20 +452,36 @@
 													<label class="form-label">Total</label>
 													<div class="input-group mb-3">
 														<p>
-															<span>예약 날짜 : <span id="baboDate"></span></span> <br>
-															<span>예약 시간 : <span id="baboTime"></span></span> <br>
-															<!--<span>예약금 : <span id="boDeposit">30000</span>원-->
-															</span> <br> <span>총금액 : <span id="baboTotalPrice">0</span>원
-															</span>
+															<span>예약 날짜 : <span id="rvDate"></span></span> <br>
+															<span>예약 시간 : <span id="rvTime"></span></span> <br>
+															<span>돌봄 장소 : <span id="rvLocation"></span></span> <br> 
+															<span>총금액 : <span id="baboTotalPrice">0</span>원</span>
 														</p>
 													</div>
 												</div>
 												<div class="mt-3 d-grid">
-													<a href="" class="btn text-center"><img
-														src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png"
-														alt="logo">예약하기</a>
+													<a class="btn text-center" id="btnBooking">
+														<img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo">예약하기
+													</a>
 												</div>
 										</form>
+										<!-- Vertically centered Modal -->
+										<div class="modal fade" id="verticalycentered" tabindex="-1">
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title">확인</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">예약 내용을 모두 선택해 주세요</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-primary"
+															data-bs-dismiss="modal">확인</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- End Vertically centered Modal-->
 									</div>
 								</div>
 							</section>
@@ -480,256 +497,11 @@
 	<!-- footer -->
 	<footer class="footer-bg footer-p"
 		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-		<div class="footer-top  pt-120 pb-90">
-			<div class="container">
-				<div class="row justify-content-between">
-					<div class="col-xl-3 col-lg-3 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Working Hours</h2>
-							</div>
-							<div class="f-work-hour">
-								<ul>
-									<li><span>Mon - Fri:</span> <strong>7am - 6pm</strong></li>
-									<li><span>Saturday:</span> <strong>9am - 4pm</strong></li>
-									<li><span>Sunday:</span> <strong>Closed</strong></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Our Gallery</h2>
-							</div>
-							<div class="f-insta">
-								<ul>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-01.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-02.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-03.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-04.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-05.png"
-											alt="img"></a></li>
-									<li><a href="#"><img
-											src="/usr/v1/template/petxon/assets/img/instagram/f-galler-06.png"
-											alt="img"></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>Essential</h2>
-							</div>
-							<div class="footer-link">
-								<ul>
-									<li><a href="index.html">About us</a></li>
-									<li><a href="about.html"> Careers</a></li>
-									<li><a href="services.html"> Prices </a></li>
-									<li><a href="contact.html"> Services</a></li>
-									<li><a href="blog.html">Get In Touch </a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>More Pages</h2>
-							</div>
-							<div class="footer-link">
-								<ul>
-									<li><a href="index.html">Auto production</a></li>
-									<li><a href="about.html"> Investors</a></li>
-									<li><a href="services.html"> News </a></li>
-									<li><a href="contact.html"> FAQ’s</a></li>
-									<li><a href="blog.html">Contact us </a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-2 col-lg-2 col-sm-6">
-						<div class="footer-widget mb-30">
-							<div class="f-widget-title">
-								<h2>
-									<img src="img/logo/f_logo.png" alt="img">
-								</h2>
-							</div>
-							<div class="f-contact">
-								<ul>
-									<li>
-										<h6>Call Us</h6> <span>+123 456 7890</span>
-									</li>
-									<li>
-										<h6>Our Address</h6> <span>92 Bowery St, New York, NY</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="copyright-wrap">
-			<div class="container">
-				<div class="row align-items-center c-mid">
-					<div class="col-lg-4 col-md-6 ">
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms Of Service</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-4 col-md-6 ">
-						<div class="copy-text text-center">Copyright &copy; Petxon
-							2024. All rights reserved.</div>
-					</div>
-					<div class="col-lg-4 col-md-12 text-right text-xl-right">
-						<div class="footer-social">
-							<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
-								class="fab fa-instagram"></i></a> <a href="#"><i
-								class="fa-brands fa-x-twitter"></i></a> <a href="#"><i
-								class="fab fa-youtube"></i></a> <a href="#"><i
-								class="fab fa-linkedin"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</footer>
 	<!-- footer-end -->
+
+
 	<!-- JS here -->
-	<script>
-			
-		   var bareStar = 0;
-
-		   starnum = function(num) {
-		 		bareStar = num;
-		   }		
-		   
-		   document.getElementById("btnRevSubmit").onclick=function(){
-		            var bareContents = document.getElementById('bareInput').value;
-					alert(bareContents);
-					     
-		            if (bareStar == 0) {
-		               alert("별점을 매겨주세요.");
-		               return false;
-		            }else if(bareContents == ""){
-						alert("리뷰내용을 등록해야합니다.");
-						return false;		
-					}
-					
-		            $.ajax({
-		                     async: true 
-		                     ,cache: false
-		                     ,type: "post"
-		                     /* ,dataType:"json" */
-		                     ,url: "/usr/v1/infra/baSitter/baUsrReInst"
-		                     /* ,data : $("#formLogin").serialize() */
-		                     
-		                     ,data : { "bareContents" : bareContents,
-		                             "bareStar" : bareStar
-		                     }
-		                     ,success: function(response) {
-		                        alert("리뷰등록 완료");
-		                     }
-		                  });      
-		               
-		           }   
-		         
-		   </script>
-	<script>
-			const stars = document.querySelectorAll('.star');
-			const selectedRatingDisplay = document.getElementById('selectedRating');
-
-			// 별점 선택 시 동작하는 이벤트 핸들러
-			stars.forEach(star => {
-				star.addEventListener('mouseover', function () {
-					const value = this.getAttribute('data-value');
-					updateStars(value);
-				});
-				star.addEventListener('mouseout', function () {
-					const value = document.querySelector('.star.selected')
-						? document.querySelector('.star.selected').getAttribute('data-value')
-						: 0;
-					updateStars(value);
-				});
-				star.addEventListener('click', function () {
-					const value = this.getAttribute('data-value');
-					setRating(value);
-				});
-			});
-
-			// 별점 업데이트 함수
-			function updateStars(rating) {
-				stars.forEach(star => {
-					if (star.getAttribute('data-value') <= rating) {
-						star.classList.add('hover');
-					} else {
-						star.classList.remove('hover');
-					}
-				});
-			}
-
-			// 별점 선택 후 저장 함수
-			function setRating(rating) {
-				stars.forEach(star => {
-					if (star.getAttribute('data-value') <= rating) {
-						star.classList.add('selected');
-					} else {
-						star.classList.remove('selected');
-					}
-				});
-				selectedRatingDisplay.textContent = rating;  // 선택한 평점 표시
-			}
-		</script>
-
-	<script>
-			// 예약 날짜,시간 검색 - datetimepicker
-			window.addEventListener('load', function () {
-				$.datetimepicker.setLocale('ko');
-				// 날짜 선택 필드 초기화
-				$("#boDate").datetimepicker({
-					timepicker: false,    // 시간 선택 비활성화
-					format: 'Y-m-d'      // 날짜 형식
-				}).on('change', function () {
-					// 날짜 선택 시 rvDate에 값 반영
-					const selectedDate = $(this).val();
-					$('#baboDate').text(selectedDate);
-				});
-				// 시간 선택 필드 초기화
-				$("#boTime").datetimepicker({
-					datepicker: false,    // 날짜 선택 비활성화
-					timepicker: true,     // 시간 선택 활성화
-					format: 'H:i',        // 시간 형식 (24시간제)
-					step: 30              // 30분 단위
-				}).on('change', function () {
-					// 시간 선택 시 rvTime에 값 반영
-					const selectedTime = $(this).val();
-					$('#baboTime').text(selectedTime);
-				});
-			});
-			// 메뉴 가격 합산
-			function updateTotalPrice() {
-				let total = 0;
-				// 선택된 체크박스들의 값을 합산
-				document.querySelectorAll('.menu-checkbox:checked').forEach(checkbox => {
-					total += parseInt(checkbox.value || 0); // 체크박스의 value를 숫자로 변환하여 더함
-				});
-				// 총 금액을 boTotalPrice에 표시
-				document.getElementById('baboTotalPrice').textContent = total.toLocaleString(); // 숫자 형식화 (콤마 추가)
-			}
-		</script>
-
 	<script src="/usr/v1/js/fullcalendar/dist/index.global.min.js"></script>
 	<script src="/usr/v1/js/fullcalendar/dist/index.global.js"></script>
 	<script
@@ -789,6 +561,138 @@
 	<script src="/usr/v1/template/NailForest/assets/js/theme.min.js"></script>
 	<script
 		src="/xdm/v1/js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+
+
+	<script type="text/javascript">
+		// ========== Datetimepicker START ========== //
+		// 예약 날짜,시간 검색 - datetimepicker
+		window.addEventListener('load', function() {
+			$.datetimepicker.setLocale('ko');
+
+			// 날짜 선택 필드 초기화
+			$("#baboDate").datetimepicker({
+				timepicker : false, // 시간 선택 비활성화
+				format : 'Y-m-d' // 날짜 형식
+			}).on('change', function() {
+				// 날짜 선택 시 rvDate에 값 반영
+				const selectedDate = $(this).val();
+				$('#rvDate').text(selectedDate);
+			});
+
+			// 시간 선택 필드 초기화
+			$("#baboTime").datetimepicker({
+				datepicker : false, // 날짜 선택 비활성화
+				timepicker : true, // 시간 선택 활성화
+				format : 'H:i', // 시간 형식 (24시간제)
+				step : 30
+			// 30분 단위
+			}).on('change', function() {
+				// 시간 선택 시 rvTime에 값 반영
+				const selectedTime = $(this).val();
+				$('#rvTime').text(selectedTime);
+			});
+		});
+		// ========== Datetimepicker END ========== //
+
+		
+		
+		// ========== Location START ========== //
+		// 예약하기에서 돌봄장소를 입력하면 total에 입력한 내용 출력
+		function updateLocation() {
+		   	// baboLocation input 태그에 입력된 값을 가져옴
+		    const locationInput = document.getElementById("baboLocation").value;
+		
+		   	// 출력 요소 rvLocation에 baboLocation 값 업데이트
+		    document.getElementById("rvLocation").textContent = locationInput;
+		}
+		// ========== Location END ========== //
+		
+		
+		
+		// ========== 선택옵션 가격 합산, seq 처리 START ========== //
+		// 옵션 가격 합산 및 선택된 옵션 seq 처리
+		function updateTotalPrice(){
+			let total = 0;	// 총 금액 초기화
+			let selectedOptionSeqs = [];	// 선택된 옵션 seq 배열 초기화
+			
+			// 선택된 체크박스들의 데이터(가격, seq) 처리
+			document.querySelectorAll('.menu-checkbox:checked').forEach(checkbox => {
+				const price = checkbox.getAttribute('data-price');	// data-price 읽기
+				console.log('data-price:', price);	// 디버깅 출력
+				
+				const priceValue = isNaN(price) || price === null || price === '' ? 0 : parseInt(price, 10);	// Nan  방지
+				
+				total += priceValue; // 총 금액 합산
+				
+				selectedOptionSeqs.push(checkbox.value); // 메뉴 seq 저장
+			});
+			
+			// 총 금액을 화면에 표시
+			document.getElementById('baboTotalPrice').textContent = total.toLocaleString(); // 숫자 형식화
+			
+			// 총 금액을 hidden 필드에 설정
+			document.getElementById('baboTotalPriceInput').value = total;
+			
+			// 선택된 메뉴 seq를 디버깅 로그로 출력
+			console.log('선택된 옵션 seq:', selectedOptionSeqs);
+			console.log('총 금액:', total);
+		}
+		// ========== 선택옵션 가격 합산, seq 처리 END ========== //
+		
+
+		
+		// ========== 예약하기 버튼 START ========== //
+		// basiSeq 값 전달
+		document.addEventListener('DOMContentLoaded', () => {	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
+			const urlParams = new URLSearchParams(window.location.search);	// URL에서 basiSeq 값 추출
+			const basiSeq = urlParams.get('basiSeq');	// basiSeq 값 반환
+			if(basiSeq){	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
+				document.querySelector('input[name="basiSeq"]').value = basiSeq;
+			}
+			console.log("basiSeq: " + basiSeq);
+		});
+		
+		// 예약하기 버튼 - insert
+		document.getElementById('btnBooking').onclick = function(){
+			
+			// 예약날짜, 예약시간, 돌봄장소 가져오기
+			const baboDate = document.getElementById('baboDate').value;
+			const baboTime = document.getElementById('baboTime').value;
+			const baboLocation = document.getElementById('baboLocation').value;
+			
+			// 옵션 체크박스 선택여부 확인
+			const optionCheckboxes = document.querySelectorAll('.menu-checkbox');
+			const isOptionSelected = Array.from(optionCheckboxes).some(checkbox => checkbox.checked);
+			
+			// 모든 조건 확인
+			if(!baboDate || !baboTime || !baboLocation || !isOptionSelected){
+				// 조건을 만족하지 않으면 모달 표시
+				const modal = new bootstrap.Modal(document.getElementById('verticalycentered'));
+				modal.show();
+			} else {
+				// 조건을 만족하면 폼으로 전송
+				document.forms['bookingForm'].action = "/usr/v1/infra/baSitter/baUsrSitterBookingInst";
+				document.forms['bookingForm'].submit();
+			}
+		}
+		// ========== 예약하기 버튼 END ========== //
+		
+		
+		
+		// ========== aa START ========== //
+		// ========== aa END ========== //
+		
+		
+		
+		// ========== aa START ========== //
+		// ========== aa END ========== //
+		
+		
+		
+		// ========== aa START ========== //
+		// ========== aa END ========== //
+	</script>
+
 
 </body>
 
