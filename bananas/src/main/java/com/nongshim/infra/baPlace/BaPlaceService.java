@@ -11,8 +11,18 @@ public class BaPlaceService {
 	@Autowired
 	BaPlaceDao baPlaceDao;
 
-	public List<BaPlaceDto> placeSelectList() {
-		return baPlaceDao.placeSelectList();
+	public List<BaPlaceDto> placeSelectList(BaPlaceVo baPlaceVo) {
+		return baPlaceDao.placeSelectList(baPlaceVo);
+	}
+	
+	// placeSelectOneCount - 페이징
+	public int placeSelectOneCount(BaPlaceVo baPlaceVo) {
+		return baPlaceDao.placeSelectOneCount(baPlaceVo);
+	}
+	
+	// placeDetailList - 장소추천 세부리스트
+	public List<BaPlaceDto> placeDetailList(BaPlaceDto baPlaceDto) {
+		return baPlaceDao.placeDetailList(baPlaceDto);
 	}
 	
 }

@@ -122,38 +122,34 @@
                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="pagination-wrap mt-50 text-center">
-                                <nav>
-									<ul class="pagination justify-content-center">
-										<li class="page-item disabled"
-											th:if="${vo.startPage gt vo.pageNumToShow}"
-											style="cursor: pointer;">
-											<a class="page-link" aria-label="Previous"
-												href="javascript:goList(${vo.startPage - 1})"
-												th:attr="onclick=|goList('${vo.startPage - 1}')|">
-												<span aria-hidden="true">&laquo;</span>
-											</a>
-										</li>
-										<li class="page-item"
-											th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
-											th:classappend="${num eq vo.thisPage} ? active : ''"
-											style="cursor: pointer;">
-											<a class="page-link" th:attr="onclick=|goList('${num}')|"
-												th:text="${num}"></a>
-										</li>
-										<li class="page-item" th:if="${vo.endPage ne vo.totalPages}"
-											style="cursor: pointer;">
-											<a class="page-link" aria-label="Next"
-												th:attr="onclick=|goList('${vo.endPage + 1}')|">
-												<span aria-hidden="true">&raquo;</span>
-											</a>
-										</li>
-									</ul>
-                                </nav>
-                            </div>
-                       </div>
+                    <!-- paging -->
+						<div class="row">
+	                    	<div class="col-12">
+	                        	<div class="pagination-wrap mt-50 text-center">
+	                        		<div class="card-body">
+										<ul class="pagination">
+											<li th:if="${vo.startPage gt vo.pageNumToShow}" class="page-item" style="cursor: pointer;">
+												<a href="javascript:goList(${vo.startPage - 1})" th:attr="onclick=|goList('${vo.startPage - 1}')|">
+													<i class="fas fa-angle-double-left"></i>
+												</a>
+											</li>
+											<li th:each="num: ${#numbers.sequence(vo.startPage, vo.endPage)}"
+												th:classappend="${num eq vo.thisPage} ? active : ''" class="page-item"
+												style="cursor: pointer;">
+												<a th:attr="onclick=|goList('${num}')|" th:text="${num}"></a>
+											</li>
+											<li th:if="${vo.endPage ne vo.totalPages}" class="page-item" style="cursor: pointer;">
+												<a th:attr="onclick=|goList('${vo.endPage + 1}')|">
+													<i class="fas fa-angle-double-right"></i>
+												</a>
+											</li>
+										</ul>
+	                        		</div>
+	                    		</div>
+	                		<div></div>
+	                	</div>
+	                </div>
+	                <!-- paging end -->
                     <div>
                 </div>
             </section>

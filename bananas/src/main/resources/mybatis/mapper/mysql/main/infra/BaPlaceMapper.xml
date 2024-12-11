@@ -2,32 +2,84 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.nongshim.infra.baPlace.BaPlaceDao">
- 
-	  <resultMap type="com.nongshim.infra.baPlace.BaPlaceDto" id="resultMapObj"></resultMap>
 
-	  <select id="placeSelectList" resultMap="resultMapObj">
-	  	SELECT 
-	  		i.baplSeq,
-	  		i.baplCity,
-	  		i.baplType,
-	  		i.baplDeType,
-	  		i.baplName,
-	  		i.baplAddr,
-	  		i.baplTel,
-	  		i.baplWeb,
-	  		i.baplAvailPlace,
-	  		i.baplRestrictions,
-	  		i.baplFee,
-	  		i.baplEtc,
-	  		i.baplTime,
-	  		i.baplOff, 
-	  		i.baplParking,
-	  		i.baplRegDate,
-	  		i.baplEditDate,
-	  		i.baplUseNy,
-	  		i.baplDelNy
-	  	FROM ba_place AS i
-	  	ORDER BY i.baplSeq DESC
-	  </select>
-	  
+	<resultMap type="com.nongshim.infra.baPlace.BaPlaceDto" id="resultMapObj"></resultMap>
+
+	<sql id="placeSelectCommon">
+		FROM
+			ba_place AS i
+	</sql>
+	
+	<select id="placeSelectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="placeSelectCommon"/>
+	</select>
+	 
+	<select id="placeSelectList" resultMap="resultMapObj">
+		select aa.* from(
+			SELECT 
+				i.baplSeq,
+		  		i.baplCity,
+		  		i.baplType,
+		  		i.baplDeType,
+		  		i.baplName,
+		  		i.baplAddr,
+		  		i.baplTel,
+		  		i.baplWeb,
+		  		i.baplAvailPlace,
+		  		i.baplRestrictions,
+		  		i.baplFee,
+		  		i.baplEtc,
+		  		i.baplTime,
+		  		i.baplOff, 
+		  		i.baplParking,
+		  		i.baplRegDate,
+		  		i.baplEditDate,
+		  		i.baplUseNy,
+		  		i.baplDelNy
+		  	<include refid="placeSelectCommon"/>
+		  	ORDER BY
+		  		i.baplName ASC
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	
+	<!-- 장소추천 세부리스트 -->
+	<select id="placeDetailList" resultMap="resultMapObj">
+    	SELECT
+	        i.baplSeq,
+			i.baplCity,
+			i.baplType,
+			i.baplDeType,
+			i.baplName,
+			i.baplAddr,
+			i.baplTel,
+			i.baplWeb,
+			i.baplAvailPlace,
+			i.baplRestrictions,
+			i.baplFee,
+			i.baplEtc,
+			i.baplTime,
+			i.baplOff, 
+			i.baplParking,
+			i.baplRegDate,
+			i.baplEditDate,
+			i.baplUseNy,
+			i.baplDelNy,
+			j.bareType,
+			j.bareStar,
+			j.bareContents,
+			j.bareId,
+			j.bareRegDate
+		FROM 
+        	ba_place AS i 
+      	LEFT JOIN ba_review AS j
+        	ON j.ba_place_baplSeq = i.baplSeq
+      	WHERE 1 = 1
+        	AND i.baplSeq = #{baplSeq}
+      	ORDER BY 
+        	i.baplSeq ASC
+   </select>
+	
+	
 </mapper>
