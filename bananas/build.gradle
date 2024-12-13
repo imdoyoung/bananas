@@ -48,6 +48,10 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-rest
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '3.4.0'
 	
+	// Firebase-admin
+	// https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
+	implementation group: 'com.google.firebase', name: 'firebase-admin', version: '9.4.2'
+	
 	
 }
 

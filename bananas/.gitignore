@@ -38,7 +38,9 @@ out/
 
 
 ### custom ###
-application.properties
 logsBananas/
 logs/
+
+### external ###
 application-external.properties
+firebase-adminsdk.json
