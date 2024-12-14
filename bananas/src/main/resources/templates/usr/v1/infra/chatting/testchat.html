@@ -1,237 +1,43 @@
-<!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
-
-<!-- ======= Head ======= -->
-<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
-<!-- Head end -->
-
-<style>
-.btn-primary:hover {
-	background-color: #564741;
-}
-
-.btn-primary:active {
-	background-color: #564741;
-}
-
-.btn-primary:focus {
-	background-color: #564741;
-	border-color: #564741;
-}
-
-/* 배경 이미지 */
-.meetPointBg ::before {
-	content: "";
-	background-color: #00000001;
-	position: absolute;
-	inset: 0;
-	z-index: 1;
-}
-
-/* nav 위로 올림*/
-header .second-menu {
-	position: relative;
-	z-index: 2;
-}
-</style>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Spring Boot Chat (AJAX)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 <body>
-	<!--  Preloader  -->
-	<div id="preloader">
-		<div id="loading"></div>
-	</div>
-	<!--  Preloader end  -->
+    <h1>채팅</h1>
+    <div id="messages"></div>
+    <input type="text" id="messageInput" placeholder="메시지를 입력하세요" />
+    <button onclick="sendMessage()">보내기</button>
 
-	<!-- ======= Header ======= -->
-	<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
-	<!-- header-end -->
-
-	<!-- offcanvas-area -->
-	<div class="offcanvas-menu">
-		<span class="menu-close"><i class="fas fa-times"></i></span>
-		<form role="search" method="get" id="searchform" class="searchform"
-			action="http://wordpress.zcube.in/xconsulta/">
-			<input type="text" name="s" id="search" placeholder="Search" />
-			<button>
-				<i class="fa fa-search"></i>
-			</button>
-		</form>
-
-
-		<div id="cssmenu3" class="menu-one-page-menu-container">
-			<ul class="menu">
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="index.html">Home</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="about.html">About Us</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="services.html">Services</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="pricing.html">Pricing </a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="team.html">Team </a></li>
-
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="projects.html">Cases Study</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="blog.html">Blog</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="contact.html">Contact</a></li>
-			</ul>
-		</div>
-
-		<div id="cssmenu2" class="menu-one-page-menu-container">
-			<ul id="menu-one-page-menu-12" class="menu">
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="#home"><span>+8 12 3456897</span></a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-					href="#howitwork"><span>info@example.com</span></a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="offcanvas-overly"></div>
-	<!-- offcanvas-end -->
-	<!-- main-area -->
-	<main>
-
-		<!-- breadcrumb-area -->
-		<section class="breadcrumb-area d-flex align-items-center meetPointBg"
-			style="background-image: url(/usr/v1/template/petxon/assets/img/backgroundimg/dogBg01.jpg)">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-xl-12 col-lg-12">
-						<div class="breadcrumb-wrap text-left">
-							<div class="breadcrumb-title">
-								<h2>채팅</h2>
-								<div class="breadcrumb-wrap">
-									<nav aria-label="breadcrumb">
-										<ol class="breadcrumb">
-											<li class="breadcrumb-item"><a href="">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">Chatting</li>
-										</ol>
-									</nav>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- breadcrumb-area-end -->
-		
-		
-<!-- 		<h1>채팅</h1> -->
-<!-- 	    <div id="messages"></div> -->
-<!-- 	    <input type="text" id="messageInput" placeholder="메시지를 입력하세요" /> -->
-<!-- 	    <button onclick="sendMessage()">보내기</button> -->
-		
-		
-		
-		
-		
-		<!-- gallery-area -->
-		<section class="gallery-area fix pt-120 pb-90">
-			<div class="container">
-				<div class="card mb-4">
-					<div class="card-body p-4">
-						<div class="row border-bottom mb-5 pb-5 mt-3">
-							<div class="col-md-2">
-								<div class="text-lg-center">
-									<h4 >Chatting</h4>
-								</div>
-							</div>
-						</div>
-						<div class="row justify-content-center">
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-me-12">
-										<div>
-											<p align="right" id="messages">채팅내용</p>
-<!-- 											<p align="right">채팅내용</p> -->
-<!-- 											<p align="left">채팅내용</p> -->
-<!-- 											<p align="right">채팅내용</p> -->
-<!-- 											<input type="text" value="fetchMessages"> -->
-										</div>
-										<br>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<form id="routeForm">
-						<div class="row justify-content-center">
-							<div class="col-md-6">
-								<div class="input-group input-group-lg" id="messages">
-									<input type="text" class="form-control" id="messageInput">
-									<button type="button" id="btnChatSubmit" class="btn btn-primary" onclick="sendMessage()">전송</button>
-								</div>
-								<br>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</section>
-		<!-- gallery-area-end -->
-	</main>
-	<!-- main-area-end -->
-	<!-- footer -->
-	<footer class="footer-bg footer-p"
-		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-
-	</footer>
-	<!-- footer-end -->
-	<!-- JS here -->
-	<script
-		src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/popper.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/bootstrap.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/slick.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/ajax-form.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/paroller.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/wow.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/js_isotope.pkgd.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/imagesloaded.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/parallax.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/jquery.waypoints.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/jquery.counterup.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/jquery.scrollUp.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/jquery.meanmenu.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/parallax-scroll.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/swiper.min.js"></script>
-
-	<script
-		src="/usr/v1/template/petxon/assets/js/jquery.magnific-popup.min.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/element-in-view.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/main.js"></script>
-
-
-
-	<script>
+    <script>
         // 메시지를 보내는 함수 (AJAX POST)
         function sendMessage() {
             var message = {
-                "user": "사용자1",  // 예시로 사용자1로 설정
-                "message": document.getElementById('messageInput').value
+                user: '사용자1',  // 예시로 사용자1로 설정
+                message: document.getElementById('messageInput').value
             };
 
             // AJAX로 메시지 전송
             $.ajax({
-                url: '/send',
+                url: '/api/messages/send',
                 type: 'POST',
-                data: {"message": document.getElementById('messageInput').value},
+                contentType: 'application/json',
+                data: JSON.stringify(message),
                 success: function(response) {
                     console.log("Message sent: ", response);
-                    document.getElementById('messageInput').value = '';
+                    document.getElementById('messageInput').value = ''; // 입력창 비우기
                 },
                 error: function(error) {
                     console.log("Error sending message: ", error);
                 }
             });
-            
+        }
+
+        // 메시지를 주기적으로 가져오는 함수 (AJAX GET)
+        function fetchMessages() {
             $.ajax({
-                url: '/read',  // 최신 메시지 가져오기
+                url: '/api/messages',  // 최신 메시지 가져오기
                 type: 'GET',
                 success: function(messages) {
                     var messagesDiv = document.getElementById('messages');
@@ -248,13 +54,6 @@ header .second-menu {
                     console.log("Error fetching messages: ", error);
                 }
             });
-            
-        }
-
-        // 메시지를 주기적으로 가져오는 함수 (AJAX GET)
-        function fetchMessages() {
-//         	alert("f")
-           
         }
 
         // 페이지가 로드될 때마다 최신 메시지를 가져옵니다
@@ -263,7 +62,5 @@ header .second-menu {
             setInterval(fetchMessages, 3000);
         });
     </script>
-
-
 </body>
 </html>
