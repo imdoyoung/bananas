@@ -49,7 +49,25 @@ public interface BaMypageDao {
 	// 페이징 없는 예약 리스트  
 	public List<BaMypageDto> BaMypageBookingSelectListAll(); 
 	
-
+	// 알림장 보기
+	public BaMypageDto sitterNoticeSelectOne(BaMypageDto baMypageDto);
+	
+	// 알림장 쓰기(booking 마스터)
+	public BaMypageDto sitterNoticeWriteSelectOne(BaMypageDto baMypageDto);
+	
+	// 알림장 쓰기(bookingoption 마스터)
+	public List<BaMypageDto> sitterNoticeWriteSelectList(BaMypageDto baMypageDto);
+	
+	// 알림장 내용 insert
+	public int sitterNoticeInsert(BaMypageDto baMypageDto);
+	
+	// 알림장 baboDiaryNy 0 -> 1 update
+	public int sitterNoticeUpdate(BaMypageDto baMypageDto);
+	
+	// 알림장 내용 selectOne
+	public BaMypageDto sitterNoticeContentSelectOne(BaMypageDto baMypageDto);
+	
+	
 	
 
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.nongshim.infra.baMember.BaMemberService;
@@ -27,12 +28,16 @@ public class BaMypageController {
 	
 	// 사용자 마이페이지 (메인)
 	@RequestMapping(value="/usr/v1/infra/mypage/baUsrMypage") 
-	public String baUsrMypage(BaMypageVo baMypageVo, Model model) {
-		 
+	public String baUsrMypage(BaMypageVo baMypageVo, Model model) {  
+		
+		// 펫 세션 값 가져오기
+		//String sessPetSeq = (String) httpSession.getAttribute("sessPetSeq");
+		
+		//baMypageVo.setBapeSeq(sessPetSeq);
+		
 		model.addAttribute("mypageSitterReviewList", baMypageService.BaMypageReviewSelectList(baMypageVo)); 
 		model.addAttribute("mypageBookingList", baMypageService.BaMypageBookingSelectList(baMypageVo));
 		
-		//model.addAttribute("mypageMember", baMemberService.memberSelectList());
 		return "usr/v1/infra/mypage/baUsrMypage"; 
 	} 
 	
@@ -94,9 +99,15 @@ public class BaMypageController {
 	
 	// 시터 마이페이지 (메인)
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMypage")
-	public String baSitterMypage(BaMypageVo baMypageVo, Model model) {
+	public String baSitterMypage(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model, HttpSession httpSession) {
 		
-		model.addAttribute("sitterPageBookingLsit", baMypageService.sitterPageBookingSelectList(baMypageVo));
+		// 세션 값 가져오기
+	    String sessSeqSit = (String) httpSession.getAttribute("sessSeqSit");
+	    
+	    // vo에 세션 값 set
+	 	baMypageVo.setBasiSeq(sessSeqSit);
+		
+		model.addAttribute("sitterPageBookingLsit", baMypageService.sitterPageBookingSelectList(baMypageVo)); // 나의 예약 리스트
 		model.addAttribute("mypageSitterReviewList", baMypageService.BaMypageReviewSelectList(baMypageVo)); // 시터 리뷰 리스트
 		return "usr/v1/infra/mypage/baSitterMypage";
 	}
@@ -104,7 +115,7 @@ public class BaMypageController {
 	// 시터 마이페이지 (나의 예약) 
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterMyBooking")
 	public String baSitterMyBooking(@ModelAttribute("vo") BaMypageVo baMypageVo, Model model, HttpSession httpSession) {
-		
+		     
 		// 세션 값 가져오기
 		String sessSeqSit = (String) httpSession.getAttribute("sessSeqSit");
 		
@@ -117,7 +128,7 @@ public class BaMypageController {
 			model.addAttribute("sitterPageBookingLsit", baMypageService.sitterPageBookingSelectList(baMypageVo));
 			System.out.println("Total 리스트 : " + baMypageVo.getTotalRows());
 		}
-		
+		  
 		return "usr/v1/infra/mypage/baSitterMyBooking";
 	}
 	
@@ -188,17 +199,47 @@ public class BaMypageController {
 		return "usr/v1/infra/mypage/baSitterReviewContents";
 	}
 	
-	// 시터 마이페이지(알림장 쓰기)
+	// 시터 마이페이지(알림장 쓰기) 
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterNotice")
-	public String baSitterNotice() {
+	public String baSitterNotice(BaMypageDto baMypageDto, Model model) {
+		
+		model.addAttribute("sitterNoticeWriteItem", baMypageService.sitterNoticeWriteSelectOne(baMypageDto)); // 시터, 펫, 멤버 정보 끌고오기 
+		model.addAttribute("sitterNoticeWriteList", baMypageService.sitterNoticeWriteSelectList(baMypageDto)); // 돌봄서비스, 방문(예약)날짜 정보 끌고오기
 		return "usr/v1/infra/mypage/baSitterNotice";
+	} 
+	
+	// 시터 마이페이지(알림장 내용 insert, baboDiaryNy 0 -> 1) 
+	@RequestMapping(value="/usr/v1/infra/mypage/baSitterNoticeInstUpat")
+	public String baSitterNoticeInstUpat(@RequestParam("baboSeq") String baboSeq, BaMypageDto baMypageDto) {
+		
+		baMypageDto.setBaboSeq(baboSeq);  
+		baMypageDto.setBa_booking_baboSeq(baboSeq);
+		 
+		baMypageService.sitterNoticeInsert(baMypageDto);
+		baMypageService.sitterNoticeUpdate(baMypageDto); 
+		
+		return "redirect:/usr/v1/infra/mypage/baSitterMyBooking"; 
 	}
 	
-	//--
-	  
+	// 시터 마이페이지(알림장 보기)  
+	@RequestMapping(value="/usr/v1/infra/mypage/baSitterNoticeRead")
+	public String baSitterNoticeRead(BaMypageDto baMypageDto, Model model) {
+		
+		model.addAttribute("sitterNoticeWriteItem", baMypageService.sitterNoticeWriteSelectOne(baMypageDto)); // 시터, 펫, 멤버 정보 끌고오기 
+		model.addAttribute("sitterNoticeWriteList", baMypageService.sitterNoticeWriteSelectList(baMypageDto)); // 돌봄서비스, 방문(예약)날짜 정보 끌고오기
+		model.addAttribute("sitterNoticeContentItem", baMypageService.sitterNoticeContentSelectOne(baMypageDto)); // 알림장 컨텐츠 내용 보기
+		
+//		model.addAttribute("sitterNoticeItem", baMypageService.sitterNoticeSelectOne(baMypageDto));
+		return "usr/v1/infra/mypage/baSitterNoticeRead";
+	}
 	
 	
 
+	
+	
+	
+
+	 
 	
 	
 	

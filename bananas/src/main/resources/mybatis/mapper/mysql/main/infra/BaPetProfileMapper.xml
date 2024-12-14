@@ -103,7 +103,9 @@
 	<select id="selectOnePet" resultMap="resultMapObj">
 		SELECT
 			bapeSeq,
-			bapeName
+			bapeName,
+			bapeAge,
+			bapeWeight
 		FROM ba_petprofile AS a
 			LEFT JOIN ba_member AS b
 				ON a.ba_member_bameSeq = b.bameSeq
@@ -115,7 +117,9 @@
 	<select id="selectOnePetSeq" resultMap="resultMapObj">
 		SELECT
 			bapeSeq,
-			bapeName
+			bapeName,
+			bapeAge,
+			bapeWeight
 		FROM ba_petprofile AS a
 			LEFT JOIN ba_member AS b
 				ON a.ba_member_bameSeq = b.bameSeq

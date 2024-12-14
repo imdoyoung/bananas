@@ -276,25 +276,21 @@
               <div class="overflow-scroll scroll-bar-1 pt-30">
                 <table class="table-2 col-12">
                   <thead class="">
-                    <tr align="center">
+                    <tr align="center">	
                       <th>No</th>
                       <th>예약일</th>
-                      <th>서비스</th>
-                      <th>강아지이름</th>
-<!--                       <th>보호자성함</th> -->
+                      <th>예약시간</th>
                     </tr>
                   </thead>
                   
                   <tbody th:each="list, iterStat : ${sitterPageBookingLsit}" th:if="${iterStat.index < 3}">
                     <tr align="center">
-                      <td th:text="${iterStat.index + 1}"></td>
+                      <td th:text="${iterStat.index + 1}"></td> 
                       <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
-                      <td th:text="${list.baopName}">서비스</td>
-                      <td th:text="${list.bapeName}">강아지이름</td>
-<!--                       <td th:text="${list.bameName}">보호자성함</td> -->
-                    </tr>
+                      <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약시간</td>
+                    </tr>    
                   </tbody>
-                  
+                      
                 </table>
               </div>
             </div>

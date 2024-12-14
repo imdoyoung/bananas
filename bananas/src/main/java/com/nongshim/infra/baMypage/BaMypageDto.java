@@ -16,8 +16,8 @@ public class BaMypageDto {
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date bareEditDate; 
 	private Integer bareDelNy; 
-	private String bA_Place_baplSeq; 
-	private String bA_Booking_baboSeq;
+	private String ba_Place_baplSeq; 
+	private String ba_booking_baboSeq;
 	
 	// 예약
 	private String baboSeq;  
@@ -35,15 +35,16 @@ public class BaMypageDto {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date baboEditDate; 
 	private Integer baboDelNy; 
-	private String bA_Petprofile_bapeSeq; 
-	private String bA_SitterList_basiSeq; 
+	private String ba_Petprofile_bapeSeq; 
+	private String ba_SitterList_basiSeq; 
 	private Integer baboDiaryNy;
+	private String badiContent;
 	
 	// 예약 내역 
 	private String baboopSeq;
 	private Integer baboopUseNy;
 	private Integer baboopDelNy;
-	private String bA_Option_baopSeq;
+	private String ba_Option_baopSeq;
 	
 	// 메뉴 
 	private String baopSeq;
@@ -69,7 +70,7 @@ public class BaMypageDto {
 	private Date bapeEditDate; 
 	private Integer bapeUseNy; 
 	private Integer apeDelNy;
-	private String bA_Member_bameSeq;
+	private String ba_Member_bameSeq;
 	
 	// 멤버 
 	private String bameSeq;
@@ -172,17 +173,17 @@ public class BaMypageDto {
 	public void setBareDelNy(Integer bareDelNy) {
 		this.bareDelNy = bareDelNy;
 	}
-	public String getbA_Place_baplSeq() {
-		return bA_Place_baplSeq;
+	public String getBa_Place_baplSeq() {
+		return ba_Place_baplSeq;
 	}
-	public void setbA_Place_baplSeq(String bA_Place_baplSeq) {
-		this.bA_Place_baplSeq = bA_Place_baplSeq;
+	public void setBa_Place_baplSeq(String ba_Place_baplSeq) {
+		this.ba_Place_baplSeq = ba_Place_baplSeq;
 	}
-	public String getbA_Booking_baboSeq() {
-		return bA_Booking_baboSeq;
+	public String getBa_booking_baboSeq() {
+		return ba_booking_baboSeq;
 	}
-	public void setbA_Booking_baboSeq(String bA_Booking_baboSeq) {
-		this.bA_Booking_baboSeq = bA_Booking_baboSeq;
+	public void setBa_booking_baboSeq(String ba_booking_baboSeq) {
+		this.ba_booking_baboSeq = ba_booking_baboSeq;
 	}
 	public String getBaboSeq() {
 		return baboSeq;
@@ -244,17 +245,29 @@ public class BaMypageDto {
 	public void setBaboDelNy(Integer baboDelNy) {
 		this.baboDelNy = baboDelNy;
 	}
-	public String getbA_Petprofile_bapeSeq() {
-		return bA_Petprofile_bapeSeq;
+	public String getBa_Petprofile_bapeSeq() {
+		return ba_Petprofile_bapeSeq;
 	}
-	public void setbA_Petprofile_bapeSeq(String bA_Petprofile_bapeSeq) {
-		this.bA_Petprofile_bapeSeq = bA_Petprofile_bapeSeq;
+	public void setBa_Petprofile_bapeSeq(String ba_Petprofile_bapeSeq) {
+		this.ba_Petprofile_bapeSeq = ba_Petprofile_bapeSeq;
 	}
-	public String getbA_SitterList_basiSeq() {
-		return bA_SitterList_basiSeq;
+	public String getBa_SitterList_basiSeq() {
+		return ba_SitterList_basiSeq;
 	}
-	public void setbA_SitterList_basiSeq(String bA_SitterList_basiSeq) {
-		this.bA_SitterList_basiSeq = bA_SitterList_basiSeq;
+	public void setBa_SitterList_basiSeq(String ba_SitterList_basiSeq) {
+		this.ba_SitterList_basiSeq = ba_SitterList_basiSeq;
+	}
+	public Integer getBaboDiaryNy() {
+		return baboDiaryNy;
+	}
+	public void setBaboDiaryNy(Integer baboDiaryNy) {
+		this.baboDiaryNy = baboDiaryNy;
+	}
+	public String getBadiContent() {
+		return badiContent;
+	}
+	public void setBadiContent(String badiContent) {
+		this.badiContent = badiContent;
 	}
 	public String getBaboopSeq() {
 		return baboopSeq;
@@ -274,11 +287,11 @@ public class BaMypageDto {
 	public void setBaboopDelNy(Integer baboopDelNy) {
 		this.baboopDelNy = baboopDelNy;
 	}
-	public String getbA_Option_baopSeq() {
-		return bA_Option_baopSeq;
+	public String getBa_Option_baopSeq() {
+		return ba_Option_baopSeq;
 	}
-	public void setbA_Option_baopSeq(String bA_Option_baopSeq) {
-		this.bA_Option_baopSeq = bA_Option_baopSeq;
+	public void setBa_Option_baopSeq(String ba_Option_baopSeq) {
+		this.ba_Option_baopSeq = ba_Option_baopSeq;
 	}
 	public String getBaopSeq() {
 		return baopSeq;
@@ -394,11 +407,11 @@ public class BaMypageDto {
 	public void setApeDelNy(Integer apeDelNy) {
 		this.apeDelNy = apeDelNy;
 	}
-	public String getbA_Member_bameSeq() {
-		return bA_Member_bameSeq;
+	public String getBa_Member_bameSeq() {
+		return ba_Member_bameSeq;
 	}
-	public void setbA_Member_bameSeq(String bA_Member_bameSeq) {
-		this.bA_Member_bameSeq = bA_Member_bameSeq;
+	public void setBa_Member_bameSeq(String ba_Member_bameSeq) {
+		this.ba_Member_bameSeq = ba_Member_bameSeq;
 	}
 	public String getBameSeq() {
 		return bameSeq;
@@ -688,12 +701,7 @@ public class BaMypageDto {
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
 	}
-	public Integer getBaboDiaryNy() {
-		return baboDiaryNy;
-	}
-	public void setBaboDiaryNy(Integer baboDiaryNy) {
-		this.baboDiaryNy = baboDiaryNy;
-	}
+	
 	
 	
 	

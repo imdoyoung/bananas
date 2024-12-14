@@ -70,7 +70,41 @@ public class BaMypageService {
 	public List<BaMypageDto> BaMypageBookingSelectListAll() {
 		return baMypageDao.BaMypageBookingSelectListAll();
 	}
-
 	
+	// 알림장 보기
+	public BaMypageDto sitterNoticeSelectOne(BaMypageDto baMypageDto) {
+		return baMypageDao.sitterNoticeSelectOne(baMypageDto);
+	}
+	
+	// 알림장 쓰기(booking 마스터)
+	public BaMypageDto sitterNoticeWriteSelectOne(BaMypageDto baMypageDto) {
+		return baMypageDao.sitterNoticeWriteSelectOne(baMypageDto);
+	}
+	
+	// 알림장 쓰기(bookingoption 마스터)
+	public List<BaMypageDto> sitterNoticeWriteSelectList(BaMypageDto baMypageDto) {
+		return baMypageDao.sitterNoticeWriteSelectList(baMypageDto);
+	}
+	
+	// 알림장 내용 insert
+	public int sitterNoticeInsert(BaMypageDto baMypageDto) {
+		return baMypageDao.sitterNoticeInsert(baMypageDto);
+	}
+	
+	// 알림장 baboDiaryNy 0 -> 1 update
+	public int sitterNoticeUpdate(BaMypageDto baMypageDto) {
+		return baMypageDao.sitterNoticeUpdate(baMypageDto);
+	}
+	
+	// 알림장 내용 selectOne
+    public BaMypageDto sitterNoticeContentSelectOne(BaMypageDto baMypageDto) {
+    	return baMypageDao.sitterNoticeContentSelectOne(baMypageDto);
+    }
+	
+	
+	
+	
+	
+
 
 }

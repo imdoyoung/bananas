@@ -142,7 +142,7 @@
                           <div class="col-md-12">
                             <div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessNameXdm} + '님' "></div>
                             <div class="text-15 lh-14 text-light-1" th:text="${session.sessIdXdm}">아이디</div>
-                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">이메일</div>
+                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;" th:text="${session.sessEmailXdm}">이메일</div>
                           </div>
                           <a href="/usr/v1/infra/baMember/baMemberUsrMform" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
                         </div>     
@@ -158,9 +158,9 @@
                         <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">  
                         <div class="row">
                           <div class="col-md-12"> 
-                            <div class="text-30 lh-16 fw-600 text_orange">꼬미</div>
-                            <div class="text-15 lh-14 text-light-1">2016.07.09 <span>(8살)</span></div>
-                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;">3.8kg</div>
+                            <div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessPetName}">반려동물 이름</div>
+                            <div class="text-15 lh-14 text-light-1" th:text="${session.sessPetAge} + '살' ">생년월일</div>
+                            <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;" th:text="${session.sessPetWeight} + 'kg' ">몸무게</div>
                           </div>
                           <a href="/usr/v1/infra/baPetprofile/baPetprofileUsrForm" class="PetprofileBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">프로필 상세</a>
                         </div>    
@@ -266,6 +266,7 @@
   <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+  
 </body>
 
 </html>

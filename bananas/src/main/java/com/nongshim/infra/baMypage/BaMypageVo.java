@@ -16,8 +16,8 @@ public class BaMypageVo {
  
 	private int startRnumForMysql = 0;							// 쿼리 시작 row 
 	
-	private String basiSeq;
-	
+	private String basiSeq; // 시터 seq 
+	private String bapeSeq; // 펫 seq
 	
 	
 	//--
@@ -78,10 +78,17 @@ public class BaMypageVo {
 	
 	
 	
+	
 	////////////////////////////////////////////////////////////////
 	
 	
 	
+	public String getBapeSeq() {
+		return bapeSeq;
+	}
+	public void setBapeSeq(String bapeSeq) {
+		this.bapeSeq = bapeSeq;
+	}
 	public void setParamsPaging(int totalRows) {
 
 		setTotalRows(totalRows);

@@ -12,9 +12,8 @@
 										<div class="icon">
 											<i class="fa-solid fa-paw"></i>
 										</div>
-										<div class="text" style="font-size: 18px;">
-											<strong> <span th:text="${session.sessNameXdm}"></span>
-											</strong>
+										<div class="text" style="font-size: 18px;cursor: pointer">
+											<strong th:text="${session.sessNameXdm}"></strong>
 										</div>
 									</div>
 								</li>
@@ -23,7 +22,7 @@
 										<div class="icon">
 											<i class="fa-solid fa-right-from-bracket"></i>
 										</div>
-										<div class="text" style="font-size: 18px;">
+										<div class="text" style="font-size: 18px;cursor: pointer">
 											<strong> <a id="logoutBtn">Log Out</a>
 											</strong>
 										</div>
@@ -75,9 +74,16 @@
 									<li class="has-sub">
 										<a href="/usr/v1/infra/baPlace/baUsrPlaceList">장소추천</a>
 									</li>
+									<th:block th:if="${session.sessSeqXdm == null}">
+									<li class="has-sub" style="display: none;">
+										<a href="/usr/v1/infra/mypage/baUsrMypage">마이페이지</a>
+									</li>
+									</th:block>
+									<th:block th:if="${session.sessSeqXdm != null}">
 									<li class="has-sub">
 										<a href="/usr/v1/infra/mypage/baUsrMypage">마이페이지</a>
 									</li>
+									</th:block>
 								</ul>
 							</nav>
 						</div>

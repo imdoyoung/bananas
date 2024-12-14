@@ -71,7 +71,7 @@
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
 
-            <h1 class="text-30 lh-14 fw-600">알림장 쓰기</h1>
+            <h1 class="text-30 lh-14 fw-600">알림장 보기</h1>
             <div class="text-15 text-light-1"></div>
 
           </div>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="tabs__content pt-30 js-tabs-content table_action_icon">
-				<form name="form" method="post" action="/usr/v1/infra/mypage/baSitterNoticeInstUpat">
+				<form name="form" method="post" action="/usr/v1/infra/mypage/baSitterMyBooking">
 				
               <div class="tabs__pane -tab-item-1 is-tab-el-active">
                 <div class="overflow-scroll scroll-bar-1">
@@ -109,36 +109,29 @@
               </div>
 
               <div class="col-lg-7"> <!-- col-lg-8 -->
-              <form name="form" method="post" action="/usr/v1/infra/mypage/baSitterNoticeUpatInst">
                 <div class="cruise_item_inner_content">
                   <div class="cruise_content_top_wrapper">
                     <div class="cruise_content_top_left">
                     
                       <div class="contact-fields">
                         <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn"  placeholder="펫시터 이름" name="basiName" th:value="${sitterNoticeWriteItem?.basiName}">
+                          <input type="text" id="firstn" placeholder="펫시터 이름" name="basiName" th:value="${sitterNoticeWriteItem?.basiName}">   
                         </div>
                         <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" placeholder="반려동물 이름" name="bapeName" th:value="${sitterNoticeWriteItem?.bapeName}">
+                          <input type="text" id="firstn"  placeholder="반려동물 이름" name="bapeName" th:value="${sitterNoticeWriteItem?.bapeName}">
                         </div>
                         <div class="contact-field p-relative c-name mb-20">
-                          <input type="text" id="firstn" placeholder="방문날짜" name="baboDate" th:value="${#dates.format(sitterNoticeWriteItem?.baboDate,'yyyy-MM-dd')}">
-                        </div>
+                          <input type="text" id="firstn"  placeholder="방문날짜" name="baboDate" th:value="${#dates.format(sitterNoticeWriteItem?.baboDate,'yyyy-MM-dd')}">
+                        </div> 
                       </div>
                       
-<!--                       <div class="contact-fields"> -->
-<!--                         <div class="contact-field p-relative c-name mb-20" th:each="list : ${sitterNoticeWriteList}"> -->
-<!--                           <input type="text" id="firstn" placeholder="돌봄서비스" name="baopName" th:value="${list.baopName}"> -->
-<!--                         </div> -->	
-<!--                       </div> -->
-
-						<div class="contact-fields">
-						  <div class="contact-field p-relative c-name mb-20">
-						    <input type="text" id="firstn" placeholder="돌봄서비스" name="baopName" 
-						           th:value="${sitterNoticeWriteList != null ? #strings.arrayJoin(sitterNoticeWriteList.![baopName], ', ') : ''}">
-						  </div> 
-						</div>
-						
+                     <div class="contact-fields">
+						<div class="contact-field p-relative c-name mb-20">
+						   <input type="text" id="firstn" placeholder="돌봄서비스" name="baopName" 
+						         th:value="${sitterNoticeWriteList != null ? #strings.arrayJoin(sitterNoticeWriteList.![baopName], ', ') : ''}">
+						</div> 
+					 </div>
+                      
                       <div class="contact-fields">
                         <div class="contact-field p-relative c-name mb-20">
                           <input type="text" id="firstn" placeholder="To.00보호자님" name="bameName" th:value=" 'To. ' + ${sitterNoticeWriteItem?.bameName} + ' 보호자님' ">
@@ -151,21 +144,18 @@
                   <div class="cruise_content_middel_wrapper">
                     <div class="cruise_content_middel_left">
                       <div class="form-input">
-                        <textarea required rows="7" cols="100"  style="border-style:double;background:#fffbf8;" name="badiContent"></textarea>
+                        <textarea required rows="7" cols="100" style="border-style:double;background:#fffbf8;" name="badiContent"
+                        th:text="${sitterNoticeContentItem?.badiContent}"></textarea>
                       </div>
                     </div>
                   </div>
 
-                  <div class="cruise_content_bottom_wrapper" id="noticeBtn">
-                    <div class="cruise_content_bottom_right">
-                    <div id="hiddenData" data-babo-seq="${baboSeq}"></div>
-                    <input type="hidden" name="baboSeq" value="">
-                      <a class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png" id="noticeInstUdatBtn" 
-                      style="cursor: pointer;">알림장 등록</a>
-                    </div>
-                  </div>  
+<!--                   <div class="cruise_content_bottom_wrapper" id="noticeBtn"> -->
+<!--                     <div class="cruise_content_bottom_right"> -->
+<!--                       <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">알림장 등록</a> -->
+<!--                     </div> -->
+<!--                   </div> -->
                 </div>
-                </form>
               </div>
 
             </div>
@@ -632,29 +622,6 @@
       reader.readAsDataURL(file);
     }
   }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-		const urlParams = new URLSearchParams(window.location.search);
-		const baboSeq = urlParams.get('baboSeq');
-		
-		if(baboSeq) {
-			document.querySelector('input[name="baboSeq"]').value = baboSeq;
-		}
-		
-		console.log("baboSeq : " + htseq);
-		
-	})
-
-
-   document.getElementById('noticeInstUdatBtn').onclick = function() {
-	     
-	   const baboSeq = document.querySelector('input[name="baboSeq"]').value;
-	  
-	   form.action = "/usr/v1/infra/mypage/baSitterNoticeInstUpat";
-	   form.submit();
-   }
-   
-   
 
   
   

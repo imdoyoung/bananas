@@ -344,11 +344,11 @@
 	  </sql>
 	  
 	   <select id="sitterPageBookingCount">
-		 SELECT COUNT(DISTINCT e.basiSeq)
+		 SELECT COUNT(DISTINCT f.baboSeq)
 		<include refid="sitterPageBookingCommon"/>
 	  </select>
 	  
-	  <!-- 나의 예약 리스트 -->
+	  <!-- 나의 예약 리스트(중복 제거) -->
 	  <select id="sitterPageBookingSelectList" resultMap="resultMapObj">
 	  select bb.* from (  
 			select DISTINCT
@@ -361,32 +361,124 @@
 		        d.bapeName,
 		        c.bameName
 			<include refid="sitterPageBookingCommon"/>
+			ORDER BY 
+				f.baboDate desc
 	  		) bb
 	  		limit #{rowNumToShow} offset #{startRnumForMysql}
 	  </select>
-	
 	  
-
+	  <!-- 알림장 보기 -->
+	  <select id="sitterNoticeSelectOne" resultMap="resultMapObj">
+	  	select 
+	  		a.basiName,
+		    b.bapeName,
+		    c.baboSeq,
+		    c.baboDate,
+		    c.baboDiaryNy,
+		    d.baopName,
+		    e.bameName,
+		    f.badiSeq,
+		    f.badiRegDate,
+		    f.badiContent,
+		    g.baboopSeq
+		from ba_diary as f 
+			left join ba_bookingoption as g 
+				on f.ba_bookingoption_baboopSeq = g.baboopSeq
+			left join ba_option as d 
+				on d.baopSeq = g.ba_option_baopSeq 
+			left join ba_booking as c
+				on c.baboSeq = g.ba_booking_baboSeq
+			left join ba_petprofile as b
+				on b.bapeSeq = c.ba_petprofile_bapeSeq
+			left join ba_sitterList as a 
+				on a.basiSeq = c.ba_sitterlist_basiSeq 
+			left join ba_member as e
+				on e.bameSeq = b.ba_member_bameSeq
+		where 1=1
+			and c.baboSeq = #{baboSeq}
+		 order by 
+			baboopSeq asc
+	  </select>
+	  
+	  <!-- 알림장 정보 불러오기 selectOne -->
+	  <!-- member, pet, sitter 정보 -->
+	  <select id="sitterNoticeWriteSelectOne" resultMap="resultMapObj">
+		  	select
+				a.baboSeq,
+				a.baboDate,
+				b.bameName,
+			    c.bapeName,
+			    d.basiName
+			from ba_booking as a 
+				left join ba_sitterList as d
+					on d.basiSeq = a.ba_sitterlist_basiSeq
+				left join ba_petprofile as c
+					on c.bapeSeq = a.ba_petprofile_bapeSeq
+				left join ba_member as b
+					on b.bameSeq = c.ba_member_bameSeq
+			where 1=1
+				and a.baboSeq = #{baboSeq}
+	  </select>
+	  
+	  <!-- 알림장 정보 불러오기 selectList -->
+	  <!-- booking, option 정보 -->
+	  <select id="sitterNoticeWriteSelectList" resultMap="resultMapObj">
+		  	select
+				a.baboopSeq,
+			    b.baopName,
+			    c.baboSeq
+			from ba_bookingoption as a 
+				left join ba_option as b
+					on b.baopSeq = a.ba_option_baopSeq
+				left join ba_booking as c 
+					on c.baboSeq = a.ba_booking_baboSeq
+			where 1=1
+				and c.baboSeq = #{baboSeq}
+	  </select>
+	   
+	  <!-- 알림장 내용 insert -->
+	  <insert id="sitterNoticeInsert"> 
+		  insert into ba_diary (
+		  	badiContent,
+		  	badiRegDate,
+		  	badiEditDate,
+		  	badiDelNy,
+		  	ba_bookingoption_baboopSeq,
+		  	ba_booking_baboSeq
+		  ) values (
+		  	#{badiContent},
+		  	now(),
+		  	now(),
+		  	0,
+		  	null,
+		  	#{ba_booking_baboSeq}
+		  )
+	  </insert>
+	  
+	  <!-- baboDiaryNy 0 -> 1 update -->
+	  <update id="sitterNoticeUpdate">
+		 update ba_booking
+		 set 
+		  	baboDiaryNy = 1 
+		 where 1=1 
+		  	and baboSeq = #{baboSeq} 
+	  </update>
+	  
+	  <!-- 알림장 내용 selectOne -->
+	  <!-- ba_diary  -->
+	  <select id="sitterNoticeContentSelectOne" resultMap="resultMapObj">
+	  	select DISTINCT
+		    a.badiContent,
+		    a.badiRegDate,
+		    b.baboSeq,
+		    b.baboDate
+		from ba_diary as a 
+			left join ba_booking as b
+				on b.baboSeq = a.ba_booking_baboSeq
+		where 1=1
+			and b.baboSeq = #{baboSeq}
+	  </select>
+	  
 	    
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-
 		 	
 </mapper>

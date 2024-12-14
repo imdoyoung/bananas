@@ -44,3 +44,4 @@ logs/
 ### external ###
 application-external.properties
 firebase-adminsdk.json
+firebase-adminsdk=firebase/firebase-adminsdk.json

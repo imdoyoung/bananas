@@ -107,7 +107,6 @@
                         <th>No</th>
                         <th>예약일</th>
                         <th>예약시간</th>
-<!--                         <th>서비스</th> -->
                         <th>돌봄장소</th>
                         <th>강아지이름</th>
                         <th>보호자성함</th>
@@ -120,18 +119,26 @@
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                         <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td> 
                         <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약시간</td> 
-<!--                         <td th:text="${list.baopName}">서비스</td> -->
                         <td th:text="${list.baboLocation}">돌봄장소</td> 
                         <td th:text="${list.bapeName}">강아지이름</td>
                         <td th:text="${list.bameName}">보호자성함</td>
+                        
                         <th:block th:if="${list.baboDiaryNy == 1}">
                         	<td>
-							<a th:href="@{/usr/v1/infra/mypage/baSitterNotice}"
-								th:text="'내용 보기'" style="text-decoration: underline;">
+							<a th:href="@{/usr/v1/infra/mypage/baSitterNoticeRead(baboSeq=${list.baboSeq})}"
+								th:text="'(알림장 등록) 내용 보기'" style="text-decoration: underline;">
 							</a>
 						    </td>
-                        </th:block>
-                      </tr>
+                        </th:block>   
+                        <th:block th:if="${list.baboDiaryNy == 0}">
+                        	<td>
+							<a th:href="@{/usr/v1/infra/mypage/baSitterNotice(baboSeq=${list.baboSeq})}"
+								th:text=" '(알림장 미등록) 알림장 쓰기'" style="text-decoration: underline;">
+							</a>
+						    </td>
+                        </th:block>  
+                        
+                      </tr>  
                     </tbody>
                     
                   </table>

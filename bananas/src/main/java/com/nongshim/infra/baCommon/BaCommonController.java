@@ -75,6 +75,12 @@ public class BaCommonController {
 	            	// 저장된 세션값 확인
 	                httpSession.setAttribute("sessPetSeq", rtPet2.getBapeSeq());
 	                httpSession.setAttribute("sessPetName", rtPet2.getBapeName());
+	                httpSession.setAttribute("sessPetAge", rtPet2.getBapeAge());
+	                httpSession.setAttribute("sessPetWeight", rtPet2.getBapeWeight());
+	                
+//                    System.out.println("sessPetSeq: " + rtPet2.getBapeSeq());
+//                    System.out.println("sessPetName: " + rtPet2.getBapeName());
+//                    System.out.println("sessPetAge: " + rtPet2.getBapeAge());
 	            } else {
 	                System.out.println("회원정보를 찾을 수 없습니다.");
 	            }
