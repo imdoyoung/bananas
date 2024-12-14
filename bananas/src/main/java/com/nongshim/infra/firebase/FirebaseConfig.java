@@ -1,4 +1,4 @@
-// Firebase Admin SDK를 초기화하는 구성 클래스
+// Firebase Admin SDK를 초기화하는 구성 클래스 >> 통신준비 완료
 package com.nongshim.infra.firebase;
 
 import java.io.FileInputStream;
@@ -11,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 @Configuration
 public class FirebaseConfig {
@@ -35,6 +36,11 @@ public class FirebaseConfig {
             return FirebaseApp.getInstance();
 		}
 
+    }
+	
+	@Bean
+    public FirebaseDatabase firebaseDatabase() {
+        return FirebaseDatabase.getInstance();
     }
 	
 }

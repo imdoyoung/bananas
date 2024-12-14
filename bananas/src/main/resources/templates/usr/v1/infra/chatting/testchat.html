@@ -118,6 +118,17 @@ header .second-menu {
 			</div>
 		</section>
 		<!-- breadcrumb-area-end -->
+		
+		
+<!-- 		<h1>채팅</h1> -->
+<!-- 	    <div id="messages"></div> -->
+<!-- 	    <input type="text" id="messageInput" placeholder="메시지를 입력하세요" /> -->
+<!-- 	    <button onclick="sendMessage()">보내기</button> -->
+		
+		
+		
+		
+		
 		<!-- gallery-area -->
 		<section class="gallery-area fix pt-120 pb-90">
 			<div class="container">
@@ -126,7 +137,7 @@ header .second-menu {
 						<div class="row border-bottom mb-5 pb-5 mt-3">
 							<div class="col-md-2">
 								<div class="text-lg-center">
-									<h4>Chatting</h4>
+									<h4 >Chatting</h4>
 								</div>
 							</div>
 						</div>
@@ -135,10 +146,11 @@ header .second-menu {
 								<div class="row">
 									<div class="col-me-12">
 										<div>
-											<p align="left">채팅내용</p>
-											<p align="right">채팅내용</p>
-											<p align="left">채팅내용</p>
-											<p align="right">채팅내용</p>
+											<p align="right" id="messages">채팅내용</p>
+<!-- 											<p align="right">채팅내용</p> -->
+<!-- 											<p align="left">채팅내용</p> -->
+<!-- 											<p align="right">채팅내용</p> -->
+<!-- 											<input type="text" value="fetchMessages"> -->
 										</div>
 										<br>
 									</div>
@@ -149,9 +161,9 @@ header .second-menu {
 					<form id="routeForm">
 						<div class="row justify-content-center">
 							<div class="col-md-6">
-								<div class="input-group input-group-lg">
-									<input type="text" class="form-control">
-									<button type="button" id="btnChatSubmit" class="btn btn-primary">전송</button>
+								<div class="input-group input-group-lg" id="messages">
+									<input type="text" class="form-control" id="messageInput">
+									<button type="button" id="btnChatSubmit" class="btn btn-primary" onclick="sendMessage()">전송</button>
 								</div>
 								<br>
 							</div>
@@ -197,8 +209,60 @@ header .second-menu {
 
 
 	<script>
-		
-	</script>
+        // 메시지를 보내는 함수 (AJAX POST)
+        function sendMessage() {
+            var message = {
+                "user": "사용자1",  // 예시로 사용자1로 설정
+                "message": document.getElementById('messageInput').value
+            };
+
+            // AJAX로 메시지 전송
+            $.ajax({
+                url: '/send',
+                type: 'POST',
+                data: {"message": document.getElementById('messageInput').value},
+                success: function(response) {
+                    console.log("Message sent: ", response);
+                    document.getElementById('messageInput').value = '';
+                },
+                error: function(error) {
+                    console.log("Error sending message: ", error);
+                }
+            });
+            
+            $.ajax({
+                url: '/read',  // 최신 메시지 가져오기
+                type: 'GET',
+                success: function(messages) {
+                    var messagesDiv = document.getElementById('messages');
+                    messagesDiv.innerHTML = ''; // 기존 메시지 삭제
+
+                    // 새로운 메시지들 추가
+                    messages.forEach(function(message) {
+                        var messageElement = document.createElement('p');
+                        messageElement.textContent = message.user + ": " + message.message;
+                        messagesDiv.appendChild(messageElement);
+                    });
+                },
+                error: function(error) {
+                    console.log("Error fetching messages: ", error);
+                }
+            });
+            
+        }
+
+        // 메시지를 주기적으로 가져오는 함수 (AJAX GET)
+        function fetchMessages() {
+//         	alert("f")
+           
+        }
+
+        // 페이지가 로드될 때마다 최신 메시지를 가져옵니다
+        $(document).ready(function() {
+            // 3초마다 새로운 메시지를 가져옵니다
+            setInterval(fetchMessages, 3000);
+        });
+    </script>
 
 
 </body>
