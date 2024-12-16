@@ -129,6 +129,7 @@
 			bananas.ba_member AS c
 		WHERE 1 = 1
 			AND c.bameId = #{bameId}
+			AND c.bamePw = #{bamePw}
 	</select>
 	
 	<!-- 관리자-로그인 세션 유지 -->

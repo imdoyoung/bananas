@@ -10,25 +10,25 @@ import com.google.firebase.messaging.Notification;
 @Service
 public class FCMService {
 
-	public void sendMessage(String token, String title, String body) throws Exception {
-		
+   public void sendMessage(String token, String title, String body) throws Exception {
+      
 //        Message message = Message.builder()
 //            .setToken(token)
 //            .setNotification(new Notification(title, body))
 //            .build();
-		
-		Notification notification = Notification.builder()
-				.setTitle(title)
-				.setBody(body)
-				.build();
+      
+      Notification notification = Notification.builder()
+            .setTitle(title)
+            .setBody(body)
+            .build();
 
-		Message message = Message.builder()
-				.setToken(token)
-				.setNotification(notification)
-				.build();
+      Message message = Message.builder()
+            .setToken(token)
+            .setNotification(notification)
+            .build();
 
-		String response = FirebaseMessaging.getInstance().send(message);
-		System.out.println("Successfully sent message: " + response);
-	}
+      String response = FirebaseMessaging.getInstance().send(message);
+      System.out.println("Successfully sent message: " + response);
+   }
 
 }

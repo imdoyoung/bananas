@@ -134,9 +134,9 @@
                                         <label class="form-check-label" for="rememberme">아이디 저장</label>
                                     </div>
                                     <!-- forgot password -->
-                                    <div class="fw-bold">
-                                        <a href="" class="text-inherit"> 비밀번호 찾기</a>
-                                    </div>
+<!--                                     <div class="fw-bold"> -->
+<!--                                         <a href="" class="text-inherit"> 비밀번호 찾기</a> -->
+<!--                                     </div> -->
                                 </div>
                                 <!-- button -->
                                 <a class="btn" id="btnSubmit">
@@ -155,6 +155,23 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+	<div class="modal fade" id="modalAlert" tabindex="-1" aria-labelledby="modalAlertLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-dialog-centered">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title" id="modalAlertTitle">확인</h5>
+	                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	            </div>
+	            <div class="modal-body" id="modalAlertBody">
+	                로그인에 실패했습니다. 다시 시도해주세요.
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-primary btn-block" data-bs-dismiss="modal">확인</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
     <!-- scripts -->
     <!-- Libs JS -->
     <script src="/usr/v1/template/NailForest/assets/libs/jquery/dist/jquery.min.js"></script>
@@ -255,15 +272,15 @@
 // 					alert("성공");
 						location.href = "/usr/v1/infra/common/baUsrIndex";
 				} else {
-					alert("실패");
-//	 		 		document.getElementById("modalAlertTitle").innerText = "확 인";
-//	 		 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
-//	 		 		$("#modalAlert").modal("show");
+// 					alert("실패");
+	 		 		document.getElementById("modalAlertTitle").innerText = "확 인";
+	 		 		document.getElementById("modalAlertBody").innerText = "일치하는 회원이 존재 하지 않습니다!";
+	 		 		$("#modalAlert").modal("show");
 				}
 			}
-//	 		,error : function(jqXHR, textStatus, errorThrown){
-//	 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-//	 		}
+	 		,error : function(jqXHR, textStatus, errorThrown){
+	 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	 		}
 		});
 	}
 	
