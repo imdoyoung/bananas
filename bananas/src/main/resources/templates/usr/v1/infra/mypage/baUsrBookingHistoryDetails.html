@@ -54,7 +54,7 @@
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
 
-            <h1 class="text-30 lh-14 fw-600">예약 내역</h1>
+            <h1 class="text-30 lh-14 fw-600">예약 내역 상세</h1>
             <div class="text-15 text-light-1"></div>
 
           </div>
@@ -92,7 +92,7 @@
             </div>
 
             <div class="tabs__content pt-30 js-tabs-content table_action_icon">
-            	<form name="form" method="post" action="/usr/v1/infra/mypage/baUsrBookingHistory">
+            	<form name="form" method="post" action="/usr/v1/infra/mypage/baUsrBookingHistoryDetails">
             	<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
  				<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}"/>
 
@@ -102,29 +102,19 @@
                     <thead class="bg-light-2">
                       <tr>
                         <th>No</th>
-                        <th>예약일</th>
-                        <th>예약 시간</th>
-                        <th>시터</th>
-                        <th>총 금액</th>
-                        <th>옵션 확인</th>
+                        <th>돌봄 서비스</th>
+                        <th>옵션 가격</th>
                       </tr>
                     </thead>
                     
-                    <tbody th:each="list : ${mypageBookingList}">
+                    <tbody th:each="list : ${mypageBookingDetailsList}">
                       <tr>
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
-                        <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
-                        <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약 시간</td>
-                        <td th:text="${list.basiName}">시터</td>
-                        <td th:text="${list.baboTotalPrice}">총 금액</td>
-                     	<td>
-							<a th:href="@{/usr/v1/infra/mypage/baUsrBookingHistoryDetails(baboSeq=${list.baboSeq})}"
-								th:text="'상세 보기'" style="text-decoration: underline;">
-							</a>
-						</td>   
+                        <td th:text="${list.baopName}">예약일</td>
+                        <td th:text="${list.baopPrice}">예약 시간</td>
                       </tr>
                     </tbody>
-                    
+                    	
                   </table>
                 </div>
               </div>
@@ -527,13 +517,13 @@
 	//paging 
 	goList = function (thisPage) {
 	    document.querySelector("input[name=thisPage]").value = thisPage;
-	    form.action = "/usr/v1/infra/mypage/baUsrBookingHistory";
+	    form.action = "/usr/v1/infra/mypage/baUsrBookingHistoryDetails";
 	    form.submit();
 	}
 	
 	goList = function (thisPage) {
 	    document.querySelector("input[name=thisPage]").value = thisPage;
-	    document.querySelector("form[name=form]").action = "/usr/v1/infra/mypage/baUsrBookingHistory";
+	    document.querySelector("form[name=form]").action = "/usr/v1/infra/mypage/baUsrBookingHistoryDetails";
 	    document.querySelector("form[name=form]").submit();
 	}
   

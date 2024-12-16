@@ -21,7 +21,7 @@ public interface BaMypageDao {
 	// 시터 리뷰 paging  
 	public int selectSitterOneCount(BaMypageVo baMypageVo);
 	
-	// 장소 리뷰 paging 
+	// 장소 리뷰 paging  
 	
 	//--
 	
@@ -32,12 +32,23 @@ public interface BaMypageDao {
 	public BaMypageDto BaMypagePriceSelectOne(BaMypageDto baMypageDto);
 	
 	// 예약 내역 paging
-	public int selectMypageBookingCount(BaMypageVo baMypageVo);
+	public int selectMypageBookingCount(BaMypageVo baMypageVo);  
 	
+	// 예약 내역 상세 리스트
+	public List<BaMypageDto> BaMypageBookingDetailsSelectList(BaMypageVo baMypageVo);
+	
+	// 예약 내역 상세 리스트 paging 
+	public int selectMypageBookingDetailsCount(BaMypageVo baMypageVo);
+	
+	// 알림장 확인하기
+	public List<BaMypageDto> BaMypageNoticeSelectList(BaMypageDto baMypageDto);
+	
+
+
 	
 
 	
-	
+	  
 	// 시터 마이페이지
 	
 	// 나의 예약 리스트 
@@ -47,7 +58,19 @@ public interface BaMypageDao {
 	public int sitterPageBookingCount(BaMypageVo baMypageVo);
 	
 	// 페이징 없는 예약 리스트  
-	public List<BaMypageDto> BaMypageBookingSelectListAll(); 
+	//public List<BaMypageDto> BaMypageBookingSelectListAll(); 
+	
+	// 나의 예약 페이징 없는 리스트(캘린더 용)
+	public List<BaMypageDto> sitterPageBookingCalendarSelectList(BaMypageDto baMypageDto);
+	
+	// 나의 리뷰 리스트 
+	public List<BaMypageDto> sitterMyReviewList(BaMypageVo baMypageVo);
+	
+	// 나의 리뷰 paging
+	public int sitterMyReviewSelectOneCount(BaMypageVo baMypageVo);
+	
+	// 나의 리뷰 자세히 보기 selectOne
+	public BaMypageDto sitterMyReviewSelectOne(BaMypageDto baMypageDto);
 	
 	// 알림장 보기
 	public BaMypageDto sitterNoticeSelectOne(BaMypageDto baMypageDto);

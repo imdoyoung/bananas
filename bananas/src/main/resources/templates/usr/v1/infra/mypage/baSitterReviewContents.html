@@ -96,17 +96,17 @@
                           <div class="cruise_content_top_wrapper">
                             <div class="cruise_content_top_left">
                               <ul> 
-                                <li>등록일 : &nbsp;<span th:text="${#dates.format(mypageReviewItem?.bareRegDate,'yyyy-MM-dd')}"></span></li>
+                                <li>등록일 : &nbsp;<span th:text="${#dates.format(sitterMyReviewItem?.bareRegDate,'yyyy-MM-dd')}"></span></li>
                               </ul> 
-                              <h4 th:text="${mypageReviewItem?.baopName}"></h4>
-                              <h4 th:text="${mypageReviewItem?.baplName}"></h4>
+                              <h4 th:text="${sitterMyReviewItem?.baopName}"></h4>
+                              <h4 th:text="${sitterMyReviewItem?.baplName}"></h4>
                             </div> 
                           </div>
                           <div class="cruise_content_middel_wrapper">
                             <div class="cruise_content_middel_left">
                               <div class="form-input">
 <!--                                 <label class="lh-1 text-16 text-light-1">별점</label> -->
-                                <textarea required rows="8" cols="150" style="border-style:double;background:#fffbf8;" th:text="${mypageReviewItem?.bareContents}"></textarea>
+                                <textarea required rows="8" cols="150" style="border-style:double;background:#fffbf8;" th:text="${sitterMyReviewItem?.bareContents}"></textarea>
                               </div> 
                             </div> 
                           </div>

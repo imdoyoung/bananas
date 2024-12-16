@@ -8,7 +8,7 @@
 	  
 	  <!-- 이용자 마이페이지 -->
 	  
-	  <!-- 마이페이지 시터리스트 Common -->
+	  <!-- 마이페이지 시터 리뷰 리스트 Common -->
 	  <sql id="selectSitterReviewCommon">
 	  	from
 	  		ba_review as j
@@ -26,6 +26,7 @@
 			on e.basiSeq = f.ba_SitterList_basiSeq
 		where 1=1
 			and j.ba_Booking_baboSeq IS NOT NULL
+			and c.bameSeq= #{bameSeq}
 	  </sql>
 	  
 	  <select id="selectSitterOneCount">
@@ -65,9 +66,35 @@
 	  	limit #{rowNumToShow} offset #{startRnumForMysql}
 	  </select>
 	  
-<!-- 	  <sql id="selectPlaceCommon"> -->
-<!-- 	  	from  -->
-<!-- 	  		ba_review as j  -->
+	  
+ 	   <!-- 장소 리뷰 리스트 -->
+<!-- 	  <select id="BaMypagePlaceSelectList" resultMap="resultMapObj"> -->
+<!-- 	  	select -->
+<!-- 	  		i.baplSeq, -->
+<!-- 		    i.baplName, -->
+<!-- 		    i.baplComment, -->
+<!-- 	  		j.bareSeq, -->
+<!-- 	  		j.bareType, -->
+<!-- 	  		j.bareStar, -->
+<!-- 	  		j.bareContents, -->
+<!-- 	  		j.bareRegDate, -->
+<!-- 	  		j.bareEditDate, -->
+<!-- 	  		j.bareDelNy, -->
+<!-- 	  		j.ba_Place_baplSeq, -->
+<!-- 	  		j.ba_Booking_baboSeq, -->
+<!-- 	  		h.baboopSeq, -->
+<!-- 			f.baboSeq, -->
+<!-- 		    f.baboDate, -->
+<!-- 			f.baboTime, -->
+<!-- 		    g.baopSeq, -->
+<!-- 		    g.baopName, -->
+<!-- 		    d.bapeSeq,	 -->
+<!-- 		    d.bapeName, -->
+<!-- 		    c.bameSeq, -->
+<!-- 		    c.bameName, -->
+<!-- 		    e.basiSeq, -->
+<!-- 		    e.basiName -->
+<!-- 	  	from ba_review as j  -->
 <!-- 		left join ba_booking as f  -->
 <!-- 			on f.baboSeq = j.BA_Booking_baboSeq -->
 <!-- 		left join ba_place as i -->
@@ -84,66 +111,12 @@
 <!-- 			on e.basiSeq = f.BA_SitterList_basiSeq -->
 <!-- 		where 1=1 -->
 <!-- 			and j.ba_Booking_baboSeq IS NULL -->
-<!-- 	  </sql> -->
-	    
-<!-- 	  <select id="selectPlaceOneCount"> -->
-<!-- 		SELECT COUNT(*) -->
-<!-- 		<include refid="selectPlaceCommon"/> -->
-<!-- 	  </select> -->
-	  
-	  <!-- 장소 리뷰 리스트 -->
-	  <select id="BaMypagePlaceSelectList" resultMap="resultMapObj">
-	  	select
-	  		i.baplSeq,
-		    i.baplName,
-		    i.baplComment,
-	  		j.bareSeq,
-	  		j.bareType,
-	  		j.bareStar,
-	  		j.bareContents,
-	  		j.bareRegDate,
-	  		j.bareEditDate,
-	  		j.bareDelNy,
-	  		j.ba_Place_baplSeq,
-	  		j.ba_Booking_baboSeq,
-	  		h.baboopSeq,
-			f.baboSeq,
-		    f.baboDate,
-			f.baboTime,
-		    g.baopSeq,
-		    g.baopName,
-		    d.bapeSeq,	
-		    d.bapeName,
-		    c.bameSeq,
-		    c.bameName,
-		    e.basiSeq,
-		    e.basiName
-	  	from ba_review as j 
-		left join ba_booking as f 
-			on f.baboSeq = j.BA_Booking_baboSeq
-		left join ba_place as i
-			on i.baplSeq = j.ba_Place_baplSeq
-		left join ba_bookingoption as h
-			on h.baboopSeq = f.baboSeq
-		left join ba_option as g 
-			on g.baopSeq = h.BA_Option_baopSeq
-		left join ba_petprofile as d
-			on d.bapeSeq = f.BA_Petprofile_bapeSeq
-		left join ba_member as c 
-			on c.bameSeq = d.BA_Member_bameSeq
-		left join ba_sitterlist as e
-			on e.basiSeq = f.BA_SitterList_basiSeq
-		where 1=1
-			and j.ba_Booking_baboSeq IS NULL
-		order by bareRegDate desc 
-	  </select> 
+<!-- 		order by bareRegDate desc  -->
+<!-- 	  </select>  -->
 	  
 	  <!-- selectOne -->
 	  <select id="BaMypageSelectOne">
 	  	select
-	  	 	i.baplSeq,
-		    i.baplName,
-		    i.baplComment,
 	  		j.bareSeq,
 	  		j.bareType,
 	  		j.bareStar,
@@ -173,13 +146,13 @@
 		left join ba_bookingoption as h
 			on h.baboopSeq = f.baboSeq
 		left join ba_option as g 
-			on g.baopSeq = h.BA_Option_baopSeq
+			on g.baopSeq = h.ba_option_baopSeq
 		left join ba_petprofile as d
-			on d.bapeSeq = f.BA_Petprofile_bapeSeq
+			on d.bapeSeq = f.ba_petprofile_bapeSeq
 		left join ba_member as c 
-			on c.bameSeq = d.BA_Member_bameSeq
+			on c.bameSeq = d.ba_member_bameSeq
 		left join ba_sitterlist as e
-			on e.basiSeq = f.BA_SitterList_basiSeq
+			on e.basiSeq = f.ba_sitterList_basiSeq
 		where 1=1
 			and j.bareSeq = #{bareSeq}
 	  </select> 
@@ -231,57 +204,74 @@
 	  
 	  <!-- 마이페이지 예약 리스트 Common -->
 	  <sql id="selectMypageBookingCommon">
-	  	from
-	 		ba_bookingoption as h 
-		left join ba_option as g
-			on g.baopSeq = h.ba_option_baopSeq
-		left join ba_booking as f
-			on f.baboSeq = h.ba_booking_baboSeq
-		left join ba_petprofile as d 
-			on d.bapeSeq = f.ba_petprofile_bapeSeq
-		left join ba_member as c
-			on c.bameSeq = d.ba_Member_bameSeq
-		left join ba_sitterlist as e 
-			on e.basiSeq = f.ba_sitterList_basiSeq
+	  	from ba_bookingoption as h 
+			left join ba_option as g
+				on g.baopSeq = h.ba_option_baopSeq
+			left join ba_booking as f
+				on f.baboSeq = h.ba_booking_baboSeq
+			left join ba_petprofile as d 
+				on d.bapeSeq = f.ba_petprofile_bapeSeq
+			left join ba_member as c
+				on c.bameSeq = d.ba_Member_bameSeq
+			left join ba_sitterlist as e 
+				on e.basiSeq = f.ba_sitterList_basiSeq
+		 where 1=1
+		 	and c.bameSeq = #{bameSeq}
 	  </sql>
 	  
 	  <select id="selectMypageBookingCount">
-		SELECT COUNT(*)
+		SELECT COUNT(DISTINCT f.baboSeq)
 		<include refid="selectMypageBookingCommon"/>
 	  </select>
 	  
-	  <!-- 마이페이지 예약 내역 리스트 -->
+	  <!-- 마이페이지 예약 내역 리스트(중복 제거) -->
 	  <select id="BaMypageBookingSelectList" resultMap="resultMapObj">
 	  	select aa.* from (
-		  	select
-		  		g.baopSeq,
-			    g.baopType,
-			    g.baopName,
-			    g.baopPrice,
-			    h.baboopSeq,
-			    h.ba_booking_baboSeq,
-			    h.ba_option_baopSeq,
-				f.baboSeq,
-			    f.baboDate,
-			    f.baboTime,
-			    f.baboLocation,
-			    f.baboPayment,
-			    f.baboTotalPrice,
-			    f.baboSettleDate,
-			    f.ba_petprofile_bapeSeq,
-			    f.ba_sitterList_basiSeq,
-			    d.bapeSeq,
-			    d.bapeName,
-			    d.ba_Member_bameSeq,
-			    c.bameSeq,
-			    c.bameName,
-			    e.basiSeq,
-			    e.basiName
+		  	select DISTINCT
+		  		f.baboSeq,
+		  		f.baboDate,
+				f.baboTime,
+				f.baboTotalPrice,
+				d.bapeName,
+				c.bameName,
+				e.basiName
 		 	<include refid="selectMypageBookingCommon"/>
 		  	order by 
 		  		f.baboDate desc
 		  	) aa
 	  		limit #{rowNumToShow} offset #{startRnumForMysql}
+	  </select>
+	  
+	  <sql id="BaMypageBookingDetailsCommon">
+	  	from ba_bookingoption as h 
+			left join ba_option as g
+				on g.baopSeq = h.ba_option_baopSeq
+			left join ba_booking as f
+				on f.baboSeq = h.ba_booking_baboSeq
+			left join ba_petprofile as d 
+				on d.bapeSeq = f.ba_petprofile_bapeSeq
+			left join ba_member as c
+				on c.bameSeq = d.ba_Member_bameSeq
+			left join ba_sitterlist as e 
+				on e.basiSeq = f.ba_sitterList_basiSeq
+		where 1=1
+			and f.baboSeq = #{baboSeq}
+	  </sql>
+	  
+	  <select id="selectMypageBookingDetailsCount">
+		SELECT COUNT(*)
+		<include refid="BaMypageBookingDetailsCommon"/>
+	  </select>
+	  
+	  <!-- 마이페이지 예약 내역 상세 리스트  -->
+	  <select id="BaMypageBookingDetailsSelectList" resultMap="resultMapObj">
+	  select aa.* from (
+	  	select
+			g.baopName,
+    		g.baopPrice
+		<include refid="BaMypageBookingDetailsCommon"/>
+		) aa
+		limit #{rowNumToShow} offset #{startRnumForMysql}
 	  </select>
 	  
 	  
@@ -315,6 +305,87 @@
 		  	order by 
 		  		f.baboDate desc
 	  </select>
+	  
+	  <!-- 알림장 보기 (멤버, 펫, 시터, 다이어리, booking join)  -->
+<!-- 	  <select id="BaMypageNoticeSelectList" resultMap="resultMapObj">  -->
+<!-- 	  	select -->
+<!-- 	  	    d.baboSeq, -->
+<!-- 	  	    a.bameSeq, -->
+<!-- 			a.bameName, -->
+<!-- 		    b.bapeName, -->
+<!-- 		    c.badiContent, -->
+<!-- 		    c.badiRegDate, -->
+<!-- 		    d.baboDate, -->
+<!-- 		    d.baboLocation, -->
+<!-- 		    e.basiName -->
+<!-- 		from ba_diary as c -->
+<!-- 			left join ba_booking as d -->
+<!-- 				on c.ba_booking_baboSeq = d.baboSeq -->
+<!-- 			left join ba_sitterList as e -->
+<!-- 				on d.ba_sitterlist_basiSeq = e.basiSeq -->
+<!-- 			left join ba_petprofile as b -->
+<!-- 				on d.ba_petprofile_bapeSeq = b.bapeSeq -->
+<!-- 			left join ba_member as a -->
+<!-- 				on b.ba_member_bameSeq = a.bameSeq -->
+<!-- 		where 1=1 -->
+<!-- 			and a.bameSeq = #{bameSeq} -->
+<!-- 	  </select> -->
+	  
+	  <!-- 알림장 보기 (멤버, 펫, 시터, 다이어리, booking join)  -->
+	  <select id="BaMypageNoticeSelectList" resultMap="resultMapObj"> 
+	  	select
+	  	 	a.bameSeq,
+		    a.bameName,
+		    b.bapeSeq,
+		    b.bapeName,
+		    c.baboSeq,
+		    c.baboDate,
+		    c.baboLocation,
+		    d.basiSeq,
+		    d.basiName,
+		    e.badiSeq,
+		    e.badiContent,
+		    e.badiRegDate,
+		    f.baboopSeq
+		from ba_diary as e
+			left join ba_bookingoption as f
+				on e.ba_bookingoption_baboopSeq = f.baboopSeq
+			left join ba_option as g 
+				on f.ba_option_baopSeq = g.baopSeq
+			left join ba_booking as c
+				on e.ba_booking_baboSeq = c.baboSeq
+			left join ba_sitterList as d 
+				on c.ba_sitterlist_basiSeq = d.basiSeq
+			left join ba_petprofile as b
+				on c.ba_petprofile_bapeSeq = b.bapeSeq
+			left join ba_member as a
+				on b.ba_member_bameSeq = a.bameSeq
+		where 1=1
+			and a.bameSeq = #{bameSeq}
+	  </select>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	 
 	  
 	 
@@ -367,6 +438,128 @@
 	  		limit #{rowNumToShow} offset #{startRnumForMysql}
 	  </select>
 	  
+	  
+	   <!-- 시터 페이지 나의 리뷰 리스트 Common -->
+	  <sql id="sitterMyReviewListCommon">
+	  	from
+	  		ba_review as j
+	  	left join ba_booking as f
+			on f.baboSeq = j.ba_Booking_baboSeq
+		left join ba_bookingoption as h
+			on h.baboopSeq = f.baboSeq
+		left join ba_option as g 
+			on g.baopSeq = h.ba_Option_baopSeq
+		left join ba_petprofile as d
+			on d.bapeSeq = f.ba_Petprofile_bapeSeq
+		left join ba_member as c 
+			on c.bameSeq = d.ba_Member_bameSeq
+		left join ba_sitterlist as e
+			on e.basiSeq = f.ba_SitterList_basiSeq
+		where 1=1
+			and j.ba_Booking_baboSeq IS NOT NULL
+			and e.basiSeq = #{basiSeq}
+	  </sql>
+	  
+	  <select id="sitterMyReviewSelectOneCount">
+		SELECT COUNT(*)
+		<include refid="sitterMyReviewListCommon"/>
+	  </select>
+	    
+	  <!-- 시터 페이지 나의 리뷰 리스트 -->
+	  <select id="sitterMyReviewList" resultMap="resultMapObj">
+	   select aa.* from (
+	  	select
+	  		j.bareSeq,
+	  		j.bareType,
+	  		j.bareStar,
+	  		j.bareContents,
+	  		j.bareRegDate,
+	  		j.bareEditDate,
+	  		j.bareDelNy,
+	  		j.ba_Place_baplSeq,
+	  		j.ba_Booking_baboSeq,
+	  		h.baboopSeq,
+			f.baboSeq,
+		    f.baboDate,
+			f.baboTime,
+		    g.baopSeq,
+		    g.baopName,
+		    d.bapeSeq,	
+		    d.bapeName,
+		    c.bameSeq,
+		    c.bameName,
+		    e.basiSeq,
+		    e.basiName
+	  	<include refid="sitterMyReviewListCommon"/>
+	  	order by
+	  		bareRegDate desc
+	  	) aa
+	  	limit #{rowNumToShow} offset #{startRnumForMysql}
+	  </select>
+	  
+	  <!-- 시터 페이지 나의 리뷰 자세히 보기 selectOne -->
+	   <select id="sitterMyReviewSelectOne">
+	  	select
+	  		j.bareSeq,
+	  		j.bareType,
+	  		j.bareStar,
+	  		j.bareContents,
+	  		j.bareRegDate,
+	  		j.bareEditDate,
+	  		j.bareDelNy,
+	  		j.ba_Place_baplSeq,
+	  		j.ba_Booking_baboSeq,
+	  		h.baboopSeq,
+			f.baboSeq,
+		    f.baboDate,
+			f.baboTime,
+		    g.baopSeq,
+		    g.baopName,
+		    d.bapeSeq,	
+		    d.bapeName,
+		    c.bameSeq,
+		    c.bameName,
+		    e.basiSeq,
+		    e.basiName
+		from ba_review as j 
+		left join ba_booking as f 
+			on f.baboSeq = j.BA_Booking_baboSeq
+		left join ba_bookingoption as h
+			on h.baboopSeq = f.baboSeq
+		left join ba_option as g 
+			on g.baopSeq = h.BA_Option_baopSeq
+		left join ba_petprofile as d
+			on d.bapeSeq = f.BA_Petprofile_bapeSeq
+		left join ba_member as c 
+			on c.bameSeq = d.BA_Member_bameSeq
+		left join ba_sitterlist as e
+			on e.basiSeq = f.BA_SitterList_basiSeq
+		where 1=1
+			and j.bareSeq = #{bareSeq}
+	  </select>  
+	  
+	  <!-- 시터 페이지 페이징 없는 예약 리스트(캘린더 용) -->
+	  <select id="sitterPageBookingCalendarSelectList">
+	  	select
+	  		d.bapeName,
+	  	    f.baboDate,
+	  		g.baopName		
+	  	from ba_bookingoption as h 
+			left join ba_option as g
+				on g.baopSeq = h.ba_option_baopSeq
+			left join ba_booking as f
+				on f.baboSeq = h.ba_booking_baboSeq
+			left join ba_petprofile as d 
+				on d.bapeSeq = f.ba_petprofile_bapeSeq
+			left join ba_member as c
+				on c.bameSeq = d.ba_Member_bameSeq
+			left join ba_sitterlist as e 
+				on e.basiSeq = f.ba_sitterList_basiSeq
+			where 1=1
+				and e.basiSeq = #{basiSeq}
+	  </select>
+	  
+
 	  <!-- 알림장 보기 -->
 	  <select id="sitterNoticeSelectOne" resultMap="resultMapObj">
 	  	select 
@@ -426,7 +619,8 @@
 		  	select
 				a.baboopSeq,
 			    b.baopName,
-			    c.baboSeq
+			    c.baboSeq,
+			    c.baboLocation 
 			from ba_bookingoption as a 
 				left join ba_option as b
 					on b.baopSeq = a.ba_option_baopSeq

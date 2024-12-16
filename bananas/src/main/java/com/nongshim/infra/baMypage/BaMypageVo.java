@@ -18,6 +18,9 @@ public class BaMypageVo {
 	
 	private String basiSeq; // 시터 seq 
 	private String bapeSeq; // 펫 seq
+	private String bameSeq; // 멤버 seq
+	
+	private String baboSeq;
 	
 	
 	//--
@@ -75,6 +78,26 @@ public class BaMypageVo {
 	public void setBasiSeq(String basiSeq) {
 		this.basiSeq = basiSeq;
 	}
+	public String getBapeSeq() {
+		return bapeSeq;
+	}
+	public void setBapeSeq(String bapeSeq) {
+		this.bapeSeq = bapeSeq;
+	}
+	public String getBaboSeq() {
+		return baboSeq;
+	}
+	public void setBaboSeq(String baboSeq) {
+		this.baboSeq = baboSeq;
+	}
+	public String getBameSeq() {
+		return bameSeq;
+	}
+	public void setBameSeq(String bameSeq) {
+		this.bameSeq = bameSeq;
+	}
+	
+	
 	
 	
 	
@@ -83,12 +106,8 @@ public class BaMypageVo {
 	
 	
 	
-	public String getBapeSeq() {
-		return bapeSeq;
-	}
-	public void setBapeSeq(String bapeSeq) {
-		this.bapeSeq = bapeSeq;
-	}
+
+
 	public void setParamsPaging(int totalRows) {
 
 		setTotalRows(totalRows);

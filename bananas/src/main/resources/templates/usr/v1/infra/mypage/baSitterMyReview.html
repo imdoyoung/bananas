@@ -108,7 +108,7 @@
                       </tr>
                     </thead>
                     
-                    <tbody th:each="list : ${mypageSitterReviewList}">
+                    <tbody th:each="list : ${sitterMyReviewList}">
                       <tr>
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
                         <td th:text="${list.bameName}">이용자</td>

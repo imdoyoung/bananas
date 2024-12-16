@@ -51,287 +51,63 @@
         <div class="py-30 px-30 rounded-4 bg-white custom_shadow">
           <div class="tabs -underline-2 js-tabs">
             <div class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 js-tabs-controls">
-
-              <div class="col-auto">
-                <button
-                  class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active"
-                  data-tab-target=".-tab-item-1">Hotel</button>
-              </div>
-
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
-                  data-tab-target=".-tab-item-2">Tours</button>
-              </div>
-
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
-                  data-tab-target=".-tab-item-3">Apartments</button>
-              </div>
-
-              <div class="col-auto">
-                <button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button "
-                  data-tab-target=".-tab-item-4">Packages</button>
-              </div>
-
             </div>
 
             <div class="tabs__content pt-30 js-tabs-content">
 
               <div class="tabs__pane -tab-item-1 is-tab-el-active">
                 <div class="cruise_search_result_wrapper">
-                  
-               <div class="cruise_search_item">
+              <form name="form" method="post" action="">
+<!--               <div id="hiddenData" data-bame-seq="${baboSeq}"></div> -->
+<!--               <input type="hidden" name="bameSeq" value="">  -->
+               <div class="cruise_search_item" th:each="list : ${mypageNoticeList}">
                     <div class="row">
-                      <div class="col-lg-4"> <!-- col-lg-3 -->
+                      <div class="col-lg-4">
                         <div class="cruise_item_img">
                           <img src="/usr/v1/template/andTour/assets/image/dogNotice02.jpg">
                         </div>
                       </div> 
-                      <div class="col-lg-8"> <!-- col-lg-9 -->
+                      <div class="col-lg-8">
                         <div class="cruise_item_inner_content">
                           <div class="cruise_content_top_wrapper">
-                            <div class="cruise_content_top_left">
-                              <ul>
-                                <li>등록일 : &nbsp;<span>2024.11.09</span></li>
-                                <!-- <i class="fas fa-circle"></i>   -->
+                            <div class="cruise_content_top_left"> 	
+                              <ul>                               
+                                <li>등록일 : &nbsp;<span th:text="${#dates.format(list.badiRegDate,'yyyy-MM-dd')}"></span></li>
                               </ul>
-                              <h4>꼬미의 알림장 - <span>2</span></h4>
-                              <p><i class="fas fa-map-marker-alt"></i> 경기도 의정부시</p>
+                              <h4 th:text="${list.bapeName} + '의 알림장'" name="bapeName"></h4>
+<!--                               <p><i class="fas fa-map-marker-alt"></i>주소</p> -->
                             </div>
                             <div class="cruise_content_top_right" align="center">
                               <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:50px;"> 
-                              <h5>박효빈 펫시터</h5>
+                              <h5 th:text="${list.basiName} + ' 펫시터' ">펫시터 이름</h5>
                             </div>
-                          </div>
+                          </div>   
                           <div class="cruise_content_middel_wrapper">
-                            <div class="cruise_content_middel_left">
+                            <div class="cruise_content_middel_left"> 
                               <div class="form-input">
-                                <label class="lh-1 text-16 text-light-1">To.꼬미 보호자님</label>
-                                <textarea required rows="7" cols="40" style="border-style:double;background:#fffbf8;"></textarea>
+                                <label class="lh-1 text-16 text-light-1" th:text=" 'To.' + ${list.bapeName} + ' 보호자님' " name="bapeName"></label>
+                                <textarea required rows="7" cols="40" style="border-style:double;background:#fffbf8;" th:text="${list.badiContent}"></textarea>
                               </div> 
                             </div> 
                           </div>
                           <div class="cruise_content_bottom_wrapper">
                             <div class="cruise_content_bottom_left">
                               <ul>
-                                <li>방문날짜 : &nbsp;<span>2024.11.09</span></li>
-                                <li>돌봄시간 : &nbsp;<span>12:00 ~ 13:00</span></li>
-                                <li>서비스 : &nbsp;<span>산책</span></li>
-                              </ul>
+                                <li>방문날짜 : &nbsp;<span th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}"></span></li>  
+	                          </ul>
+                              <ul>
+                                <li>서비스 : &nbsp;<span></span></li>  
+	                          </ul>
                             </div>
                             <div class="cruise_content_bottom_right">
-                              <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 쓰러 가기</a>
+                              <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 쓰기</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>   
-
-                  <div class="cruise_search_item">
-                    <div class="row">
-                      <div class="col-lg-4"> <!-- col-lg-3 -->
-                        <div class="cruise_item_img">
-                          <img src="/usr/v1/template/andTour/assets/image/dogNotice01.jpg">
-                        </div>
-                      </div> 
-                      <div class="col-lg-8"> <!-- col-lg-9 -->
-                        <div class="cruise_item_inner_content">
-                          <div class="cruise_content_top_wrapper">
-                            <div class="cruise_content_top_left">
-                              <ul>
-                                <li>등록일 : &nbsp;<span>2024.11.08</span></li>
-                                <!-- <i class="fas fa-circle"></i>   -->
-                              </ul>
-                              <h4>꼬미의 알림장 - <span>1</span></h4>
-                              <p><i class="fas fa-map-marker-alt"></i> 경기도 의정부시</p>
-                            </div>
-                            <div class="cruise_content_top_right" align="center">
-                              <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:50px;"> 
-                              <h5>박효빈 펫시터</h5>
-                            </div>
-                          </div>
-                          <div class="cruise_content_middel_wrapper">
-                            <div class="cruise_content_middel_left">
-                              <div class="form-input">
-                                <label class="lh-1 text-16 text-light-1">To.꼬미 보호자님</label>
-                                <textarea required rows="7" cols="40" style="border-style:double;background:#fffbf8;"></textarea>
-                              </div> 
-                            </div> 
-                          </div>
-                          <div class="cruise_content_bottom_wrapper">
-                            <div class="cruise_content_bottom_left">
-                              <ul>
-                                <li>방문날짜 : &nbsp;<span>2024.11.09</span></li>
-                                <li>돌봄시간 : &nbsp;<span>12:00 ~ 13:00</span></li>
-                                <li>서비스 : &nbsp;<span>산책</span></li>
-                              </ul>
-                            </div>
-                            <div class="cruise_content_bottom_right">
-                              <a href="#!" class="myPageBtn btn-brown"s><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 쓰러 가기</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>   
-
-          
-         
-
-                  <!-- <div class="cruise_search_item">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <div class="cruise_item_img">
-                          <img src="/usr/v1/template/andTour/assets/img/dashboard/common/hotel-3.png" alt="/usr/v1/template/andTour/assets/img">
-                        </div>
-                      </div>
-                      <div class="col-lg-9">
-                        <div class="cruise_item_inner_content">
-                          <div class="cruise_content_top_wrapper">
-                            <div class="cruise_content_top_left">
-                              <ul>
-                                <li>7 nights 8 days tour <i class="fas fa-circle"></i></li>
-                                <li>Family tour</li>
-                              </ul>
-                              <h4>Explore the ancient china</h4>
-                              <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                            </div>
-                            <div class="cruise_content_top_right">
-                              <h5>4.8/5 Excellent</h5>
-                              <h4>(1214 reviewes)</h4>
-                            </div>
-                          </div>
-                          <div class="cruise_content_middel_wrapper">
-                            <div class="cruise_content_middel_left">
-                              <h5>Free cancellation</h5>
-                              <p>Cancel your booking at any time</p>
-                            </div>
-                            <div class="cruise_content_middel_right">
-                              <h3>$99.00 <sub>/Per person</sub></h3>
-                              <p>+ $20.00 tax and vat</p>
-                            </div>
-                          </div>
-                          <div class="cruise_content_bottom_wrapper">
-                            <div class="cruise_content_bottom_left">
-                              <ul>
-                                <li>Breakfast</li>
-                                <li>Free wi fi</li>
-                                <li>Transport</li>
-                                <li>Gym</li>
-                              </ul>
-                            </div>
-                            <div class="cruise_content_bottom_right">
-                              <a href="#!" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">View details</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-
-                  <!-- <div class="cruise_search_item">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <div class="cruise_item_img">
-                          <img src="/usr/v1/template/andTour/assets/img/dashboard/common/hotel-1.png" alt="/usr/v1/template/andTour/assets/img">
-                        </div>
-                      </div>
-                      <div class="col-lg-9">
-                        <div class="cruise_item_inner_content">
-                          <div class="cruise_content_top_wrapper">
-                            <div class="cruise_content_top_left">
-                              <ul>
-                                <li>7 nights 8 days tour <i class="fas fa-circle"></i></li>
-                                <li>Family tour</li>
-                              </ul>
-                              <h4>Explore the ancient china</h4>
-                              <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                            </div>
-                            <div class="cruise_content_top_right">
-                              <h5>4.8/5 Excellent</h5>
-                              <h4>(1214 reviewes)</h4>
-                            </div>
-                          </div>
-                          <div class="cruise_content_middel_wrapper">
-                            <div class="cruise_content_middel_left">
-                              <h5>Free cancellation</h5>
-                              <p>Cancel your booking at any time</p>
-                            </div>
-                            <div class="cruise_content_middel_right">
-                              <h3>$99.00 <sub>/Per person</sub></h3>
-                              <p>+ $20.00 tax and vat</p>
-                            </div>
-                          </div>
-                          <div class="cruise_content_bottom_wrapper">
-                            <div class="cruise_content_bottom_left">
-                              <ul>
-                                <li>Breakfast</li>
-                                <li>Free wi fi</li>
-                                <li>Transport</li>
-                                <li>Gym</li>
-                              </ul>
-                            </div>
-                            <div class="cruise_content_bottom_right">
-                              <a href="#!" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">View details</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-<!-- 
-                  <div class="cruise_search_item">
-                    <div class="row">
-                      <div class="col-lg-3">
-                        <div class="cruise_item_img">
-                          <img src="/usr/v1/template/andTour/assets/img/dashboard/common/hotel-2.png" alt="/usr/v1/template/andTour/assets/img">
-                        </div>
-                      </div>
-                      <div class="col-lg-9">
-                        <div class="cruise_item_inner_content">
-                          <div class="cruise_content_top_wrapper">
-                            <div class="cruise_content_top_left">
-                              <ul>
-                                <li>7 nights 8 days tour <i class="fas fa-circle"></i></li>
-                                <li>Family tour</li>
-                              </ul>
-                              <h4>Explore the ancient china</h4>
-                              <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-                            </div>
-                            <div class="cruise_content_top_right">
-                              <h5>4.8/5 Excellent</h5>
-                              <h4>(1214 reviewes)</h4>
-                            </div>
-                          </div>
-                          <div class="cruise_content_middel_wrapper">
-                            <div class="cruise_content_middel_left">
-                              <h5>Free cancellation</h5>
-                              <p>Cancel your booking at any time</p>
-                            </div>
-                            <div class="cruise_content_middel_right">
-                              <h3>$99.00 <sub>/Per person</sub></h3>
-                              <p>+ $20.00 tax and vat</p>
-                            </div>
-                          </div>
-                          <div class="cruise_content_bottom_wrapper">
-                            <div class="cruise_content_bottom_left">
-                              <ul>
-                                <li>Breakfast</li>
-                                <li>Free wi fi</li>
-                                <li>Transport</li>
-                                <li>Gym</li>
-                              </ul>
-                            </div>
-                            <div class="cruise_content_bottom_right">
-                              <a href="#!" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">View details</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-
+          		</form>
                 </div>
               </div>
 
@@ -1198,6 +974,12 @@
 
   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+  
+  <script>
+
+  
+  
+  </script>
 
 </body>
 

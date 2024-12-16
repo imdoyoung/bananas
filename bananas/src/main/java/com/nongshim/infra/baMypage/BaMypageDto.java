@@ -38,7 +38,6 @@ public class BaMypageDto {
 	private String ba_Petprofile_bapeSeq; 
 	private String ba_SitterList_basiSeq; 
 	private Integer baboDiaryNy;
-	private String badiContent;
 	
 	// 예약 내역 
 	private String baboopSeq;
@@ -130,7 +129,19 @@ public class BaMypageDto {
     private Date baplEditDate;
     private Integer baplUseNy;
     private Integer baplDelNy;
-	//--
+    
+    // 알림장
+    private String badiSeq;
+    private String badiContent;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date badiRegDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date badiEditDate;
+    private Integer badiDelNy;
+    private String ba_bookingoption_baboopSeq;
+    
+    
+    //--
 	public String getBareSeq() {
 		return bareSeq;
 	}
@@ -262,12 +273,6 @@ public class BaMypageDto {
 	}
 	public void setBaboDiaryNy(Integer baboDiaryNy) {
 		this.baboDiaryNy = baboDiaryNy;
-	}
-	public String getBadiContent() {
-		return badiContent;
-	}
-	public void setBadiContent(String badiContent) {
-		this.badiContent = badiContent;
 	}
 	public String getBaboopSeq() {
 		return baboopSeq;
@@ -701,6 +706,50 @@ public class BaMypageDto {
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
 	}
+	public String getBadiSeq() {
+		return badiSeq;
+	}
+	public void setBadiSeq(String badiSeq) {
+		this.badiSeq = badiSeq;
+	}
+	public String getBadiContent() {
+		return badiContent;
+	}
+	public void setBadiContent(String badiContent) {
+		this.badiContent = badiContent;
+	}
+	public Date getBadiRegDate() {
+		return badiRegDate;
+	}
+	public void setBadiRegDate(Date badiRegDate) {
+		this.badiRegDate = badiRegDate;
+	}
+	public Date getBadiEditDate() {
+		return badiEditDate;
+	}
+	public void setBadiEditDate(Date badiEditDate) {
+		this.badiEditDate = badiEditDate;
+	}
+	public Integer getBadiDelNy() {
+		return badiDelNy;
+	}
+	public void setBadiDelNy(Integer badiDelNy) {
+		this.badiDelNy = badiDelNy;
+	}
+	public String getBa_bookingoption_baboopSeq() {
+		return ba_bookingoption_baboopSeq;
+	}
+	public void setBa_bookingoption_baboopSeq(String ba_bookingoption_baboopSeq) {
+		this.ba_bookingoption_baboopSeq = ba_bookingoption_baboopSeq;
+	}
+    
+    
+    
+ 
+    
+    
+	
+	
 	
 	
 	

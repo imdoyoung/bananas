@@ -251,7 +251,7 @@
                     </tr>
                   </thead>
                   
-                  <tbody th:each="list, iterStat : ${mypageSitterReviewList}" th:if="${iterStat.index < 3}" class="contentList">
+                  <tbody th:each="list, iterStat : ${sitterMyReviewList}" th:if="${iterStat.index < 3}" class="contentList">
                     <tr align="center">
                       <td th:text="${iterStat.index + 1}">번호</td>
                       <td th:text="${list.bameName}">이용자</td>
