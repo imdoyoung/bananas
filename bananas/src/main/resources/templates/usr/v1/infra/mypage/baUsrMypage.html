@@ -82,11 +82,11 @@
  
 
   <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
-  	<div th:replace="~{usr/v1/infra/common/mypageSidebar :: aside}"></div> 
+     <div th:replace="~{usr/v1/infra/common/mypageSidebar :: aside}"></div> 
   
 <!--     <div class="dashboard__sidebar bg-white scroll-bar-1"> -->
 <!--       <div class="sidebar -dashboard"> -->
-<!--       	<div class="sidebar__item"> -->
+<!--          <div class="sidebar__item"> -->
 <!--           <div class="sidebar__button -is-active"> -->
 <!--             <img src="/usr/v1/template/andTour/assets/image/logo.png" style="width:150px;height:30px;"> -->
 <!--           </div> -->
@@ -123,10 +123,10 @@
       <div class="dashboard__content">
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
-<!-- 	        <th:block th:if="${session.sessSeqXdm != null}"> -->
-	          <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
+<!--            <th:block th:if="${session.sessSeqXdm != null}"> -->
+             <h1 class="text-30 lh-14 fw-500">마이페이지</h1>
               <div class="text-15 text-light-1" th:text="${session.sessNameXdm} + ' 님 환영합니다!' ">사용자이름</div>
-<!-- 	         </th:block> -->
+<!--             </th:block> -->
           </div>  
         </div>
 
@@ -139,8 +139,7 @@
                     <div class="col-md-12 d-flex align-items-center">
                         <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:200px; margin-right: 20px;">  
                         <div class="row">
-                          <div class="col-md-12">
-                            <div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessNameXdm} + '님' "></div>
+                            <div class="col-md-12"><div class="text-30 lh-16 fw-600 text_orange" th:text="${session.sessNameXdm}">사용자 이름</div>
                             <div class="text-15 lh-14 text-light-1" th:text="${session.sessIdXdm}">아이디</div>
                             <div class="text-15 lh-14 text-light-1" style="margin-bottom: 10px;" th:text="${session.sessEmailXdm}">이메일</div>
                           </div>
@@ -168,6 +167,8 @@
                 </div>     
             </div>
         </div> 
+           
+
         </div>
 
         <div class="row y-gap-30 pt-20">
@@ -186,7 +187,6 @@
                       <th>No</th>
                       <th>예약일</th>
                       <th>시터</th>  
-                      <th>서비스</th> 
                     </tr>
                   </thead>
                   
@@ -195,7 +195,6 @@
                       <td th:text="${iterStat.index + 1}">번호</td> <!-- 인덱스 + 1 -->
                       <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
                       <td th:text="${list.basiName}">시터</td>
-                      <td th:text="${list.baopName}">서비스</td>
                     </tr>
                   </tbody>
                   
@@ -264,6 +263,32 @@
   <script src="/usr/v1/template/andTour/assets/js/chart.min.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/vendors.js"></script>
   <script src="/usr/v1/template/andTour/assets/js/main.js"></script>
+  
+   <script>
+   
+//       document.addEventListener('DOMContentLoaded', () => {
+//          const urlParams = new URLSearchParams(window.location.search);
+//          const baboSeq = urlParams.get('bameSeq');
+         
+//          if(bameSeq) {
+//             document.querySelector('input[name="bameSeq"]').value = bameSeq;
+//          }
+         
+         
+//       })
+      
+   
+//      document.getElementById('myPageNoticeBtn').onclick = function() {
+        
+//        const baboSeq = document.querySelector('input[name="bameSeq"]').value;
+           
+//        form.action = "/usr/v1/infra/mypage/baUsrNotice";
+//        form.submit();
+          
+        
+//      }
+  
+  </script>
   
 </body>
 
