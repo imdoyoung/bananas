@@ -177,39 +177,13 @@ header .second-menu {
 <!-- <div id="stationInfo">가장 가까운 지하철 역 정보가 여기에 표시됩니다.</div> -->
 	</main>
 	<!-- main-area-end -->
+	
 	<!-- footer -->
-	<footer class="footer-bg footer-p" style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-		<div class="copyright-wrap">
-			<div class="container">
-				<div class="row align-items-center c-mid">
-					<div class="col-lg-4 col-md-6 ">
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Terms Of Service</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-4 col-md-6 ">
-						<div class="copy-text text-center">Copyright &copy; Petxon
-							2024. All rights reserved.</div>
-					</div>
-					<div class="col-lg-4 col-md-12 text-right text-xl-right">
-						<div class="footer-social">
-							<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
-								class="fab fa-instagram"></i></a> <a href="#"><i
-								class="fa-brands fa-x-twitter"></i></a> <a href="#"><i
-								class="fab fa-youtube"></i></a> <a href="#"><i
-								class="fab fa-linkedin"></i></a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
+	<div th:replace="~{usr/v1/infra/common/footer :: footer}"></div>
 	<!-- footer-end -->
+	
 	<!-- JS here -->
-	<script
-		src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/vendor/jquery.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/popper.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/bootstrap.min.js"></script>
