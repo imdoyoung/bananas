@@ -110,8 +110,8 @@
                     <tbody th:each="list : ${mypageBookingDetailsList}">
                       <tr>
                         <td th:text="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + listStat.index)}" class="align-middle"></td>
-                        <td th:text="${list.baopName}">예약일</td>
-                        <td th:text="${list.baopPrice}">예약 시간</td>
+                        <td th:text="${list.baopName}">돌봄서비스</td>
+                        <td th:text="${#numbers.formatInteger(list.baopPrice, 3, 'COMMA')}">옵션가격</td>
                       </tr>
                     </tbody>
                     	

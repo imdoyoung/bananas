@@ -40,9 +40,11 @@ public interface BaMypageDao {
 	// 예약 내역 상세 리스트 paging 
 	public int selectMypageBookingDetailsCount(BaMypageVo baMypageVo);
 	
-	// 알림장 확인하기
+	// 알림장 보기 (ba_diary 마스터)
 	public List<BaMypageDto> BaMypageNoticeSelectList(BaMypageDto baMypageDto);
 	
+	// 알림장 보기(ba_bookingoption 마스터)
+//	public List<BaMypageDto> BaMypageNoticeOptionList(BaMypageDto baMypageDto);
 
 
 	

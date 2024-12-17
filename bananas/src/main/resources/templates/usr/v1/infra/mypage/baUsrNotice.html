@@ -74,8 +74,8 @@
                               <ul>                               
                                 <li>등록일 : &nbsp;<span th:text="${#dates.format(list.badiRegDate,'yyyy-MM-dd')}"></span></li>
                               </ul>
-                              <h4 th:text="${list.bapeName} + '의 알림장'" name="bapeName"></h4>
-<!--                               <p><i class="fas fa-map-marker-alt"></i>주소</p> -->
+                              <h4 th:text="${list.bapeName} + '의 알림장'" ></h4>
+                              <p th:text="${list.baboLocation}"><i class="fas fa-map-marker-alt"></i>주소</p>
                             </div>
                             <div class="cruise_content_top_right" align="center">
                               <img src="/usr/v1/template/andTour/assets/image/user_img.png" style="width:50px;"> 
@@ -85,7 +85,7 @@
                           <div class="cruise_content_middel_wrapper">
                             <div class="cruise_content_middel_left"> 
                               <div class="form-input">
-                                <label class="lh-1 text-16 text-light-1" th:text=" 'To.' + ${list.bapeName} + ' 보호자님' " name="bapeName"></label>
+                                <label class="lh-1 text-16 text-light-1" th:text=" 'To.' + ${list.bapeName} + ' 보호자님' "></label>
                                 <textarea required rows="7" cols="40" style="border-style:double;background:#fffbf8;" th:text="${list.badiContent}"></textarea>
                               </div> 
                             </div> 
@@ -95,22 +95,19 @@
                               <ul>
                                 <li>방문날짜 : &nbsp;<span th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}"></span></li>  
 	                          </ul>
-                              <ul>
-                                <li>서비스 : &nbsp;<span></span></li>  
-	                          </ul>
                             </div>
                             <div class="cruise_content_bottom_right">
-                              <a href="#!" class="myPageBtn btn-brown"><img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 쓰기</a>
+                              <a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list.basiSeq})}" class="myPageBtn btn-brown">
+                              <img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">리뷰 쓰기</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>   
+                  </div>  
           		</form>
                 </div>
               </div>
-
               <div class="tabs__pane -tab-item-2 ">
                 <div class="cruise_search_result_wrapper">
                   <div class="cruise_search_item">
@@ -878,69 +875,69 @@
             </div>
           </div>
 
-          <div class="pt-30">
-            <div class="row justify-between">
-              <div class="col-auto">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-left text-12"></i>
-                </button>
-              </div>
+<!--           <div class="pt-30"> -->
+<!--             <div class="row justify-between"> -->
+<!--               <div class="col-auto"> -->
+<!--                 <button class="button -blue-1 size-40 rounded-full border-light"> -->
+<!--                   <i class="icon-chevron-left text-12"></i> -->
+<!--                 </button> -->
+<!--               </div> -->
 
-              <div class="col-auto">
-                <div class="row x-gap-20 y-gap-20 items-center">
+<!--               <div class="col-auto"> -->
+<!--                 <div class="row x-gap-20 y-gap-20 items-center"> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full">1</div>
+<!--                     <div class="size-40 flex-center rounded-full">1</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full bg-dark-1 text-white">2</div>
+<!--                     <div class="size-40 flex-center rounded-full bg-dark-1 text-white">2</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full">3</div>
+<!--                     <div class="size-40 flex-center rounded-full">3</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full bg-light-2">4</div>
+<!--                     <div class="size-40 flex-center rounded-full bg-light-2">4</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full">5</div>
+<!--                     <div class="size-40 flex-center rounded-full">5</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full">...</div>
+<!--                     <div class="size-40 flex-center rounded-full">...</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                  <div class="col-auto">
+<!--                   <div class="col-auto"> -->
 
-                    <div class="size-40 flex-center rounded-full">20</div>
+<!--                     <div class="size-40 flex-center rounded-full">20</div> -->
 
-                  </div>
+<!--                   </div> -->
 
-                </div>
-              </div>
+<!--                 </div> -->
+<!--               </div> -->
 
-              <div class="col-auto">
-                <button class="button -blue-1 size-40 rounded-full border-light">
-                  <i class="icon-chevron-right text-12"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+<!--               <div class="col-auto"> -->
+<!--                 <button class="button -blue-1 size-40 rounded-full border-light"> -->
+<!--                   <i class="icon-chevron-right text-12"></i> -->
+<!--                 </button> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
         </div>
 
 

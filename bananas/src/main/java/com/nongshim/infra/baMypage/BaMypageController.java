@@ -85,13 +85,15 @@ public class BaMypageController {
 	    // vo에 세션 값 set 
 	    baMypageDto.setBameSeq(sessSeqXdm);
 	    baMypageDto.setBaboSeq(sessSeqXdm);
+	    baMypageDto.setBasiSeq(sessSeqXdm);
 		
-		model.addAttribute("mypageNoticeList", baMypageService.BaMypageNoticeSelectList(baMypageDto)); 
+		model.addAttribute("mypageNoticeList", baMypageService.BaMypageNoticeSelectList(baMypageDto)); // ba_diary
+		//model.addAttribute("mypageNoticeOptionList", baMypageService.BaMypageNoticeOptionList(baMypageDto)); // ba_bookingoption
 		return "usr/v1/infra/mypage/baUsrNotice";
 	}  
 	
 	
-	
+	// 결제 내역
 	@RequestMapping(value="/usr/v1/infra/mypage/baUsrPaymentHistory")
 	public String baUsrPaymentHistory(BaMypageDto baMypageDto, Model model) {
 		

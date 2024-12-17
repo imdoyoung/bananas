@@ -116,7 +116,12 @@
                         <td th:text="${#dates.format(list.baboDate,'yyyy-MM-dd')}">예약일</td>
                         <td th:text="${#dates.format(list.baboTime,'HH:mm:ss')}">예약 시간</td>
                         <td th:text="${list.basiName}">시터</td>
-                        <td th:text="${list.baboTotalPrice}">총 금액</td>
+                        <td>
+							<a th:href="@{/usr/v1/infra/mypage/baUsrPaymentHistory(baboSeq=${list.baboSeq})}"
+								th:text="${#numbers.formatInteger(list.baboTotalPrice, 3, 'COMMA')}" style="text-decoration: underline;">
+							</a>
+						</td> 
+<!--                         <td th:text="${#numbers.formatInteger(list.baboTotalPrice, 3, 'COMMA')}">총 금액</td> -->
                      	<td>
 							<a th:href="@{/usr/v1/infra/mypage/baUsrBookingHistoryDetails(baboSeq=${list.baboSeq})}"
 								th:text="'상세 보기'" style="text-decoration: underline;">

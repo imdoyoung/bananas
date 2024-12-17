@@ -79,7 +79,6 @@
                   <table class="table-3 -border-bottom col-12">
                     <thead class="bg-light-2">
                       <tr>
-                        <th>No</th>
                         <th>결제일</th>
                         <th>결제 수단</th>
                         <th>결제 금액</th>
@@ -87,14 +86,13 @@
                     </thead>
                     
                     <tbody>
-                      <tr>
-                        <td></td>
-                        <td th:text="${#dates.format(mypagePaymentItem?.baboSettleDate,'yyyy-MM-dd')}">결제일</td>
-                        <td th:text="${mypagePaymentItem?.baboPayment}">결제 수단</td>
+                      <tr>  
+	                        <td th:text="${#dates.format(mypagePaymentItem?.baboSettleDate,'yyyy-MM-dd')}">결제일</td>
+                        <td th:text="${@baCodeService.selectOneCachedCode(mypagePaymentItem?.baboPayment)}">결제 수단</td>
                         <td th:text="${mypagePaymentItem?.baboTotalPrice}">결제 금액</td> 
                       </tr>
                     </tbody>
-                    
+                      
                   </table>
                 </div>
               </div>
