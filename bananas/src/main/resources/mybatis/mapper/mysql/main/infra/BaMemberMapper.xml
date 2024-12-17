@@ -25,7 +25,7 @@
 		    c.bameMktNy,
 		    c.bameDelNy
 		FROM
-			ba_member c
+			ba_member AS c
 		LEFT JOIN ba_petprofile d
 			ON c.bameSeq = d.BA_Member_bameSeq
 		ORDER BY
@@ -52,7 +52,7 @@
 		    c.bameMktNy,
 		    c.bameDelNy
 		FROM
-			ba_member c
+			ba_member AS c
 		WHERE 1 = 1
 			AND c.bameSeq = #{bameSeq}
 	</select>
@@ -108,11 +108,11 @@
 		    bameZipCode = #{bameZipCode},
 		    bameAddr = #{bameAddr},
 		    bameAddrDetail = #{bameAddrDetail},
-		    bameGrade = #{bameGrade},
+		    bameGrade = 3,
 		    bameEditDate = now(),
 		    bameTosNy = #{bameTosNy},
 		    bameMktNy = #{bameMktNy},
-		    bameDelNy = #{bameDelNy}
+		    bameDelNy = 0
 		WHERE 1 = 1
 			AND bameSeq = #{bameSeq}
 	</update>

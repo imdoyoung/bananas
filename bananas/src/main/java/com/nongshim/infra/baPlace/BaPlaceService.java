@@ -25,4 +25,9 @@ public class BaPlaceService {
 		return baPlaceDao.placeDetailList(baPlaceDto);
 	}
 	
+	// PlaceReviewInsert - 리뷰 insert
+//	public int PlaceReviewInsert(BaPlaceDto baPlaceDto) {
+//		return baPlaceDao.PlaceReviewInsert(baPlaceDto);
+//	}
+	
 }

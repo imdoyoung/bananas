@@ -14,7 +14,8 @@
 		SELECT COUNT(*)
 		<include refid="placeSelectCommon"/>
 	</select>
-	 
+	
+	<!-- List 출력 -->
 	<select id="placeSelectList" resultMap="resultMapObj">
 		select aa.* from(
 			SELECT 
@@ -80,6 +81,32 @@
       	ORDER BY 
         	i.baplSeq ASC
    </select>
+   
+	<!-- review insert -->
+   <insert id="PlaceReviewInsert">
+   		INSERT INTO ba_review (
+   			bareType,
+   			bareStar,
+   			bareContents,
+   			bareId,
+   			bareRegDate,
+   			bareEditDate,
+   			bareDelNy,
+   			ba_place_baplSeq,
+   			ba_booking_baboSeq
+   		) VALUES (
+   			#{bareType},
+   			#{bareStar},
+   			#{bareContents},
+   			#{bareId},
+   			now(),
+   			now(),
+   			0,
+   			#{ba_place_baplSeq},
+   			#{ba_booking_baboSeq}
+   		)
+   </insert>
+   
 	
 	
 </mapper>

@@ -70,6 +70,9 @@ public class BaCommonController {
 	            httpSession.setAttribute("sessNameXdm", rtUser2.getBameName());
 	            httpSession.setAttribute("sessGradeXdm", rtUser2.getBameGrade());
 	            httpSession.setAttribute("sessEmailXdm", rtUser2.getBameEmail());
+	            httpSession.setAttribute("BaMemberDto", baMemberDto);  					// BaMemberDto 세션에 저장
+	            
+	            System.out.println("세션에 BaMemberDto 저장됨: " + baMemberDto);
 
 	            if (rtPet2 != null) {
 	            	// 저장된 세션값 확인
@@ -78,9 +81,14 @@ public class BaCommonController {
 	                httpSession.setAttribute("sessPetAge", rtPet2.getBapeAge());
 	                httpSession.setAttribute("sessPetWeight", rtPet2.getBapeWeight());
 	                
+	                httpSession.setAttribute("BaPetprofileDto", baPetprofileDto);		// BaPetprofileDto 세션에 저장
+	                baPetprofileDto.setBA_Member_bameSeq(rtUser2.getBameSeq()); 		// 이 부분을 추가하여 bameSeq 설정
+	                
 //                    System.out.println("sessPetSeq: " + rtPet2.getBapeSeq());
 //                    System.out.println("sessPetName: " + rtPet2.getBapeName());
 //                    System.out.println("sessPetAge: " + rtPet2.getBapeAge());
+	                  System.out.println("BaPetprofileDto: " + baPetprofileDto);
+	                  System.out.println("baPetprofileDto bameSeq: " + baPetprofileDto.getBA_Member_bameSeq());
 	            } else {
 	                System.out.println("회원정보를 찾을 수 없습니다.");
 	            }

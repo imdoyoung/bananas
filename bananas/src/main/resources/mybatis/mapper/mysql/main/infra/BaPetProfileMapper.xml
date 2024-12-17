@@ -41,9 +41,13 @@
 		    d.bapeEditDate,
 		    d.bapeUseNy,
 		    d.bapeDelNy,
-		    d.BA_Member_bameSeq
+		    d.BA_Member_bameSeq,
+		    c.bameSeq,
+		    c.bameName
 		FROM
-			ba_petprofile d
+			ba_petprofile AS d
+		LEFT JOIN ba_member AS c
+			ON c.bameSeq = d.BA_Member_bameSeq
 		WHERE 1 = 1
 			AND d.bapeSeq = #{bapeSeq}
 	</select>
@@ -81,34 +85,38 @@
 	</insert>
 	
 	<update id="PetUpdate">
-		UPDATE ba_petprofile
+		UPDATE ba_petprofile AS d
+		LEFT JOIN ba_member AS c
+			ON c.bameSeq = d.BA_Member_bameSeq
 		SET
-			bapeName = #{bapeName},
-		    bapeGender = #{bapeGender},
-		    bapeType = #{bapeType},
-		    bapeAge = #{bapeAge},
-		    bapeWeight = #{bapeWeight},
-		    bapeNtrNy = #{bapeNtrNy},
-		    bapehospital = #{bapehospital},
-		    bapeDesc = #{bapeDesc},
-		    bapeEditDate = now(),
-		    bapeUseNy  = #{bapeUseNy},
-		    bapeDelNy = 0,
-		    BA_Member_bameSeq = #{BA_Member_bameSeq}
+			d.bapeName = #{bapeName},
+		    d.bapeGender = #{bapeGender},
+		    d.bapeType = #{bapeType},
+		    d.bapeAge = #{bapeAge},
+		    d.bapeWeight = #{bapeWeight},
+		    d.bapeNtrNy = #{bapeNtrNy},
+		    d.bapehospital = #{bapehospital},
+		    d.bapeDesc = #{bapeDesc},
+		    d.bapeEditDate = now(),
+		    d.bapeUseNy  = #{bapeUseNy},
+		    d.bapeDelNy = 0,
+		    d.BA_Member_bameSeq = #{BA_Member_bameSeq},
+		    c.bameSeq = #{bameSeq},
+		    c.bameName = #{bameName}
 		WHERE 1=1
-			AND  bapeSeq = #{bapeSeq}
+			AND bapeSeq = #{bapeSeq}
 	</update>
 	
 	<!-- 펫 시퀀스 넘기기 -->
 	<select id="selectOnePet" resultMap="resultMapObj">
 		SELECT
-			bapeSeq,
-			bapeName,
-			bapeAge,
-			bapeWeight
-		FROM ba_petprofile AS a
-			LEFT JOIN ba_member AS b
-				ON a.ba_member_bameSeq = b.bameSeq
+			d.bapeSeq,
+			d.bapeName,
+			d.bapeAge,
+			d.bapeWeight
+		FROM ba_petprofile AS d
+			LEFT JOIN ba_member AS c
+				ON d.ba_member_bameSeq = c.bameSeq
 		WHERE 1 = 1
 			AND bameSeq  = #{bameSeq}
 	</select>
@@ -116,13 +124,13 @@
 	<!-- 펫 시퀀스 넘기기 -->
 	<select id="selectOnePetSeq" resultMap="resultMapObj">
 		SELECT
-			bapeSeq,
-			bapeName,
-			bapeAge,
-			bapeWeight
-		FROM ba_petprofile AS a
-			LEFT JOIN ba_member AS b
-				ON a.ba_member_bameSeq = b.bameSeq
+			d.bapeSeq,
+			d.bapeName,
+			d.bapeAge,
+			d.bapeWeight
+		FROM ba_petprofile AS d
+			LEFT JOIN ba_member AS c
+				ON d.ba_member_bameSeq = c.bameSeq
 		WHERE 1 = 1
 			AND bameSeq  = #{bameSeq}
 	</select>

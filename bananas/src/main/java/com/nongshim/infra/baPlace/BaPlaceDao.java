@@ -15,5 +15,9 @@ public interface BaPlaceDao {
 	
 	// placeDetailList - 장소추천 세부리스트
 	public List<BaPlaceDto> placeDetailList(BaPlaceDto baPlaceDto);
+	
+	// PlaceReviewInsert - 리뷰 insert
+//	public int PlaceReviewInsert(BaPlaceDto baPlaceDto);
+	
 
 }

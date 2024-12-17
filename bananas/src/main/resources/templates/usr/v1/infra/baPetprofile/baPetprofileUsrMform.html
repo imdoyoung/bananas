@@ -53,36 +53,55 @@
     font-size: 16px; /* 기본 글씨 크기 */
     line-height: 1.5; /* 줄 간격 */
 }
+	/* 사진 첨부*/
+	.active .size-40 {
+	  background-color: #F69946; /* 원하는 색상 */
+	  color: white; /* 텍스트 색상 */
+	  font-weight: bold; /* 강조 효과 */
+	}
+	
+	.upload-box {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    color: #ccc;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .upload-box:hover {
+    border-color: #333;
+    color: #333;
+  }
+
+  #fileInput {
+    display: none;
+  }
+
+
 </style>
 
   <title>And Tour</title>
 </head>
 
 <body data-barba="wrapper">
-
-
   <div class="preloader js-preloader">
   </div>
-
-
-
   <div class="dashboard" data-x="dashboard" data-x-toggle="-is-sidebar-open">
+	<!-- aside replace -->
   	<div th:replace="~{usr/v1/infra/common/mypageSidebar :: aside}"></div> 
-  
-  
+	<!-- end -->
     <div class="dashboard__main">
       <div class="dashboard__content bg-light-2">
         <div class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
           <div class="col-auto">
-
             <h1 class="text-30 lh-14 fw-600">반려견 프로필</h1>
             <div class="text-15 text-light-1">시터 서비스를 이용할 반려견을 등록해주세요.</div>
-
           </div>
-
-          <div class="col-auto">
-
-          </div>
+          <div class="col-auto"></div>
         </div>
 
 	<form id="form" method="post" action="/usr/v1/infra/baPetprofile/baPetprofileUsrUpdt">
@@ -98,12 +117,21 @@
             <div class="tabs__content pt-30 js-tabs-content">
               <div class="tabs__pane -tab-item-1 is-tab-el-active">
                 <div class="row y-gap-30 items-center">
-                  <div class="col-12">
-                    <div class="d-flex ratio ratio-1:1 w-200">
-                      <img src="/usr/v1/template/andTour/assets/img/꼬미.jpg" alt="image" class="img-ratio rounded-4">
-                    </div>
-                  </div>
+<!--                   <div class="col-12"> -->
+<!--                     <div class="d-flex ratio ratio-1:1 w-200"> -->
+<!--                       <img src="/usr/v1/template/andTour/assets/img/꼬미.jpg" alt="image" class="img-ratio rounded-4"> -->
+<!--                     </div> -->
+<!--                   </div> -->
 
+				<div class="row">
+				    <div class="col-lg-5"> <!-- col-lg-3 -->
+		                <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox">
+		                  사진 첨부하기
+		                  <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)">
+		                </div>
+	                </div>
+                </div>
+                
                   <div class="col-12">
                     <h4 class="text-16 fw-500">반려견 사진을 첨부해주세요.</h4>
                     <!-- <div class="text-14 mt-5">PNG or JPG no bigger than 800px wide and tall.</div> -->
@@ -118,24 +146,27 @@
                 </div>
 
                 <div class="border-top-light mt-30 mb-30"></div>
-
                 <div class="col-xl-9">
                   <div class="row x-gap-20 y-gap-20">
-
-                    <div class="col-12">
+                    <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
-                        <label class="lh-1 text-16 text-light-1">이름</label>
-                        <input type="text" id="bapeName" name="bapeName" th:value="${Petitem?.bapeName}" required>
+                        <label class="lh-1 text-16 text-light-1">회원번호</label>
+                        <input type="text" id="BA_Member_bameSeq" name="BA_Member_bameSeq" th:value="${PetItem?.BA_Member_bameSeq}" disabled>
                       </div>
                     </div>
-
+                    <div class="col-md-6">
+                      <div class="contact-field p-relative c-name mb-20">
+                        <label class="lh-1 text-16 text-light-1">반려견 이름</label>
+                        <input type="text" id="bapeName" name="bapeName" th:value="${PetItem?.bapeName}" required>
+                      </div>
+                    </div>
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label>성별</label>
                         <select class="lh-1 text-16 text-light-1" id="bapeGender" name="bapeGender">
-                          <option value="" th:selected="${Petitem?.bapeGender == null}">선택하세요</option>
-                          <option value="1" th:selected="${Petitem?.bapeGender == 1}">남성</option>
-                          <option value="2" th:selected="${Petitem?.bapeGender == 2}">여성</option>
+                          <option value="" th:selected="${PetItem?.bapeGender == null}">선택하세요</option>
+                          <option value="1" th:selected="${PetItem?.bapeGender == 1}">남성</option>
+                          <option value="2" th:selected="${PetItem?.bapeGender == 2}">여성</option>
                         </select>
                       </div>
                     </div>
@@ -143,21 +174,21 @@
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">품종</label>
-                        <input type="text" id="bapeType" name="bapeType" th:value="${Petitem?.bapeType}" required>
+                        <input type="text" id="bapeType" name="bapeType" th:value="${PetItem?.bapeType}" required>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">나이</label>
-                        <input type="text" id="bapeAge" name="bapeAge" th:value="${Petitem?.bapeAge}" required>
+                        <input type="text" id="bapeAge" name="bapeAge" th:value="${PetItem?.bapeAge}" required>
                       </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">몸무게</label>
-                        <input type="text" id="bapeWeight" name="bapeWeight" th:value="${Petitem?.bapeWeight}" required>
+                        <input type="text" id="bapeWeight" name="bapeWeight" th:value="${PetItem?.bapeWeight}" required>
                       </div>
                     </div>
 
@@ -165,9 +196,9 @@
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">중성화수술 여부</label>
                         <select id="bapeNtrNy" name="bapeNtrNy">
-                          <option value="" th:selected="${Petitem?.bapeNtrNy == null}">선택하세요</option>
-                          <option value="1" th:selected="${Petitem?.bapeNtrNy == 1}">Y</option>
-                          <option value="0" th:selected="${Petitem?.bapeNtrNy == 0}">N</option>
+                          <option value="" th:selected="${PetItem?.bapeNtrNy == null}">선택하세요</option>
+                          <option value="1" th:selected="${PetItem?.bapeNtrNy == 1}">Y</option>
+                          <option value="0" th:selected="${PetItem?.bapeNtrNy == 0}">N</option>
                         </select>
                       </div>
                     </div>
@@ -175,123 +206,24 @@
                     <div class="col-md-6">
                       <div class="contact-field p-relative c-name mb-20">
                         <label class="lh-1 text-16 text-light-1">다니는 병원</label>
-                        <input type="text" id="bapehospital" name="bapehospital" th:value="${Petitem?.bapehospital}" required>
+                        <input type="text" id="bapehospital" name="bapehospital" th:value="${PetItem?.bapehospital}" required>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <div class="contact-field p-relative c-message mb-30">
                         <label class="lh-1 text-16 text-light-1">기타사항</label>
-                        <textarea required rows="5" name="bapeDesc" id="bapeDesc" th:text="${Petitem?.bapeDesc}"></textarea>
+                        <textarea required rows="5" name="bapeDesc" id="bapeDesc" th:text="${PetItem?.bapeDesc}"></textarea>
                       </div>
                     </div>
-
-                    </div>
-                  </div>
+                   </div>
+                 </div>
 
                 <div class="d-inline-block pt-30">
-                  <a href="about.html" class="PetprofileBtn btn-brown">
-                  	<img src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">
-                    프로필 저장
-                  </a>
-                </div>
-              </div>
-
-              <div class="tabs__pane -tab-item-2">
-                <div class="col-xl-9">
-                  <div class="row x-gap-20 y-gap-20">
-                    <div class="col-12">
-
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Address Line 1</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Address Line 2</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">City</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">State</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Select Country</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">ZIP Code</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <div class="d-inline-block">
-                        <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
-                          Save Changes
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tabs__pane -tab-item-3">
-                <div class="col-xl-9">
-                  <div class="row x-gap-20 y-gap-20">
-                    <div class="col-12">
-
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">Current Password</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">New Password</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <div class="form-input ">
-                        <label class="lh-1 text-16 text-light-1">New Password Again</label>
-                        <input type="text" required>
-                      </div>
-                    </div>
-
-                    <div class="col-12">
-                      <div class="row x-gap-10 y-gap-10">
-                        <div class="col-auto">
-                          <a href="#" class="button h-50 px-24 -dark-1 bg-blue-1 text-white">
-                            Save Changes
-                          </a>
-                        </div>
-
-                        <div class="col-auto">
-                          <button class="button h-50 px-24 -blue-1 bg-blue-1-05 text-blue-1">Cancel</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                	<button type="submit" class="PetprofileBtn btn-brown">
+                    	<img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png" alt="logo">
+                        	프로필 저장
+                    </button>
                 </div>
               </div>
             </div>
