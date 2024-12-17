@@ -23,7 +23,7 @@
 		left join ba_member as c 
 			on c.bameSeq = d.ba_Member_bameSeq
 		left join ba_sitterlist as e
-			on e.basiSeq = f.ba_SitterList_basiSeq
+			on e.basiSeq = f.ba_Sitterlist_basiSeq   
 		where 1=1
 			and j.ba_Booking_baboSeq IS NOT NULL
 			and c.bameSeq= #{bameSeq}
@@ -152,7 +152,7 @@
 		left join ba_member as c 
 			on c.bameSeq = d.ba_member_bameSeq
 		left join ba_sitterlist as e
-			on e.basiSeq = f.ba_sitterList_basiSeq
+			on e.basiSeq = f.ba_sitterlist_basiSeq
 		where 1=1
 			and j.bareSeq = #{bareSeq}
 	  </select> 
@@ -179,7 +179,7 @@
 			left join ba_member as c
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
-				on e.basiSeq = f.ba_sitterList_basiSeq
+				on e.basiSeq = f.ba_sitterlist_basiSeq 
 		 where 1=1
 		 	and f.baboSeq = #{baboSeq}
 	  </select>
@@ -197,7 +197,7 @@
 			left join ba_member as c
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
-				on e.basiSeq = f.ba_sitterList_basiSeq
+				on e.basiSeq = f.ba_sitterlist_basiSeq
 		 where 1=1
 		 	and c.bameSeq = #{bameSeq}
 	  </sql>
@@ -236,7 +236,7 @@
 			left join ba_member as c
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
-				on e.basiSeq = f.ba_sitterList_basiSeq
+				on e.basiSeq = f.ba_sitterlist_basiSeq
 		where 1=1
 			and f.baboSeq = #{baboSeq}
 	  </sql>
@@ -277,7 +277,7 @@
 			    f.baboTotalPrice,
 			    f.baboSettleDate,
 			    f.ba_petprofile_bapeSeq,
-			    f.ba_sitterList_basiSeq,
+			    f.ba_sitterlist_basiSeq,
 			    d.bapeSeq,
 			    d.bapeName,
 			    d.ba_Member_bameSeq,
@@ -336,7 +336,7 @@
 				on e.ba_bookingoption_baboopSeq = f.baboopSeq
 			left join ba_booking as c
 				on e.ba_booking_baboSeq = c.baboSeq
-			left join ba_sitterList as d 
+			left join ba_sitterlist as d 
 				on c.ba_sitterlist_basiSeq = d.basiSeq
 			left join ba_petprofile as b
 				on c.ba_petprofile_bapeSeq = b.bapeSeq
