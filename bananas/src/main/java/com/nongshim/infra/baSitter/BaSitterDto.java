@@ -3,6 +3,7 @@ package com.nongshim.infra.baSitter;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 public class BaSitterDto {
 	
@@ -135,8 +136,45 @@ public class BaSitterDto {
 	private Integer baplUseNy;
 	private Integer baplDelNy;
 	
+	// 시터 프로필 사진 파일첨부 
+	private MultipartFile uploadFile;
+	private MultipartFile[] uploadFiles;
+	private String fSeq;
+	private Integer fType;
+	private Integer fDefaultNy;
+	private Integer fSort;
+	private String fPath;
+	private String fOriginalName;
+	private String fUuidName;
+	private String fExt;
+	private long fSize;
+	private Integer fDelNy;
+	private String fPseq;
+	private Integer fOrder;
+	private String fRegIp;
+	private Integer fRegSeq;
+	private Integer fRegDeviceCd;
+	private Date fRegDateTime;
+	private Date fRegDateTimeSvr;
+	private String fTableName;
+	
+	// 사진 이름!!!
+	private String mainImg1;
+	private String mainImg2;
+	private String subImg1;
+	private String subImg2;
+	private String subImg3;
+	private String subImg4;
+	private String subImg5;
+	private String subImg6;
+	private String subImg7;
+	private String subImg8;
+	private String subImg9;
+	private String subImg10;
+	
 
 //	========== getter/setter ========== //
+	
 	
 	public String getBasiSeq() {
 		return basiSeq;
@@ -702,5 +740,199 @@ public class BaSitterDto {
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
 	}
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public MultipartFile[] getUploadFiles() {
+		return uploadFiles;
+	}
+	public void setUploadFiles(MultipartFile[] uploadFiles) {
+		this.uploadFiles = uploadFiles;
+	}
+	public String getfSeq() {
+		return fSeq;
+	}
+	public void setfSeq(String fSeq) {
+		this.fSeq = fSeq;
+	}
+	public Integer getfType() {
+		return fType;
+	}
+	public void setfType(Integer fType) {
+		this.fType = fType;
+	}
+	public Integer getfDefaultNy() {
+		return fDefaultNy;
+	}
+	public void setfDefaultNy(Integer fDefaultNy) {
+		this.fDefaultNy = fDefaultNy;
+	}
+	public Integer getfSort() {
+		return fSort;
+	}
+	public void setfSort(Integer fSort) {
+		this.fSort = fSort;
+	}
+	public String getfPath() {
+		return fPath;
+	}
+	public void setfPath(String fPath) {
+		this.fPath = fPath;
+	}
+	public String getfOriginalName() {
+		return fOriginalName;
+	}
+	public void setfOriginalName(String fOriginalName) {
+		this.fOriginalName = fOriginalName;
+	}
+	public String getfUuidName() {
+		return fUuidName;
+	}
+	public void setfUuidName(String fUuidName) {
+		this.fUuidName = fUuidName;
+	}
+	public String getfExt() {
+		return fExt;
+	}
+	public void setfExt(String fExt) {
+		this.fExt = fExt;
+	}
+	public long getfSize() {
+		return fSize;
+	}
+	public void setfSize(long fSize) {
+		this.fSize = fSize;
+	}
+	public Integer getfDelNy() {
+		return fDelNy;
+	}
+	public void setfDelNy(Integer fDelNy) {
+		this.fDelNy = fDelNy;
+	}
+	public String getfPseq() {
+		return fPseq;
+	}
+	public void setfPseq(String fPseq) {
+		this.fPseq = fPseq;
+	}
+	public Integer getfOrder() {
+		return fOrder;
+	}
+	public void setfOrder(Integer fOrder) {
+		this.fOrder = fOrder;
+	}
+	public String getfRegIp() {
+		return fRegIp;
+	}
+	public void setfRegIp(String fRegIp) {
+		this.fRegIp = fRegIp;
+	}
+	public Integer getfRegSeq() {
+		return fRegSeq;
+	}
+	public void setfRegSeq(Integer fRegSeq) {
+		this.fRegSeq = fRegSeq;
+	}
+	public Integer getfRegDeviceCd() {
+		return fRegDeviceCd;
+	}
+	public void setfRegDeviceCd(Integer fRegDeviceCd) {
+		this.fRegDeviceCd = fRegDeviceCd;
+	}
+	public Date getfRegDateTime() {
+		return fRegDateTime;
+	}
+	public void setfRegDateTime(Date fRegDateTime) {
+		this.fRegDateTime = fRegDateTime;
+	}
+	public Date getfRegDateTimeSvr() {
+		return fRegDateTimeSvr;
+	}
+	public void setfRegDateTimeSvr(Date fRegDateTimeSvr) {
+		this.fRegDateTimeSvr = fRegDateTimeSvr;
+	}
+	public String getfTableName() {
+		return fTableName;
+	}
+	public void setfTableName(String fTableName) {
+		this.fTableName = fTableName;
+	}
+	public String getMainImg1() {
+		return mainImg1;
+	}
+	public void setMainImg1(String mainImg1) {
+		this.mainImg1 = mainImg1;
+	}
+	public String getMainImg2() {
+		return mainImg2;
+	}
+	public void setMainImg2(String mainImg2) {
+		this.mainImg2 = mainImg2;
+	}
+	public String getSubImg1() {
+		return subImg1;
+	}
+	public void setSubImg1(String subImg1) {
+		this.subImg1 = subImg1;
+	}
+	public String getSubImg2() {
+		return subImg2;
+	}
+	public void setSubImg2(String subImg2) {
+		this.subImg2 = subImg2;
+	}
+	public String getSubImg3() {
+		return subImg3;
+	}
+	public void setSubImg3(String subImg3) {
+		this.subImg3 = subImg3;
+	}
+	public String getSubImg4() {
+		return subImg4;
+	}
+	public void setSubImg4(String subImg4) {
+		this.subImg4 = subImg4;
+	}
+	public String getSubImg5() {
+		return subImg5;
+	}
+	public void setSubImg5(String subImg5) {
+		this.subImg5 = subImg5;
+	}
+	public String getSubImg6() {
+		return subImg6;
+	}
+	public void setSubImg6(String subImg6) {
+		this.subImg6 = subImg6;
+	}
+	public String getSubImg7() {
+		return subImg7;
+	}
+	public void setSubImg7(String subImg7) {
+		this.subImg7 = subImg7;
+	}
+	public String getSubImg8() {
+		return subImg8;
+	}
+	public void setSubImg8(String subImg8) {
+		this.subImg8 = subImg8;
+	}
+	public String getSubImg9() {
+		return subImg9;
+	}
+	public void setSubImg9(String subImg9) {
+		this.subImg9 = subImg9;
+	}
+	public String getSubImg10() {
+		return subImg10;
+	}
+	public void setSubImg10(String subImg10) {
+		this.subImg10 = subImg10;
+	}
+	
+
 
 }
