@@ -276,32 +276,27 @@
 								</div>
 							</div>
 							<div class="comment__wrap pb-45">
-								<form name="form" method="post"
-									action="/usr/v1/infra/baSitter/baUsrSitterDetails">
+								<form name="form" method="post" action="/usr/v1/infra/baSitter/baUsrSitterDetails">
 									<div class="comment__wrap-title">
 										<h5 class="pt-30">Review</h5>
 									</div>
 									<div class="single__comment mb-35" th:each="relist:${relist}">
 										<div class="comments-avatar">
-											<img
-												src="/usr/v1/template/petxon/assets/img/blog/comment/c_01.png"
-												alt="">
+											<img src="/usr/v1/template/petxon/assets/img/blog/comment/c_01.png" alt="">
 										</div>
 										<div class="comment-text">
 											<div class="avatar-name mb-1">
 												<!--<h6>ALina</h6>-->
-												<span id="bareRegDate" name="bareRegDate"
-													th:text="${#dates.format(relist.bareRegDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+												<span th:if="${relist.bareRegDate != null}" th:text="${${#dates.format(reviewList.reRegDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+												<span th:if="${relist.bareRegDate == null}"></span>
 												<div class="rating" id="bareStar">
-													<span th:each="i : ${#numbers.sequence(1, 5)}"> <!-- 채워진 별(★) 표시 -->
+													<span th:each="i : ${#numbers.sequence(1, 5)}">
 														<span th:if="${i <= relist.bareStar}" style="color: gold;">&#9733;</span>
-														<!-- 빈 별(☆) 표시 --> <span th:if="${i > relist.bareStar}"
-														style="color: gray;">&#9734;</span>
+														<span th:if="${i > relist.bareStar}" style="color: gray;">&#9734;</span>
 													</span>
 												</div>
 											</div>
-											<p id="bareContents" name="bareContents"
-												th:text="${relist.bareContents}"></p>
+											<p id="bareContents" name="bareContents" th:text="${relist.bareContents}"></p>
 										</div>
 									</div>
 								</form>
@@ -309,25 +304,24 @@
 							<div id="comments" class="comments-area  mt-45">
 								<div id="respond" class="comment-respond">
 									<h3 id="reply-title" class="comment-reply-title">
-										리뷰를 남겨주세요 <small><a rel="nofollow"
-											id="cancel-comment-reply-link" href="/finco/?p=2112#respond"
-											style="display: none;">Cancel reply</a></small>
+										리뷰를 남겨주세요
+										<small>
+											<a rel="nofollow" id="cancel-comment-reply-link" href="/finco/?p=2112#respond" style="display: none;">Cancel reply</a>
+										</small>
 									</h3>
 
 									<!--<form action="http://wordpress.zcube.in/finco/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate="">-->
-									<form method="post" name="form"
-										action="/usr/v1/infra/baSitter/baUsrSitterDetails"
-										class="comment-form" novalidate="">
+									<form method="post" name="ReviewForm" action="/usr/v1/infra/baSitter/baUsrReInst" class="comment-form" novalidate="">
 										<div class="rating" id="bareStar">
 											<span class="star" data-value="1" id="rating-1"
-												th:attr="onclick=|starnum('1')|">&#9733;</span> <span
-												class="star" data-value="2" id="rating-2"
-												th:attr="onclick=|starnum('2')|">&#9733;</span> <span
-												class="star" data-value="3" id="rating-3"
-												th:attr="onclick=|starnum('3')|">&#9733;</span> <span
-												class="star" data-value="4" id="rating-4"
-												th:attr="onclick=|starnum('4')|">&#9733;</span> <span
-												class="star" data-value="5" id="rating-5"
+												th:attr="onclick=|starnum('1')|">&#9733;</span>
+												<span class="star" data-value="2" id="rating-2"
+												th:attr="onclick=|starnum('2')|">&#9733;</span>
+												<span class="star" data-value="3" id="rating-3"
+												th:attr="onclick=|starnum('3')|">&#9733;</span>
+												<span class="star" data-value="4" id="rating-4"
+												th:attr="onclick=|starnum('4')|">&#9733;</span>
+												<span class="star" data-value="5" id="rating-5"
 												th:attr="onclick=|starnum('5')|">&#9733;</span>
 										</div>
 										<div style="width: 300px; height: 50px;"></div>
@@ -338,19 +332,17 @@
 										<!--<p class="comment-field"><i class="fas fa-globe"></i><input id="url" name="url" placeholder="http://your-site-name.com" type="text"> </p>-->
 										<p class="comment-form-comment">
 											<label for="bareContents">Comment</label>
-											<textarea id="bareInput" name="bareInput" cols="45" rows="8"
+											<textarea id="bareContents" name="bareContents" cols="45" rows="8"
 												maxlength="65525" required="required"></textarea>
 										</p>
-										<button type="submit" class="btn btn-brown mt-25"
-											data-animation="fadeInLeft" data-delay=".4s"
-											id="btnRevSubmit">
-											<img
-												src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png"
-												alt="logo">리뷰쓰기
+										<button type="submit" class="btn btn-brown mt-25" data-animation="fadeInLeft" data-delay=".4s" id="reviewSaveBtn">
+											<img src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon3.png" alt="logo">리뷰쓰기
 										</button>
-										<input type="hidden" name="comment_post_ID" value="2112"
-											id="comment_post_ID"> <input type="hidden"
-											name="comment_parent" id="comment_parent" value="0">
+											<input type="hidden" name="bareStar" id="reStarInput">
+											<div id="hiddenData" data-basi-seq="${basiSeq}"></div>
+											<input type="hidden" name="basiSeq" value="">
+<!-- 										<input type="hidden" name="comment_post_ID" value="2112" id="comment_post_ID"> -->
+<!-- 										<input type="hidden" name="comment_parent" id="comment_parent" value="0"> -->
 										</p>
 									</form>
 								</div>
@@ -373,10 +365,8 @@
                               </section>-->
 							<section id="custom_html-5"
 								class="widget_text widget widget_custom_html">
-								<form name="form" id="form" method="post" autocomplete="off"
-									enctype="multipart/form-data">
-									<h2 class="widget-title" id="basiName"
-										th:text="${item?.basiName}"></h2>
+								<form name="form" id="form" method="post" autocomplete="off" enctype="multipart/form-data">
+									<h2 class="widget-title" id="basiName" th:text="${item?.basiName}"></h2>
 									<div class="textwidget custom-html-widget">
 										<ul>
 											<li>
@@ -679,8 +669,130 @@
 		
 		
 		
-		// ========== aa START ========== //
-		// ========== aa END ========== //
+		// ========== 리뷰 별 적용 START ========== //
+		// 리뷰 별
+		const rwStars = document.querySelectorAll('#bareStar .star');
+		
+		// 선택된 별점 값을 저장하는 변수
+		let selectedValue = 0;
+		
+		// 별에 마우스 올렸을 때 해당 별과 왼쪽 별들 채우기
+		rwStars.forEach(star => {
+		    star.addEventListener('mouseover', () => {
+		        const value = parseInt(star.getAttribute('data-value'));
+		        rwStars.forEach((s, index) => {
+		            if (index < value) {
+		                s.style.color = 'rgba(250, 208, 0, 0.99)'; // 별을 금색으로
+		            } else {
+		                s.style.color = 'rgba(211, 211, 211, 1)'; // 나머지는 회색
+		            }
+		        });
+		    });
+		
+		    // 마우스가 별 밖으로 나가면 선택된 상태 유지
+		    star.addEventListener('mouseout', () => {
+		        rwStars.forEach((s, index) => {
+		            if (index < selectedValue) {
+		                s.style.color = 'rgba(250, 208, 0, 0.99)'; // 선택된 별을 금색으로
+		            } else {
+		                s.style.color = 'rgba(211, 211, 211, 1)'; // 나머지는 회색
+		            }
+		        });
+		    });
+		
+		    // 별 클릭 시 선택 상태 저장 및 유지
+		    star.addEventListener('click', () => {
+		        selectedValue = parseInt(star.getAttribute('data-value')); // 선택된 값 저장
+		        rwStars.forEach((s, index) => {
+		            if (index < selectedValue) {
+		                s.style.color = 'rgba(250, 208, 0, 0.99)'; // 선택된 별을 금색으로
+		            } else {
+		                s.style.color = 'rgba(211, 211, 211, 1)'; // 나머지는 회색
+		            }
+		        });
+		        // selectedValue에 저장된 별점 값 html 필드에 설정
+		        document.getElementById("reStarInput").value = selectedValue;
+		    });
+		});
+	 	// ========== 리뷰 별 적용 END ========== //
+	 	
+	    // ========== 리뷰 insert START ========== //
+	    document.addEventListener('DOMContentLoaded', () => {
+			const urlParams = new URLSearchParams(window.location.search);
+		    const basiSeq = urlParams.get('basiSeq');
+		    if (basiSeq) {
+		    	document.querySelector('input[name="basiSeq"]').value = basiSeq;
+			}
+			console.log("basiSeq: " + basiSeq);
+		});
+	    
+	    document.getElementById('reviewSaveBtn').onclick = function() {
+	    	const basiSeq = document.querySelector('input[name="basiSeq"]').value;
+	    	if (selectedValue > 0) {
+	    		$.ajax({
+	    			async: true,
+	    			cache: false,
+					url: '/usr/v1/infra/baSitter/baUsrReInst',
+					type:"POST",
+					data : {
+						bareContents : $("#bareContents").val(),
+						bareStar : selectedValue,
+						basiSeq : basiSeq
+					},
+	// 				contentType:"application/json; charset=utf-8",
+					success: function(response, textStatus, xhr){
+						console.log("서버 응답:", response);  // 응답 전체 확인
+				        console.log("응답 상태:", textStatus);  // 응답 상태 확인
+				        console.log("HTTP 상태 코드:", xhr.status);  // HTTP 상태 코드 확인
+						
+						if (response.rt == "success") {
+							alert("리뷰전송완료");
+							
+							let reviews = '';
+							reviews +=	'<div class="comments-avatar">';
+							reviews +=		'<img src="/usr/v1/template/petxon/assets/img/blog/comment/c_01.png" alt="">';
+							reviews +=	'</div>';
+							reviews +=	'<div class="comment-text">';
+							reviews +=		'<div class="avatar-name mb-1">';
+	                        reviews +=			'<span>' + (response.bareRegDate != null ? formatDate(response.bareRegDate) : 'null') + '</span>';
+	                        reviews +=				'<div class="rating">' + (response.bareStar);
+// 							reviews +=				'<div class="rating">';
+// 							const bareStar = response.bareStar || 0;
+	                        // 별점 표시 부분 (1부터 5까지 반복)
+	                        for (let i = 1; i <= 5; i++) {
+	                            if (i <= response.bareStar) {
+	                                reviews +=            '<span style="color: gold;">&#9733;</span>'; // 금색 별
+	                            } else {
+	                                reviews +=            '<span style="color: gray;">&#9734;</span>'; // 회색 빈 별
+	                            }
+	                        }
+	                       	reviews +=					'<span>';
+							reviews +=				'<div>';
+							reviews +=			'<div>';
+							reviews +=			'<p>' + (response.bareContents) + '</p>'							
+							$("#reviews").append(reviews);
+							
+							// 입력창초기화
+			                $("#bareContents").val('');
+			                
+			                selectedValue = 0; // 별점 초기화
+		                    rwStars.forEach(star => {
+		                        star.style.color = 'transparent'; // 별 초기화
+		                    });
+						} else {
+							alert("리뷰저장실패");	// insert 실패 시 alert 창을 띄움
+						}
+					},
+					error: function(xhr, status, error) {
+		                console.error("AJAX 오류: " + status + " " + error);
+		                alert("리뷰 전송 중 오류가 발생했습니다.");
+		            }
+	// 					console.log("result: " + result);
+	// 					self.location.reload();
+					}
+				)};
+	    };
+		// ========== 리뷰 insert END ========== //
 		
 		
 		

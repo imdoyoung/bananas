@@ -41,5 +41,5 @@ public interface BaUsrSitterDao {
 	
 	// baUsrPayment 페이지 결제정보 update
 	public int paymentBookingUpdate(BaUsrSitterDto baUsrSitterDto);
-
+	
 }

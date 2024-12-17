@@ -230,6 +230,8 @@
 			now(),
 			now()
 		)
+		ON DUPLICATE KEY UPDATE
+    		bareContents = VALUES(bareContents)
 	</insert>
 
 </mapper>
