@@ -485,9 +485,7 @@
 	</main>
 	<!-- main-area-end -->
 	<!-- footer -->
-	<footer class="footer-bg footer-p"
-		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
-	</footer>
+	<div th:replace="~{usr/v1/infra/common/footer :: footer}"></div>
 	<!-- footer-end -->
 
 
@@ -717,81 +715,81 @@
 	 	// ========== 리뷰 별 적용 END ========== //
 	 	
 	    // ========== 리뷰 insert START ========== //
-	    document.addEventListener('DOMContentLoaded', () => {
-			const urlParams = new URLSearchParams(window.location.search);
-		    const basiSeq = urlParams.get('basiSeq');
-		    if (basiSeq) {
-		    	document.querySelector('input[name="basiSeq"]').value = basiSeq;
-			}
-			console.log("basiSeq: " + basiSeq);
-		});
+// 	    document.addEventListener('DOMContentLoaded', () => {
+// 			const urlParams = new URLSearchParams(window.location.search);
+// 		    const basiSeq = urlParams.get('basiSeq');
+// 		    if (basiSeq) {
+// 		    	document.querySelector('input[name="basiSeq"]').value = basiSeq;
+// 			}
+// 			console.log("basiSeq: " + basiSeq);
+// 		});
 	    
-	    document.getElementById('reviewSaveBtn').onclick = function() {
-	    	const basiSeq = document.querySelector('input[name="basiSeq"]').value;
-	    	if (selectedValue > 0) {
-	    		$.ajax({
-	    			async: true,
-	    			cache: false,
-					url: '/usr/v1/infra/baSitter/baUsrReInst',
-					type:"POST",
-					data : {
-						bareContents : $("#bareContents").val(),
-						bareStar : selectedValue,
-						basiSeq : basiSeq
-					},
+// 	    document.getElementById('reviewSaveBtn').onclick = function() {
+// 	    	const basiSeq = document.querySelector('input[name="basiSeq"]').value;
+// 	    	if (selectedValue > 0) {
+// 	    		$.ajax({
+// 	    			async: true,
+// 	    			cache: false,
+// 					url: '/usr/v1/infra/baSitter/baUsrReInst',
+// 					type:"POST",
+// 					data : {
+// 						bareContents : $("#bareContents").val(),
+// 						bareStar : selectedValue,
+// 						basiSeq : basiSeq
+// 					},
 	// 				contentType:"application/json; charset=utf-8",
-					success: function(response, textStatus, xhr){
-						console.log("서버 응답:", response);  // 응답 전체 확인
-				        console.log("응답 상태:", textStatus);  // 응답 상태 확인
-				        console.log("HTTP 상태 코드:", xhr.status);  // HTTP 상태 코드 확인
+// 					success: function(response, textStatus, xhr){
+// 						console.log("서버 응답:", response);  // 응답 전체 확인
+// 				        console.log("응답 상태:", textStatus);  // 응답 상태 확인
+// 				        console.log("HTTP 상태 코드:", xhr.status);  // HTTP 상태 코드 확인
 						
-						if (response.rt == "success") {
-							alert("리뷰전송완료");
+// 						if (response.rt == "success") {
+// 							alert("리뷰전송완료");
 							  
-							let reviews = '';
-							reviews +=	'<div class="comments-avatar">';
-							reviews +=		'<img src="/usr/v1/template/petxon/assets/img/blog/comment/c_01.png" alt="">';
-							reviews +=	'</div>';
-							reviews +=	'<div class="comment-text">';
-							reviews +=		'<div class="avatar-name mb-1">';
-	                        reviews +=			'<span>' + (response.bareRegDate != null ? formatDate(response.bareRegDate) : 'null') + '</span>';
-	                        reviews +=				'<div class="rating">' + (response.bareStar);
+// 							let reviews = '';
+// 							reviews +=	'<div class="comments-avatar">';
+// 							reviews +=		'<img src="/usr/v1/template/petxon/assets/img/blog/comment/c_01.png" alt="">';
+// 							reviews +=	'</div>';
+// 							reviews +=	'<div class="comment-text">';
+// 							reviews +=		'<div class="avatar-name mb-1">';
+// 	                        reviews +=			'<span>' + (response.bareRegDate != null ? formatDate(response.bareRegDate) : 'null') + '</span>';
+// 	                        reviews +=				'<div class="rating">' + (response.bareStar);
 // 							reviews +=				'<div class="rating">';
 // 							const bareStar = response.bareStar || 0;
 	                        // 별점 표시 부분 (1부터 5까지 반복)
-	                        for (let i = 1; i <= 5; i++) {
-	                            if (i <= response.bareStar) {
-	                                reviews +=            '<span style="color: gold;">&#9733;</span>'; // 금색 별
-	                            } else {
-	                                reviews +=            '<span style="color: gray;">&#9734;</span>'; // 회색 빈 별
-	                            }
-	                        }
-	                       	reviews +=					'<span>';
-							reviews +=				'<div>';
-							reviews +=			'<div>';
-							reviews +=			'<p>' + (response.bareContents) + '</p>'							
-							$("#reviews").append(reviews);
+// 	                        for (let i = 1; i <= 5; i++) {
+// 	                            if (i <= response.bareStar) {
+// 	                                reviews +=            '<span style="color: gold;">&#9733;</span>'; // 금색 별
+// 	                            } else {
+// 	                                reviews +=            '<span style="color: gray;">&#9734;</span>'; // 회색 빈 별
+// 	                            }
+// 	                        }
+// 	                       	reviews +=					'<span>';
+// 							reviews +=				'<div>';
+// 							reviews +=			'<div>';
+// 							reviews +=			'<p>' + (response.bareContents) + '</p>'							
+// 							$("#reviews").append(reviews);
 							
-							// 입력창초기화
-			                $("#bareContents").val('');
+// 							// 입력창초기화
+// 			                $("#bareContents").val('');
 			                
-			                selectedValue = 0; // 별점 초기화
-		                    rwStars.forEach(star => {
-		                        star.style.color = 'transparent'; // 별 초기화
-		                    });
-						} else {
-							alert("리뷰저장실패");	// insert 실패 시 alert 창을 띄움
-						}
-					},
-					error: function(xhr, status, error) {
-		                console.error("AJAX 오류: " + status + " " + error);
-		                alert("리뷰 전송 중 오류가 발생했습니다.");
-		            }
+// 			                selectedValue = 0; // 별점 초기화
+// 		                    rwStars.forEach(star => {
+// 		                        star.style.color = 'transparent'; // 별 초기화
+// 		                    });
+// 						} else {
+// 							alert("리뷰저장실패");	// insert 실패 시 alert 창을 띄움
+// 						}
+// 					},
+// 					error: function(xhr, status, error) {
+// 		                console.error("AJAX 오류: " + status + " " + error);
+// 		                alert("리뷰 전송 중 오류가 발생했습니다.");
+// 		            }
 	// 					console.log("result: " + result);
 	// 					self.location.reload();
-					}
-				)};
-	    };
+// 					}
+// 				)};
+// 	    };
 		// ========== 리뷰 insert END ========== //
 		
 		
