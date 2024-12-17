@@ -67,7 +67,7 @@ public class BaUsrSitterDto {
 	private Date bapeEditDate;
 	private Integer bapeUseNy;
 	private Integer bapeDelNy;
-	private Integer ba_member_bameSeq;
+	private String ba_member_bameSeq;
 	
 	// 리뷰Dto
 	private String bareSeq;
@@ -137,8 +137,10 @@ public class BaUsrSitterDto {
 	private Integer baplDelNy;
 	
 
+
 //	========== getter/setter ========== //
 	
+
 	public String getBasiSeq() {
 		return basiSeq;
 	}
@@ -427,10 +429,10 @@ public class BaUsrSitterDto {
 	public void setBapeDelNy(Integer bapeDelNy) {
 		this.bapeDelNy = bapeDelNy;
 	}
-	public Integer getBa_member_bameSeq() {
+	public String getBa_member_bameSeq() {
 		return ba_member_bameSeq;
 	}
-	public void setBa_member_bameSeq(Integer ba_member_bameSeq) {
+	public void setBa_member_bameSeq(String ba_member_bameSeq) {
 		this.ba_member_bameSeq = ba_member_bameSeq;
 	}
 	public String getBareSeq() {
@@ -625,6 +627,12 @@ public class BaUsrSitterDto {
 	public void setBa_option_baopSeq(String ba_option_baopSeq) {
 		this.ba_option_baopSeq = ba_option_baopSeq;
 	}
+	public List<String> getOptionSeqs() {
+		return optionSeqs;
+	}
+	public void setOptionSeqs(List<String> optionSeqs) {
+		this.optionSeqs = optionSeqs;
+	}
 	public String getBaplSeq() {
 		return baplSeq;
 	}
@@ -703,12 +711,6 @@ public class BaUsrSitterDto {
 	public void setBaplDelNy(Integer baplDelNy) {
 		this.baplDelNy = baplDelNy;
 	}
-	public List<String> getOptionSeqs() {
-		return optionSeqs;
-	}
-	public void setOptionSeqs(List<String> optionSeqs) {
-		this.optionSeqs = optionSeqs;
-	}
-
+	
 			 
 }

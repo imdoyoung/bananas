@@ -137,7 +137,56 @@
 		</foreach>
 	</insert>
 	
+	<!-- baUsrPayment 페이지 booking 테이블 정보 출력 -->
+	<select id="paymentBookingSelectOne" resultMap="resultMapObj" parameterType="String" resultType="map">
+		SELECT
+			f.baboSeq,
+		    f.baboDate,
+		    c.bameSeq,
+		    c.bameName,
+		    d.bapeName,
+		    e.basiName,
+		    f.baboTime,
+		    f.baboLocation,
+			f.baboPayment, 
+		    f.baboTotalPrice, 
+		    f.baboSettleDate, 
+		    f.baboRegDate
+		FROM ba_booking AS f
+			LEFT JOIN ba_petprofile AS d
+				ON f.ba_petprofile_bapeSeq = d.bapeSeq
+			LEFT JOIN ba_member AS c
+				ON d.ba_member_bameSeq = c.bameSeq
+			LEFT JOIN ba_sitterlist AS e
+				ON f.ba_sitterlist_basiSeq = e.basiSeq
+		WHERE 1 = 1
+			AND f.baboSeq = #{baboSeq}
+	</select>
 	
+	<!-- baUsrPayment 페이지 booking 테이블 정보 출력 -->
+	<select id="paymentOptionSelectList" resultMap="resultMapObj" parameterType="String" resultType="map">
+		SELECT
+			baopName,
+		    baopPrice
+		FROM ba_bookingoption AS h
+			LEFT JOIN ba_option AS g
+				ON h.ba_option_baopSeq = g.baopSeq
+			LEFT JOIN ba_booking AS f
+				ON h.ba_booking_baboSeq = f.baboSeq
+		WHERE 1 = 1 
+			AND f.baboSeq = #{baboSeq}
+	</select>
+	 
+	<!-- baUsrPayment 페이지 결제정보 업데이트 -->
+	<update id="paymentBookingUpdate">
+		UPDATE 
+			bananas.ba_booking
+		SET
+			baboPayment = #{baboPayment},
+			baboSettleDate = now()
+		WHERE 1 = 1
+			AND baboSeq = #{baboSeq}
+	</update>
 	
 	
 	

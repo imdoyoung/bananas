@@ -32,5 +32,14 @@ public interface BaUsrSitterDao {
 	
 	// sitterDetil에서 bookingOption insert
 	public int bookingOptionInsert(BaUsrSitterDto baUsrSitterDto);
+	
+	// baUsrPayment 페이지 booking 테이블 정보 출력
+	public BaUsrSitterDto paymentBookingSelectOne(BaUsrSitterDto baUsrSitterDto);
+	
+	// baUsrPayment 페이지 option 테이블 정보 출력
+	public List<BaUsrSitterDto> paymentOptionSelectList(BaUsrSitterDto baUsrSitterDto);
+	
+	// baUsrPayment 페이지 결제정보 update
+	public int paymentBookingUpdate(BaUsrSitterDto baUsrSitterDto);
 
 }

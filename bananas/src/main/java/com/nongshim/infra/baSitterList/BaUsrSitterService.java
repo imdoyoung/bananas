@@ -53,6 +53,21 @@ public class BaUsrSitterService {
 		return baUsrSitterDao.bookingOptionInsert(baUsrSitterDto);
 	}
 	
+	// baUsrPayment 페이지 booking 테이블 정보 출력
+	public BaUsrSitterDto paymentBookingSelectOne(BaUsrSitterDto baUsrSitterDto) {
+		return baUsrSitterDao.paymentBookingSelectOne(baUsrSitterDto);
+	};
+	
+	// baUsrPayment 페이지 option 테이블 정보 출력
+	public List<BaUsrSitterDto> paymentOptionSelectList(BaUsrSitterDto baUsrSitterDto){
+		return baUsrSitterDao.paymentOptionSelectList(baUsrSitterDto);
+	};
+	
+	// baUsrPayment 페이지 결제정보 update
+	public int paymentBookingUpdate(BaUsrSitterDto baUsrSitterDto) {
+		return baUsrSitterDao.paymentBookingUpdate(baUsrSitterDto);
+	};
+	
 
 
    

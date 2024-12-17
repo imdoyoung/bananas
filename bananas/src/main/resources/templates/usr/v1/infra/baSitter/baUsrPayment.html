@@ -1,250 +1,21 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
-
-<head>
-<meta charset="utf-8">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>투개더</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-<!-- Place favicon.ico in the root directory -->
-
-<!-- CSS here -->
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/animate.min.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/magnific-popup.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/fontawesome/css/all.min.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/fontawesome-pro/css/all.min.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/dripicons.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/slick.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/meanmenu.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/swiper.min.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/default.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/style.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/petxon/assets/css/responsive.css">
-
-<link rel="stylesheet"
-	href="/usr/v1/template/andTour/assets/css/vendors.css">
-<link rel="stylesheet"
-	href="/usr/v1/template/andTour/assets/css/main.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!-- Stylesheets -->
-
-<style>
-.contact-field input, .contact-field select, .contact-field textarea {
-	width: 100%;
-	border: none;
-	padding-left: 15px;
-	transition: .3s;
-	border-radius: 0;
-	border: none;
-	height: calc(3.0em + .75rem + 2px);
-	border-bottom: 1px solid #E0E0E0;
-}
-
-.tabs.-underline-2 .tabs__controls .tabs__button:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 2px;
-	background-color: #F69946;
-	transition: all .2s cubic-bezier(.165, .84, .44, 1);
-	opacity: 0;
-}
-
-.btn {
-	border-radius: 5px;
-	color: #fff;
-	font-size: 16px;
-	letter-spacing: 0;
-	line-height: 1;
-	margin-bottom: 0;
-	padding: 12px 3px;
-	text-align: center;
-	transition: all 0.3s ease 0s;
-	vertical-align: middle;
-	white-space: nowrap;
-	position: relative;
-	z-index: 1;
-	background: #F69946;
-	border: none;
-	font-weight: 700;
-	text-transform: capitalize;
-	position: relative;
-	font-size: 16px;
-	overflow: hidden;
-	border: 1px solid #F69946;
-}
-
-.btn img {
-	position: absolute;
-	top: 0;
-	right: 20%;
-}
-
-.btn:hover {
-	background: #564741;
-	border: 1px solid #564741;
-	color: #fff;
-}
-
-@font-face {
-	font-family: 'goorm-sans-bold';
-	src:
-		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/goorm-sans-bold.woff2')
-		format('woff2');
-	font-weight: 700;
-	font-style: normal;
-}
-
-body {
-	font-family: 'goorm-sans-bold', sans-serif;
-	/* 'TTLaundryGothicB' 폰트를 우선 사용하고, 없으면 sans-serif 사용 */
-	font-weight: 500; /* 두꺼운 폰트 사용 */
-	font-size: 16px; /* 기본 글씨 크기 */
-	line-height: 1.5; /* 줄 간격 */
-}
-</style>
-</head>
-
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!-- ======= Head ======= -->
+<div th:replace="~{usr/v1/infra/common/head :: head}"></div>
+<!-- head-end -->
 <body>
-	<!--  Preloader  -->
-	<div id="preloader">
-		<div id="loading"></div>
-	</div>
-	<!--  Preloader end  -->
-	<!-- header -->
+
+	<!-- Theme CSS -->
+<!--     <link rel="stylesheet" href="/usr/v1/template/NailForest/assets/css/theme.min.css">	 -->
+
 	<!-- ======= Header ======= -->
-	<header class="header-area header-three">
-		<div class="header-mid  d-md-block pt-25 pb-25">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="">
-						<div class="header-cta">
-							<th:block th:if="${session.sessSeqXdm != null}">
-								<ul>
-									<li>
-										<div class="call-box">
-											<div class="icon">
-												<i class="fa-solid fa-paw"></i>
-											</div>
-											<div class="text" style="font-size: 18px;">
-												<strong> <span th:text="${session.sessNameXdm}"></span>
-												</strong>
-											</div>
-										</div>
-									</li>
-									<li>
-										<div class="call-box">
-											<div class="icon">
-												<i class="fa-solid fa-right-from-bracket"></i>
-											</div>
-											<div class="text" style="font-size: 18px;">
-												<strong> <a id="logoutBtn">Log Out</a>
-												</strong>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</th:block>
-						</div>
-					</div>
-					<div class="text-right">
-						<div class="header-social">
-							<th:block th:if="${session.sessSeqXdm == null}">
-								<ul class="navbar-nav ms-lg-3">
-									<li class="nav-item"><strong> <a class="nav-link"
-											href="/usr/v1/infra/common/baUsrSignIn">Log In</a> <a
-											class="nav-link" href="/usr/v1/infra/common/baUsrSignUp">Sign
-												Up</a>
-									</strong></li>
-								</ul>
-							</th:block>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="header-sticky" class="menu-area">
-			<div class="container">
-				<div class="second-menu">
-					<div class="row align-items-center">
-						<div class="col-lg-2 col-md-12">
-							<div class="logo">
-								<a href="/usr/v1/infra/common/baUsrIndex"> <img
-									src="/usr/v1/template/petxon/assets/img/logo/logo.png"
-									alt="logo">
-								</a>
-							</div>
-						</div>
-						<div class="col-xl-7 col-lg-7">
-							<div class="main-menu">
-								<nav id="mobile-menu">
-									<ul>
-										<li class="has-sub"><a
-											href="/usr/v1/infra/common/baUsrIndex">홈</a></li>
-										<li class="has-sub"><a
-											href="/usr/v1/infra/baSitter/baUsrSitterList">시터찾기</a></li>
-										<li class="has-sub"><a
-											href="/usr/v1/infra/baMeetPoint/baMeetPoint">중간지점찾기</a></li>
-										<li class="has-sub"><a
-											href="/usr/v1/infra/baPlace/baPlaceList">장소추천</a></li>
-										<li class="has-sub"><a
-											href="/usr/v1/infra/mypage/baUsrMypage">마이페이지</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 text-right d-lg-block">
-							<div class="login">
-								<ul>
-									<li><a href="#" class="menu-tigger"> <img
-											src="/usr/v1/template/petxon/assets/img/icon/search.png"
-											alt="logo">
-									</a></li>
-									<li><a href="contact.html" class="btn"> <img
-											src="/usr/v1/template/petxon/assets/img/icon/btn-pet-icon.png"
-											alt="logo"> Let’s Talk
-									</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-12">
-							<div class="mobile-menu"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+	<div th:replace="~{usr/v1/infra/common/header :: header}"></div>
 	<!-- header-end -->
+
 	<!-- ======= offcanvas_menu ======= -->
 	<div th:replace="~{usr/v1/infra/common/offcanvas_menu :: div}"></div>
 	<!-- offcanvas_menu end -->
+
 	<!-- main-area -->
 	<main>
 		<!-- breadcrumb-area -->
@@ -255,12 +26,15 @@ body {
 					<div class="col-xl-12 col-lg-12">
 						<div class="breadcrumb-wrap text-left">
 							<div class="breadcrumb-title">
-								<h2>결제내역</h2>
+								<h2>돌봄 예약 및 결제</h2>
 								<div class="breadcrumb-wrap">
 									<nav aria-label="breadcrumb">
 										<ol class="breadcrumb">
-											<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-											<li class="breadcrumb-item active" aria-current="page">Payment</li>
+											<li class="breadcrumb-item active" aria-current="page">Home</li>
+											<li class="breadcrumb-item active" aria-current="page">돌봄
+												예약</li>
+											<li class="breadcrumb-item active" aria-current="page">예약
+												및 결제</li>
 										</ol>
 									</nav>
 								</div>
@@ -270,158 +44,180 @@ body {
 				</div>
 			</div>
 		</section>
-		<section class="d-flex align-items-center" style="height: 100px;"></section>
 		<!-- breadcrumb-area-end -->
-		<!-- contact-area -->
-		<div class="dashboard" data-x="dashboard"
-			data-x-toggle="-is-sidebar-open">
-			<div class="dashboard__main">
-				<div class="dashboard__content bg-light-2" style="width: 27cm;">
-					<div
-						class="row y-gap-20 justify-between items-end pb-20 lg:pb-40 md:pb-32">
-						<div class="col-auto">
-							<h1 class="text-30 lh-14 fw-600">결제정보 확인</h1>
-							<br>
-							<div class="text-15 text-light-1">결제 정보를 확인해주세요.</div>
-						</div>
-						<div class="col-auto"></div>
-					</div>
-					<form id="form" name="form" method="post" style="width: 25cm;">
-						<div class="py-30 px-30 rounded-2 bg-white shadow-3">
-							<div class="tabs -underline-2 js-tabs">
-								<div
-									class="tabs__controls row x-gap-40 y-gap-10 lg:x-gap-20 js-tabs-controls">
-									<div class="col-auto">
-										<button class="tabs__button text-18 lg:text-16 text-light-1 fw-500 pb-5 lg:pb-0 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">결제정보</button>
+
+		<!-- shop-area -->
+		<section class="shop-area pt-120 pb-120 p-relative "
+			data-animation="fadeInUp animated" data-delay=".2s">
+			<div class="py-11 py-7">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-8 col-md-12 col-12">
+						<div class="card checkout-form">
+							<div class="card-body p-5">
+								<h4 class="mb-4 border-bottom pb-2">예약 정보</h4>
+								<!-- form -->
+								<form class="row" name="form" method="post" action="/usr/v1/infra/baSitter/baUsrPaymentUpt">
+									<!-- booking테이블의 boSeq 정보 bookingUpdate에 넘겨주기 -->
+									<input type="hidden" name="baboSeq" th:value="${bookingItem?.baboSeq}">
+									<!-- name -->
+									<div class="mb-3 col-md-6">
+										<label for="fname" class="form-label"> 
+											예약자 이름 
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="bameName" name=""bameName"" th:value="${bookingItem?.bameName}" style="background-color: #fff;" readonly>
 									</div>
-								</div>
-								<div class="tabs__content pt-30 js-tabs-content">
-									<div class="tabs__pane -tab-item-1 is-tab-el-active">
-										<div class="col-xl-12">
-											<div class="row x-gap-20 y-gap-20">
-												<!-- 1st row start -->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">회원이름</label> <input
-																type="text" id="bameName" name="bameName">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">회원 전화번호</label>
-															<input type="text" id="bameTel" name="bameTel">
-														</div>
-													</div>
-												</div>
-												<!-- 1st row end -->
-												<!-- 2nd row start -->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">시터이름</label> <input
-																type="text" id="basiName" name="basiName">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">시터 전화번호</label>
-															<input type="text" id="basiTel" name="basiTel">
-														</div>
-													</div>
-												</div>
-												<!-- 2nd row end -->
-												<!-- 3rd row start -->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">예약날짜</label> <input
-																type="text" id="baboDate" name="baboDate">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">예약시간</label> <input
-																type="text" id="baboTime" name="baboTime">
-														</div>
-													</div>
-												</div>
-												<!-- 3rd row end -->
-												<!-- 4th row start -->
-												<div class="row">
-													<div class="col-md-12">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">옵션선택</label> <input
-																type="text" id="baopName" name="baopName">
-														</div>
-													</div>
-												</div>
-												<!-- 4th row end -->
-												<!-- 5th row start -->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">시터주소</label> <input
-																type="text" id="basiAddr" name="basiAddr"
-																class="form-control" />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">시터 상세주소</label>
-															<input type="text" id="basiAddrDetail"
-																name="basiAddrDetail" class="form-control" />
-														</div>
-													</div>
-												</div>
-												<!-- 5th row end -->
-												<!-- 6th row start -->
-												<div class="row">
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">총금액</label> <input
-																type="text" id="baboTotalPrice" name="baboTotalPrice"
-																class="form-control" />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="contact-field p-relative c-name mb-20">
-															<label class="lh-1 text-16 text-light-1">결제수단</label> <input
-																type="text" id="baboPayment" name="baboPayment"
-																class="form-control" />
-														</div>
-													</div>
-												</div>
+									<!-- phone -->
+									<div class="mb-3 col-md-6">
+										<label for=text class="form-label"> 
+											반려동물 이름
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="bapeName" name="bapeName" th:value="${bookingItem?.bapeName}" style="background-color: #fff;" readonly>
+									</div>
+									<!-- 예약날짜 -->
+									<div class="mb-3 col-md-6">
+										<label class="form-label"> 
+											예약날짜
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="baboDate" name="baboDate" th:value="${#dates.format(bookingItem?.baboDate, 'yyyy-MM-dd')}" style="background-color: #fff;" readonly>
+									</div>
+									<!-- 예약시간 -->
+									<div class="mb-3 col-md-6">
+										<label class="form-label"> 
+											예약시간
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="baboTime" name="baboTime" th:value="${#dates.format(bookingItem?.baboTime, 'HH:mm')}" style="background-color: #fff;" readonly>
+									</div>
+									<!-- ShopName -->
+									<div class="mb-3 col-md-6">
+										<label class="form-label"> 
+											시터 이름 
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="basiName" name="basiName" th:value="${bookingItem?.basiName}" style="background-color: #fff;" readonly>
+									</div>
+									<!-- ShopAddr -->
+									<div class="mb-3 col-md-6">
+										<label class="form-label"> 
+											돌봄 장소 
+											<span class="text-danger">*</span>
+										</label> 
+										<input type="text" class="form-control" id="baboLocation" name="baboLocation" th:value="${bookingItem?.baboLocation}" style="background-color: #fff;" readonly>
+									</div>
+									
+									<!-- 여백 추가 -->
+									<div class="w-100 my-3"></div>
+									
+									<!-- 선택한 메뉴 -->
+									<div class="col-md-12">
+										<h4 class="mb-4 border-bottom pb-2">선택한 메뉴</h4>
+									</div>
+									<div class="mb-3 col-md-6">
+										<div th:each="list : ${optionList}">
+									        <div class="d-flex justify-content-between">
+									            <span th:text="${list.baopName}"></span>
+									            <p>
+										            <span th:text="${#numbers.formatInteger(list.baopPrice, 0, 'COMMA')}"></span>
+										            원
+									            </p>
+									        </div>
+									    </div>
+									</div>
+									
+									<!-- 여백 추가 -->
+									<div class="w-100 my-3"></div>
+									
+									<!-- payment details -->
+									<div class="col-md-12">
+										<h4 class="mb-4 border-bottom pb-2">결제 정보</h4>
+									</div>
+									<div class="col-md-12">
+										<div class="d-flex flex-wrap mb-4">
+											<!-- payment -->
+											<div class="mb-3 col-md-6">
+												<label for="text" class="form-label"> 
+													결제수단 선택
+													<span class="text-danger">*</span>
+												</label> <br>
+												<input type="radio" name="baboPayment" value="11"> 카카오페이
+												<img src="/usr/v1/template/petxon/assets/img/payment-icon/kakaopay-icon.png" style="height: 20px; width: 48px;">
+												<br>
+												<input type="radio" name="baboPayment" value="12"> 신용카드/체크카드
+												<img src="/usr/v1/template/petxon/assets/img/payment-icon/visa-icon.png" style="height: 30px; width: 30px;">
+						                        <img src="/usr/v1/template/petxon/assets/img/payment-icon/mastercard-icon.png" style="height: 30px; width: 30px;">
+						                        <img src="/usr/v1/template/petxon/assets/img/payment-icon/unionpay-icon.png" style="height: 30px; width: 30px;">
+						                        <img src="/usr/v1/template/petxon/assets/img/payment-icon/jcb-icon.png" style="height: 30px; width: 30px;">
+						                        <img src="/usr/v1/template/petxon/assets/img/payment-icon/american-icon.png" style="height: 30px; width: 30px;">
+												<br>
+												<input type="radio" name="baboPayment" value="13"> 무통장입금
+												<br>
 											</div>
 										</div>
-										<div class="d-inline-block pt-30">
-											<a href="/usr/v1/infra/baPayment/baPaymentBookEnds"
-												class="PetprofileBtn btn-brown"><img
-												src="/usr/v1/template/andTour/assets/image/btn-pet-icon3.png">
-												결제완료 </a>
+									</div>
+									<div class="col-md-12">
+										<h4 class="mb-4 border-bottom pb-2">결제 금액</h4>
+									</div>
+									<!-- meta -->
+									<div class="col-md-12">
+										<div class="d-flex justify-content-between align-items-center">
+											<div>
+												<p class="mb-1 text-lg text-dark">
+													<h3 name="baboTotalPrice" id="baboTotalPrice" th:text="${#numbers.formatInteger(bookingItem?.baboTotalPrice, 0, 'COMMA') + ' 원'}"></h3>
+												</p>
+											</div>
+											<div>
+												<button class="btn btn-primary" type="submit" id="btnSubmit">
+													결제 하기
+												</button>
+											</div>
 										</div>
 									</div>
-								</div>
+								</form>
 							</div>
 						</div>
-					</form>
-					<footer class="dashboard mt-60"></footer>
+					</div>
 				</div>
 			</div>
 		</div>
-		<section class="d-flex align-items-center" style="height: 100px;"></section>
-		<!-- contact-area-end -->
+		</section>
+		<!-- shop-area-end -->
 	</main>
 	<!-- main-area-end -->
-
-
 	<!-- footer -->
 	<footer class="footer-bg footer-p"
 		style="background-color: #40332E; background-image: url(/usr/v1/template/petxon/assets/img/bg/footer-bg.png); background-repeat: no-repeat; background-size: cover;">
+		<div class="copyright-wrap">
+			<div class="container">
+				<div class="row align-items-center c-mid">
+					<div class="col-lg-4 col-md-6 ">
+						<ul>
+							<li><a href="#">Privacy Policy</a></li>
+							<li><a href="#">Terms Of Service</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-4 col-md-6 ">
+						<div class="copy-text text-center">Copyright &copy; Petxon
+							2024. All rights reserved.</div>
+					</div>
+					<div class="col-lg-4 col-md-12 text-right text-xl-right">
+						<div class="footer-social">
+							<a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+								class="fab fa-instagram"></i></a> <a href="#"><i
+								class="fa-brands fa-x-twitter"></i></a> <a href="#"><i
+								class="fab fa-youtube"></i></a> <a href="#"><i
+								class="fab fa-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 	</footer>
 	<!-- footer-end -->
-
-
 	<!-- JS here -->
 	<script
 		src="/usr/v1/template/petxon/assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -440,12 +236,16 @@ body {
 	<script src="/usr/v1/template/petxon/assets/js/jquery.scrollUp.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/jquery.meanmenu.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/parallax-scroll.js"></script>
-	<script src="/usr/v1/template/petxon/assets/js/swiper.min.js"></script>
-
 	<script
 		src="/usr/v1/template/petxon/assets/js/jquery.magnific-popup.min.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/element-in-view.js"></script>
 	<script src="/usr/v1/template/petxon/assets/js/main.js"></script>
-</body>
 
+	<script type="text/javascript">
+		document.getElementById("btnSubmit").onclick = function(){
+			form.action = "/usr/v1/infra/baSitter/baUsrPaymentUpt";
+			form.submit();
+		}
+	</script>
+</body>
 </html>

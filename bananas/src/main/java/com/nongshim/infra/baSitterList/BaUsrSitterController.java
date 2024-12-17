@@ -80,7 +80,7 @@ public class BaUsrSitterController {
 			baUsrSitterService.bookingOptionInsert(baUsrSitterDto);
 			
 			// baboSeq 값을 baUsrPayment로 전달
-			return "redirect:/usr/v1/infra/baSitter/baUsrPayment?baboSeq=" + baUsrSitterDto.getBaboSeq(); // 결제 페이지로 이동(나중에 수정) 
+			return "redirect:/usr/v1/infra/baSitter/baUsrPayment?baboSeq=" + baUsrSitterDto.getBaboSeq(); // 결제 페이지로 이동 
 		} else {
 			// 세션에 사용자 정보가 없으면 처리
 			return "redirect:/usr/v1/infra/common/baUsrSignIn"; // 로그인페이지로 리다이렉션
@@ -92,9 +92,31 @@ public class BaUsrSitterController {
 	
 	// 결제페이지 - 예약 완료
 	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrPayment")
-	public String baUsrSitterForm() {
+	public String baUsrSitterForm(BaUsrSitterDto baUsrSitterDto, @RequestParam("baboSeq") String baboSeq, Model model) {
+		model.addAttribute("bookingItem", baUsrSitterService.paymentBookingSelectOne(baUsrSitterDto));
+		model.addAttribute("optionList", baUsrSitterService.paymentOptionSelectList(baUsrSitterDto));
 		return "usr/v1/infra/baSitter/baUsrPayment";
 	}
+	
+	@RequestMapping(value="/usr/v1/infra/baSitter/baUsrPaymentUpt")
+	public String baUsrPaymentUpt(BaUsrSitterDto baUsrSitterDto, HttpSession httpSession) {
+		
+		// 세션에서 sessSeqXdm, sessPetSeq 값 가져오기
+		String sessSeqXdm = (String) httpSession.getAttribute("sessSeqXdm");
+		String sessPetSeq = (String) httpSession.getAttribute("sessPetSeq");
+		
+		baUsrSitterDto.setBameSeq(sessSeqXdm);
+		baUsrSitterDto.setBa_member_bameSeq(sessSeqXdm);
+		
+		baUsrSitterDto.setBapeSeq(sessPetSeq);
+		baUsrSitterDto.setBa_petprofile_bapeSeq(sessPetSeq);
+		
+		// 결제정보 업데이트
+		baUsrSitterService.paymentBookingUpdate(baUsrSitterDto);
+		
+		return "redirect:/usr/v1/infra/mypage/baUsrBookingHistory";
+	}
+	
 	
 	
 	
