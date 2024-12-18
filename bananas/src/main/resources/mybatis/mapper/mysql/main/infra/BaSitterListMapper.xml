@@ -209,12 +209,23 @@
 			j.bareContents,
 			j.bareRegDate,
 			j.bareEditDate,
-			j.bareDelNy
+			j.bareDelNy,
+			j.ba_member_bameSeq,
+			j.ba_sitterlist_basiSeq,
+			e.basiSeq,
+			e.basiName,
+			c.bameSeq,
+		    c.bameName
 		FROM
-			bananas.ba_review j
+			ba_review AS j
+		LEFT JOIN ba_sitterlist AS e
+			ON j.ba_sitterlist_basiSeq = e.basiSeq
+		LEFT JOIN ba_member AS c
+			ON j.ba_member_bameSeq = c.bameSeq
 		WHERE 1=1
+<!-- 			AND e.basiSeq = #{basiSeq} -->
 		ORDER BY
-			j.bareSeq Asc
+			e.basiSeq ASC
 	</select>
 
 	<!-- 시터 상세페이지 - 리뷰 등록 -->
@@ -223,12 +234,20 @@
 			bareStar,
 			bareContents,
 			bareRegDate,
-			bareEditDate
+			bareEditDate,
+			ba_member_bameSeq,
+			ba_sitterlist_basiSeq,
+			ba_place_baplSeq,
+			ba_booking_baboSeq
 		)VALUES(
 			ifNull(#{bareStar},0),
 			#{bareContents},
 			now(),
-			now()
+			now(),
+			#{ba_member_bameSeq},
+			#{ba_sitterlist_basiSeq},
+			1,
+			1
 		)
 		ON DUPLICATE KEY UPDATE
     		bareContents = VALUES(bareContents)

@@ -44,7 +44,7 @@ public class BaUsrSitterController {
 		// 시터 정보 출력
 		model.addAttribute("item", baUsrSitterService.selectOne(baUsrSitterDto));
 		// 리뷰 리스트 출력
-//		model.addAttribute("relist", baUsrSitterService.reSelectList());
+		model.addAttribute("relist", baUsrSitterService.reSelectList());
 		// 예약 옵션 리스트 출력
 		model.addAttribute("opList", baUsrSitterService.opSelectList());
 		
@@ -121,53 +121,46 @@ public class BaUsrSitterController {
 		return "redirect:/usr/v1/infra/mypage/baUsrBookingHistory";
 	}
 	
-	// 시터 상세페이지 - 리뷰 등록
-	@RequestMapping(value = "/usr/v1/infra/baSitter/baUsrReInst")
-	public String baUsrReInst(BaUsrSitterDto baUsrSitterDto) {
-		baUsrSitterService.reInsert(baUsrSitterDto);
-		return "redirect:/usr/v1/infra/baSitter/baUsrSitterDetails";
-	}
-	
 	
 	
 	// 시터 상세페이지 - 리뷰 등록
 	// DetailReviewInsert
-//	@ResponseBody
-//	@RequestMapping(value = "/usr/v1/infra/baSitter/baUsrReInst", method = RequestMethod.POST)
-//	public Map<String, Object> usrHotelRvInst(@RequestParam("basiSeq") String basiSeq, BaUsrSitterDto baUsrSitterDto, HttpSession httpSession, HttpServletResponse response) throws IOException {
-//		Map<String, Object> resultMap = new HashMap<>();
-//	
-//		// 세션 값 가져오기
-//		String sessSeqXdm = (String) httpSession.getAttribute("sessSeqXdm");
-//		String sessNameXdm = (String) httpSession.getAttribute("sessNameXdm");
-//				    
-//		baUsrSitterDto.setBameSeq(sessSeqXdm);
-//		baUsrSitterDto.setBa_sitterlist_basiSeq(basiSeq);
-//		baUsrSitterDto.setBameName(sessNameXdm);
-//				
+	@ResponseBody
+	@RequestMapping(value = "/usr/v1/infra/baSitter/baUsrReInst", method = RequestMethod.POST)
+	public Map<String, Object> usrHotelRvInst(@RequestParam("basiSeq") String basiSeq, BaUsrSitterDto baUsrSitterDto, HttpSession httpSession, HttpServletResponse response) throws IOException {
+		Map<String, Object> resultMap = new HashMap<>();
+	
+		// 세션 값 가져오기
+		String sessSeqXdm = (String) httpSession.getAttribute("sessSeqXdm");
+		String sessNameXdm = (String) httpSession.getAttribute("sessNameXdm");
+				    
+		baUsrSitterDto.setBa_member_bameSeq(sessSeqXdm);
+		baUsrSitterDto.setBa_sitterlist_basiSeq(basiSeq);
+		baUsrSitterDto.setBameName(sessNameXdm);
+				
 //		System.out.println("Received basiSeq : " + baUsrSitterDto.getBa_sitterlist_basiSeq());
 //		System.out.println("Received baUsrSitterDto : " + baUsrSitterDto.toString());
-//	
-//		// 리뷰 삽입
-//		int result = baUsrSitterService.reInsert(baUsrSitterDto);
-//			
-//	    // 결과 로그 추가
-//	    System.out.println("Review insert result: " + result);
-//			
-//		if (result > 0) {
-//			resultMap.put("rt", "success");
-//			resultMap.put("success", true);
-//			resultMap.put("bameName", baUsrSitterDto.getBameName());
-//			resultMap.put("bareStar", baUsrSitterDto.getBareStar());	
-//			resultMap.put("bareContents", baUsrSitterDto.getBareContents());
-//				
-//			response.sendRedirect("/usr/v1/infra/baSitter/baUsrSitterDetails?basiSeq=" + basiSeq);
-//	    } else {
-//	        resultMap.put("rt", "fail");
-//	        resultMap.put("message", "리뷰 실패");
-//	    }
-//	
-//		return resultMap;
-//	}
-//	
+	
+		// 리뷰 삽입
+		int result = baUsrSitterService.reInsert(baUsrSitterDto);
+			
+	    // 결과 로그 추가
+	    System.out.println("Review insert result: " + result);
+			
+		if (result > 0) {
+			resultMap.put("rt", "success");
+			resultMap.put("success", true);
+			resultMap.put("bameName", baUsrSitterDto.getBameName());
+			resultMap.put("bareStar", baUsrSitterDto.getBareStar());	
+			resultMap.put("bareContents", baUsrSitterDto.getBareContents());
+				
+			response.sendRedirect("/usr/v1/infra/baSitter/baUsrSitterDetails?basiSeq=" + basiSeq);
+	    } else {
+	        resultMap.put("rt", "fail");
+	        resultMap.put("message", "리뷰 실패");
+	    }
+	
+		return resultMap;
+	}
+	
 	}
