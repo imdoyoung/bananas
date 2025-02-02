@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.nongshim.infra.baSitterList.BaUsrSitterDto;
+
 @Repository
 public interface BaPlaceDao {
 	
@@ -19,5 +21,7 @@ public interface BaPlaceDao {
 	// PlaceReviewInsert - 리뷰 insert
 //	public int PlaceReviewInsert(BaPlaceDto baPlaceDto);
 	
+	// 시터 프로필 사진 업로드
+	public int insertUploaded(BaPlaceDto baPlaceDto);
 
 }

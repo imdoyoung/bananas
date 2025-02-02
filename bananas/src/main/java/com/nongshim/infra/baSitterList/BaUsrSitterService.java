@@ -1,17 +1,23 @@
 package com.nongshim.infra.baSitterList;
 
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.nongshim.common.util.UtilDateTime;
 
 @Service
 public class BaUsrSitterService {
 
 	@Autowired
 	private BaUsrSitterDao baUsrSitterDao;
+	
+	@Autowired
+	AmazonS3Client amazonS3Client;
 	
 	// 시터 리스트 출력
 	public List<BaUsrSitterDto>selectList(BaUsrSitterVo baUsrSitterVo){
@@ -68,6 +74,56 @@ public class BaUsrSitterService {
 		return baUsrSitterDao.paymentBookingUpdate(baUsrSitterDto);
 	};
 	
+	// 시터 프로필 사진 업로드
+	public int insertUploaded(BaUsrSitterDto baUsrSitterDto, int type) throws Exception {
+		// 파일업로드
+		for (int i = 0; i < baUsrSitterDto.getUploadFiles().length; i++) {
+
+			// S3
+			if (!baUsrSitterDto.getUploadFiles()[i].isEmpty()) {
+
+				String className = baUsrSitterDto.getClass().getSimpleName().toString().toLowerCase();
+				String fileName = baUsrSitterDto.getUploadFiles()[i].getOriginalFilename();
+				String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+				String uuid = UUID.randomUUID().toString();
+				String uuidFileName = uuid + "." + ext;
+				String pathModule = className;
+				String nowString = UtilDateTime.nowString();
+				String pathDate = nowString.substring(0, 4) + "/" + nowString.substring(5, 7) + "/"
+						+ nowString.substring(8, 10);
+				String path = pathModule + "/" + type + "/" + pathDate + "/";
+//					String pathForView = Constants.UPLOADED_PATH_PREFIX_FOR_VIEW_LOCAL + "/" + pathModule + "/" + type + "/" + pathDate + "/";
+
+				ObjectMetadata metadata = new ObjectMetadata();
+				metadata.setContentLength(baUsrSitterDto.getUploadFiles()[i].getSize());
+				metadata.setContentType(baUsrSitterDto.getUploadFiles()[i].getContentType());
+
+				amazonS3Client.putObject("lovelybears", path + uuidFileName,
+						baUsrSitterDto.getUploadFiles()[i].getInputStream(), metadata);
+
+				String objectUrl = amazonS3Client.getUrl("lovelybears", path + uuidFileName).toString();
+				System.out.println("objectUrl 확인 : " + objectUrl);
+				baUsrSitterDto.setfPath(objectUrl);
+				baUsrSitterDto.setfOriginalName(fileName);
+				baUsrSitterDto.setfUuidName(uuidFileName);
+				baUsrSitterDto.setfExt(ext);
+				baUsrSitterDto.setfSize(baUsrSitterDto.getUploadFiles()[i].getSize());
+
+				baUsrSitterDto.setfType(type);
+				baUsrSitterDto.setfPseq(baUsrSitterDto.getBasiSeq());
+
+				baUsrSitterDao.insertUploaded(baUsrSitterDto);
+			}
+		}
+
+		return 1;
+	}
+		
+		// file 첨부
+//		public int insertUploaded(BaUsrSitterDto baUsrSitterDto) {
+//			return baUsrSitterDao.insertUploaded(baUsrSitterDto);
+//		};
+		
 
 
    

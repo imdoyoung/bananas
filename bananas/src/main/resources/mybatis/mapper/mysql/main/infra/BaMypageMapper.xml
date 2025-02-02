@@ -331,6 +331,8 @@
 		    e.badiContent,
 		    e.badiRegDate,
 		    f.baboopSeq
+<!-- 		    , -->
+<!-- 			(select aa.fPath from ba_fileuploaded aa where 1=1 and aa.fRegSeq = e.badiSeq and aa.fOrder = 1) as mainImg1 -->
 		from ba_diary as e
 			left join ba_bookingoption as f
 				on e.ba_bookingoption_baboopSeq = f.baboopSeq
@@ -421,7 +423,7 @@
 			left join ba_member as c
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
-				on e.basiSeq = f.ba_sitterList_basiSeq
+				on e.basiSeq = f.ba_sitterlist_basiSeq
 			where 1=1
 				and e.basiSeq = #{basiSeq}
 	  </sql>
@@ -466,7 +468,7 @@
 		left join ba_member as c 
 			on c.bameSeq = d.ba_Member_bameSeq
 		left join ba_sitterlist as e
-			on e.basiSeq = f.ba_SitterList_basiSeq
+			on e.basiSeq = f.ba_sitterlist_basiSeq
 		where 1=1
 			and j.ba_Booking_baboSeq IS NOT NULL
 			and e.basiSeq = #{basiSeq}
@@ -545,7 +547,7 @@
 		left join ba_member as c 
 			on c.bameSeq = d.BA_Member_bameSeq
 		left join ba_sitterlist as e
-			on e.basiSeq = f.BA_SitterList_basiSeq
+			on e.basiSeq = f.ba_sitterlist_basiSeq
 		where 1=1
 			and j.bareSeq = #{bareSeq}
 	  </select>  
@@ -566,7 +568,7 @@
 			left join ba_member as c
 				on c.bameSeq = d.ba_Member_bameSeq
 			left join ba_sitterlist as e 
-				on e.basiSeq = f.ba_sitterList_basiSeq
+				on e.basiSeq = f.ba_sitterlist_basiSeq
 			where 1=1
 				and e.basiSeq = #{basiSeq}
 	  </select>
@@ -595,7 +597,7 @@
 				on c.baboSeq = g.ba_booking_baboSeq
 			left join ba_petprofile as b
 				on b.bapeSeq = c.ba_petprofile_bapeSeq
-			left join ba_sitterList as a 
+			left join ba_sitterlist as a 
 				on a.basiSeq = c.ba_sitterlist_basiSeq 
 			left join ba_member as e
 				on e.bameSeq = b.ba_member_bameSeq
@@ -615,7 +617,7 @@
 			    c.bapeName,
 			    d.basiName
 			from ba_booking as a 
-				left join ba_sitterList as d
+				left join ba_sitterlist as d
 					on d.basiSeq = a.ba_sitterlist_basiSeq
 				left join ba_petprofile as c
 					on c.bapeSeq = a.ba_petprofile_bapeSeq
@@ -684,6 +686,45 @@
 		where 1=1
 			and b.baboSeq = #{baboSeq}
 	  </select>
+	  
+	  <!-- 파일 업로드 -->
+	<insert id="insertUploaded">
+		INSERT INTO ba_fileuploaded (
+			fType,
+			fDefaultNy,
+			fSort,
+			fPath,
+			fOriginalName,
+			fUuidName,
+			fExt,
+			fSize,
+			fDelNy,
+			fPseq,
+			fOrder,
+			fRegIp,
+			fRegSeq,
+			fRegDeviceCd,
+			fRegDateTime,
+			fRegDateTimeSvr
+		) VALUES (
+			#{fType},
+			#{fDefaultNy},
+			#{fSort},
+			#{fPath},
+			#{fOriginalName},
+			#{fUuidName},
+			#{fExt},
+			#{fSize},
+			0,
+			#{fPseq},
+			#{fOrder},
+			#{fRegIp},
+			#{fRegSeq},
+			#{fRegDeviceCd},
+			#{fRegDateTime},
+			#{fRegDateTimeSvr}
+		)
+	</insert>
 	  
 	    
 		 	

@@ -163,4 +163,18 @@ public class BaUsrSitterController {
 		return resultMap;
 	}
 	
+	// 시터 프로필 사진 업로드
+	// 관리자 - 시터 페이지
+	@RequestMapping(value="/xdm/v1/infra/baSitter/baSitterXdmList")
+	public String baSitterXdmList() {
+		return "xdm/v1/infra/baSitter/baSitterXdmList";
+	}
+	
+	@RequestMapping(value="/xdm/v1/infra/baSitter/baSitterXdmInst")
+	public String insertUploaded(BaUsrSitterDto baUsrSitterDto) throws Exception {
+		System.out.println("/// 시터 프로필 사진 파일첨부 실행 ///");
+		baUsrSitterService.insertUploaded(baUsrSitterDto, 0);
+		return "redirect:/xdm/v1/infra/baSitter/baSitterXdmList";
+	}
+	
 	}

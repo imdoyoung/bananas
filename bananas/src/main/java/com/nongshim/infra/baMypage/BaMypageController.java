@@ -241,12 +241,12 @@ public class BaMypageController {
 	
 	// 시터 마이페이지(알림장 내용 insert, baboDiaryNy 0 -> 1) 
 	@RequestMapping(value="/usr/v1/infra/mypage/baSitterNoticeInstUpat")
-	public String baSitterNoticeInstUpat(@RequestParam("baboSeq") String baboSeq, BaMypageDto baMypageDto) {
+	public String baSitterNoticeInstUpat(@RequestParam("baboSeq") String baboSeq, BaMypageDto baMypageDto) throws Exception {
 		
 		baMypageDto.setBaboSeq(baboSeq);  
 		baMypageDto.setBa_booking_baboSeq(baboSeq);
 		 
-		baMypageService.sitterNoticeInsert(baMypageDto);
+		baMypageService.sitterNoticeInsert(baMypageDto, 0);
 		baMypageService.sitterNoticeUpdate(baMypageDto); 
 		
 		return "redirect:/usr/v1/infra/mypage/baSitterMyBooking"; 

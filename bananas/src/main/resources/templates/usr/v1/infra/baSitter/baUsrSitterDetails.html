@@ -260,9 +260,10 @@
                                         <img src="img/blog/b_details01.jpg" alt="">
                                     </div>-->
 									<figure>
-										<img
-											src="/usr/v1/template/petxon/assets/img/sitterPictures/sitterWoman03.jpg"
-											alt="">
+<!-- 										<img -->
+<!-- 											src="/usr/v1/template/petxon/assets/img/sitterPictures/sitterWoman03.jpg" -->
+<!-- 											alt=""> -->
+										<img th:src="${item?.mainImg1}">
 										<h2>시터 한줄소개</h2>
 										<p id="basiDesc" th:text="${item?.basiDesc}"></p>
 									</figure>

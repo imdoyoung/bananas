@@ -70,7 +70,9 @@
 								<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1" id="thisPageInfo" /> 
 								<input type="hidden" id="rowNumToShow" name="rowNumToShow" th:value="${vo.rowNumToShow}" />
                                 <div class="product__img">
-                                    <a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list?.basiSeq})}"><img src="/usr/v1/template/petxon/assets/img/sitterPictures/sitterWoman03.jpg" alt=""></a>
+                                    <a th:href="@{/usr/v1/infra/baSitter/baUsrSitterDetails(basiSeq=${list?.basiSeq})}">
+                                    	<img th:src="${list.mainImg1}" class="w-100 " style="height: 13cm;">
+                                    </a>
                                     <div class="product-action text-center">
                                         <a href="shop-details.html"></a>
                                     </div>

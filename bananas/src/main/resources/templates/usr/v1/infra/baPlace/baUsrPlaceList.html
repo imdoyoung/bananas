@@ -69,7 +69,8 @@
 			                    <div class="product mb-40">
 			                    	<div class="product__img">
 					                    <a th:href="@{/usr/v1/infra/baPlace/baUsrPlaceDetailList(baplSeq=${placeList.baplSeq})}">
-					                    	<img src="/usr/v1/template/petxon/assets/img/backgroundimg/ba_place_img.jpg" alt="">
+<!-- 					                    	<img src="/usr/v1/template/petxon/assets/img/backgroundimg/ba_place_img.jpg" alt=""> -->
+					                    	<img th:src="${placeList.mainImg1}" class="w-100 " style="height: 13cm;">
 					                    </a>
 					                    <div class="product-action text-center">
 					                    	<a th:href="@{/usr/v1/infra/baPlace/baUsrPlaceDetailList(baplSeq=${placeList.baplSeq})}">상세보기</a>

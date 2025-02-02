@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.nongshim.infra.baCodeGroup.BaCodeGroupVo;
 
 @Repository
 public interface BaUsrSitterDao {
@@ -41,5 +40,8 @@ public interface BaUsrSitterDao {
 	
 	// baUsrPayment 페이지 결제정보 update
 	public int paymentBookingUpdate(BaUsrSitterDto baUsrSitterDto);
+	
+	// 시터 프로필 사진 업로드
+	public int insertUploaded(BaUsrSitterDto baUsrSitterDto);
 	
 }

@@ -80,7 +80,7 @@
 					<li class="breadcrumb-item active">Default</li>
 				</ol>
 			</nav>
-			<h1>Sitter</h1>
+			<h1>Place</h1>
 		</div>
 		<!-- End Page Title -->
 
@@ -89,8 +89,8 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<h1 class="card-title">Sitter</h1>
-							<form name="form" method="post" enctype="multipart/form-data" action="/xdm/v1/infra/baSitter/baSitterXdmInst">
+							<h1 class="card-title">Place</h1>
+							<form name="form" method="post" enctype="multipart/form-data" action="/xdm/v1/infra/baPlace/baPlaceXdmInst">
 
 
 								<div class="row mb-3">
@@ -112,7 +112,7 @@
 											<tbody>
 												<tr>
 													<td>
-														시터 프로필 사진 파일 첨부
+														장소추천 사진 파일 첨부
 													</td>
 													<td>
 														<input type="file" id="uploadFiles" name="uploadFiles" multiple class="form-control"/>
@@ -204,7 +204,7 @@
 	<script type="text/javascript">
 		
 		document.getElementById("btnSubmit").onclick = function(){
-			form.action = "/xdm/v1/infra/baSitter/baSitterXdmInst";
+			form.action = "/xdm/v1/infra/baPlace/baPlaceXdmInst";
 			form.submit();
 		}
 	

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.nongshim.infra.baSitterList.BaUsrSitterDto;
+
 @Repository
 public interface BaMypageDao {
 	
@@ -92,7 +94,8 @@ public interface BaMypageDao {
 	// 알림장 내용 selectOne
 	public BaMypageDto sitterNoticeContentSelectOne(BaMypageDto baMypageDto);
 	
-	
+	// 알림장 사진 업로드
+//	public int insertUploaded(BaMypageDto baMypageDto);
 	
 
 

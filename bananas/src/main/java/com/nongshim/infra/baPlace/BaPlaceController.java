@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.nongshim.infra.baSitterList.BaUsrSitterDto;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -46,5 +48,18 @@ public class BaPlaceController {
 //		return response;
 //	}
 	
+	// 추천장소 사진 업로드
+	// 관리자 - 추천장소 페이지
+	@RequestMapping(value="/xdm/v1/infra/baPlace/baPlaceXdmList")
+	public String baSitterXdmList() {
+		return "xdm/v1/infra/baPlace/baPlaceXdmList";
+	}
+	
+	@RequestMapping(value="/xdm/v1/infra/baPlace/baPlaceXdmInst")
+	public String insertUploaded(BaPlaceDto baPlaceDto) throws Exception {
+		System.out.println("/// 장소추천 사진 파일첨부 실행 ///");
+		baPlaceService.insertUploaded(baPlaceDto, 0);
+		return "redirect:/xdm/v1/infra/baPlace/baPlaceXdmList";
+	}
 	
 }

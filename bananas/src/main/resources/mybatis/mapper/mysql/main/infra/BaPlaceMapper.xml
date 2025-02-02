@@ -37,10 +37,11 @@
 		  		i.baplRegDate,
 		  		i.baplEditDate,
 		  		i.baplUseNy,
-		  		i.baplDelNy
+		  		i.baplDelNy,
+		  		(select aa.fPath from ba_fileuploaded aa where 1=1 and aa.fRegIp = i.baplSeq and aa.fOrder = 1) as mainImg1
 		  	<include refid="placeSelectCommon"/>
 		  	ORDER BY
-		  		i.baplName ASC
+		  		i.baplSeq ASC
 		) aa
 		limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
@@ -71,7 +72,8 @@
 			j.bareStar,
 			j.bareContents,
 			j.bareId,
-			j.bareRegDate
+			j.bareRegDate,
+		  	(select aa.fPath from ba_fileuploaded aa where 1=1 and aa.fRegIp = i.baplSeq and aa.fOrder = 1) as mainImg1
 		FROM 
         	ba_place AS i 
       	LEFT JOIN ba_review AS j
@@ -106,6 +108,45 @@
    			#{ba_booking_baboSeq}
    		)
    </insert>
+   
+   		<!-- 파일 업로드 -->
+	<insert id="insertUploaded">
+		INSERT INTO ba_fileuploaded (
+			fType,
+			fDefaultNy,
+			fSort,
+			fPath,
+			fOriginalName,
+			fUuidName,
+			fExt,
+			fSize,
+			fDelNy,
+			fPseq,
+			fOrder,
+			fRegIp,
+			fRegSeq,
+			fRegDeviceCd,
+			fRegDateTime,
+			fRegDateTimeSvr
+		) VALUES (
+			#{fType},
+			#{fDefaultNy},
+			#{fSort},
+			#{fPath},
+			#{fOriginalName},
+			#{fUuidName},
+			#{fExt},
+			#{fSize},
+			0,
+			#{fPseq},
+			#{fOrder},
+			#{fRegIp},
+			#{fRegSeq},
+			#{fRegDeviceCd},
+			#{fRegDateTime},
+			#{fRegDateTimeSvr}
+		)
+	</insert>
    
 	
 	

@@ -241,6 +241,7 @@ header .second-menu {
                     messages.forEach(function(message) {
                         var messageElement = document.createElement('p');
                         messageElement.textContent = message.user + ": " + message.message;
+                        console.log(messageElement.textContent + "@@@@@@@@@@@@@@@@@@@@22")
                         messagesDiv.appendChild(messageElement);
                     });
                 },

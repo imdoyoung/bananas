@@ -1,6 +1,7 @@
 package com.nongshim.infra.firebase;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -89,6 +90,7 @@ public class NotificationController {
                }
                // 데이터를 받은 후 CompletableFuture 완료
                future.complete(messages);
+               System.out.println(messages.get(0).getMessage() + "@@@@@@@@@@@@@@@@@@@@@@@@@");
            }
 
            @Override

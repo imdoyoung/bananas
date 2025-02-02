@@ -10,10 +10,6 @@ public class BaSitterController {
 	@Autowired
 	BaSitterService baSitterService;
 	
-	// 관리자 - 시터 페이지
-	@RequestMapping(value="/xdm/v1/infra/baSitter/baSitterXdmList")
-	public String baSitterXdmList() {
-		return "xdm/v1/infra/baSitter/baSitterXdmList";
-	}
+	
 
 }

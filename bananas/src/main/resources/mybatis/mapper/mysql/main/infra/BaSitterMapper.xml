@@ -14,15 +14,9 @@
 			a.basiPw,
 			a.basiEmail
 		from
-			ba_sitterList as a 
+			ba_sitterlist as a 
 		where 1=1
 			and a.basiId = #{basiId}
 	</select>
-
-
-	<!-- 파일 업로드 -->
-	<!-- 커밋 전 풀 제발 좀 하자 도영아 -->
-
-  
       
 </mapper>

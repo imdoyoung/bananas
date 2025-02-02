@@ -51,7 +51,29 @@
     display: none;
   }
 
+.upload-box {
+  cursor: pointer;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  color: #666;
+}
 
+.image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.image-preview {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
 
 </style>
 
@@ -95,18 +117,33 @@
             </div>
 
             <div class="tabs__content pt-30 js-tabs-content table_action_icon">
-				<form name="form" method="post" action="/usr/v1/infra/mypage/baSitterNoticeInstUpat">
+				<form name="form" method="post" enctype="multipart/form-data" action="/usr/v1/infra/mypage/baSitterNoticeInstUpat">
 				
               <div class="tabs__pane -tab-item-1 is-tab-el-active">
                 <div class="overflow-scroll scroll-bar-1">
                 	          <div class="cruise_search_item">
             <div class="row">
-              <div class="col-lg-5"> <!-- col-lg-3 -->
-                <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox">
-                  사진 첨부하기
-                  <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)">
-                </div>
-              </div>
+<!--               <div class="col-lg-5"> col-lg-3 -->
+<!--                 <div class="cruise_item_img upload-box" onclick="document.getElementById('fileInput').click();" id="imageBox"> -->
+<!--                   사진 첨부하기 -->
+<!--                   <input type="file" id="fileInput" accept="/usr/v1/template/andTour/assets/image/*" onchange="handleFileUpload(event)"> -->
+<!--                 </div> -->
+<!--               </div> -->
+				<div class="col-lg-5">
+				  <div class="cruise_item_img upload-box" id="imageBox">
+				    사진 첨부하기
+				    <input
+				      type="file"
+				      id="fileInput"
+				      name="uploadFiles"
+				      multiple
+				      accept="image/*"
+				      onchange="handleFileUpload(event)"
+				      style="display: none;"
+				    />
+				  </div>
+				</div>
+				<div id="previewContainer" class="image-preview-container"></div>
 
               <div class="col-lg-7"> <!-- col-lg-8 -->
 <!--               <form name="form" method="post" action="/usr/v1/infra/mypage/baSitterNoticeUpatInst"> -->
@@ -614,19 +651,48 @@
   <script>
   // 사진 첨부
   function handleFileUpload(event) {
-    const file = event.target.files[0];
-    const imageBox = document.getElementById('imageBox');
+	  const files = event.target.files;
+	  const previewContainer = document.getElementById('previewContainer');
+	  previewContainer.innerHTML = ''; // 기존 미리보기 초기화
+	
+	  if (files && files.length > 0) {
+	    Array.from(files).forEach((file) => {
+	      if (file.type.startsWith('image/')) {
+	        const reader = new FileReader();
+	        reader.onload = function (e) {
+	          // 새로운 div 요소에 이미지 추가
+	          const imageDiv = document.createElement('div');
+	          imageDiv.classList.add('image-preview');
+	          imageDiv.style.backgroundImage = `url(${e.target.result})`;
+	          previewContainer.appendChild(imageDiv);
+	        };
+	        reader.readAsDataURL(file);
+	      } else {
+	        alert('이미지 파일만 업로드 가능합니다.');
+	      }
+	    });
+	  }
+	}
+	
+	// 클릭 이벤트로 파일 선택창 열기
+	document.getElementById('imageBox').onclick = function () {
+	  document.getElementById('fileInput').click();
+	};
+  
+//   function handleFileUpload(event) {
+//     const file = event.target.files[0];
+//     const imageBox = document.getElementById('imageBox');
 
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        // div 부분을 사진으로 바꾸기
-        imageBox.style.backgroundImage = 'url(' + e.target.result + ')';
-        imageBox.textContent = '';  // '사진 첨부' 텍스트 지우기
-      };
-      reader.readAsDataURL(file);
-    }
-  }
+//     if (file) {
+//       const reader = new FileReader();
+//       reader.onload = function (e) {
+//         // div 부분을 사진으로 바꾸기
+//         imageBox.style.backgroundImage = 'url(' + e.target.result + ')';
+//         imageBox.textContent = '';  // '사진 첨부' 텍스트 지우기
+//       };
+//       reader.readAsDataURL(file);
+//     }
+//   }
   
   document.addEventListener('DOMContentLoaded', () => {
 		const urlParams = new URLSearchParams(window.location.search);

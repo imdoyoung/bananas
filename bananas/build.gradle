@@ -18,9 +18,15 @@ repositories {
 }
 
 dependencies {
-   implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-   implementation 'org.springframework.boot:spring-boot-starter-web'
+   implementation('org.springframework.boot:spring-boot-starter-jdbc') {
+      exclude group: 'commons-logging', module: 'commons-logging'
+   }
+   implementation('org.springframework.boot:spring-boot-starter-thymeleaf') {
+      exclude group: 'commons-logging', module: 'commons-logging'
+   }
+   implementation('org.springframework.boot:spring-boot-starter-web') {
+      exclude group: 'commons-logging', module: 'commons-logging'
+   }
    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
    developmentOnly 'org.springframework.boot:spring-boot-devtools'
    runtimeOnly 'com.mysql:mysql-connector-j'
@@ -28,34 +34,25 @@ dependencies {
    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
    
-   //log4j2
-   // https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1
+   // log4j2
    implementation group: 'org.bgee.log4jdbc-log4j2', name: 'log4jdbc-log4j2-jdbc4.1', version: '1.16'
    
    // Spring Boot Starter Security
-   // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.3.4'
    
    // smtp
-   // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail
    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.3.5'
    
    // AWS-file첨부
-   // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws
    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.6.RELEASE'
    
    // Kakao Maps API 연동
-   // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-rest
    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '3.4.0'
    
    // Firebase-admin
-   // https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
    implementation group: 'com.google.firebase', name: 'firebase-admin', version: '9.4.2'
-   
-   
 }
 
 tasks.named('test') {
    useJUnitPlatform()
 }
-
