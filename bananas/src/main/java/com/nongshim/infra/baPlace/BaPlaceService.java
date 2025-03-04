@@ -63,10 +63,10 @@ public class BaPlaceService {
 				metadata.setContentLength(baPlaceDto.getUploadFiles()[i].getSize());
 				metadata.setContentType(baPlaceDto.getUploadFiles()[i].getContentType());
 
-				amazonS3Client.putObject("lovelybears", path + uuidFileName,
+				amazonS3Client.putObject("sweetybears", path + uuidFileName,
 						baPlaceDto.getUploadFiles()[i].getInputStream(), metadata);
 
-				String objectUrl = amazonS3Client.getUrl("lovelybears", path + uuidFileName).toString();
+				String objectUrl = amazonS3Client.getUrl("sweetybears", path + uuidFileName).toString();
 				System.out.println("objectUrl 확인 : " + objectUrl);
 				baPlaceDto.setfPath(objectUrl);
 				baPlaceDto.setfOriginalName(fileName);

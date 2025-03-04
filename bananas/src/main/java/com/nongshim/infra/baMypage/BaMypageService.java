@@ -158,9 +158,9 @@ public class BaMypageService {
 //				metadata.setContentLength(baMypageDto.getUploadFiles()[i].getSize());
 //				metadata.setContentType(baMypageDto.getUploadFiles()[i].getContentType());
 //
-//				amazonS3Client.putObject("lovelybears", path + uuidFileName, baMypageDto.getUploadFiles()[i].getInputStream(), metadata);
+//				amazonS3Client.putObject("sweetybears", path + uuidFileName, baMypageDto.getUploadFiles()[i].getInputStream(), metadata);
 //
-//				String objectUrl = amazonS3Client.getUrl("lovelybears", path + uuidFileName).toString();
+//				String objectUrl = amazonS3Client.getUrl("sweetybears", path + uuidFileName).toString();
 //				System.out.println("objectUrl 확인 : " + objectUrl);
 //				baMypageDto.setfPath(objectUrl);
 //				baMypageDto.setfOriginalName(fileName);

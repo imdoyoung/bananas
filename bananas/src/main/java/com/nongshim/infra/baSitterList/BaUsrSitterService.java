@@ -98,10 +98,10 @@ public class BaUsrSitterService {
 				metadata.setContentLength(baUsrSitterDto.getUploadFiles()[i].getSize());
 				metadata.setContentType(baUsrSitterDto.getUploadFiles()[i].getContentType());
 
-				amazonS3Client.putObject("lovelybears", path + uuidFileName,
+				amazonS3Client.putObject("sweetybears", path + uuidFileName,
 						baUsrSitterDto.getUploadFiles()[i].getInputStream(), metadata);
 
-				String objectUrl = amazonS3Client.getUrl("lovelybears", path + uuidFileName).toString();
+				String objectUrl = amazonS3Client.getUrl("sweetybears", path + uuidFileName).toString();
 				System.out.println("objectUrl 확인 : " + objectUrl);
 				baUsrSitterDto.setfPath(objectUrl);
 				baUsrSitterDto.setfOriginalName(fileName);
