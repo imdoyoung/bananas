@@ -48,6 +48,8 @@ public class BaUsrSitterController {
 		// 예약 옵션 리스트 출력
 		model.addAttribute("opList", baUsrSitterService.opSelectList());
 		
+		System.out.println("시터 상세페이지");
+		
 		return "usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
 	
