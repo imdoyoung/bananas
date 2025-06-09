@@ -100,7 +100,7 @@ public class BaUsrSitterDto {
 	private Date baboEditDate;
 	private Integer baboDelNy;
 	private Integer baboDiaryNy;
-	private String ba_sitterlist_basiSeq;
+	private String ba_sitterlist_basiSeq; // sitter테이블의 basiseq가 바인딩되어야함
 	private String ba_petprofile_bapeSeq;
 	
 	// option Dto

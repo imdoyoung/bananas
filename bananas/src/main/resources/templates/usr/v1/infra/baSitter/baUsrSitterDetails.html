@@ -397,7 +397,8 @@
 								<div>
 									<div>
 										<form name="bookingForm" id="bookingForm" method="post" action="/usr/v1/infra/baSitter/baUsrSitterBookingInst">
-															<input type="hidden" id="basiSeqInput" name="basiSeq">
+											<input type="hidden" id="basiSeqInput" name="basiSeq" value="">
+											<input type="hidden" name="basiSeq" th:value="${basiSeq}">
 											<div class="mb-3">
 												<div class="input-group mb-3">
 													<input type="text" class="form-control bookinginput" id="baboDate" name="baboDate" placeholder="예약날짜"
@@ -435,7 +436,7 @@
 													</div>
 												</div>
 												<br>
-												<!-- total -->
+												total
 												<div class="mb-3">
 													<label class="form-label">Total</label>
 													<div class="input-group mb-3">
@@ -453,7 +454,7 @@
 													</a>
 												</div>
 										</form>
-										<!-- Vertically centered Modal -->
+										Vertically centered Modal
 										<div class="modal fade" id="verticalycentered" tabindex="-1">
 											<div class="modal-dialog modal-dialog-centered">
 												<div class="modal-content">
@@ -629,24 +630,32 @@
 		
 		// ========== 예약하기 버튼 START ========== //
 		// basiSeq 값 전달
-		document.addEventListener('DOMContentLoaded', () => {	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
+  		document.addEventListener('DOMContentLoaded', () => {	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
 			const urlParams = new URLSearchParams(window.location.search);	// URL에서 basiSeq 값 추출
 			const basiSeq = urlParams.get('basiSeq');	// basiSeq 값 반환
-			if(basiSeq){	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
+			const basiInput = document.getElementById("basiSeqInput");
+			if(basiSeq&&basiInput){	//URL에서 basiSeq 값을 가져와 숨겨진 필드에 설정
 // 				document.querySelector('input[name="basiSeq"]').value = basiSeq;
-				document.getElementById('basiSeqInput').value = basiSeq;
+				//document.getElementById('basiSeqInput').value = basiSeq;
+				basiInput.value = basiSeq;
+				console.log("basiSeq가 설정됨:" + basiSeq);
+			} else {
+				console.error("basiSeqInput이 존재하지 않습니다.");
 			}
-			console.log("basiSeq: " + basiSeq);
+			//console.log("예약basiSeq: " + basiSeq);
 		});
 		
 		// 예약하기 버튼 - insert
 		document.getElementById('btnBooking').onclick = function(){
+			// 시터 seq 가져오기
+			const basiVal = document.getElementById('basiSeqInput').value;
+			console.log("폼 전송 전 basiSeqInput의 값:", basiVal);
 			
 			// 예약날짜, 예약시간, 돌봄장소 가져오기
 			const baboDate = document.getElementById('baboDate').value;
 			const baboTime = document.getElementById('baboTime').value;
 			const baboLocation = document.getElementById('baboLocation').value;
-			
+
 			// 옵션 체크박스 선택여부 확인
 			const optionCheckboxes = document.querySelectorAll('.menu-checkbox');
 			const isOptionSelected = Array.from(optionCheckboxes).some(checkbox => checkbox.checked);
@@ -663,6 +672,17 @@
 			}
 		}
 		// ========== 예약하기 버튼 END ========== //
+		
+		
+		
+		// ========== aa START ========== //
+		// URL에서 basiSeq 값을 가져와서 hidden input에 넣어주기
+	/* 	const params = new URLSearchParams(window.location.search);
+		const basiSeq = params.get("basiSeq");
+		if (basiSeq) {
+		    document.getElementById("basiSeqInput").value = basiSeq;
+		} */
+		// ========== aa END ========== //
 		
 		
 		
@@ -720,7 +740,7 @@
 		    if (basiSeq) {
 		    	document.querySelector('input[name="basiSeq"]').value = basiSeq;
 			}
-			console.log("basiSeq: " + basiSeq);
+			console.log("리뷰basiSeq: " + basiSeq);
 		});
 	    
 	    document.getElementById('reviewSaveBtn').onclick = function() {
@@ -793,8 +813,6 @@
 		
 		
 		
-		// ========== aa START ========== //
-		// ========== aa END ========== //
 		
 		
 		

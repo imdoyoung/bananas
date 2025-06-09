@@ -49,6 +49,7 @@ public class BaUsrSitterController {
 		model.addAttribute("opList", baUsrSitterService.opSelectList());
 		
 		System.out.println("시터 상세페이지");
+		System.out.println("BasiSeq: " + baUsrSitterDto.getBasiSeq());
 		
 		return "usr/v1/infra/baSitter/baUsrSitterDetails";
 	}
@@ -80,6 +81,9 @@ public class BaUsrSitterController {
 			System.out.println("총금액 : " + baUsrSitterDto.getBaboTotalPrice());	// 확인용 출력
 			// basiSeq 값 확인
 		    System.out.println("받은 basiSeq: " + basiSeq);
+		    System.out.println("Ba_sitterlist_basiSeq: " + baUsrSitterDto.getBa_sitterlist_basiSeq());
+			System.out.println("BasiSeq: " + baUsrSitterDto.getBasiSeq());
+		    
 			
 			// 실제 baUsrSitterBookingInst 와 관련된 서비스 호출
 			baUsrSitterService.bookingInsert(baUsrSitterDto);
